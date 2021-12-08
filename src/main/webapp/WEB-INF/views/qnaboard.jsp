@@ -8,6 +8,11 @@
 </head>
 <body>
 	<h1>Q&A BOARD</h1>
+	<br>
+	<table border="1">
+		<th>Á¦¸ñ</th>
+		
+	</table>
 	
 </body>
 </html>
