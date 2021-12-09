@@ -76,7 +76,17 @@
     align-items: center;
     justify-content: center;
 }
+#pagingform button{
+    width: 25px;
+    height: 25px;
+    font-size: 10px;
+    font-weight: bold;
+    border: 0;
+    outline: 0;
+    color: lightgray;
+}
 a{
+    color: black;
 	text-decoration-line: none;
 }
 #prevbutton{

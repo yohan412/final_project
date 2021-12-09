@@ -1,12 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <link href='<c:url value="/resources/css/body.css"/>' rel="stylesheet">
-<link href='<c:url value="/resources/css/mainform.css"/>' rel="stylesheet">
+<link href='<c:url value="/resources/css/gamelist.css"/>' rel="stylesheet">
 <title>경기 일정 목록</title>
 </head>
 <body>
@@ -20,7 +21,7 @@
         </div>
         <div id="listform">
             <c:forEach begin="1" end="5">
-                <div class="list">
+                <div class="list" onclick="location.href='detail'">
                     <div id="region">인천</div>
                     <div id="date">
                         <div id="date_status">D-Day</div>

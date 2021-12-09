@@ -1,0 +1,301 @@
+#mainform{
+    width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+}
+#titleform{
+    width: 100%;
+    user-select: none;
+}
+#top_form{
+    width: 900px;
+    min-height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+}
+#map_form{
+    width: 300px;
+    height: 320px;
+    margin-top: 20px;
+}
+#left_form{
+    width: 350px;
+    min-height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+#mergency_state{
+    width: 150px;
+    height: 150px;
+    margin-top: 20px;
+    margin-right: 100px;
+    margin-bottom: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    user-select: none;
+    cursor: pointer;
+    background-color: lightgray;
+}
+#right_form{
+    width: 550px;
+    min-height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+#addr_form{
+    width: 500px;
+    height: 180px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    user-select: none;
+    background-color: lightgray;
+}
+#stadium_form{
+    width: 100%;
+    height: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 45px;
+    font-weight: bold;
+    align-items: center;
+}
+#stadium_addr_form{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+#date_form{
+    width: 500px;
+    height: 60px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    user-select: none;
+    background-color: lightgray;
+}
+#dday_form{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    font-size: 35px;	
+    font-weight: bold;
+}
+#date{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+#time_person_form{
+    width: 500px;
+    height: 60px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    user-select: none;
+}
+#time_form{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: lightgray;
+}
+#person_div{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+#person_form{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: lightgray;
+}
+#textarea_form{
+    width: 500px;
+    height: 200px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    resize:none;
+    user-select: none;
+}
+#button_form{
+    width: 900px;
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+#button_form .button{
+    width: 120px;
+    height: 50px;
+    background-color: aqua;
+    border: 0;
+    outline: 0;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+#bottom_form{
+    width: 900px;
+    min-height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+#comment_form{
+    width: 800px;
+    min-height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+}
+.comment{
+    width: 700px;
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    background-color: gray;
+}
+.comment #comment_info{
+    width: 130px;
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 15px;
+    font-weight: bold;
+}
+#comment_id{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+#comment_date{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+#comment_content{
+    width: 480px;
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-left: 20px;
+    font-size: 15px;
+    font-weight: bold;
+}
+#comment_delete{
+    width: 70px;
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+#comment_button{
+	width: 20px;
+	height: 20px;
+    border: 0;
+    outline: 0;
+    color:white;
+    background-color: darkblue;
+    border-radius: 2px;
+    cursor: pointer;
+}
+#comment_paging{
+    width: 700px;
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+#comment_paging button{
+    width: 25px;
+    height: 25px;
+    font-size: 10px;
+    font-weight: bold;
+    border: 0;
+    outline: 0;
+    color: lightgray;
+}
+a{
+	color: black;
+    text-decoration-line: none;
+}
+#prevbutton{
+    margin-right:3px;
+
+}
+#nextbutton{
+    margin-left:3px;
+}
+#pagingnum{
+    margin-left:5px;
+    margin-right:5px;
+}
+#comment_insert_form{
+    width: 900px;
+    height: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+        margin-bottom: 30px;
+}
+#comment_insert{
+    width: 700px;
+    height: 120px;
+    border: 1px solid black;
+}
+#comment_insert #search{
+    font-size: 16px;
+    width: 566px;
+    height: 116px;
+    border: 0;
+    outline: none;
+    float:left;
+    resize: none;
+}
+#comment_insert #button{
+    width: 130px;
+    height: 120px;
+    border: 0px;
+    outline: none;
+    float: right;
+    cursor:pointer;
+    background-color: aqua;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+}
