@@ -7,7 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <link href='<c:url value="/resources/css/body.css"/>' rel="stylesheet">
+<<<<<<< HEAD
 <link href='<c:url value="/resources/css/mainform.css"/>' rel="stylesheet">
+=======
+<link href='<c:url value="/resources/css/gamelist.css"/>' rel="stylesheet">
+>>>>>>> b384f381a10dfea65f5aac86a44d2a79a34f6b02
 <title>경기 일정 목록</title>
 </head>
 <body>
