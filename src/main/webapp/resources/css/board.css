@@ -57,13 +57,24 @@
     flex-wrap: wrap;
 }
 
-#boardselect{
-	display : flex;
-	flex-wrap: wrap;
+/*faq qna 구역 설정*/
+#boardselect_form{
+    width: 900px;
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-	
 }
+.boardselect{
+    width: 200px;      /*해당 width 설정해 둘 사이 간격 설정*/
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+/*faq qna 구역 설정 끝*/
 
 #pagingform{
     width: 900px;

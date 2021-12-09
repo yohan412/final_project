@@ -19,12 +19,14 @@
 		</div>
 		<br>
 			<div id="board_list">
-			<div id="boardselect">
-				<p id="faqboard" class="faqboard" onclick="location.href='faqboard.jsp'">faq</p>
-			</div>
-			<div id="boardselect">
-				<p id="qnaboard" class="qnaboard" onclick="location.href='qnaboard.jsp'">q&a</p>
-			</div>
+				<div id="boardselect_form">
+					<div class="boardselect">
+						<p id="faqboard" class="faqboard" onclick="location.href='faqboard.jsp'">faq</p>
+					</div>
+					<div class="boardselect">
+						<p id="qnaboard" class="qnaboard" onclick="location.href='qnaboard.jsp'">q&a</p>
+					</div>
+				</div>
 
 				<c:forEach begin="1" end="5">
 					<div class="list" onclick="locatcion.href='boarddetail'">
