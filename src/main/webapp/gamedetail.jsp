@@ -105,8 +105,8 @@
                 <%--댓글 입력 폼--%>
                 <div id="comment_insert_form">
                     <div id="comment_insert">
-                        <input type="text" name="serch" id="search">
-                        <input type="button" id="button" value="검색">
+                        <textarea id="search"></textarea>
+                        <input type="button" id="button" value="등록">
                     </div>
                 </div>
                 
