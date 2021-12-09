@@ -6,8 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
     <link href='<c:url value="${path}/resources/css/body.css"/>' rel="stylesheet">
 <link href='<c:url value="${path}/resources/css/gamelist.css"/>' rel="stylesheet">
+=======
+<link href='<c:url value="/resources/css/body.css"/>' rel="stylesheet">
+<link href='<c:url value="/resources/css/gamelist.css"/>' rel="stylesheet">
+>>>>>>> 8caad54e773d9cb1f519adc36520d686361376d6
 <title>경기 일정 목록</title>
 </head>
 <body>
