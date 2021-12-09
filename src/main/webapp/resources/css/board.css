@@ -1,0 +1,130 @@
+@charset "UTF-8";
+#mainform{
+    width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+}
+#board_title{
+    width: 900px;
+    user-select: none;
+}
+.list{
+    background-color: lightgray;
+    width: 900px;
+    height: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    user-select: none;
+    cursor:pointer ;
+}
+#no{
+	width: 100px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#title{
+	width: 300px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#id{
+	width: 100px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#date{
+	width: 120px;
+	height: 70px;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#answer{
+	width: 180px;
+	height: 70px;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/*faq qna 구역 설정*/
+#boardselect_form{
+    width: 900px;
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.boardselect{
+    width: 200px;      /*해당 width 설정해 둘 사이 간격 설정*/
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+/*faq qna 구역 설정 끝*/
+
+#pagingform{
+    width: 900px;
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+a{
+	text-decoration-line: none;
+}
+#prevbutton{
+	margin-right:3px;
+
+}	
+#nextbutton{
+	margin-left:3px;
+}
+#pagingnum{
+	margin-left:5px;
+	margin-right:5px;	
+}
+#serchform{
+    width: 900px;
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+#serchform div{
+	width: 400px;
+    height: 40px;
+    border: 1px solid black;
+}
+#serchform div #search{
+    font-size: 16px;
+    width: 330px;
+    height: 20px;
+    padding: 10px;
+    border: 0px;
+    outline: none;
+    float:left;
+}
+#serchform div #button{
+    width: 50px;
+    height: 100%;
+    border: 0px;
+    outline: none;
+    float: right;
+    cursor:pointer;
+}
