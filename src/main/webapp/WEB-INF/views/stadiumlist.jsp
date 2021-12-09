@@ -7,6 +7,34 @@
 <title>Insert title here</title>
 </head>
 <body>
+<main>
+    <h2>경기장 목록</h2>
+    <div id="search-box-stadium">
+        <form action="" method="">
+            <input type="hidden" name="command" value="searchMain">
+            <input type="text" name="keyword"><input type="submit" value="검색">
+            <select class="choosecity" name="city">
+                <option value="1"></option>
+                
+            </select>
+            <select class="choosetown" name="town">
+                <option value="1"></option>
+            </select>
+        </form>
+    </div>
+    <div id="stadium-list">
+        <ul class="image-list">
+            <c:choose>
+                <c:when test="">
+                    <li>글이 존재하지 않습니다.</li>
+                </c:when>
+                <c:otherwise>
+                    <c:forEach>
 
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
+        </ul>
+    </div>
 </body>
 </html>
