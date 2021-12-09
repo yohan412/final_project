@@ -1,17 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link href='<c:url value="/resources/css/body.css"/>' rel="stylesheet">
-<<<<<<< HEAD
-<link href='<c:url value="/resources/css/mainform.css"/>' rel="stylesheet">
-=======
-<link href='<c:url value="/resources/css/gamelist.css"/>' rel="stylesheet">
->>>>>>> b384f381a10dfea65f5aac86a44d2a79a34f6b02
+    <link href='<c:url value="${path}/resources/css/body.css"/>' rel="stylesheet">
+<link href='<c:url value="${path}/resources/css/gamelist.css"/>' rel="stylesheet">
 <title>경기 일정 목록</title>
 </head>
 <body>
