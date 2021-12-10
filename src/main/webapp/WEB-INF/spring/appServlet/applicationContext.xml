@@ -22,6 +22,27 @@
 		<property name="username" value="${username}" />
 		<property name="password" value="${password}" />
 	</bean>
+<<<<<<< HEAD
 
+=======
+	
+	<!-- mybatis -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="WEB-INF/spring/sqls/config.xml" />
+	</bean>
+	
+	<!-- mybatis-template -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSession" />
+	</bean>
+	
+	<!-- transactionManager: 트랜잭션매니저가 트랜잭션을 관리할 수 있게 등록 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+		
+	
+>>>>>>> eb8d5e2f1d7f8f08aa979a86458b68aa05f72956
 	
 </beans>

@@ -74,25 +74,41 @@ a{
 	vertical-align: middle;
 }
 
-.paging a.first,
-.paging a.prev,
-.paging a.next,
-.paging a.last {
-	width: 32px;
-	height: 32px;
-	background: #999;
-	background-image : url("/webapp/img/page_bt.png");
+.paging a.bt {
+	width: 30px;
+	height: 30px;
+	background: #ccc;
+	background-image : url("/img/page_bt.png");
+	background-repeat: no-repeat;
 	border-radius: 100px;
 	text-indent: -1000px;
 	overflow: hidden;
 }
+.paging a.bt:hover{
+	background-color: #999;
+}
+
+.paging a.first{
+	background-position: 10px -40px;
+}
+.paging a.prev{
+	margin-right: 5px;
+	background-position: 10px 10px;
+}
+.paging a.next{
+	margin-left: 5px;
+	background-position: -40px 10px;
+}
+.paging a.last{
+	background-position: -40px -40px;
+}
 	
-	
-	
-	
-	
-	
-	
+.paging a.num{
+	margin: 0 5px;
+}
+.paging a.num:hover{
+	text-decoration: underline;
+}
 	
 	
 	

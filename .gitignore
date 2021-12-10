@@ -2,10 +2,6 @@ target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 target/m2e-wtp/web-resources/META-INF/maven/com.mvc/fotsal/pom.properties
 target/m2e-wtp/web-resources/META-INF/maven/com.mvc/fotsal/pom.properties~parent of c9ce601 (no message)
 target/m2e-wtp/web-resources/META-INF/MANIFEST.MF~5110f03 (no message)
-<<<<<<< HEAD
 src/main/resources/mybatis/db.properties
 target/classes/mybatis/db.properties
-=======
-target/classes/mybatis/db.properties
-src/main/resources/mybatis/db.properties
->>>>>>> acedf0f30f5a40e50e9e6f0226a588c824cb9a51
+
