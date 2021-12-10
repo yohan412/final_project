@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Q&A BOARD</title>
+<title>FAQ BOARD</title>
 </head>
 <body>
 	<div class="board_list_wrap">
@@ -59,6 +59,15 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="paging">
+		<a href="#" class="bt first">처음 페이지</a>
+		<a href="#" class="bt prev">이전 페이지</a>
+		<a href="#" class="num">1</a>
+		<a href="#" class="num">2</a>
+		<a href="#" class="num">3</a>
+		<a href="#" class="bt next">다음 페이지</a>
+		<a href="#" class="bt last">마지막 페이지</a>
 	</div>
 </body>
 </html>

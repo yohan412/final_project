@@ -10,7 +10,10 @@ a{
 }
 
 .board_list_wrap{
-	padding: 50px;
+	padding-top: 50px;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-bottom: 10px;
 }
 .board_list_head {
 	border-top: 2px solid green;
@@ -26,6 +29,10 @@ a{
 	padding: 10px 0;
 }
 
+.board_list_head > div{
+	font-weight: 600;
+}
+
 .board_list_head > div,
 .board_list_body .item > div{
 	display: inline-block;
@@ -39,8 +46,12 @@ a{
 .board_list .title{
 	width: 55%;
 }
-.board_list .board_list_body .title{
+.board_list_body div.title{
 	text-align: left;
+}
+
+.board_list_body div.title a:hover{
+	text-decoration: underline;
 }
 .board_list .writer{
 	width: 10%;
@@ -51,5 +62,59 @@ a{
 .board_list .view{
 	width: 10%;
 }
+/* paging*/
+.paging{
+	margin-top: 30px;
+	text-align: center;
+	
+	}
 
+.paging a{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.paging a.bt {
+	width: 30px;
+	height: 30px;
+	background: #ccc;
+	background-image : url("/img/page_bt.png");
+	background-repeat: no-repeat;
+	border-radius: 100px;
+	text-indent: -1000px;
+	overflow: hidden;
+}
+.paging a.bt:hover{
+	background-color: #999;
+}
+
+.paging a.first{
+	background-position: 10px -40px;
+}
+.paging a.prev{
+	margin-right: 5px;
+	background-position: 10px 10px;
+}
+.paging a.next{
+	margin-left: 5px;
+	background-position: -40px 10px;
+}
+.paging a.last{
+	background-position: -40px -40px;
+}
+	
+.paging a.num{
+	margin: 0 5px;
+}
+.paging a.num:hover{
+	text-decoration: underline;
+}
+	
+	
+	
+	
+	
+	
+	
+	
 
