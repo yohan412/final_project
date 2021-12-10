@@ -2,3 +2,5 @@ target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 target/m2e-wtp/web-resources/META-INF/maven/com.mvc/fotsal/pom.properties
 target/m2e-wtp/web-resources/META-INF/maven/com.mvc/fotsal/pom.properties~parent of c9ce601 (no message)
 target/m2e-wtp/web-resources/META-INF/MANIFEST.MF~5110f03 (no message)
+target/classes/mybatis/db.properties
+src/main/resources/mybatis/db.properties
