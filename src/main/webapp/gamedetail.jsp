@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>경기 일정 상세</title>
-<link href='<c:url value="${path}/resources/css/body.css"/>' rel="stylesheet">
-    <link href='<c:url value="${path}/resources/css/gamedetail.css"/>' rel="stylesheet">
+<link href='<c:url value="/resources/css/body.css"/>' rel="stylesheet">
+    <link href='<c:url value="/resources/css/gamedetail.css"/>' rel="stylesheet">
 </head>
 <body>
 <header>
