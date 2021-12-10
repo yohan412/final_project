@@ -22,9 +22,6 @@
 		<property name="username" value="${username}" />
 		<property name="password" value="${password}" />
 	</bean>
-<<<<<<< HEAD
-
-=======
 	
 	<!-- mybatis -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -42,7 +39,5 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 		
-	
->>>>>>> eb8d5e2f1d7f8f08aa979a86458b68aa05f72956
 	
 </beans>
