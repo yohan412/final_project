@@ -178,6 +178,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 40px;
+    user-select: none;
     background-color: gray;
 }
 .comment #comment_info{
@@ -298,4 +299,78 @@ a{
     font-weight: bold;
     font-size: 15px;
     color: white;
+}
+#hidden_form{
+    width: 900px;
+    min-height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+#mergency_list_form{
+    width: 800px;
+    min-height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+}
+#mergency_list{
+    width: 700px;
+    height: 80px;
+    margin-top:40px;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 15px;
+    font-weight: bold;
+    user-select: none;
+    background-color: gray;
+}
+#mergency_id{
+    width: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+#mergency_foot{
+    width: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+#mergency_position{
+    width: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+#mergency_rate{
+    width: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+#mergency_button_form{
+    width: 250px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+#mergency_button{
+    width: 100px;
+    height: 40px;
+    border: 0;
+    outline: 0;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: darkcyan;
 }
