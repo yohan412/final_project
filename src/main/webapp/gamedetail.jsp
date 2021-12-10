@@ -7,8 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>경기 일정 상세</title>
+<<<<<<< .merge_file_a34448
 <link href='<c:url value="/resources/css/body.css"/>' rel="stylesheet">
     <link href='<c:url value="/resources/css/gamedetail.css"/>' rel="stylesheet">
+=======
+    <link href='<c:url value="${path}/resources/css/body.css"/>' rel="stylesheet">
+    <link href='<c:url value="${path}/resources/css/gamedetail.css"/>' rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="${path}/resources/js/gamedetail.js"></script>
+>>>>>>> .merge_file_a34488
 </head>
 <body>
 <header>
@@ -26,7 +33,6 @@
             <div id="left_form">
                 <%--지도--%>
                 <div id="map_form"></div>
-                <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49af48b1cf77792390c26841571e0b1c"></script>
                 <script type="text/javascript">
                     var mapContainer = document.getElementById('map_form'), // 지도를 표시할 div
@@ -75,7 +81,7 @@
             </div>
             <%--버튼 구역--%>
             <div id="button_form">
-                <input type="button" value="수정하기" class="button">
+                <input type="button" value="수정하기" class="button" onclick="show()">
                 <input type="button" value="삭제하기" class="button">
             </div>
         </div>
@@ -110,6 +116,24 @@
                     </div>
                 </div>
                 
+            </div>
+        </div>
+        <%--숨겨진 구역(용병 리스트)--%>
+        <div id="hidden_form">
+            <%--용병 리스트--%>
+            <div id="mergency_list_form">
+                <c:forEach begin="1" end="10">
+                    <div id="mergency_list">
+                        <div id="mergency_id">아이디(이름)</div>
+                        <div id="mergency_foot">주발</div>
+                        <div id="mergency_position">포지션</div>
+                        <div id="mergency_rate">50%</div>
+                        <div id="mergency_button_form"><input type="button" value="초대하기" id="mergency_button"></div>
+                    </div>
+                </c:forEach>
+                <div style="width: 700px; height: 40px">
+
+                </div>
             </div>
         </div>
     </div>
