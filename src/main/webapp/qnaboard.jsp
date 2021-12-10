@@ -60,5 +60,14 @@
 			</div>
 		</div>
 	</div>
+	<div class="paging">
+		<a href="#" class="first">처음 페이지</a>
+		<a href="#" class="prev">이전 페이지</a>
+		<a href="#" class="num">1</a>
+		<a href="#" class="num">2</a>
+		<a href="#" class="num">3</a>
+		<a href="#" class="next">다음 페이지</a>
+		<a href="#" class="last">마지막 페이지</a>
+	</div>
 </body>
 </html>
