@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>¸¶ÀÌÆäÀÌÁö</title>
+<title>ë§ˆì´í˜ì´ì§€</title>
 <style type="text/css">
 th, td{
 	dispaly: inline-block;
@@ -32,7 +32,7 @@ td input[type="button"]{
 		location.href="logincontroller.jsp?command=updateform&userno="+userno;
 	}
 	function deleteuser(userno){
-		var returnValue = confirm("Á¤¸»·Î Å»ÅğÇÏ½Ã°Ú½À´Ï±î?");
+		var returnValue = confirm("ì •ë§ë¡œ íƒˆí‡´í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
 		if(returnValue == true){
 			location.href="logincontroller.jsp?command=deleteuser&userno="+userno;
 		}
@@ -41,44 +41,44 @@ td input[type="button"]{
 </head>
 <body>
 <header style="text-align:center; margin-top:20px;">
-	Çì´õ
+	í—¤ë”
 </header>
 <br><br><hr>
 <section>
 	<div style="text-align: center; margin-top: 30px;">	
-		<h1>³» Á¤º¸ °ü¸®</h1>
+		<h1>ë‚´ ì •ë³´ ê´€ë¦¬</h1>
 	</div>
 	<div class="user_info">
 		<form action="" method="post">
 			<table align="center" method="post" cellpadding="5">
 				<tr>
-					<th>¾ÆÀÌµğ</th>
+					<th>ì•„ì´ë””</th>
 					<td><input type="text" id="id" name="userId" placeholder="KH" style="width:300px;"></td>
 				</tr>
 				<tr>
-					<th>ÀÌ¸§</th>
-					<td><input type="text" id="name" name="userName" placeholder="È«±æµ¿" style="width:300px;"></td>
+					<th>ì´ë¦„</th>
+					<td><input type="text" id="name" name="userName" placeholder="í™ê¸¸ë™" style="width:300px;"></td>
 				</tr>
 				<tr>
-					<th>»ı³â¿ùÀÏ</th>
+					<th>ìƒë…„ì›”ì¼</th>
 					<td><input type="text" id="date" name="Date" placeholder="2021.12.10" style="width:300px;"></td>
 				</tr>
 				<tr>
-					<th>ÀÌ¸ŞÀÏ</th>
+					<th>ì´ë©”ì¼</th>
 					<td><input type="text" id="email" name="Email" placeholder="dknkdw@naver.com" style="width:300px;"></td>
 				</tr>
 				<tr>
-					<th>ÇÚµåÆù</th>
+					<th>í•¸ë“œí°</th>
 					<td><input type="text" id="phone" name="Phone" placeholder="010-1234-5678" style="width:300px;"></td>
 				</tr>
 				<tr>
-					<th>ÀÚ±â¼Ò°³</th>
-					<td><textarea cols="39" rows="10" placeholder="¾È³çÇÏ¼¼¿ä È«±æµ¿ÀÔ´Ï´Ù."></textarea>></td>
+					<th>ìê¸°ì†Œê°œ</th>
+					<td><textarea cols="39" rows="10" placeholder="ì•ˆë…•í•˜ì„¸ìš” í™ê¸¸ë™ì…ë‹ˆë‹¤."></textarea>></td>
 				</tr>
 				<tr>
 					<td colspan="10" style="text-align: right;">
-						<input type="button" value="¼öÁ¤" onclick="">
-						<input type="button" value="È¸¿øÅ»Åğ" onclick="">
+						<input type="button" value="ìˆ˜ì •" onclick="">
+						<input type="button" value="íšŒì›íƒˆí‡´" onclick="">
 					</td>
 				</tr>
 			</table>
@@ -86,6 +86,6 @@ td input[type="button"]{
 	</div>
 </section>
 <hr><br><br>
-<footer style="text-align:center;">ÇªÅÍ</footer>
+<footer style="text-align:center;">í‘¸í„°</footer>
 </body>
 </html>
