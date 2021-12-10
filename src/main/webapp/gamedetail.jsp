@@ -7,10 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>경기 일정 상세</title>
+<<<<<<< .merge_file_a34448
+<link href='<c:url value="/resources/css/body.css"/>' rel="stylesheet">
+    <link href='<c:url value="/resources/css/gamedetail.css"/>' rel="stylesheet">
+=======
     <link href='<c:url value="${path}/resources/css/body.css"/>' rel="stylesheet">
     <link href='<c:url value="${path}/resources/css/gamedetail.css"/>' rel="stylesheet">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="${path}/resources/js/gamedetail.js"></script>
+>>>>>>> .merge_file_a34488
 </head>
 <body>
 <header>

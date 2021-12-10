@@ -5,10 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+h2{
+	te
+}
+
+
+
+</style>
 </head>
 <body>
 <main>
     <h2>경기장 목록</h2>
+    <!-- 검색창 -->
     <div id="search-box-stadium">
         <form action="" method="">
             <input type="hidden" name="command" value="searchMain">
@@ -22,6 +31,7 @@
             </select>
         </form>
     </div>
+    <!-- 목록 -->
     <div id="stadium-list">
         <ul class="image-list">
             <c:choose>
