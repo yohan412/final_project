@@ -5,19 +5,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style type="text/css">
-h2{
-	te
+* {
+    margin-left: 0;
+    margin-right: 0;
 }
-
-
+h2 {
+    text-align: center;
+}
+#search-box-stadium {
+    text-align: center;
+}
+input {
+    font-size: large;
+}
 
 </style>
 </head>
 <body>
-<main>
+    <main>
     <h2>경기장 목록</h2>
-    <!-- 검색창 -->
     <div id="search-box-stadium">
         <form action="" method="">
             <input type="hidden" name="command" value="searchMain">
@@ -31,7 +39,6 @@ h2{
             </select>
         </form>
     </div>
-    <!-- 목록 -->
     <div id="stadium-list">
         <ul class="image-list">
             <c:choose>
@@ -46,5 +53,6 @@ h2{
             </c:choose>
         </ul>
     </div>
+    <input type="button" value="글쓰기" onclick="">
 </body>
 </html>
