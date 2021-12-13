@@ -40,13 +40,19 @@
 					</div>		
 				</c:forEach>
 			</div>
+			<div id="serchform">
+            <div>
+                <input type="text" name="serch" id="search">
+                <input type="button" id="button" value="검색">
+            </div>
+        	</div>
 			<div id="pagingform">
             <button id="prevbutton"><a href="#"><</a></button>
             <c:forEach begin="1" end="5">
                 <button id="pagingnum"><a href="#">1</a></button>
             </c:forEach>
             <button id="nextbutton"><a href="#">></a></button>
-        </div>
+        	</div>
 			<div id="serchform">
             <div>
                 <input type="text" name="serch" id="search">

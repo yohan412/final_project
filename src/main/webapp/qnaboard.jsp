@@ -10,10 +10,14 @@
 <head>
 <meta charset="UTF-8">
 <title>FAQ BOARD</title>
-<h1>header</h1>
 </head>
 <body>
-<h1>Q&A 게시판</h1>
+<!-- header -->
+<header>
+header
+</header>
+
+<div><h1>Q&A 게시판</h1></div>
 <br>
 <div id="mainform">
 <div id="board_list">
@@ -30,15 +34,19 @@
 			</div>
 		</div>
 	</div>
+	
 	</div>
 		<div class="board_list_wrap">
+			<div>
+				<div onclik="">최신순</div>
+			</div>
 			<div class="board_list">
 				<div class="board_list_head">
 					<div class="num">번호</div>
 					<div class="title">제목</div>
 					<div class="writer">작성자</div>
 					<div class="date">작성일</div>
-					<div class="view">조회</div>
+					
 				</div>
 				<div class="board_list_body">
 					<div class="item">
@@ -48,7 +56,7 @@
 						</div>
 						<div class="writer">user5</div>
 						<div class="date">2021-12-08</div>
-						<div class="view">200</div>
+						
 					</div>
 					<div class="item">
 						<div class="num">4</div>
@@ -57,7 +65,7 @@
 						</div>
 						<div class="writer">user4</div>
 						<div class="date">2021-12-07</div>
-						<div class="view">100</div>
+						
 					</div>
 					<div class="item">
 						<div class="num">3</div>
@@ -66,7 +74,7 @@
 						</div>
 						<div class="writer">user3</div>
 						<div class="date">2021-12-04</div>
-						<div class="view">50</div>
+						
 					</div>
 					<div class="item">
 						<div class="num">2</div>
@@ -75,7 +83,7 @@
 						</div>
 						<div class="writer">user2</div>
 						<div class="date">2021-12-03</div>
-						<div class="view">160</div>
+						
 					</div>
 					<div class="item">
 						<div class="num">1</div>
@@ -84,25 +92,38 @@
 						</div>
 						<div class="writer">user1</div>
 						<div class="date">2021-12-01</div>
-						<div class="view">300</div>
+						
 					</div>
 				</div>
 			</div>
 		</div>
 		</div>
+			<div>
+
+			</div>
 			<div id="serchform">
             <div>
+            	<select id="ct">
+					<option>카테고리</option>
+					<option>제목</option>
+					<option>작성자</option>
+				</select>
                 <input type="text" name="serch" id="search">
                 <input type="button" id="button" value="검색">
             </div>
+			</div>
 		<div class="paging">
 			<a href="#" class="bt first">처음 페이지</a> <a href="#" class="bt prev">이전
 				페이지</a> <a href="#" class="num">1</a> <a href="#" class="num">2</a> <a
 				href="#" class="num">3</a> <a href="#" class="bt next">다음 페이지</a> <a
 				href="#" class="bt last">마지막 페이지</a>
 		</div>
-</div>
-<footer><h1>footer</h1></footer>		
+		<!-- footer -->
+	
+	<footer>
+	footer
+	</footer>
+	
 </body>
 
 </html>
