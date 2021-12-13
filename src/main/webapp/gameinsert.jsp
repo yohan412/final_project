@@ -18,12 +18,12 @@
 </header>
 <section>
     <div id="mainform">
-        <div id="titleform"><div style="font-size: 40px; font-weight: bold">경기 등록</div></div>
+        <div id="titleform"><div style="font-size: 30px; font-weight: bold">경기 등록</div></div>
         <div id="top_form">
             <div id="region_form">
             	<div class="font">지역이름</div>
                 <div class="info">
-                    <select style="width: 200px; height: 35px">
+                    <select style="width: 258px; height: 35px">
                     	<option>지역</option>
                         <option>서울</option>
                         <option>경기</option>
@@ -79,7 +79,7 @@
             <div id="game_player_form">
                 <div class="font">팀 인원</div>
                 <div class="info">
-                <select style="width: 200px; height: 35px">
+                <select style="width: 258px; height: 35px">
                     <option>인원</option>
                     <option>3vs3</option>
                     <option>4vs4</option>
@@ -90,11 +90,8 @@
                 </div>
             </div>
             <div id="mergency_form">
-                <div style="width: 180px; height: 120px; display: flex; flex-wrap: wrap; align-items: center">
-                    <div style="width: 100%; height: 60px; display: flex; align-items: center; font-size: 25px; font-weight: bold; user-select: none">
-                        용병 여부
-                    </div>
-                    <div style="width: 100%; height: 60px"></div>
+                <div id="mergency_title">
+                    용병 여부
                 </div>
                 <div class="info">
                     <div id="mergency_yn_form">
@@ -112,7 +109,6 @@
                                 <div class="radio_comment">N</div>
                             </div>
                         </div>
-                        <div style="width: 370px; height: 100%"></div>
                     </div>
                     <div id="mergency_player_form">
                         <div id="mergency">

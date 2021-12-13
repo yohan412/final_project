@@ -8,6 +8,8 @@
 	margin: 0;
 	padding: 0;
 }
+
+
 .list{
     background-color: lightgray;
     width: 900px;
@@ -154,7 +156,7 @@ a{
 }	
 
 #serchform div{
-	width: 400px;
+	width: 500px;
     height: 40px;
     border: 1px solid black;
 }	
@@ -175,6 +177,15 @@ a{
     outline: none;
     float: right;
     cursor:pointer;
-}	
+}
+#serchform div #ct{
+	    font-size: 16px;
+    width: 330px;
+    height: 20px;
+    padding: 10px;
+    border: 0px;
+    outline: none;
+    float:right;
+}
 	
 
