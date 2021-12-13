@@ -1,7 +1,25 @@
 @charset "UTF-8";
+#mainform{
+    width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+}
 *{
 	margin: 0;
 	padding: 0;
+}
+
+
+.list{
+    background-color: lightgray;
+    width: 900px;
+    height: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    user-select: none;
+    cursor:pointer ;
 }
 
 a{
@@ -111,10 +129,63 @@ a{
 }
 	
 	
+#boardselect_form{
+    width: 900px;
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.boardselect{
+    width: 200px;      /*해당 width 설정해 둘 사이 간격 설정*/
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
 	
+#serchform{
+    width: 900px;
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}	
+
+#serchform div{
+	width: 500px;
+    height: 40px;
+    border: 1px solid black;
+}	
 	
-	
-	
-	
+#serchform div #search{
+    font-size: 16px;
+    width: 330px;
+    height: 20px;
+    padding: 10px;
+    border: 0px;
+    outline: none;
+    float:left;
+}
+#serchform div #button{
+    width: 50px;
+    height: 100%;
+    border: 0px;
+    outline: none;
+    float: right;
+    cursor:pointer;
+}
+#serchform div #ct{
+	    font-size: 16px;
+    width: 330px;
+    height: 20px;
+    padding: 10px;
+    border: 0px;
+    outline: none;
+    float:right;
+}
 	
 

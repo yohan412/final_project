@@ -1,0 +1,40 @@
+section{
+	display: flex;
+	justify-content: center;
+}
+td, th{
+	border: 1px solid #eeeeee;
+}
+.main-all-box{
+	width: 900px;
+}
+.table-board-list{
+	margin-bottom: 10px;
+}
+.team-no{
+	width: 9%;
+	text-align: center;
+}
+.team-logo{
+	width: 15%;
+	text-align: center;
+}
+.team-name{
+	width: 49%;
+	text-align: center;
+}
+.team-date{
+	width: 14%;
+	text-align: center;
+}
+#prevbutton{
+    margin-right:3px;
+
+}
+#nextbutton{
+    margin-left:3px;
+}
+#pagingnum{
+    margin-left:5px;
+    margin-right:5px;
+}

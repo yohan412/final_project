@@ -9,6 +9,8 @@
 <title>경기 등록</title>
     <link href='<c:url value="${path}/resources/css/body.css"/>' rel="stylesheet">
     <link href='<c:url value="${path}/resources/css/gameinsert.css"/>' rel="stylesheet">
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script type="text/javascript" src="${path}/resources/js/gameinsert.js"></script>
 </head>
 <body>
 <header>
@@ -16,12 +18,12 @@
 </header>
 <section>
     <div id="mainform">
-        <div id="titleform"><div style="font-size: 40px; font-weight: bold">경기 등록</div></div>
+        <div id="titleform"><div style="font-size: 30px; font-weight: bold">경기 등록</div></div>
         <div id="top_form">
             <div id="region_form">
             	<div class="font">지역이름</div>
                 <div class="info">
-                    <select style="width: 200px; height: 35px">
+                    <select style="width: 258px; height: 35px">
                     	<option>지역</option>
                         <option>서울</option>
                         <option>경기</option>
@@ -45,39 +47,30 @@
             </div>
             <div id="stadium_addr_form">
                 <div class="addr_title">
-                    <div style="width:100%; height: 50%; display: flex; align-items: center">경기장 주소</div>
-                    <div style="width:100%; height: 50%"></div>
+                    <div style="width:100%; height: 100%; display: flex; align-items: center">경기장 주소</div>
                 </div>
                 <div class="addr_info">
                 	<div style="width: 100%; height: 50%; display: flex; align-items: center">
-                	    <input type="text" placeholder="경기장 주소" name="stadium_addr1" id="stadium_addr_1" class="inputform">
+                	    <input type="text" placeholder="경기장 주소" name="stadium_addr" id="stadium_addr" class="inputform">
                 	</div>
-                    <div style="width: 100%; height: 50%; display: flex; align-items: center">
-                        <input type="text" placeholder="경기장 상세 주소" name="stadium_addr2" id="stadium_addr_2" class="inputform">
-                    </div>
                 </div>
                 <div class="button_form">
-                    <div style="width: 100%; height: 50%; display: flex; align-items: center"></div>
-                    <div style="width: 100%; height: 50%; display: flex; align-items: center">
-                        <input type="submit" value="주소 찾기" id="addr_button">
+                    <div style="width: 100%; height: 100%; display: flex; align-items: center">
+                        <input type="submit" value="주소 찾기" id="addr_button" onclick="Addr_api();">
                     </div>
                 </div>
             </div>
             <div id="game_date_form">
                 <div class="font">경기 날짜</div>
                 <div class="info">
-                    <input type="date" placeholder="날짜 입력" name="game_date" id="game_date" class="inputform">
+                    <input type="date" placeholder="날짜 입력" name="game_date" id="game_date">
                 </div>
             </div>
             <div id="game_time_form">
                 <div class="font">경기 시간</div>
                 <div class="info">
                     <div style="width: 400px; height: 100%; display: flex; flex-wrap: wrap">
-                        <div style="width: 150px; height: 100%; display: flex; align-items: center; justify-content: center">
-                            <input type="time" class="time_form">
-                        </div>
-                        <div style="width: 100px; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: bold"> ~ </div>
-                        <div style="width: 150px; height: 100%; display: flex; align-items: center; justify-content: center">
+                        <div style="width: 400px; height: 100%; display: flex; align-items: center;">
                             <input type="time" class="time_form">
                         </div>
                     </div>
@@ -86,7 +79,7 @@
             <div id="game_player_form">
                 <div class="font">팀 인원</div>
                 <div class="info">
-                <select style="width: 200px; height: 35px">
+                <select style="width: 258px; height: 35px">
                     <option>인원</option>
                     <option>3vs3</option>
                     <option>4vs4</option>
@@ -97,11 +90,8 @@
                 </div>
             </div>
             <div id="mergency_form">
-                <div style="width: 180px; height: 120px; display: flex; flex-wrap: wrap; align-items: center">
-                    <div style="width: 100%; height: 60px; display: flex; align-items: center; font-size: 25px; font-weight: bold; user-select: none">
-                        용병 여부
-                    </div>
-                    <div style="width: 100%; height: 60px"></div>
+                <div id="mergency_title">
+                    용병 여부
                 </div>
                 <div class="info">
                     <div id="mergency_yn_form">
@@ -119,13 +109,12 @@
                                 <div class="radio_comment">N</div>
                             </div>
                         </div>
-                        <div style="width: 370px; height: 100%"></div>
                     </div>
                     <div id="mergency_player_form">
                         <div id="mergency">
                             <div id="mergency_player_title">필요 용병 수</div>
                             <div id="mergency_player_input_form">
-                                <input type="number" placeholder="필요 용병 수" id="player_input">
+                                <input type="number" placeholder="필요 용병 수" id="player_input" max="7">
                             </div>
                         </div>
                     </div>

@@ -1,0 +1,61 @@
+section{
+	display: flex;
+	justify-content: center;
+}
+.top-box-content{
+	width: 500px;
+	flex-wrap: wrap;
+	}
+.chk-position{
+	cursor: pointer;
+}
+.title-text{
+	display: flex;
+}
+.content-rate{
+	display: flex;
+}
+.content-rate-detail{
+	display: flex;
+	flex-direction: row;
+}
+.select-position-detail{
+	display: flex;
+	flex-direction: row;
+}
+.content-submit{
+	margin-right: 60px;
+}
+#pointer{
+	cursor: pointer;
+}
+.head-text{
+	display: flex;
+}
+.content-teamlogo label { 
+	display: inline-block; 
+	padding: .5em .75em; 
+	color: #fff; 
+	font-size: inherit; 
+	height: 20px;
+	vertical-align: middle; 
+	background-color: #999999;
+	cursor: pointer; 
+	border: 1px solid; 
+	border-radius: .25em; }
+	
+.content-teamlogo input[type="file"] {
+	position: absolute; 
+	width: 0; 
+	height: 0; 
+	padding: 0; 
+	overflow: hidden; 
+	border: 0; }
+	
+.content-teamlogo .upload-name{
+	height: 20px; 
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    color: #999999;
+}
