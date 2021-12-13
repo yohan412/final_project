@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,13 +36,48 @@
 				</thead>
 				<tbody>
 					<tr>
+						<!-- for문 반복해서 db값 가져오기 -->
 						<td class="team-no">1</td>
 						<td class="team-logo">팀 로고</td>
-						<td class="team-name">팀명</td>
+						<td class="team-name"><a href="#">팀명</a></td>
+						<td class="team-date">등록일</td>
+					</tr>
+					<tr>
+						<td class="team-no">1</td>
+						<td class="team-logo">팀 로고</td>
+						<td class="team-name"><a href="#">팀명</a></td>
+						<td class="team-date">등록일</td>
+					</tr>
+					<tr>
+						<td class="team-no">1</td>
+						<td class="team-logo">팀 로고</td>
+						<td class="team-name"><a href="#">팀명</a></td>
+						<td class="team-date">등록일</td>
+					</tr>
+					<tr>
+						<td class="team-no">1</td>
+						<td class="team-logo">팀 로고</td>
+						<td class="team-name"><a href="#">팀명</a></td>
+						<td class="team-date">등록일</td>
+					</tr>
+					<tr>
+						<td class="team-no">1</td>
+						<td class="team-logo">팀 로고</td>
+						<td class="team-name"><a href="#">팀명</a></td>
 						<td class="team-date">등록일</td>
 					</tr>
 				</tbody>
 			</table>		
+		</div>
+		<!-- 페이지 리스트 -->
+			<!-- <c:if test="${}"> -->
+			<!-- </c:if> -->
+		<div class="page-list" align="center">
+	           <button id="prevbutton"><a href="#"><</a></button>
+	           <c:forEach begin="1" end="5">
+	               <button id="pagingnum"><a href="#">1</a></button>
+	           </c:forEach>
+	           <button id="nextbutton"><a href="#">></a></button>
 		</div>
 	</div>
 </section>

@@ -1,33 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='<c:url value="/resources/css/header.css"/>' rel="stylesheet">
+    <title>경기장 게시물 작성</title>
 <style type="text/css">
-* {
-    
-    margin-left: 0;
-    margin-right: 0;
+
+
+input[type="submit"]:hover, input[type="button"]:hover {
+	background-color: #c4c1e0 !important;
 }
-body {
-	margin-left: 0;
-	margin-right: 0;
+
+.review-search-section input, select {
+	font-size: medium;
+	width: auto;
+	height: auto;
 	text-align: center;
 }
 
-main div {
-	margin-bottom: 100px;
-}
-table {
-	text-align: left;
-	display: inline-block;
+input[type="text"], select {
+	padding: 10px;
 }
 </style>
 </head>
 <body>
+    <%@ include file="./header.jsp"%>
+    <!--경기장 게시글 작성-->
     <div class="stadium-write">
         <form action="" method="" class="stadium-write-form">
             <input type="hidden" name="s_no" value="">
@@ -60,8 +62,7 @@ table {
             </table>
 
         </form>
-	
-	
+
 
     </div>
 </body>

@@ -3,11 +3,15 @@
     width: 900px;
     display: flex;
     flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
 }
 *{
 	margin: 0;
 	padding: 0;
 }
+
+
 .list{
     background-color: lightgray;
     width: 900px;
@@ -26,7 +30,7 @@ a{
 }
 
 .board_list_wrap{
-	padding-top: 50px;
+	padding-top: 10px;
 	padding-left: 50px;
 	padding-right: 50px;
 	padding-bottom: 10px;
@@ -82,7 +86,8 @@ a{
 .paging{
 	margin-top: 30px;
 	text-align: center;
-	
+	display: flex;
+	justify-content: center;
 	}
 
 .paging a{
@@ -151,10 +156,15 @@ a{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    
 }	
+#serchform .ct{
+	text-align: left;
+	display: inline-block;
+}
 
 #serchform div{
-	width: 400px;
+	width: 500px;
     height: 40px;
     border: 1px solid black;
 }	
@@ -175,6 +185,15 @@ a{
     outline: none;
     float: right;
     cursor:pointer;
-}	
+}
+#serchform div #ct{
+	    font-size: 16px;
+    width: 330px;
+    height: 20px;
+    padding: 10px;
+    border: 0px;
+    outline: none;
+    float:right;
+}
 	
 
