@@ -20,17 +20,17 @@
 					<div class="title-text">	
 						<h2>디비값 팀이름</h2>
 					</div>
-					<hr>
+					<hr style="border: 1px solid green;">
 					<div class="content-select-teamname">
 						<h5 class="head-text">1. 팀명</h5>
 						<label class="chk-team-name"><input type="text" style="border: 0px;" name="team-name"  readonly><!-- DB값 --></label>
 					</div>
-					<hr>
+					<hr style="border: 1px solid green;">
 					<div class="content-select-position">
 						<h5 class="head-text">2. 현재 인원</h5>
 						<label class="chk-team-person"><input type="number" style="border: 0px;" name="team-person" readonly><!-- DB값 --></label>
 					</div>
-					<hr>
+					<hr style="border: 1px solid green;">
 					<div class="content-teamlogo">
 						<h5 class="head-text">3. 팀 로고</h5>
 						<img src=""><!-- DB값 -->
