@@ -23,7 +23,7 @@
             <div id="region_form">
             	<div class="font">지역이름</div>
                 <div class="info">
-                    <select style="width: 200px; height: 35px">
+                    <select style="width: 258px; height: 35px">
                     	<option>지역</option>
                         <option>서울</option>
                         <option>경기</option>
@@ -79,7 +79,7 @@
             <div id="game_player_form">
                 <div class="font">팀 인원</div>
                 <div class="info">
-                <select style="width: 200px; height: 35px">
+                <select style="width: 258px; height: 35px">
                     <option>인원</option>
                     <option>3vs3</option>
                     <option>4vs4</option>

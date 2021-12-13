@@ -104,7 +104,7 @@
     justify-content: center;
 }
 #game_date{
-    width: 200px;
+    width: 253px;
     height: 30px;
 }
 #game_time_form{
@@ -117,7 +117,7 @@
     user-select: none;
 }
 .time_form{
-    width: 200px;
+    width: 253px;
     height: 30px;
 }
 #game_player_form{
