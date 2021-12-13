@@ -77,7 +77,7 @@
             <%--버튼 구역--%>
             <div id="button_form">
                 <input type="button" value="수정하기" class="button" onclick="show()">
-                <input type="button" value="삭제하기" class="button">
+                <input type="button" value="삭제하기" class="button" onclick="location.href='/gameinsert.do'">
             </div>
         </div>
         <%--하단 내용 구역--%>
