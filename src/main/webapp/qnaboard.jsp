@@ -101,13 +101,17 @@ header
 			<div>
 
 			</div>
+			
+
 			<div id="serchform">
-            <div>
-            	<select id="ct">
+			<div>
+				<div style="text-align: left; width: 100px; height: 40px;">
+				<select style="display: inline-block;">
 					<option>카테고리</option>
 					<option>제목</option>
 					<option>작성자</option>
 				</select>
+				</div>
                 <input type="text" name="serch" id="search">
                 <input type="button" id="button" value="검색">
             </div>
