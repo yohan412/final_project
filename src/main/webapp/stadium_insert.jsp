@@ -28,7 +28,7 @@ input[type="text"], select {
 </style>
 </head>
 <body>
-    <%@ include file="./header.jsp"%>
+    <%@ include file="/header.jsp"%>
     <!--경기장 게시글 작성-->
     <div class="stadium-write">
         <form action="" method="" class="stadium-write-form">
