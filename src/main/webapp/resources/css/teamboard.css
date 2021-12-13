@@ -2,11 +2,14 @@ section{
 	display: flex;
 	justify-content: center;
 }
+td, th{
+	border: 1px solid #eeeeee;
+}
 .main-all-box{
 	width: 900px;
 }
 .table-board-list{
-
+	margin-bottom: 10px;
 }
 .team-no{
 	width: 9%;
@@ -23,4 +26,15 @@ section{
 .team-date{
 	width: 14%;
 	text-align: center;
+}
+#prevbutton{
+    margin-right:3px;
+
+}
+#nextbutton{
+    margin-left:3px;
+}
+#pagingnum{
+    margin-left:5px;
+    margin-right:5px;
 }
