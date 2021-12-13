@@ -7,11 +7,11 @@
   <configuration>
   
   	<typeAliases>
-  		
+  		<typeAlias type="com.mvc.fotsal.model.dto.UserDto" alias="userDto"/>
   	</typeAliases>
   	
   	<mappers>
-  		
+  		<mapper resource="/mybatis/user-mapper.xml" />
   	</mappers>
   	
   </configuration>
