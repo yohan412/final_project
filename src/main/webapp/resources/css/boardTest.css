@@ -3,6 +3,8 @@
     width: 900px;
     display: flex;
     flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
 }
 *{
 	margin: 0;
@@ -28,7 +30,7 @@ a{
 }
 
 .board_list_wrap{
-	padding-top: 50px;
+	padding-top: 10px;
 	padding-left: 50px;
 	padding-right: 50px;
 	padding-bottom: 10px;
@@ -84,7 +86,8 @@ a{
 .paging{
 	margin-top: 30px;
 	text-align: center;
-	
+	display: flex;
+	justify-content: center;
 	}
 
 .paging a{
@@ -153,7 +156,12 @@ a{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    
 }	
+#serchform .ct{
+	text-align: left;
+	display: inline-block;
+}
 
 #serchform div{
 	width: 500px;
