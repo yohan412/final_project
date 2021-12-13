@@ -1,0 +1,26 @@
+section{
+	display: flex;
+	justify-content: center;
+}
+.main-all-box{
+	width: 900px;
+}
+.table-board-list{
+
+}
+.team-no{
+	width: 9%;
+	text-align: center;
+}
+.team-logo{
+	width: 15%;
+	text-align: center;
+}
+.team-name{
+	width: 49%;
+	text-align: center;
+}
+.team-date{
+	width: 14%;
+	text-align: center;
+}

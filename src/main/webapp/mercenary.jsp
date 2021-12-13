@@ -20,14 +20,16 @@
 					<div class="title-text">	
 						<h2>용병지원서</h2>
 					</div>
+					<hr>
 					<div class="content-select-foot">
-						<h5 class="head-text">1. 주 사용 발</h5>
-						<label class="chk-foot"><input type="radio" name="chk-position" value="L">왼발</label>
+						<h5 class="head-text">1. *주 사용 발</h5>
+						<label class="chk-foot"><input type="radio" name="chk-position" value="L" required>왼발</label>
 						<label class="chk-foot"><input type="radio" name="chk-position" value="R">오른발</label>
 						<label class="chk-foot"><input type="radio" name="chk-position" value="A">양발</label>
 					</div>
+					<hr>
 					<div class="content-select-position">
-						<h5 class="head-text">2. 포지션</h5>
+						<h5 class="head-text">2. *포지션</h5>
 					</div>
 					<div class="select-position-detail">
 						<img src="img/footsalFieldBasic.png" usemap="#image-map">
@@ -40,6 +42,7 @@
 						    <area style="cursor: pointer;" target="" alt="골키퍼" title="골키퍼" onclick="" coords="310,299,22" shape="circle">
 						</map>
 					</div>
+					<hr>
 					<div class="content-introduce">
 						<h5 class="head-text">3. 자기소개 및 한마디</h5>
 						<textarea rows="10" cols="60" placeholder="자기소개와 한마디를 적어주세요"></textarea>
