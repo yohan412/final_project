@@ -24,7 +24,7 @@
 					<div class="content-select-foot">
 						<h5 class="head-text">1. *주 사용 발</h5>
 						<label class="chk-foot"><input type="radio" name="chk-position" value="L" required>왼발</label>
-						<label class="chk-foot"><input type="radio" name="chk-position" value="R">오른발</label>
+						<label class="chk-foot"><input type="radio" name="chk-position" value="R" checked>오른발</label>
 						<label class="chk-foot"><input type="radio" name="chk-position" value="A">양발</label>
 					</div>
 					<hr>
