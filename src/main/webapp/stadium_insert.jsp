@@ -9,34 +9,43 @@
     <link href='<c:url value="/resources/css/header.css"/>' rel="stylesheet">
     <title>경기장 게시물 작성</title>
 <style type="text/css">
-
-
-input[type="submit"]:hover, input[type="button"]:hover {
-	background-color: #c4c1e0 !important;
+.stadium-write{
+    padding-right: 150px;
+    padding-left: 150px;
+    position: relative;
+    margin: 0 auto;
+    
+}
+table {
+	text-align: left;
+	display: inline-block;
 }
 
-.review-search-section input, select {
-	font-size: medium;
-	width: auto;
-	height: auto;
-	text-align: center;
+h2{
+    text-align: center;
 }
-
-input[type="text"], select {
-	padding: 10px;
+input[type="submit"], input[type="button"] {
+	width: 100px;
+	height: 50px;
+	border-style: none;
+	border-radius: 5%;
+	font-weight: bold;
+	
 }
 </style>
 </head>
 <body>
-    <%@ include file="/header.jsp"%>
+    <%@ include file="./header.jsp"%>
     <!--경기장 게시글 작성-->
     <div class="stadium-write">
+        <h2>경기장 게시글 작성</h2><br><br>
         <form action="" method="" class="stadium-write-form">
             <input type="hidden" name="s_no" value="">
-            <table class="stadium-table" width="100%">
+            <table class="stadium-table">
                 <tr>
                     <th>경기장 이미지</th>
-                    <td><input type="image" src="" name="pic_name" value=""></td>
+                    <td><input type="file" name="">
+                        <input type="image" src="" name="pic_name" value=""></td>
                 </tr>
                 <tr>
                     <th>경기장 이름</th>
@@ -54,8 +63,8 @@ input[type="text"], select {
                 <tr>
                     <td colspan="2">
                         <ul>
-                            <li><input type="submit" value="등록"></li>
-                            <li><input type="button" value="목록" onclick=""></li>
+                            <input type="submit" value="등록">
+                            <input type="button" value="목록" onclick="">
                         </ul>
                     </td>
                 </tr>
@@ -65,5 +74,7 @@ input[type="text"], select {
 
 
     </div>
+
+
 </body>
 </html>
