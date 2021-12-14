@@ -2,6 +2,28 @@ target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 target/m2e-wtp/web-resources/META-INF/maven/com.mvc/fotsal/pom.properties
 target/m2e-wtp/web-resources/META-INF/maven/com.mvc/fotsal/pom.properties~parent of c9ce601 (no message)
 target/m2e-wtp/web-resources/META-INF/MANIFEST.MF~5110f03 (no message)
-src/main/resources/mybatis/db.properties
 target/classes/mybatis/db.properties
 
+target/classes/mybatis/game_mapper.xml
+target/classes/mybatis/team_mapper.xml
+target/classes/com/mvc/fotsal/model/biz/TeamBizImpl.class
+target/classes/com/mvc/fotsal/model/dao/MercenaryDaoImpl.class
+target/classes/com/mvc/fotsal/model/dao/TeamDaoImpl.class
+target/classes/com/mvc/fotsal/model/dto/GamePaging.class
+target/classes/com/mvc/fotsal/model/dto/teamDto.class
+target/classes/mybatis/mercenary_mapper.xml
+target/classes/com/mvc/fotsal/model/dto/mercenaryDto.class
+target/classes/com/mvc/fotsal/model/dto/GamePageMaker.class
+target/classes/com/mvc/fotsal/model/dao/TeamDao.class
+target/classes/com/mvc/fotsal/model/dao/MercenaryDao.class
+target/classes/com/mvc/fotsal/model/biz/TeamBiz.class
+target/classes/com/mvc/fotsal/model/biz/MercenaryBizImpl.class
+target/classes/com/mvc/fotsal/model/biz/MercenaryBiz.class
+target/classes/com/mvc/fotsal/TeamController.class
+target/classes/com/mvc/fotsal/MercenaryController.class
+target/classes/com/mvc/fotsal/BoardController.class
+target/classes/com/mvc/fotsal/GameController.class
+target/classes/com/mvc/fotsal/model/biz/GameBiz.class
+target/classes/com/mvc/fotsal/model/biz/GameBizImpl.class
+target/classes/com/mvc/fotsal/model/dao/GameDao.class
+target/classes/com/mvc/fotsal/model/dao/GameDaoImpl.class
