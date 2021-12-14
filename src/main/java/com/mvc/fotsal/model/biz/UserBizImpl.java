@@ -14,7 +14,8 @@ public class UserBizImpl implements UserBiz {
 	
 	@Override
 	public UserDto login(UserDto dto) {
-		return null;
+		
+		return dao.login(dto);
 	}
 
 }

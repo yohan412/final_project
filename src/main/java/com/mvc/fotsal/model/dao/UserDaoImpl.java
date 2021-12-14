@@ -14,7 +14,15 @@ public class UserDaoImpl implements UserDao {
 	
 	@Override
 	public UserDto login(UserDto dto) {
-		return null;
+		UserDto res = null;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"login", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 }
