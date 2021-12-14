@@ -3,13 +3,13 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <link href='<c:url value="/resources/css/body.css"/>' rel="stylesheet">
-<link href='<c:url value="/resources/css/boardTest.css"/>' rel="stylesheet">
+<link href='<c:url value="/resources/css/board.css"/>' rel="stylesheet">
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FAQ BOARD</title>
+<title>Q&A BOARD</title>
 </head>
 <body>
 <!-- header -->
@@ -34,12 +34,19 @@ header
 			</div>
 		</div>
 	</div>
-	
 	</div>
-		<div class="board_list_wrap">
-			<div>
-				<div onclik="">최신순</div>
+		<div id="board_middle_form">
+			<div class="middle">
+			<p id="newone" class="newone">최신순</p>
 			</div>
+			<div class="middle">
+				<input id="write" type="button" value="글등록" onclick="">
+			</div>
+		</div>
+	
+		<div class="board_list_wrap">
+
+
 			<div class="board_list">
 				<div class="board_list_head">
 					<div class="num">번호</div>
@@ -105,7 +112,7 @@ header
 
 			<div id="serchform">
 			<div>
-				<div style="text-align: left; width: 100px; height: 40px;">
+				<div id="ct" style="text-align: left; width: 100px; height: 40px;">
 				<select style="display: inline-block;">
 					<option>카테고리</option>
 					<option>제목</option>
