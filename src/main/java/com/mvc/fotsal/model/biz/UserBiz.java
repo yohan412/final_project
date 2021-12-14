@@ -1,5 +1,7 @@
 package com.mvc.fotsal.model.biz;
 
-public interface UserBiz {
+import com.mvc.fotsal.model.dto.UserDto;
 
+public interface UserBiz {
+	public UserDto login(UserDto dto);
 }
