@@ -8,10 +8,12 @@
   
   	<typeAliases>
   		<typeAlias type="com.mvc.fotsal.model.dto.UserDto" alias="userDto"/>
+		<typeAlias type="com.mvc.fotsal.model.dto.GameDto" alias="gameDto"/>
   	</typeAliases>
   	
   	<mappers>
   		<mapper resource="/mybatis/user-mapper.xml" />
+		<mapper resource="/mybatis/game_mapper.xml"/>
   	</mappers>
   	
   </configuration>
