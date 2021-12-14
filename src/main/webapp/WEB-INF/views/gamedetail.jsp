@@ -20,7 +20,7 @@
     <div id="mainform">
         <%--페이지 타이틀--%>
         <div id="titleform">
-            <h2>인천 - xx 경기장</h2>
+            <h2>${gamedto.game_region} - xx 경기장</h2>
         </div>
         <%--상단 내용 구역--%>
         <div id="top_form">
