@@ -5,6 +5,7 @@ target/m2e-wtp/web-resources/META-INF/MANIFEST.MF~5110f03 (no message)
 target/classes/mybatis/db.properties
 
 target/classes/mybatis/game_mapper.xml
+<<<<<<< HEAD
 target/classes/mybatis/team_mapper.xml
 target/classes/com/mvc/fotsal/model/biz/TeamBizImpl.class
 target/classes/com/mvc/fotsal/model/dao/MercenaryDaoImpl.class
@@ -27,3 +28,6 @@ target/classes/com/mvc/fotsal/model/biz/GameBiz.class
 target/classes/com/mvc/fotsal/model/biz/GameBizImpl.class
 target/classes/com/mvc/fotsal/model/dao/GameDao.class
 target/classes/com/mvc/fotsal/model/dao/GameDaoImpl.class
+=======
+target/
+>>>>>>> 3c80e4e09742d66994edf2009e8b7d2bf3bfb3b0

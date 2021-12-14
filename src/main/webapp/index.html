@@ -17,8 +17,9 @@
 	 }
 	
 	.banner_list {
-		width: 200px;
-		height: 60px;
+		background-color:gray;
+		width: 250px;
+		height: 80px;
 		position: absolute;
 	}
 	
@@ -165,24 +166,24 @@
 		var bannerLeft=0;
 		var first=1;
 		var last;
-		var imgCnt=0;
-		var $img = $(".banner_wraper fieldset");
+		var listCnt=0;
+		var $list = $(".banner_wraper div");
 		var $first;
 		var $last;
 		
-		$img.each(function(){   // 5px 간격으로 배너 처음 위치 시킴
+		$list.each(function(){   // 5px 간격으로 배너 처음 위치 시킴
 		    $(this).css("left",bannerLeft);
 		    bannerLeft += $(this).width()+5;
-		    $(this).attr("id", "banner"+(++imgCnt));  // img에 id 속성 추가
+		    $(this).attr("id", "banner"+(++listCnt));  // img에 id 속성 추가
 		});
 		
 		
-		if( imgCnt > 5){                //배너 5개 이상이면 이동시킴
+		if( listCnt > 5){                //배너 5개 이상이면 이동시킴
 		
-		    last = imgCnt;
+		    last = listCnt;
 		
 		    setInterval(function() {
-		        $img.each(function(){
+		        $list.each(function(){
 		            $(this).css("left", $(this).position().left-1); // 1px씩 왼쪽으로 이동
 		        });
 		        $first = $("#banner"+first);
@@ -229,105 +230,66 @@
 	<br><br>
 	<div class="banner_box">
 		<div class="banner_wraper">
-			<fieldset class="banner_list">
-				<legend>경기 1</legend>
+			<div class="banner_list">
 				<div style="float: left">
-				<a>2021-12-10</a><br>
-				<a>5 vs 5</a>
+					<a>2021-12-10</a><br>
+					<a>5 vs 5</a>
 				</div>
 				<div style="float: right">
 					<input type="button" value="용병신청" onclick=""><br>
 					<input type="button" value="상세사항" onclick="">
 				</div>
-			</fieldset>
-			<fieldset class="banner_list">
-				<legend>경기 1</legend>
+			</div>
+			<div class="banner_list">
 				<div style="float: left">
-				<a>2021-12-10</a><br>
-				<a>5 vs 5</a>
+					<a>2021-12-10</a><br>
+					<a>5 vs 5</a>
 				</div>
 				<div style="float: right">
 					<input type="button" value="용병신청" onclick=""><br>
 					<input type="button" value="상세사항" onclick="">
 				</div>
-			</fieldset>
-			<fieldset class="banner_list">
-				<legend>경기 1</legend>
+			</div>
+			<div class="banner_list">
 				<div style="float: left">
-				<a>2021-12-10</a><br>
-				<a>5 vs 5</a>
+					<a>2021-12-10</a><br>
+					<a>5 vs 5</a>
 				</div>
 				<div style="float: right">
 					<input type="button" value="용병신청" onclick=""><br>
 					<input type="button" value="상세사항" onclick="">
 				</div>
-			</fieldset>
-			<fieldset class="banner_list">
-				<legend>경기 1</legend>
+			</div>
+			<div class="banner_list">
 				<div style="float: left">
-				<a>2021-12-10</a><br>
-				<a>5 vs 5</a>
+					<a>2021-12-10</a><br>
+					<a>5 vs 5</a>
 				</div>
 				<div style="float: right">
 					<input type="button" value="용병신청" onclick=""><br>
 					<input type="button" value="상세사항" onclick="">
 				</div>
-			</fieldset>
-			<fieldset class="banner_list">
-				<legend>경기 1</legend>
+			</div>
+			<div class="banner_list">
 				<div style="float: left">
-				<a>2021-12-10</a><br>
-				<a>5 vs 5</a>
+					<a>2021-12-10</a><br>
+					<a>5 vs 5</a>
 				</div>
 				<div style="float: right">
 					<input type="button" value="용병신청" onclick=""><br>
 					<input type="button" value="상세사항" onclick="">
 				</div>
-			</fieldset>
-			<fieldset class="banner_list">
-				<legend>경기 1</legend>
+			</div>
+			<div class="banner_list">
 				<div style="float: left">
-				<a>2021-12-10</a><br>
-				<a>5 vs 5</a>
+					<a>2021-12-10</a><br>
+					<a>5 vs 5</a>
 				</div>
 				<div style="float: right">
 					<input type="button" value="용병신청" onclick=""><br>
 					<input type="button" value="상세사항" onclick="">
 				</div>
-			</fieldset>
-			<fieldset class="banner_list">
-				<legend>경기 1</legend>
-				<div style="float: left">
-				<a>2021-12-10</a><br>
-				<a>5 vs 5</a>
-				</div>
-				<div style="float: right">
-					<input type="button" value="용병신청" onclick=""><br>
-					<input type="button" value="상세사항" onclick="">
-				</div>
-			</fieldset>
-			<fieldset class="banner_list">
-				<legend>경기 1</legend>
-				<div style="float: left">
-				<a>2021-12-10</a><br>
-				<a>5 vs 5</a>
-				</div>
-				<div style="float: right">
-					<input type="button" value="용병신청" onclick=""><br>
-					<input type="button" value="상세사항" onclick="">
-				</div>
-			</fieldset>
-			<fieldset class="banner_list">
-				<legend>경기 1</legend>
-				<div style="float: left">
-				<a>2021-12-10</a><br>
-				<a>5 vs 5</a>
-				</div>
-				<div style="float: right">
-					<input type="button" value="용병신청" onclick=""><br>
-					<input type="button" value="상세사항" onclick="">
-				</div>
-			</fieldset>
+			</div>
 			
 		</div>
 	</div>
