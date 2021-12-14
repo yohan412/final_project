@@ -1,5 +1,8 @@
 package com.mvc.fotsal;
 
-public class BoardController {
+import org.springframework.stereotype.Controller;
 
+@Controller
+public class BoardController {
+	
 }
