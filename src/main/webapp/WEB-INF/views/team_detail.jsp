@@ -43,6 +43,7 @@
 					<div class="content-submit" align="right">
 						<input id="pointer" type="button" value="목록" onclick="">
 						<input id="pointer" type="button" value="수정" onclick="">
+						<input id="pointer" type="button" value="삭제" onclick="">
 					</div>
 					
 				</div>

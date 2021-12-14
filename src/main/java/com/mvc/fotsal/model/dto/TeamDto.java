@@ -1,16 +1,16 @@
 package com.mvc.fotsal.model.dto;
 
-public class teamDto {
+public class TeamDto {
 	private String team_name; //팀명
 	private String team_intro; //팀소개
 	private int team_no; //팀번호
 	private char team_addchk; //모집여부
 	
-	public teamDto() {
+	public TeamDto() {
 		super();
 	}
 
-	public teamDto(String team_name, String team_intro, int team_no, char team_addchk) {
+	public TeamDto(String team_name, String team_intro, int team_no, char team_addchk) {
 		super();
 		this.team_name = team_name;
 		this.team_intro = team_intro;

@@ -1,16 +1,16 @@
 package com.mvc.fotsal.model.dto;
 
-public class mercenaryDto {
+public class MercenaryDto {
 	private String mercenary_intro; // 자기소개
 	private String mercenary_foot; // 주발
 	private int mercenary_rate; //승률
 	private String mercenary_position; //포지션
 	
-	public mercenaryDto() {
+	public MercenaryDto() {
 		super();
 	}
 
-	public mercenaryDto(String mercenary_intro, String mercenary_foot, int mercenary_rate, String mercenary_position) {
+	public MercenaryDto(String mercenary_intro, String mercenary_foot, int mercenary_rate, String mercenary_position) {
 		super();
 		this.mercenary_intro = mercenary_intro;
 		this.mercenary_foot = mercenary_foot;

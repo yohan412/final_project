@@ -4,7 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mvc.fotsal.model.dto.mercenaryDto;
+import com.mvc.fotsal.model.dto.MercenaryDto;
 
 @Repository
 public class MercenaryDaoImpl implements MercenaryDao{
@@ -13,7 +13,7 @@ public class MercenaryDaoImpl implements MercenaryDao{
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public mercenaryDto mercenaryDetail(mercenaryDto dto) {
+	public MercenaryDto mercenaryDetail(MercenaryDto dto) {
 		
 		return null;
 	}

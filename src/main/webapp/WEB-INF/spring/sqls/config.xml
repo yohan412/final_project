@@ -9,11 +9,15 @@
   	<typeAliases>
   		<typeAlias type="com.mvc.fotsal.model.dto.UserDto" alias="userDto"/>
 		<typeAlias type="com.mvc.fotsal.model.dto.GameDto" alias="gameDto"/>
+		<typeAlias type="com.mvc.fotsal.model.dto.MercenaryDto" alias="mercenaryDto"/>
+		<typeAlias type="com.mvc.fotsal.model.dto.TeamDto" alias="teamDto"/>
   	</typeAliases>
   	
   	<mappers>
   		<mapper resource="/mybatis/user-mapper.xml" />
 		<mapper resource="/mybatis/game_mapper.xml"/>
+		<mapper resource="/mybatis/mercenary_mapper.xml"/>
+		<mapper resource="/mybatis/team_mapper.xml"/>
   	</mappers>
   	
   </configuration>
