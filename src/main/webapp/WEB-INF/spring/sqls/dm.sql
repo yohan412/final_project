@@ -18,8 +18,8 @@ CREATE TABLE USER_INFO(
 );
 
 INSERT INTO USER_INFO
-VALUES(USER_NOSQ.NEXTVAL,'fotsal','1234', '3Á¶','F',SYSDATE,'fotsal@naver.com','010-1234-5678',
-		'121-23','¼­¿ï½Ã ±¸·Î±¸','»ç¿ëÀÚ');
+VALUES(USER_NOSQ.NEXTVAL,'fotsal','1234', '3ï¿½ï¿½','F',SYSDATE,'fotsal@naver.com','010-1234-5678',
+		'121-23','ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î±ï¿½','ï¿½ï¿½ï¿½ï¿½ï¿½');
 SELECT * FROM USER_INFO;
 		
 
