@@ -1,2 +1,3 @@
 target/
 src/main/resource/mybatis/db.properties
+src/main/resources/mybatis/db.properties
