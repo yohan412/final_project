@@ -6,6 +6,7 @@ public interface UserDao {
 	String NAMESPACE = "userinfo.";
 	
 	
-	//·Î±×ÀÎ
+	//ï¿½Î±ï¿½ï¿½ï¿½
 	public UserDto login(UserDto dto);
+	public int insert(UserDto dto);
 }

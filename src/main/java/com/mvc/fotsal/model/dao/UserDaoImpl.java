@@ -25,4 +25,18 @@ public class UserDaoImpl implements UserDao {
 		return res;
 	}
 
+	@Override
+	public int insert(UserDto dto) {
+		
+		int res = 0;
+		
+			try {
+				res=sqlSession.insert(NAMESPACE+"insert",dto);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+		return res;
+	}
+
 }

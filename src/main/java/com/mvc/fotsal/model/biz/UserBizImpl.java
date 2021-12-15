@@ -18,4 +18,9 @@ public class UserBizImpl implements UserBiz {
 		return dao.login(dto);
 	}
 
+	@Override
+	public int insert(UserDto dto) {
+		return dao.insert(dto);
+	}
+
 }

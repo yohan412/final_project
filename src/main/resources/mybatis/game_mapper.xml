@@ -15,8 +15,14 @@
         ORDER BY GAME_NO DESC
     </select>
 
+    <select id="ddaychk" resultType="int" parameterType="com.mvc.fotsal.model.dto.GamePaging">
+        SELECT round(GAME_DATE - SYSDATE, 0) FROM
+            (SELECT GAME_NO, GAME_DATE, ROW_NUMBER() over (ORDER BY GAME_NO DESC) AS RNUM
+             FROM GAME)
+        WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+        ORDER BY GAME_NO DESC
+    </select>
     
-
     <select id="ListCount" resultType="int">
         <![CDATA[
             SELECT COUNT(GAME_NO)
