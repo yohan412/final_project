@@ -10,15 +10,9 @@
     <title>경기장 게시물 작성</title>
 <style type="text/css">
 .stadium-write{
-    padding-right: 150px;
-    padding-left: 150px;
-    position: relative;
-    margin: 0 auto;
-    
-}
-table {
-	text-align: left;
-	display: inline-block;
+    text-align: left; 
+	width: 700px; 
+	margin: auto; 
 }
 
 h2{
@@ -27,10 +21,12 @@ h2{
 input[type="submit"], input[type="button"] {
 	width: 100px;
 	height: 50px;
-	border-style: none;
-	border-radius: 5%;
-	font-weight: bold;
+	border-style: dashed;
 	
+	font-weight: bold;
+	float: right; 
+    background-color: lightcoral;
+  
 }
 </style>
 </head>
@@ -47,6 +43,7 @@ input[type="submit"], input[type="button"] {
                     <td><input type="file" name="">
                         <input type="image" src="" name="pic_name" value=""></td>
                 </tr>
+                
                 <tr>
                     <th>경기장 이름</th>
                     <td><input type="text" name="s_name" placeholder="이름을 입력하세요"></td>
@@ -74,7 +71,5 @@ input[type="submit"], input[type="button"] {
 
 
     </div>
-
-
 </body>
 </html>
