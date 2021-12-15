@@ -20,6 +20,7 @@ CREATE TABLE USER_INFO(
 INSERT INTO USER_INFO
 VALUES(USER_NOSQ.NEXTVAL,'fotsal','1234', '테스트이름','F',SYSDATE,'fotsal@naver.com','010-1234-5678',
 		'121-23','경기도 부천시','USER')
+
 SELECT * FROM USER_INFO;
 		
 
