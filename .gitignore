@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 target/classes/mybatis/db.properties
-=======
 target/
 src/main/resources/mybatis/db.properties
->>>>>>> e9dfa3396bec2749a3d23893b554fb10bd1df516
+
