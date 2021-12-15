@@ -1,2 +1,1 @@
-target/
-src/main/resource/mybatis/db.properties
+target/classes/mybatis/db.properties
