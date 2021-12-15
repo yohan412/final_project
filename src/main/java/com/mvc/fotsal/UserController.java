@@ -32,6 +32,27 @@ public class UserController {
 		return "loginform";
 	}
 	
+	@RequestMapping("/registerform.do")
+	public String registerForm() {
+		logger.info("REGISTER FORM");
+		
+		return "registerform";
+	}
+	
+	@RequestMapping("/insertres.do")
+	public String insertRes(UserDto dto) {
+		
+		logger.info("INSERT RES");
+		
+		int res = biz.insert(dto);
+		if(res>0) {
+			return "index.html";//메인페이지
+		}else {
+			return "redirect:registerform.do";//인서트폼
+		}
+		
+	}
+	
 	@RequestMapping(value="/ajaxlogin.do", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Boolean> ajaxLogin(HttpSession session, @RequestBody UserDto dto) {

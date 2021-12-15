@@ -22,15 +22,28 @@
             <h2>경기 일정 목록</h2>
         </div>
         <div id="listform">
-            <c:forEach items="${gamelist}" var="gamelist">
+            <c:forEach items="${gamelist}" var="gamelist" varStatus="status">
                 <div class="list" onclick="location.href='gamedetail.do?game_no=${gamelist.game_no}'">
                     <div id="region">${gamelist.game_region}</div>
                     <div id="date">
-                        <div id="date_status">D-Day</div>
+                        <div id="date_status">
+                            <c:choose>
+                                <c:when test="${ddaychk[status.index] eq 0}">D-Day</c:when>
+                                <c:when test="${ddaychk[status.index] > 0}">D-${ddaychk[status.index]}</c:when>
+                                <c:when test="${ddaychk[status.index] <= -1}">종료</c:when>
+                            </c:choose>
+                        </div>
                         <div id="date_info"><fmt:formatDate value="${gamelist.game_date}" pattern="yyyy-MM-dd"/></div>
                     </div>
-                    <div id="time">20:00 ~ 22:00</div>
-                    <div id="stadium">${gamelist.game_stadium}</div>
+                    <div id="time">
+                        <fmt:parseDate value="${gamelist.game_time}" var="starttime" pattern="HH:mm"/>
+                        <fmt:formatDate value="${starttime}" pattern="HH:mm"/>
+                        ~
+                        <fmt:parseDate value="${gamelist.game_time}" var="endtime" pattern="HH:mm"/>
+                        <c:out value="${endtime}"/>
+
+                    </div>
+                    <div id="stadium">${gamelist.game_stadium}</div>    
                     <div id="person">5 vs 5</div>
                     <div id="state">모집중</div>
                 </div>

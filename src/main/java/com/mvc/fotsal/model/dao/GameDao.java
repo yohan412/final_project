@@ -10,7 +10,7 @@ public interface GameDao {
 
     public List<GameDto> GameList(GamePaging gamePaging);
     public int listCount();
-    public List<GameDto> Ddaychk(GamePaging gamePaging);
+    public List Ddaychk(GamePaging gamePaging);
     public GameDto GameDetail(int game_no);
     public int Gameinsert();
     public int GameUpdate();

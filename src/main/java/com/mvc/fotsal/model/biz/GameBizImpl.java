@@ -26,6 +26,12 @@ public class GameBizImpl implements GameBiz{
     }
 
     @Override
+    public List<Integer> DdayChk(GamePaging gamePaging){
+
+        return gameDao.Ddaychk(gamePaging);
+    }
+
+    @Override
     public GameDto GameDetail(int game_no) {
         return gameDao.GameDetail(game_no);
     }
