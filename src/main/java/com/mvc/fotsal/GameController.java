@@ -1,7 +1,6 @@
 package com.mvc.fotsal;
 
 import com.mvc.fotsal.model.biz.GameBiz;
-import com.mvc.fotsal.model.dto.GameDto;
 import com.mvc.fotsal.model.dto.GamePageMaker;
 import com.mvc.fotsal.model.dto.GamePaging;
 import org.slf4j.Logger;
@@ -30,6 +29,8 @@ public class GameController {
 
         model.addAttribute("gamepagemaker", gamePageMaker);             //페이징 지정
 
+        model.addAttribute("ddaychk", gameBiz.DdayChk(gamePaging));
+
         return "gamelist";
     }
 
@@ -45,6 +46,7 @@ public class GameController {
         logger.info("Move to GameInsert Page");
 
         return "gameinsert";
+
     }
 
 }

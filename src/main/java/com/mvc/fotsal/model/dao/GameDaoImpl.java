@@ -43,8 +43,8 @@ public class GameDaoImpl implements GameDao{
     }
 
     @Override
-    public List<GameDto> Ddaychk(GamePaging gamePaging){
-        List<GameDto> ddaychk = new ArrayList<GameDto>();
+    public List<Integer> Ddaychk(GamePaging gamePaging){
+        List<Integer> ddaychk = new ArrayList<Integer>();
 
         try{
             ddaychk = sqlSessionTemplate.selectList(NAMESPACE + "ddaychk", gamePaging);
