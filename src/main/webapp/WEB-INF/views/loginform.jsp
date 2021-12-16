@@ -65,12 +65,19 @@ img{
     font-size: 15px;
     text-decoration: none;
 }
-.img-login{
+.kakao-login{
     margin-top: 15px;
     cursor: pointer;
     position: relative;
     right: 60px;
 }
+.naver-login{
+    margin-top: 15px;
+    cursor: pointer;
+    position: relative;
+    right: 60px;
+}
+
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -97,7 +104,7 @@ img{
 				dataType:"json",
 				success:function(msg){
 					if(msg.check==true){
-						location.href="";
+						location.href="index.jsp";
 					}else{
 						$("#loginChk").show();
 						$("#loginChk").html("ID 혹은 PW가 잘못되었습니다.");
@@ -108,6 +115,38 @@ img{
 				}
 			});
 		}
+	}
+	
+</script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+	//bbf7e6ac2f4d51f91bf43c4e49e94ba3
+	window.kakao.init)("bbf7e6ac2f4d51f91bf43c4e49e94ba3");
+	
+	function kakaoLogin(){
+		window.kakao.Auth.login({
+			scope:'account_eamil,gender,birthday',
+			success: function(authObj){
+				//console.log(authObj);
+				window.kakao.API.request({
+					url: '/v2/user/me',
+					success: res => {
+						const user_email = res.kakao_account.email;
+						const user_gender = res.kakao.account.gender;
+						const user_birthday = res.kakao.account.birthday;
+						
+						console.log(user_email);
+						console.log(user_gender);
+						console.log(user_birth);
+						
+						$('#kakaoemail').val(user_email);
+						$('#kakaogender').val(user_gender);
+						$('#kakaobirth').val(user_birth);
+						document.login_frm.submit();
+					}
+				});
+			}
+		});
 	}
 	
 </script>
@@ -130,15 +169,27 @@ img{
                 <input type="button" value="SIGNUP" onclick="">
             </div>
             <div id="loginChk"></div>
-        	<div class="img-login">
-            	<img src="img/Kakao.png">
+        	<div class="kakao-login">
+        		<div class="kakaobtn">
+        			<input type="hidden" name="kakaoemail" id="kakaoemail">
+        			<input type="hidden" name="kakaogender" id="kakaogender">
+        			<input type="hidden" name="kakaobirth" id="kakaobirth">
+        			<a href="javascript:kakaoLogin();"></a>
+            			<img src="img/Kakao.png">
+        		</div>
         	</div>
-        	<div class="img-login">
+        	<div class="naver-login">
             	<img src="img/Naver.png">
         	</div>
         	<div class="caption">
             	<a href="">Forgot Password?</a>
         	</div>
+        	
+        	<%-- kakaoemail을 넘기기 위한 숨겨진 form --%>
+        	<%--
+        	<form action="./kakaologin.do" method="post" name="lfrm" hidden>
+        		<input type="text" name="kakaoemail" id="kakaoemail" value="" />
+        	--%>
     </section>
 </body>
 </html>

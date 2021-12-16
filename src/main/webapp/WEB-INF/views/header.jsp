@@ -82,6 +82,15 @@
 			 	 <li>
 			    	  <a href="#">QnA</a>
 			 	 </li>
+			 	 <li>
+			 	 	  <a href="loginform.do" style="align:right;">로그인</a>
+			 	 </li>
+			 	 <li>
+
+			 	 </li>
+			 	 <li>
+			 	 	  <span sec:authentication="user_id"></span>
+			 	 </li>
 		 	 </ul>
 		</nav>
 	</div>
