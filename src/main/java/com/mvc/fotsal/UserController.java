@@ -32,27 +32,7 @@ public class UserController {
 		return "loginform";
 	}
 	
-	@RequestMapping("/registerform.do")
-	public String registerForm() {
-		logger.info("REGISTER FORM");
-		
-		return "registerform";
-	}
-	
-	@RequestMapping("/insertres.do")
-	public String insertRes(UserDto dto) {
-		
-		logger.info("INSERT RES");
-		
-		int res = biz.insert(dto);
-		if(res>0) {
-			return "index.html";//메인페이지
-		}else {
-			return "redirect:registerform.do";//인서트폼
-		}
-		
-	}
-	
+	//로그인
 	@RequestMapping(value="/ajaxlogin.do", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Boolean> ajaxLogin(HttpSession session, @RequestBody UserDto dto) {
@@ -71,5 +51,34 @@ public class UserController {
 		
 		return map;
 	}
+	
+	//로그아웃
+	@RequestMapping(value="/logout", method = RequestMethod.POST)
+	public String logout(HttpSession session) {
+		session.invalidate();
+		logger.info("Logout success");
+		
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/registerform.do")
+	public String registerForm() {
+		logger.info("REGISTER FORM");
+		
+		return "registerform";
+	}
+	
+	//회원가입
+	@RequestMapping("/register.do")
+	public String userInsert(UserDto dto) {
+		
+		if(biz.insert(dto)>0) {
+			return "redirect:loginform.do";
+		}else {
+			return "redirect:registerform.do";
+		}
+	}
+	
+	
 	
 }
