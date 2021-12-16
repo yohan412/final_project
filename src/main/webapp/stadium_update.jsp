@@ -29,7 +29,6 @@ input[type="submit"], input[type="button"] {
 </style>
 </head>
 <body>
-    <%@ include file="./header.jsp"%>
     <div class="stadium-write">
         <h2>경기장 게시글 수정</h2><br><br><br>
         <form action="" method="" class="stadium-write-form">

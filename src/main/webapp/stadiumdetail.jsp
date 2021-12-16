@@ -107,7 +107,6 @@
 </style>
 </head>
 <body>
-    <%@ include file="./header.jsp"%>
     <main>
         <h2>경기장 상세보기</h2>
 
