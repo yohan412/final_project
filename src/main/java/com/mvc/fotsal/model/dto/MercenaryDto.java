@@ -1,6 +1,7 @@
 package com.mvc.fotsal.model.dto;
 
 public class MercenaryDto {
+	private int user_no; // 유저 테이블의 user_no 
 	private String mercenary_intro; // 자기소개
 	private String mercenary_foot; // 주발
 	private int mercenary_rate; //승률
@@ -10,12 +11,22 @@ public class MercenaryDto {
 		super();
 	}
 
-	public MercenaryDto(String mercenary_intro, String mercenary_foot, int mercenary_rate, String mercenary_position) {
+	public MercenaryDto(int user_no, String mercenary_intro, String mercenary_foot, int mercenary_rate,
+			String mercenary_position) {
 		super();
+		this.user_no = user_no;
 		this.mercenary_intro = mercenary_intro;
 		this.mercenary_foot = mercenary_foot;
 		this.mercenary_rate = mercenary_rate;
 		this.mercenary_position = mercenary_position;
+	}
+
+	public int getUser_no() {
+		return user_no;
+	}
+
+	public void setUser_no(int user_no) {
+		this.user_no = user_no;
 	}
 
 	public String getMercenary_intro() {
@@ -49,8 +60,8 @@ public class MercenaryDto {
 	public void setMercenary_position(String mercenary_position) {
 		this.mercenary_position = mercenary_position;
 	}
-	
 
+	
 }
 
 	

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mvc.fotsal.model.biz.MercenaryBiz;
+import com.mvc.fotsal.model.dto.MercenaryDto;
 
 @Controller
 public class MercenaryController {
@@ -20,6 +21,22 @@ public class MercenaryController {
 	public String mercenary() {
 		logger.info("move page mercenary.jsp");
 		return "mercenary";
+	}
+	
+	@RequestMapping("/mercenary_insert.do")
+	public String mercenary_insert(MercenaryDto dto) {
+		logger.info("용병지원서 작성중");
+		
+		int res = biz.insert(dto);
+		
+		if(res>0) {
+			logger.info("용병 지원서 작성완료");
+			return "redirect:index.do";
+		} else {
+			logger.info("용병 지원서 작성실패");
+			return "redirect:mercenary.do";
+		}
+		
 	}
 	
 	@RequestMapping("/mercenaryDetail.do") // 용병 지원 자세히보기

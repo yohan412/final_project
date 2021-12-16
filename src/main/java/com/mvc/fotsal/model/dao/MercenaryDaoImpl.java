@@ -17,5 +17,29 @@ public class MercenaryDaoImpl implements MercenaryDao{
 		
 		return null;
 	}
+
+	@Override
+	public int insert(MercenaryDto dto) {
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE+"insert",dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+	@Override
+	public int update(MercenaryDto dto) {
+		return 0;
+	}
+
+	@Override
+	public int delete(int user_no) {
+		return 0;
+	}
 	
 }

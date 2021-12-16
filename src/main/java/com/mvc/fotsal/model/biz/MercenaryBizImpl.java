@@ -16,4 +16,19 @@ public class MercenaryBizImpl implements MercenaryBiz{
 	public MercenaryDto mercenaryDetail(MercenaryDto dto) {
 		return null;
 	}
+
+	@Override
+	public int insert(MercenaryDto dto) {
+		return dao.insert(dto);
+	}
+
+	@Override
+	public int update(MercenaryDto dto) {
+		return 0;
+	}
+
+	@Override
+	public int delete(int user_no) {
+		return 0;
+	}
 }
