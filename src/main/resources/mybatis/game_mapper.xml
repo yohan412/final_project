@@ -16,7 +16,7 @@
     </select>
 
     <select id="ddaychk" resultType="int" parameterType="com.mvc.fotsal.model.dto.GamePaging">
-        SELECT round(GAME_DATE - SYSDATE, 0) FROM
+        SELECT to_date(GAME_DATE,'YYYY-MM-DD') - to_date(sysdate, 'YYYY-MM-DD') FROM
             (SELECT GAME_NO, GAME_DATE, ROW_NUMBER() over (ORDER BY GAME_NO DESC) AS RNUM
              FROM GAME)
         WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
