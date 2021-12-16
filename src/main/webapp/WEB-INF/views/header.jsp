@@ -8,7 +8,6 @@
 <style type="text/css">
 	html {
 	  height:100%;
-	  background-image: linear-gradient(to right top, #8e44ad 0%, #3498db 100%);
 	}
 	
 	header{
