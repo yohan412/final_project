@@ -34,7 +34,7 @@
 <section>
 	<div class="main-all-box">
 		<div class="main-top-box">
-			<form action="#" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
+			<form action="mercenary_insert.do" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
 				<div class="top-box-content">
 					<div class="title-text">	
 						<h2>용병지원서</h2>
@@ -53,7 +53,6 @@
 					<div class="select-position-detail">
 						<img src="img/footsalFieldBasic.png" id="position" usemap="#image-map">
 						<map name="image-map">
-						
 						    <area  style="cursor: pointer;" target="" alt="공격수" title="공격수" onclick="changeImg()" coords="312,187,23" shape="circle">
 						    <area  style="cursor: pointer;" target="" alt="수비수" title="수비수" onclick="" coords="310,246,22" shape="circle">
 						    <area  style="cursor: pointer;" target="" alt="좌측윙어" title="좌측윙어" onclick="" coords="210,234,22" shape="circle">
@@ -67,7 +66,7 @@
 						<textarea rows="10" cols="60" placeholder="자기소개와 한마디를 적어주세요"></textarea>
 					</div>
 					<div class="content-submit" align="right">
-						<input id="pointer" type="button" value="이전" onclick="mainPage()">
+						<input id="pointer" type="button" value="이전" onclick="location.href='index.do'">
 						<input id="pointer" type="submit" value="작성완료">
 					</div>
 				</div>
