@@ -1,4 +1,5 @@
 src/main/resources/mybatis/db.properties
 target/*
+.settings/*
 
 
