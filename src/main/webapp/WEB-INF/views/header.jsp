@@ -8,7 +8,6 @@
 <style type="text/css">
 	html {
 	  height:100%;
-	  background-image: linear-gradient(to right top, #8e44ad 0%, #3498db 100%);
 	}
 	
 	header{
@@ -81,6 +80,15 @@
 			 	 </li>
 			 	 <li>
 			    	  <a href="#">QnA</a>
+			 	 </li>
+			 	 <li>
+			 	 	  <a href="loginform.do" style="align:right;">로그인</a>
+			 	 </li>
+			 	 <li>
+
+			 	 </li>
+			 	 <li>
+			 	 	  <span sec:authentication="user_id"></span>
 			 	 </li>
 		 	 </ul>
 		</nav>
