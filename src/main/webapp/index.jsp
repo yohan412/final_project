@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인페이지</title>
+<title>Insert title here</title>
 <style type="text/css">
 	.banner_box{
 		display: flex;
@@ -33,10 +35,10 @@
 	/* Slideshow container */
 	.slideshow-container {
 	  width: 100%;
-	  height: 500px;
+	  height: 400px;
 	  position: relative;
 	  margin: auto;
-	  margin-top: 120px;
+	  margin-top: 50px;
 	  overflow: hidden;
 	  display: flex;
 	  justify-content: center;
@@ -220,7 +222,7 @@ function nextSlide() {
 </head>
 <body>
 	
-	<br>
+	<%@ include file="/WEB-INF/views/header.jsp" %>
 	
 	<div class="slideshow-container">
 		<div class="mySlideDiv fade active">

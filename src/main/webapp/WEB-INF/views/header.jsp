@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="resources/css/header.css">
 <title>Insert title here</title>
 <style type="text/css">
 	html {
@@ -13,10 +12,10 @@
 	}
 	
 	nav {
-	  max-width: 960px;
+	  width: 100%;
 	  mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
 	  margin: 0 auto;
-	  padding: 60px 0;
+	  padding: 30px 0;
 	}
 	
 	nav ul {
@@ -65,13 +64,19 @@
 		  	 		   <a href="#">Home</a>
 		  	 	 </li>
 		 	 	 <li>
-		    	 	  <a href="#">About</a>
+		    	 	  <a href="#">Game</a>
 		   	  	 </li>
 		 	 	 <li>
-			    	  <a href="#">Services</a>
+			    	  <a href="#">Stadium</a>
 			  	 </li>
 			 	 <li>
-			    	  <a href="#">Contact</a>
+			    	  <a href="#">Team</a>
+			 	 </li>
+			 	 <li>
+			    	  <a href="#">Mercenary</a>
+			 	 </li>
+			 	 <li>
+			    	  <a href="#">QnA</a>
 			 	 </li>
 		 	 </ul>
 		</nav>
