@@ -45,7 +45,6 @@ h2{
 </style>
 </head>
 <body>
-    <%@ include file="./header.jsp"%>
     <main>
     <h2>경기장 목록</h2><br><br>
     <div id="search-box-stadium">

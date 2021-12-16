@@ -6,37 +6,36 @@ import org.springframework.stereotype.Repository;
 
 import com.mvc.fotsal.model.dto.UserDto;
 
-@Repository
-public class UserDaoImpl implements UserDao {
-
-	@Autowired
-	private SqlSessionTemplate sqlSession;
+	@Repository
+	public class UserDaoImpl implements UserDao {
 	
-	@Override
-	public UserDto login(UserDto dto) {
-		UserDto res = null;
+		@Autowired
+		private SqlSessionTemplate sqlSession;
 		
-		try {
-			res = sqlSession.selectOne(NAMESPACE+"login", dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return res;
-	}
-
-	@Override
-	public int insert(UserDto dto) {
-		
-		int res = 0;
-		
+		@Override
+		public UserDto login(UserDto dto) {
+			UserDto res = null;
+			
 			try {
-				res=sqlSession.insert(NAMESPACE+"insert",dto);
+				res = sqlSession.selectOne(NAMESPACE+"login", dto);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		
-		return res;
-	}
+			
+			return res;
+		}
+	
+		@Override
+		public int insert(UserDto dto) {
+			int res = 0;
+			
+			try {
+				res = sqlSession.insert(NAMESPACE+"insert", dto);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return res;
+		}
 
 }
