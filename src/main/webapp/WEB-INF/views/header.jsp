@@ -11,6 +11,10 @@
 	  background-image: linear-gradient(to right top, #8e44ad 0%, #3498db 100%);
 	}
 	
+	header{
+		height: 200px;
+	}
+	
 	nav {
 	  width: 100%;
 	  mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
