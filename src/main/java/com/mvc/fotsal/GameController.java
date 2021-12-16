@@ -41,12 +41,11 @@ public class GameController {
         return "gamedetail";
     }
 
-    @RequestMapping("/gameinsert.do")
+    @RequestMapping("/gameinsertform.do")
     public String GameInsertPage(){
         logger.info("Move to GameInsert Page");
 
         return "gameinsert";
-
     }
 
 }

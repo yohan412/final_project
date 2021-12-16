@@ -8,7 +8,7 @@
 <script type="text/javascript">
 
 	function mainPage(){
-		location.href = 'https://localhost:8787/index.do'
+		return "redirect:index.do";
 	}
 	
 	var num = 1;
