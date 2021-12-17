@@ -79,6 +79,21 @@ public class UserController {
 		}
 	}
 	
+	@RequestMapping("/idChk.do")
+	public String idChk(String myid) {
+		logger.info("ID CHECK");
+		
+		int res=biz.idChk(myid);
+		
+		boolean idnotused=true;
+        
+        //중복되는 경우가 있을경우
+        if(res>0){ 
+           idnotused=false;
+        }
+		
+		return "idChk";
+	}
 	
 	
 }
