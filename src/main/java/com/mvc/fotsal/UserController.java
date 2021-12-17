@@ -8,10 +8,13 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mvc.fotsal.model.biz.UserBiz;
@@ -24,6 +27,9 @@ public class UserController {
 
 	@Autowired
 	private UserBiz biz;
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
 	@RequestMapping("/loginform.do")
 	public String loginForm() {
@@ -72,6 +78,9 @@ public class UserController {
 	@RequestMapping("/register.do")
 	public String userInsert(UserDto dto) {
 		
+		dto.setUser_pw(passwordEncoder.encode(dto.getUser_pw()));
+		
+		
 		if(biz.insert(dto)>0) {
 			return "redirect:loginform.do";
 		}else {
@@ -81,7 +90,7 @@ public class UserController {
 	
 
 	@RequestMapping("/idChk.do")
-	public String idChk(String myid) {
+	public String idChk(Model model,String myid) {
 		logger.info("ID CHECK");
 		
 		int res=biz.idChk(myid);
@@ -92,6 +101,8 @@ public class UserController {
         if(res>0){ 
            idnotused=false;
         }
+        
+        model.addAttribute("idnotused",idnotused);
 		
 		return "idChk";
 	}

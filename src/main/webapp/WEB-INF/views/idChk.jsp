@@ -55,9 +55,6 @@
 	}
 </script>
 </head>
-<%
-	String idnotused = request.getParameter("idnotused");
-%>
 <body>
 <div>
 	<table>
@@ -65,11 +62,11 @@
 			<td><input type="text" id="id" name="id"></td>
 		</tr>
 		<tr>
-			<td><%= idnotused.equals("true")?"아이디 생성 가능":"중복아이디 존재" %></td>
+			<td> ${idnotused=="true"?"아이디 생성 가능":"중복아이디 존재"}</td>
 		</tr>
 		<tr>
 			<td>
-				<input type="button" value="확인" onclick="confirm(<%=idnotused%>);">
+				<input type="button" value="확인" onclick="confirm(${idnotused});">
 			</td>
 		</tr>
 	</table>
