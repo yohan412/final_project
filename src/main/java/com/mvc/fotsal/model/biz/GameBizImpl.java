@@ -32,13 +32,29 @@ public class GameBizImpl implements GameBiz{
     }
 
     @Override
+    public List<String> GameTime(){
+
+        return gameDao.GameTime();
+    }
+
+    @Override
     public GameDto GameDetail(int game_no) {
         return gameDao.GameDetail(game_no);
     }
 
     @Override
-    public int Gameinsert() {
-        return gameDao.Gameinsert();
+    public int DdayChk_per(int game_no) {
+        return gameDao.DdayChk_per(game_no);
+    }
+
+    @Override
+    public String GameTime_per(int game_no){
+        return gameDao.GameTime_per(game_no);
+    }
+
+    @Override
+    public int GameInsert(GameDto gameDto) {
+        return gameDao.GameInsert(gameDto);
     }
 
     @Override

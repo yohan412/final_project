@@ -91,14 +91,16 @@ a{
 }
 #prevbutton{
 	margin-right:3px;
-
+    cursor: pointer;
 }	
 #nextbutton{
 	margin-left:3px;
+    cursor: pointer;
 }
 #pagingnum{
 	margin-left:5px;
-	margin-right:5px;	
+	margin-right:5px;
+    cursor: pointer;
 }
 #serchform{
     width: 900px;

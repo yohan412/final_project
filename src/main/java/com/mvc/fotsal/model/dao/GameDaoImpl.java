@@ -56,6 +56,19 @@ public class GameDaoImpl implements GameDao{
     }
 
     @Override
+    public List<String> GameTime(){
+        List<String> GameTime = new ArrayList<String >();
+
+        try{
+            GameTime = sqlSessionTemplate.selectList(NAMESPACE + "gametime");
+        }catch (Exception e){
+            System.out.println("[ERROR]: GameTime");
+            e.printStackTrace();
+        }
+        return GameTime;
+    }
+
+    @Override
     public GameDto GameDetail(int game_no) {
         GameDto gameDto = null;
 
@@ -69,8 +82,45 @@ public class GameDaoImpl implements GameDao{
     }
 
     @Override
-    public int Gameinsert() {
-        return 0;
+    public int DdayChk_per(int game_no){
+        int res = 0;
+
+        try{
+            res = sqlSessionTemplate.selectOne(NAMESPACE + "ddaychk_per", game_no);
+        }catch (Exception e){
+            System.out.println("[ERROR]: DdayChk_per");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    @Override
+    public String GameTime_per(int game_no){
+        String res = null;
+
+        try{
+            res = sqlSessionTemplate.selectOne(NAMESPACE + "gametime_per", game_no);
+        }catch (Exception e){
+            System.out.println("[ERROR]: GameTime_per");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    @Override
+    public int GameInsert(GameDto gameDto) {
+        int res = 0;
+
+        try {
+            res = sqlSessionTemplate.insert(NAMESPACE + "gameinsert", gameDto);
+        }catch (Exception e){
+            System.out.println("[ERROR]: GameInsert");
+            e.printStackTrace();
+        }
+
+        return res;
     }
 
     @Override
