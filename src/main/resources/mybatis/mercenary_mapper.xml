@@ -3,8 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mercenaryInfo">
-
-
+	
+	<insert id="insert" parameterType="mercenaryDto">
+		INSERT INTO MERCENARY_INFO
+		VALUES(흠...)
+	</insert>
+	
 
 
 

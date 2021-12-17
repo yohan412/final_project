@@ -79,6 +79,7 @@ public class UserController {
 		}
 	}
 	
+
 	@RequestMapping("/idChk.do")
 	public String idChk(String myid) {
 		logger.info("ID CHECK");

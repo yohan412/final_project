@@ -8,16 +8,16 @@
 <script type="text/javascript">
 
 	function mainPage(){
-		return "redirect:index.do";
+		return "redirect:index.do"; // 메인페이지로 이동
 	}
 	
 	var num = 1;
 	function changeImg(idx){
 		if(idx){
-			if(num==5) return;
+			if(num==5) return; // 최대 이미지 5개까지
 			num++;
 		} else {
-			if(num==1) return;
+			if(num==1) return; // 이미지가 없으면 종료
 			num--;
 		}
 		var imgTag = document.getElementById("position");
