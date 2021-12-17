@@ -119,7 +119,7 @@
 		if(doc.value.trim()==""||doc.value==null){
 			alert("아이디를 입력해 주세요.");
 		}else{
-			var target = "usercontroller?command=idChk&id="+doc.value.trim();
+			var target = "idChk.do?myid="+doc.value.trim();
 			open(target,"","width=200,height=150");
 		}
 	}

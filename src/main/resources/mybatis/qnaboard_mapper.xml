@@ -5,7 +5,13 @@
 <mapper namespace="qnaboard">
 	
 	<select id="selectList" resultType="QnaBoardDto">
-		SELECT * FROM QNA ORDER BY QNA_GPNO DESC, QNA_GPSQ
+		SELECT QNA_NO, USER_ID, QNA_TITLE, QNA_CONTENT, QNA_REG
+		FROM QNA
+		ORDER BY QNA_NO DESC
+	</select>
+	
+	<select id="QnaBoardDetail" resultType="QnaBoardDto" parameterType="int">
+		SELECT * FROM WHERE QNA_NO = #{qna_no}			
 	</select>
 	
 	

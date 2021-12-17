@@ -38,4 +38,17 @@ import com.mvc.fotsal.model.dto.UserDto;
 			return res;
 		}
 
+		@Override
+		public int idChk(String myid) {
+			int res=0;
+			
+			try {
+				res = sqlSession.selectOne(NAMESPACE+"idChk",myid);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return res;
+		}
+		
+		
 }
