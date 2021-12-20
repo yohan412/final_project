@@ -76,9 +76,15 @@ public class UserController {
 	
 	//회원가입
 	@RequestMapping("/register.do")
-	public String userInsert(UserDto dto) {
+	public String userInsert(UserDto dto,@RequestParam("mybirthyy") String yy,
+									@RequestParam("mybirthmm") String mm,
+									@RequestParam("mybirthdd") String dd,
+									@RequestParam("myaddr1") String addr1,
+									@RequestParam("myaddr2") String addr2) {
 		
 		dto.setUser_pw(passwordEncoder.encode(dto.getUser_pw()));
+		dto.setUser_birthdate(yy+"-"+mm+"-"+dd);
+		dto.setUser_addr(addr1+" "+addr2);
 		
 		
 		if(biz.insert(dto)>0) {
@@ -90,10 +96,10 @@ public class UserController {
 	
 
 	@RequestMapping("/idChk.do")
-	public String idChk(Model model,String myid) {
+	public String idChk(Model model,String user_id) {
 		logger.info("ID CHECK");
 		
-		int res=biz.idChk(myid);
+		int res=biz.idChk(user_id);
 		
 		boolean idnotused=true;
         

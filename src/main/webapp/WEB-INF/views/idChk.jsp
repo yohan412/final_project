@@ -39,17 +39,17 @@
 </style>
 <script type="text/javascript">
 	window.onload=function(){
-		var id = opener.document.getElementsByName("myid")[0].value;
+		var id = opener.document.getElementsByName("user_id")[0].value;
 		
 		document.getElementsByName("id")[0].value=id;
 	}
 	
 	function confirm(bool){
 		if(bool){
-			opener.document.getElementsByName("mypw")[0].focus();
-			opener.document.getElementsByName("myid")[0].title="y";
+			opener.document.getElementsByName("user_pw")[0].focus();
+			opener.document.getElementsByName("user_id")[0].title="y";
 		}else{
-			opener.document.getElementsByName("myid")[0].focus();			
+			opener.document.getElementsByName("user_id")[0].focus();			
 		}
 		self.close();
 	}

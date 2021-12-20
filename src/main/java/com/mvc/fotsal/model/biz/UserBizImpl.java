@@ -24,8 +24,8 @@ public class UserBizImpl implements UserBiz {
 	}
 
 	@Override
-	public int idChk(String myid) {
-		return dao.idChk(myid);
+	public int idChk(String user_id) {
+		return dao.idChk(user_id);
 	}
 
 }

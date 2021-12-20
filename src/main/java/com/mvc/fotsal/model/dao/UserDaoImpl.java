@@ -39,11 +39,11 @@ import com.mvc.fotsal.model.dto.UserDto;
 		}
 
 		@Override
-		public int idChk(String myid) {
+		public int idChk(String user_id) {
 			int res=0;
 			
 			try {
-				res = sqlSession.selectOne(NAMESPACE+"idChk",myid);
+				res = sqlSession.selectOne(NAMESPACE+"idChk",user_id);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
