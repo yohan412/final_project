@@ -49,8 +49,10 @@ public class UserController {
 		
 		boolean check = false;
 		if(res != null) {
-			session.setAttribute("login", res);
-			check=true;
+			if(passwordEncoder.matches(dto.getUser_pw(), res.getUser_pw())) {
+				 session.setAttribute("login", res);
+				 check=true;
+			 }
 		}
 		
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
