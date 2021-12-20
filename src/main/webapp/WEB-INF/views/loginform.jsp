@@ -80,6 +80,9 @@ img{
 
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$("#loginChk").hide();	
@@ -116,40 +119,43 @@ img{
 			});
 		}
 	}
-	
-</script>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script>
-	//bbf7e6ac2f4d51f91bf43c4e49e94ba3
-	window.kakao.init)("bbf7e6ac2f4d51f91bf43c4e49e94ba3");
-	
-	function kakaoLogin(){
-		window.kakao.Auth.login({
-			scope:'account_eamil,gender,birthday',
-			success: function(authObj){
-				//console.log(authObj);
-				window.kakao.API.request({
-					url: '/v2/user/me',
-					success: res => {
-						const user_email = res.kakao_account.email;
-						const user_gender = res.kakao.account.gender;
-						const user_birthday = res.kakao.account.birthday;
-						
-						console.log(user_email);
-						console.log(user_gender);
-						console.log(user_birth);
-						
-						$('#kakaoemail').val(user_email);
-						$('#kakaogender').val(user_gender);
-						$('#kakaobirth').val(user_birth);
-						document.login_frm.submit();
-					}
-				});
-			}
-		});
+
+	//카카오로그인
+	function kakaoLogin() {
+
+	  $.ajax({
+	      url: '/login/getKakaoAuthUrl',
+	      type: 'get',
+	      async: false,
+	      dataType: 'text',
+	      success: function (res) {
+	          location.href = res;
+	      }
+	  });
+
 	}
-	
+
+	$(document).ready(function() {
+
+	    var kakaoInfo = '${kakaoInfo}';
+
+	    if(kakaoInfo != ""){
+	        var data = JSON.parse(kakaoInfo);
+
+	        alert("카카오로그인 성공 \n accessToken : " + data['accessToken']);
+	        alert(
+	        "user : \n" + "email : "
+	        + data['email']  
+	        + "\n gender : " 
+	        + data['gender']
+	        + "\n birthday : "
+	        + data['birthday']);
+	    }
+	});  
+
 </script>
+
+
 </head>
 <body>
 	<section class="Login-form">
@@ -166,17 +172,11 @@ img{
                 <input type="button" value="LOGIN" onclick="login();">
             </div>
             <div class="btn-area">
-                <input type="button" value="SIGNUP" onclick="">
+                <input type="button" value="SIGNUP" onclick="location.href='registerform.do'">
             </div>
             <div id="loginChk"></div>
         	<div class="kakao-login">
-        		<div class="kakaobtn">
-        			<input type="hidden" name="kakaoemail" id="kakaoemail">
-        			<input type="hidden" name="kakaogender" id="kakaogender">
-        			<input type="hidden" name="kakaobirth" id="kakaobirth">
-        			<a href="javascript:kakaoLogin();"></a>
-            			<img src="img/Kakao.png">
-        		</div>
+            	<a><img src="img/Kakao.png" onclick="kakaoLogin();"></a>
         	</div>
         	<div class="naver-login">
             	<img src="img/Naver.png">
@@ -184,12 +184,6 @@ img{
         	<div class="caption">
             	<a href="">Forgot Password?</a>
         	</div>
-        	
-        	<%-- kakaoemail을 넘기기 위한 숨겨진 form --%>
-        	<%--
-        	<form action="./kakaologin.do" method="post" name="lfrm" hidden>
-        		<input type="text" name="kakaoemail" id="kakaoemail" value="" />
-        	--%>
     </section>
 </body>
 </html>
