@@ -14,24 +14,24 @@
 		height: 200px;
 	}
 	
-	nav {
+	.menu {
 	  width: 100%;
 	  mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
 	  margin: 0 auto;
 	  padding: 30px 0;
 	}
 	
-	nav ul {
+	.menu ul {
 	  text-align: center;
 	  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
 	  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
 	}
 	
-	nav ul li {
+	.menu ul li {
 	  display: inline-block;
 	}
 	
-	nav ul li a {
+	.menu ul li a {
 	  padding: 18px;
 	  font-family: "Open Sans";
 	  text-transform:uppercase;
@@ -41,7 +41,7 @@
 	  display: block;
 	}
 	
-	nav ul li a:hover {
+	.menu ul li a:hover {
 	  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
 	  background: rgba(255, 255, 255, 0.1);
 	  color: rgba(0, 35, 122, 0.7);
@@ -61,7 +61,7 @@
 				<h1 style="font-size: 40px;">Street Futsal Manager</h1>
 			</div>
 		</section>
-		<nav>
+		<nav class="menu">
 		  	<ul>
 		  		  <li>
 		  	 		   <a href="#">Home</a>
