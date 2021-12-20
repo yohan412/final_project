@@ -8,10 +8,13 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mvc.fotsal.model.biz.UserBiz;
@@ -24,6 +27,9 @@ public class UserController {
 
 	@Autowired
 	private UserBiz biz;
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
 	@RequestMapping("/loginform.do")
 	public String loginForm() {
@@ -70,7 +76,16 @@ public class UserController {
 	
 	//회원가입
 	@RequestMapping("/register.do")
-	public String userInsert(UserDto dto) {
+	public String userInsert(UserDto dto,@RequestParam("mybirthyy") String yy,
+									@RequestParam("mybirthmm") String mm,
+									@RequestParam("mybirthdd") String dd,
+									@RequestParam("myaddr1") String addr1,
+									@RequestParam("myaddr2") String addr2) {
+		
+		dto.setUser_pw(passwordEncoder.encode(dto.getUser_pw()));
+		dto.setUser_birthdate(yy+"-"+mm+"-"+dd);
+		dto.setUser_addr(addr1+" "+addr2);
+		
 		
 		if(biz.insert(dto)>0) {
 			return "redirect:loginform.do";
@@ -80,5 +95,23 @@ public class UserController {
 	}
 	
 
+	@RequestMapping("/idChk.do")
+	public String idChk(Model model,String user_id) {
+		logger.info("ID CHECK");
+		
+		int res=biz.idChk(user_id);
+		
+		boolean idnotused=true;
+        
+        //중복되는 경우가 있을경우
+        if(res>0){ 
+           idnotused=false;
+        }
+        
+        model.addAttribute("idnotused",idnotused);
+		
+		return "idChk";
+	}
+	
 	
 }

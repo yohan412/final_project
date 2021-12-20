@@ -115,19 +115,19 @@
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	function idChk() {
-		var doc = document.getElementsByName("myid")[0];
+		var doc = document.getElementsByName("user_id")[0];
 		if(doc.value.trim()==""||doc.value==null){
 			alert("아이디를 입력해 주세요.");
 		}else{
-			var target = "usercontroller?command=idChk&id="+doc.value.trim();
+			var target = "idChk.do?user_id="+doc.value.trim();
 			open(target,"","width=200,height=150");
 		}
 	}
 	function idChkConfirm(){
-		var chk = document.getElementsByName("myid")[0].title;
+		var chk = document.getElementsByName("user_id")[0].title;
 		if(chk=="n"){
 			alert("아이디 중복체크");
-			document.getElementsByName("myid")[0].focus();
+			document.getElementsByName("user_id")[0].focus();
 			return false;
 		}
 	}
@@ -149,8 +149,8 @@
 	}
 	
 	function pwchk(){
-		var pw1 = document.getElementsByName("mypw")[0].value;
-		var pw2 = document.getElementsByName("mypw")[1].value;
+		var pw1 = document.getElementsByName("user_pw")[0].value;
+		var pw2 = document.getElementsByName("user_pw")[1].value;
 		
 		if(pw1!=pw2){
 			alert("비밀번호 입력 오류");
@@ -168,35 +168,35 @@
 	<br><br>
 	<hr>
 	<div id="wrap" align="center">
-		<form action="usercontroller?command=insertuser" method="post" onsubmit="return pwchk()">
+		<form action="register.do" method="post" onsubmit="return pwchk()">
 			<table align="center" method="post" cellpadding="3">
 				<tr>
 					<th>I D</th>
 					<td width="100%">
-						<input type="text" id="id" name="myid" title="n" style="width: 250px;" placeholder="아이디를 입력하세요" required="required" autofocus>&nbsp;&nbsp;
+						<input type="text" id="id" name="user_id" title="n" style="width: 250px;" placeholder="아이디를 입력하세요" required="required" autofocus>&nbsp;&nbsp;
 						<input type="button" id="id_chk" value="중복 확인" onclick="idChk()">
 					</td>
 				</tr>
 				<tr>
 					<th>Password</th>
 					<td>
-						<input type="password" id="pw" name="mypw" size="20" placeholder="비밀번호를 입력하세요" required><br><br>
-						<input type="password" id="pw" name="mypw" size="20" placeholder="비밀번호 재확인" required>
+						<input type="password" id="pw" name="user_pw" size="20" placeholder="비밀번호를 입력하세요" required><br><br>
+						<input type="password" id="pw" name="user_pw" size="20" placeholder="비밀번호 재확인" required>
 					</td>
 				</tr>
 				<tr>
 					<th>Name</th>
 					<td>
-						<input type="text" id="username" name="myname" style="width: 250px;" size="20" placeholder="이름을 입력하세요" required>&nbsp;&nbsp;
-						<select id="gender" name="mygender" style="width:80px;height:30px;">
-							<option value="men">남자</option>
-							<option value="women">여자</option>
+						<input type="text" id="username" name="user_name" style="width: 250px;" size="20" placeholder="이름을 입력하세요" required>&nbsp;&nbsp;
+						<select id="gender" name="user_gender" style="width:80px;height:30px;">
+							<option value="M">남자</option>
+							<option value="F">여자</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<th>E-mail</th>
-					<td><input type="text" id="email" size="30" name="myemail" placeholder="이메일을 입력하세요" required></td>
+					<td><input type="text" id="email" size="30" name="user_email" placeholder="이메일을 입력하세요" required></td>
 				</tr>
 				<tr>
 				
@@ -255,16 +255,16 @@
 							<option value="1997">1997</option>
 							<option value="1998">1998</option>
 							<option value="1999">1999</option>
-							<option value="2000">1900</option>
-							<option value="2001">1901</option>
-							<option value="2002">1902</option>
-							<option value="2003">1903</option>
-							<option value="2004">1904</option>
-							<option value="2005">1905</option>
-							<option value="2006">1906</option>
-							<option value="2007">1907</option>
-							<option value="2008">1908</option>
-							<option value="2009">1909</option>
+							<option value="2000">2000</option>
+							<option value="2001">2001</option>
+							<option value="2002">2002</option>
+							<option value="2003">2003</option>
+							<option value="2004">2004</option>
+							<option value="2005">2005</option>
+							<option value="2006">2006</option>
+							<option value="2007">2007</option>
+							<option value="2008">2008</option>
+							<option value="2009">2009</option>
 						</select>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<select id="birth_mm" name="mybirthmm" style="width:90px;height:30px;">
@@ -323,7 +323,7 @@
 				<tr>
 					<th>Address</th>
 					<td>
-						<input type="text" id="zipcode" name="myzipcode" style="width: 250px;" size="10" placeholder="우편번호" readonly>&nbsp;&nbsp;
+						<input type="text" id="zipcode" name="user_zip" style="width: 250px;" size="10" placeholder="우편번호" readonly>&nbsp;&nbsp;
 						<input type="button" id="zip_chk" value="주소 검색" onclick="zipChk()">
 					</td>
 					<td>
@@ -338,7 +338,7 @@
 					<th>Phone</th>
 					
 					 <br>
-					<td><input type="text" name="myphone" placeholder="휴대폰 번호를 입력하세요" size="15" required></td>
+					<td><input type="text" name="user_phone" placeholder="휴대폰 번호를 입력하세요" size="15" required></td>
 					<td></td><td></td>
 				</tr>
 				<tr>

@@ -13,7 +13,12 @@
 	
 	<insert id="insert" parameterType="UserDto">
 		INSERT INTO USER_INFO
-		VALUES(USER_NOSQ.NEXTVAL,#{user_id},#{user_pw},#{user_name},#{user_gender},#{user_birthdate},#{user_email},#{user_phone},#{user_zip},#{user_addr},#{user_role})
+		VALUES(USER_NOSQ.NEXTVAL,#{user_id},#{user_pw},#{user_name},#{user_gender},#{user_birthdate},#{user_email},#{user_phone},#{user_zip},#{user_addr},USER)
 	</insert>
+	
+	<select id="idchk" parameterType="String" resultType="int">
+		SELECT * FROM USER_INFO WHERE USER_ID=#{user_id}
+	</select>
+	
 	
 </mapper>

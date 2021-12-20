@@ -175,7 +175,7 @@ select {
 			가입시 입력하셨던 전화번호를 작성해주세요. <br> 입력하신 전화번호로 인증번호를 발송해 드립니다.
 		</h5>
 		<div id="content">
-		<form action="usercontroller?command=findid" method="post"  onsubmit="return rannumchk()">
+		<form action="find_id.do" method="post"  onsubmit="return rannumchk()">
 			
 			<div>
 				<h3 class="join_title">
@@ -237,16 +237,16 @@ select {
 							<option value="1997">1997</option>
 							<option value="1998">1998</option>
 							<option value="1999">1999</option>
-							<option value="2000">1900</option>
-							<option value="2001">1901</option>
-							<option value="2002">1902</option>
-							<option value="2003">1903</option>
-							<option value="2004">1904</option>
-							<option value="2005">1905</option>
-							<option value="2006">1906</option>
-							<option value="2007">1907</option>
-							<option value="2008">1908</option>
-							<option value="2009">1909</option>
+							<option value="2000">2000</option>
+							<option value="2001">2001</option>
+							<option value="2002">2002</option>
+							<option value="2003">2003</option>
+							<option value="2004">2004</option>
+							<option value="2005">2005</option>
+							<option value="2006">2006</option>
+							<option value="2007">2007</option>
+							<option value="2008">2008</option>
+							<option value="2009">2009</option>
 						</select>
 						</span>
 					</div>

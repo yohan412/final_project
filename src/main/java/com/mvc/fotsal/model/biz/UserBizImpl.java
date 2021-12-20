@@ -23,4 +23,9 @@ public class UserBizImpl implements UserBiz {
 		return dao.insert(dto);
 	}
 
+	@Override
+	public int idChk(String user_id) {
+		return dao.idChk(user_id);
+	}
+
 }

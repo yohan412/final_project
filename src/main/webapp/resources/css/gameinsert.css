@@ -175,6 +175,10 @@
     width: 15px;
     height: 15px;
 }
+.radio_ss{
+    width: 15px;
+    height: 15px;
+}
 .radio_comment{
     font-weight: bold;
     font-size: 15px;
@@ -211,6 +215,15 @@
 #player_input{
     width: 200px;
     height: 30px;
+}
+#game_type_form{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
 }
 #game_content_form{
     width: 100%;

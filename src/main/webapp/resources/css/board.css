@@ -134,7 +134,7 @@ a{
 	
 #boardselect_form{
     width: 900px;
-    height: 60px;
+    height: 40px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -149,7 +149,7 @@ a{
     justify-content: center;
 }
 #board_middle_form{
-	width: 900px;
+	width: 800px;
     height: 40px;
     display: flex;
     flex-wrap: wrap;
