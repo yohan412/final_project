@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mvc.fotsal.message.messageApp;
 import com.mvc.fotsal.model.biz.UserBiz;
 import com.mvc.fotsal.model.dto.UserDto;
 
@@ -48,8 +49,10 @@ public class UserController {
 		
 		boolean check = false;
 		if(res != null) {
-			session.setAttribute("login", res);
-			check=true;
+			if(passwordEncoder.matches(dto.getUser_pw(), res.getUser_pw())) {
+				 session.setAttribute("login", res);
+				 check=true;
+			 }
 		}
 		
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
@@ -113,5 +116,15 @@ public class UserController {
 		return "idChk";
 	}
 	
+	@RequestMapping("/phonechk")
+	public String phoneChk(String user_phone) {
+		logger.info("PHONE CHECK");
+		
+		String ran = messageApp.sendsms(user_phone);
+		
+		
+		
+		return null;
+	}
 	
 }

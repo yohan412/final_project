@@ -39,6 +39,11 @@ public class MercenaryController {
 		
 	}
 	
+	private void alert(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	@RequestMapping("/mercenaryDetail.do") // 용병 지원 자세히보기
 	public String mercenaryDetail() {
 		logger.info("move page mercenary_detail.jsp");

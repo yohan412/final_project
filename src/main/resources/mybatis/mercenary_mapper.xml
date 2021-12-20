@@ -6,10 +6,9 @@
 	
 	<insert id="insert" parameterType="mercenaryDto">
 		INSERT INTO MERCENARY_INFO
-		VALUES(흠...)
+		VALUES(#{user_no}, #{mercenary_intro}, #{mercenary_foot}, 0, #{mercenary_position})
 	</insert>
 	
-
 
 
 
