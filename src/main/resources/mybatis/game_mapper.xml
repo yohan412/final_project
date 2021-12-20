@@ -27,6 +27,14 @@
         SELECT GAME_TIME FROM GAME ORDER BY GAME_NO DESC
     </select>
 
+    <select id="gamemercenary" resultType="int" parameterType="com.mvc.fotsal.model.dto.GamePaging">
+        SELECT GAME_MERCENARY FROM
+            (SELECT GAME_NO, GAME_MERCENARY, ROW_NUMBER() over (ORDER BY GAME_NO DESC) AS RNUM
+             FROM GAME)
+        WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+        ORDER BY GAME_NO DESC
+    </select>
+
     <select id="ListCount" resultType="int">
         <![CDATA[
             SELECT COUNT(GAME_NO)
@@ -46,6 +54,10 @@
 
     <select id="gametime_per" resultType="String" parameterType="int">
         SELECT GAME_TIME FROM GAME WHERE GAME_NO = #{game_no}
+    </select>
+
+    <select id="gamemercenary_per" resultType="int" parameterType="int">
+        SELECT GAME_MERCENARY FROM GAME WHERE GAME_NO = ${game_no}
     </select>
 
     <insert id="gameinsert" parameterType="gameDto">

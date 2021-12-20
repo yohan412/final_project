@@ -38,6 +38,12 @@ public class GameBizImpl implements GameBiz{
     }
 
     @Override
+    public List<Integer> GameMercenary(GamePaging gamePaging){
+
+        return gameDao.GameMercenary(gamePaging);
+    }
+
+    @Override
     public GameDto GameDetail(int game_no) {
         return gameDao.GameDetail(game_no);
     }
@@ -50,6 +56,11 @@ public class GameBizImpl implements GameBiz{
     @Override
     public String GameTime_per(int game_no){
         return gameDao.GameTime_per(game_no);
+    }
+
+    @Override
+    public int GameMercenary_per(int game_no){
+        return gameDao.GameMercenary_per(game_no);
     }
 
     @Override

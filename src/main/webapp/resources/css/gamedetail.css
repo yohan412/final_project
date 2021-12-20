@@ -180,6 +180,7 @@
     margin-top: 40px;
     user-select: none;
     background-color: gray;
+    cursor: pointer;
 }
 .comment #comment_info{
     width: 130px;
@@ -289,6 +290,43 @@ a{
     resize: none;
 }
 #comment_insert #button{
+    width: 130px;
+    height: 120px;
+    border: 0px;
+    outline: none;
+    float: right;
+    cursor:pointer;
+    background-color: aqua;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+}
+<!---->
+.reply_comment_form{
+    width: 900px;
+    height: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+#rp_comment_insert{
+    width: 700px;
+    height: 120px;
+    border: 1px solid black;
+}
+#rp_comment_insert #rp_search{
+    font-size: 16px;
+    width: 566px;
+    height: 116px;
+    border: 0;
+    outline: none;
+    float:left;
+    resize: none;
+}
+#rp_comment_insert #button{
     width: 130px;
     height: 120px;
     border: 0px;

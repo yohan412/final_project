@@ -42,7 +42,15 @@
                         ${endtime[status.index]}
                     </div>
                     <div id="stadium">${gamelist.game_stadium}</div>
-                    <div id="person">5 vs 5</div>
+                    <div id="person">
+                        <c:choose>
+                            <c:when test="${gamelist.game_people eq 3}">3 vs 3</c:when>
+                            <c:when test="${gamelist.game_people eq 4}">4 vs 4</c:when>
+                            <c:when test="${gamelist.game_people eq 5}">5 vs 5</c:when>
+                            <c:when test="${gamelist.game_people eq 6}">6 vs 6</c:when>
+                            <c:when test="${gamelist.game_people eq 7}">7 vs 7</c:when>
+                        </c:choose>
+                    </div>
                     <div id="state" class="status">
                         ${statuses[status.index]}
                     </div>
