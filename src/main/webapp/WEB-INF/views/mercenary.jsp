@@ -13,17 +13,22 @@
 	
 	function imgsrc_attacker(){
 		document.getElementById("position").src = "img/footsalField01.png";
-		
+		var attacker = document.getElementById("attacker");
+		attacker.append("공격수");
 	}
+	
 	function imgsrc_defender(){
 		document.getElementById("position").src = "img/footsalField02.png";
 	}
+	
 	function imgsrc_leftWing(){
 		document.getElementById("position").src = "img/footsalField03.png";
 	}
+	
 	function imgsrc_rightWing(){
 		document.getElementById("position").src = "img/footsalField04.png";
 	}
+	
 	function imgsrc_keeper(){
 		document.getElementById("position").src = "img/footsalField05.png";
 	}
@@ -32,10 +37,11 @@
 
 </script>
 <title>용병지원서</title>
+
 </head>
 <body>
 <header>
-로고 및 로그인 반응형메뉴바 자리(헤더)
+	<%@ include file="header.jsp" %>
 </header>
 <section>
 	<div class="main-all-box">
@@ -86,7 +92,7 @@
 	</div>
 </section>
 <footer>
-푸터자리
+	<%@ include file="footer.jsp" %>
 </footer>
 </body>
 <script type="text/javascript">
