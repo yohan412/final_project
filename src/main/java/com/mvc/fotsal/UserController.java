@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mvc.fotsal.message.messageApp;
 import com.mvc.fotsal.model.biz.UserBiz;
 import com.mvc.fotsal.model.dto.UserDto;
 
@@ -113,5 +114,15 @@ public class UserController {
 		return "idChk";
 	}
 	
+	@RequestMapping("/phonechk")
+	public String phoneChk(String user_phone) {
+		logger.info("PHONE CHECK");
+		
+		String ran = messageApp.sendsms(user_phone);
+		
+		
+		
+		return null;
+	}
 	
 }

@@ -13,8 +13,8 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 //핸드폰 인증관련 CoolSMS
 public class messageApp {
 	public static String sendsms(String args) {
-		String api_key = "NCS5F9MCIXYXXEA3"; //개인용키
-	    String api_secret = "PNDHQA3JQ00XBRZ7U1H9CDLFG0RU9E3Q"; //개인용 시크릿 키
+		String api_key = "NCSXPUDVOBBGI5RU"; //개인용키
+	    String api_secret = "8T30Q43ZRA38PXCSK1EKSRY8NQGQYDWY"; //개인용 시크릿 키
 	    Message coolsms = new Message(api_key, api_secret);
 
 	    String ran = numberGen();

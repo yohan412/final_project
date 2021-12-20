@@ -144,12 +144,12 @@ select {
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	function phonechk(){
-		var phonenum = document.getElementsByName("myphone")[0];
+		var phonenum = document.getElementsByName("user_phone")[0];
 		
 		if(phonenum.value.trim()==""||phonenum.value==null){
 			alert("전화번호를 입력해주세요");
 		}else{
-			var target = "usercontroller?command=phonechk&myphone="+phonenum.value.trim();
+			var target = "phonechk.do&user_phone="+phonenum.value.trim();
 			open(target,"","width=0,height=0");	
 		}
 	}
@@ -318,8 +318,7 @@ select {
 					<label for="USER_EMAIL">E-Mail</label>
 				</h3>
 				<span class="box int_email">
-				 <input type="text" id="email"
-					class="int" maxlength="100" name="myemail" placeholder="이메일 주소 입력">
+				 <input type="text" id="email" class="int" maxlength="100" name="user_email" placeholder="이메일 주소 입력">
 				</span>
 			</div>
 			<br>
@@ -332,7 +331,7 @@ select {
 				<br>
 				
 				<span class="box"> 
-					<input type="text" id="dd" class="int" name="myphone" placeholder="전화번호 입력" value="" required="required">
+					<input type="text" id="dd" class="int" name="user_phone" placeholder="전화번호 입력" value="" required="required">
 				</span> 
 				<br>
 				<div id="phone_wrap">
