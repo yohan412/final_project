@@ -12,20 +12,20 @@
 	}
 	
 	function imgsrc_attacker(){
-		document.getElementById("position").src = "img/footsalFieldPosition01.png";
+		document.getElementById("position").src = "img/footsalField01.png";
 		
 	}
 	function imgsrc_defender(){
-		document.getElementById("position").src = "img/footsalFieldPosition02.png";
+		document.getElementById("position").src = "img/footsalField02.png";
 	}
 	function imgsrc_leftWing(){
-		document.getElementById("position").src = "img/footsalFieldPosition03.png";
+		document.getElementById("position").src = "img/footsalField03.png";
 	}
 	function imgsrc_rightWing(){
-		document.getElementById("position").src = "img/footsalFieldPosition04.png";
+		document.getElementById("position").src = "img/footsalField04.png";
 	}
 	function imgsrc_keeper(){
-		document.getElementById("position").src = "img/footsalFieldPosition05.png";
+		document.getElementById("position").src = "img/footsalField05.png";
 	}
 	
 
