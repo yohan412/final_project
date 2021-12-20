@@ -40,7 +40,7 @@ public class UserController {
 	}
 	
 	//로그인
-	@RequestMapping(value="/ajaxlogin.do", method=RequestMethod.POST)
+	@RequestMapping(value="/ajaxlogin.do")
 	@ResponseBody
 	public Map<String, Boolean> ajaxLogin(HttpSession session, @RequestBody UserDto dto) {
 		logger.info("LOGIN");
@@ -52,7 +52,7 @@ public class UserController {
 			if(passwordEncoder.matches(dto.getUser_pw(), res.getUser_pw())) {
 				 session.setAttribute("login", res);
 				 check=true;
-			 }
+			}
 		}
 		
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
