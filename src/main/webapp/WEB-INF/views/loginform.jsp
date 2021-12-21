@@ -140,7 +140,7 @@ function login(){
             <div id="loginChk"></div>
         	<div class="kakao-login">
             	<a href="https://kauth.kakao.com/oauth/authorize
-					    ?client_id=1d67c7bd87b305d0e49f4ef1c2568313
+					    ?client_id=88f1f2f8a004d27ade8f7dea76f94ee3
 					    &redirect_uri=http://localhost:8787/kakaologin
 					    &response_type=code"><img src="img/Kakao.png"></a>
         	</div>
