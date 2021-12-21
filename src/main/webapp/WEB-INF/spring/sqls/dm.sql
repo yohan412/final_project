@@ -246,5 +246,3 @@ SELECT * FROM USER_INFO;
 
 
 
-
-
