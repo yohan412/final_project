@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="faqboard">
+	
+	<select id="selectList" resultType="FaqBoardDto">
+		SELECT FAQ_NO, USER_ID, FAQ_TITLE, FAQ_CONTENT, FAQ_REG
+		FROM FAQ
+		ORDER BY FAQ_NO DESC
+	</select>
+	
+	<select id="FaqBoardDetail" resultType="FaqBoardDto" parameterType="int">
+		SELECT * FROM WHERE QNA_NO = #{faq_no}			
+	</select>
+	
+	
+</mapper>
