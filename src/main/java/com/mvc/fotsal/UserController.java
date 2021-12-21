@@ -49,10 +49,11 @@ public class UserController {
 		
 		boolean check = false;
 		if(res != null) {
-			if(passwordEncoder.matches(dto.getUser_pw(), res.getUser_pw())) {
-				 session.setAttribute("login", res);
+			if(passwordEncoder.matches(dto.getUser_pw(),res.getUser_pw())) {
+				session.setAttribute("login", res);
 				 check=true;
 			}
+			
 		}
 		
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
@@ -105,7 +106,6 @@ public class UserController {
 		int res=biz.idChk(user_id);
 		
 		boolean idnotused=true;
-        
         //중복되는 경우가 있을경우
         if(res>0){ 
            idnotused=false;

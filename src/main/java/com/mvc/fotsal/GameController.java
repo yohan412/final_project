@@ -58,37 +58,46 @@ public class GameController {
         model.addAttribute("endtime", endtime);
 
         //용병 모집 상태 구간
-        List<Integer>   Dday    =   gameBiz.DdayChk(gamePaging);
-        List<String>    statuses  =   new ArrayList<String>();
+        List<Integer>   Dday        =   gameBiz.DdayChk(gamePaging);
+        List<Integer>   merce       =   gameBiz.GameMercenary(gamePaging);
+        List<String>    statuses    =   new ArrayList<String>();
 
         LocalTime time = LocalTime.now();
         int thh = time.getHour();
 
         for(int a = 0; a < Dday.size(); a++){
             int day = Dday.get(a);
+            int mercesta= merce.get(a);
             String starttime = gametime.get(a);
+
             List<String> timearr = Arrays.asList(starttime.split(":"));
 
             int hh = Integer.parseInt(timearr.get(0));
 
-            if(day == 0){
-                if(hh > thh){
+            if(mercesta == 0){
+                statuses.add("모집안함");
+            }
+            else{
+                if(day == 0){
+                    if(hh > thh){
+                        statuses.add("급구");
+                    }
+                    else {
+                        statuses.add("모집종료");
+                    }
+                }
+                else if(day == 1 || day == 2){
                     statuses.add("급구");
                 }
-                else {
-                    statuses.add("모집종료");
+                else if(day >= 3){
+                    statuses.add("모집중");
+                }
+                else if(day <= -1){
+                    statuses.add("종료");
                 }
             }
-            else if(day == 1 || day == 2){
-                statuses.add("급구");
-            }
-            else if(day >= 3){
-                statuses.add("모집중");
-            }
-            else if(day <= -1){
-                statuses.add("종료");
-            }
         }
+
         model.addAttribute("statuses", statuses);
 
         return "gamelist";
@@ -120,27 +129,33 @@ public class GameController {
 
         //용병 모집 관련
         int Dday = gameBiz.DdayChk_per(game_no);
+        int merce = gameBiz.GameMercenary_per(game_no);
         String status = null;
 
         LocalTime time = LocalTime.now();
         int thh = time.getHour();
 
-        if (Dday == 0){
-            if(hh > thh){
+        if(merce == 0){
+            status = "모집안함";
+        }
+        else{
+            if (Dday == 0){
+                if(hh > thh){
+                    status = "급구";
+                }
+                else {
+                    status = "모집종료";
+                }
+            }
+            else if(Dday == 1 || Dday == 2){
                 status = "급구";
             }
-            else {
-                status = "모집종료";
+            else if(Dday >= 3){
+                status = "모집중";
             }
-        }
-        else if(Dday == 1 || Dday == 2){
-            status = "급구";
-        }
-        else if(Dday >= 3){
-            status = "모집중";
-        }
-        else if(Dday <= -1){
-            status = "종료";
+            else if(Dday <= -1){
+                status = "종료";
+            }
         }
 
         model.addAttribute("status", status);
@@ -155,7 +170,7 @@ public class GameController {
         return "gameinsert";
     }
 
-    @RequestMapping(value = "/gameinser.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/gameinsert.do", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Boolean> GameInsert(Model model, @RequestBody GameDto gameDto){
         logger.info("Insert Game");

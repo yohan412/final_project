@@ -123,7 +123,7 @@
                     </div>
                     <div class="addr_info">
                         <div style="width: 100%; height: 50%; display: flex; align-items: center">
-                            <input type="text" placeholder="경기장 주소" name="game_addr" id="stadium_addr" class="inputform">
+                            <input type="text" placeholder="경기장 주소" name="game_addr" id="stadium_addr" class="inputform" readonly>
                         </div>
                     </div>
                     <div class="button_form">

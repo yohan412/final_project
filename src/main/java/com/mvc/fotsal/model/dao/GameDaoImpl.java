@@ -69,6 +69,20 @@ public class GameDaoImpl implements GameDao{
     }
 
     @Override
+    public List<Integer> GameMercenary(GamePaging gamePaging){
+        List<Integer> GameMercenary = new ArrayList<Integer>();
+
+        try{
+            GameMercenary = sqlSessionTemplate.selectList(NAMESPACE + "gamemercenary", gamePaging);
+        }catch (Exception e){
+            System.out.println("[ERROR]: GameMercenary");
+            e.printStackTrace();
+        }
+
+        return GameMercenary;
+    }
+
+    @Override
     public GameDto GameDetail(int game_no) {
         GameDto gameDto = null;
 
@@ -103,6 +117,20 @@ public class GameDaoImpl implements GameDao{
             res = sqlSessionTemplate.selectOne(NAMESPACE + "gametime_per", game_no);
         }catch (Exception e){
             System.out.println("[ERROR]: GameTime_per");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    @Override
+    public int GameMercenary_per(int game_no){
+        int res = 0;
+
+        try{
+            res = sqlSessionTemplate.selectOne(NAMESPACE + "gamemercenary_per", game_no);
+        }catch (Exception e){
+            System.out.println("[ERROR]: GameMercenary_per");
             e.printStackTrace();
         }
 

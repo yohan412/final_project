@@ -66,7 +66,7 @@
                             map.setCenter(coords);
                         }
                         else {
-                            alert("실패");
+                            alert("도로 찾기 실패");
                         }
                     });
 
@@ -76,7 +76,8 @@
                     <h2 style="width: 150px; display: flex; justify-content: center">${status}</h2>
                     <h2 style="width: 150px; display: flex; justify-content: center">
                         <c:choose>
-                            <c:when test="${gamedto.game_mercenary eq 0}"> </c:when>
+                            <c:when test="${status eq '종료'}"> </c:when>
+                            <c:when test="${status eq '모집안함'}"> </c:when>
                             <c:otherwise>${gamedto.game_mercenary}명</c:otherwise>
                         </c:choose>
                     </h2>
@@ -108,7 +109,15 @@
                 <div id="time_person_form">
                     <div id="time_form">${gamedto.game_time} ~ ${endtime}</div>
                     <div id="person_div">
-                        <div id="person_form">5 vs 5</div>
+                        <div id="person_form">
+                            <c:choose>
+                                <c:when test="${gamedto.game_people eq 3}">3 vs 3</c:when>
+                                <c:when test="${gamedto.game_people eq 4}">4 vs 4</c:when>
+                                <c:when test="${gamedto.game_people eq 5}">5 vs 5</c:when>
+                                <c:when test="${gamedto.game_people eq 6}">6 vs 6</c:when>
+                                <c:when test="${gamedto.game_people eq 7}">7 vs 7</c:when>
+                            </c:choose>
+                        </div>
                     </div>
                 </div>
                 <%--기타 내용 구역--%>
@@ -125,14 +134,20 @@
             <%--댓글 구역--%>
             <div id="comment_form">
                 <%--댓글 리스트--%>
-                <c:forEach begin="1" end="5">
-                    <div class="comment">
+                <c:forEach begin="0" end="9" varStatus="status">
+                    <div class="comment" onclick="replyshow(${status.index});">
                         <div id="comment_info">
                             <div id="comment_id">회원 이름</div>
                             <div id="comment_date">2021-12-12</div>
                         </div>
                         <div id="comment_content">ㅎㅎ</div>
                         <div id="comment_delete"><input type="button" value="X" id="comment_button"></div>
+                    </div>
+                    <div class="reply_comment_form">
+                        <div id="rp_comment_insert">
+                            <textarea id="rp_search"></textarea>
+                            <input type="button" id="button" value="등록">
+                        </div>
                     </div>
                 </c:forEach>
                 <%--댓글 페이징--%>
