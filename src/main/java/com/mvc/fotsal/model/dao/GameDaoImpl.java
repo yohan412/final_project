@@ -1,13 +1,16 @@
 package com.mvc.fotsal.model.dao;
 
+import com.mvc.fotsal.model.dto.GameAskDto;
 import com.mvc.fotsal.model.dto.GameDto;
-import com.mvc.fotsal.model.dto.GamePaging;
+import com.mvc.fotsal.paging.GameAskPaging;
+import com.mvc.fotsal.paging.GamePaging;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class GameDaoImpl implements GameDao{
@@ -69,6 +72,20 @@ public class GameDaoImpl implements GameDao{
     }
 
     @Override
+    public List<Integer> GameMercenary(GamePaging gamePaging){
+        List<Integer> GameMercenary = new ArrayList<Integer>();
+
+        try{
+            GameMercenary = sqlSessionTemplate.selectList(NAMESPACE + "gamemercenary", gamePaging);
+        }catch (Exception e){
+            System.out.println("[ERROR]: GameMercenary");
+            e.printStackTrace();
+        }
+
+        return GameMercenary;
+    }
+
+    @Override
     public GameDto GameDetail(int game_no) {
         GameDto gameDto = null;
 
@@ -103,6 +120,48 @@ public class GameDaoImpl implements GameDao{
             res = sqlSessionTemplate.selectOne(NAMESPACE + "gametime_per", game_no);
         }catch (Exception e){
             System.out.println("[ERROR]: GameTime_per");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    @Override
+    public int GameMercenary_per(int game_no){
+        int res = 0;
+
+        try{
+            res = sqlSessionTemplate.selectOne(NAMESPACE + "gamemercenary_per", game_no);
+        }catch (Exception e){
+            System.out.println("[ERROR]: GameMercenary_per");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    @Override
+    public List<GameAskDto> CommentList(Map<String, Object> dblist){
+        List<GameAskDto> list = new ArrayList<GameAskDto>();
+
+        try{
+            list = sqlSessionTemplate.selectList(NAMESPACE + "commentlist", dblist);
+        }catch (Exception e){
+            System.out.println("[ERROR]: CommentList");
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    @Override
+    public int CommentInsert(GameAskDto gameAskDto){
+        int res = 0;
+
+        try{
+            res = sqlSessionTemplate.insert(NAMESPACE + "commentinsert", gameAskDto);
+        }catch (Exception e){
+            System.out.println("[ERROR]: CommentInsert");
             e.printStackTrace();
         }
 

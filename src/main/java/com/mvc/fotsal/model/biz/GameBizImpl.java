@@ -1,12 +1,15 @@
 package com.mvc.fotsal.model.biz;
 
 import com.mvc.fotsal.model.dao.GameDao;
+import com.mvc.fotsal.model.dto.GameAskDto;
 import com.mvc.fotsal.model.dto.GameDto;
-import com.mvc.fotsal.model.dto.GamePaging;
+import com.mvc.fotsal.paging.GameAskPaging;
+import com.mvc.fotsal.paging.GamePaging;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class GameBizImpl implements GameBiz{
@@ -38,6 +41,12 @@ public class GameBizImpl implements GameBiz{
     }
 
     @Override
+    public List<Integer> GameMercenary(GamePaging gamePaging){
+
+        return gameDao.GameMercenary(gamePaging);
+    }
+
+    @Override
     public GameDto GameDetail(int game_no) {
         return gameDao.GameDetail(game_no);
     }
@@ -50,6 +59,21 @@ public class GameBizImpl implements GameBiz{
     @Override
     public String GameTime_per(int game_no){
         return gameDao.GameTime_per(game_no);
+    }
+
+    @Override
+    public int GameMercenary_per(int game_no){
+        return gameDao.GameMercenary_per(game_no);
+    }
+
+    @Override
+    public List<GameAskDto> CommentList(Map<String, Object> dblist){
+        return gameDao.CommentList(dblist);
+    }
+
+    @Override
+    public int CommentInsert(GameAskDto gameAskDto){
+        return gameDao.CommentInsert(gameAskDto);
     }
 
     @Override
