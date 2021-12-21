@@ -5,35 +5,36 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="resources/css/mercenary.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 
 	function mainPage(){
 		return "redirect:index.do"; // 메인페이지로 이동
 	}
 	
-	function imgsrc_attacker(){
-		document.getElementById("position").src = "img/footsalField01.png";
-		var attacker = document.getElementById("attacker");
-		attacker.append("공격수");
+	function imgSrc_position(object) { // 클릭 시 포지션 이미지 변경 및 공격수~골키퍼 문자열 리턴
+		if($(object).attr('class') == 'attacker'){
+			document.getElementById("position").src = "img/footsalField01.png";
+		} else if($(object).attr('class')  == 'defender'){
+			document.getElementById("position").src = "img/footsalField02.png";
+		} else if($(object).attr('class')  == 'leftWing'){
+			document.getElementById("position").src = "img/footsalField03.png";
+		} else if($(object).attr('class')  == 'rightWing'){
+			document.getElementById("position").src = "img/footsalField04.png";
+		} else {
+			document.getElementById("position").src = "img/footsalField05.png";
+		}
+	    const position = $(object).attr('class');
+	    console.log($('input:hidden'));
+	    $('input:hidden').each(function() {
+	        console.log($(this))
+	        if ($(this).attr('id') == position) {
+	            console.log($(this).val());
+	            return $(this).val();
+	        }
+	            console.log($(this).attr('id'));
+	    });
 	}
-	
-	function imgsrc_defender(){
-		document.getElementById("position").src = "img/footsalField02.png";
-	}
-	
-	function imgsrc_leftWing(){
-		document.getElementById("position").src = "img/footsalField03.png";
-	}
-	
-	function imgsrc_rightWing(){
-		document.getElementById("position").src = "img/footsalField04.png";
-	}
-	
-	function imgsrc_keeper(){
-		document.getElementById("position").src = "img/footsalField05.png";
-	}
-	
-
 
 </script>
 <title>용병지원서</title>
@@ -65,17 +66,13 @@
 					<div class="select-position-detail">
 						<img src="img/footsalFieldBasic.png" id="position" usemap="#image-map">
 						<map name="image-map">
-						    <area  style="cursor: pointer;" target="" alt="공격수" title="공격수" onclick="imgsrc_attacker()" coords="312,187,23" shape="circle">
-						    <area  style="cursor: pointer;" target="" alt="수비수" title="수비수" onclick="imgsrc_defender()" coords="310,246,22" shape="circle">
-						    <area  style="cursor: pointer;" target="" alt="좌측윙어" title="좌측윙어" onclick="imgsrc_leftWing()" coords="210,234,22" shape="circle">
-						    <area  style="cursor: pointer;" target="" alt="우측윙어" title="우측윙어" onclick="imgsrc_rightWing()" coords="407,231,21" shape="circle">
-						    <area  style="cursor: pointer;" target="" alt="골키퍼" title="골키퍼" onclick="imgsrc_keeper()" coords="310,299,22" shape="circle">
+						    <area  style="cursor: pointer;" target="" class="attacker" title="공격수" onclick="imgSrc_position(this)" coords="312,187,23" shape="circle">
+						    <area  style="cursor: pointer;" target="" class="defender" title="수비수" onclick="imgSrc_position(this)" coords="310,246,22" shape="circle">
+						    <area  style="cursor: pointer;" target="" class="leftWing" title="좌측윙어" onclick="imgSrc_position(this)" coords="210,234,22" shape="circle">
+						    <area  style="cursor: pointer;" target="" class="rightWing" title="우측윙어" onclick="imgSrc_position(this)" coords="407,231,21" shape="circle">
+						    <area  style="cursor: pointer;" target="" class="keeper" title="골키퍼" onclick="imgSrc_position(this)" coords="310,299,22" shape="circle">
 						</map>
-						<input type="hidden" name="mercenary_position" id="attacker" value="공격수">
-						<input type="hidden" name="mercenary_position" id="defender" value="수비수">
-						<input type="hidden" name="mercenary_position" id="leftWing" value="좌측윙어">
-						<input type="hidden" name="mercenary_position" id="rightWing" value="우측윙어">
-						<input type="hidden" name="mercenary_position" id="keeper" value="골키퍼">
+						<input type="hidden" name="mercenary_position" id="position_data" value="${(object).attr('class')}">
 					</div>
 					<hr>
 					<div class="content-introduce">

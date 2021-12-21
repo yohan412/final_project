@@ -125,6 +125,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("/phonechk")
+	@ResponseBody
 	public String phoneChk(String user_phone) {
 		logger.info("PHONE CHECK");
 		

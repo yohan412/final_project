@@ -153,12 +153,12 @@ select {
 			open(target,"","width=0,height=0");	
 		}
 		
-		if(phonenum == null || phonenum == "" || user_pw == null || user_pw == ""){
+		if(phonenum.value.trim()==""||phonenum.value==null){
 			alert("ID 및 PW를 확인해 주세요");
 		}else{
 			$.ajax({
 				type:"post",
-				url:"ajaxlogin.do",
+				url:"phonechk.do",
 				data:JSON.stringify(loginVal),
 				contentType:"application/json",
 				dataType:"json",
