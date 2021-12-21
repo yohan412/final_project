@@ -134,13 +134,13 @@
             <%--댓글 구역--%>
             <div id="comment_form">
                 <%--댓글 리스트--%>
-                <c:forEach begin="0" end="9" varStatus="status">
+                <c:forEach items="${commentlist}" var="commentlist" varStatus="status">
                     <div class="comment" onclick="replyshow(${status.index});">
                         <div id="comment_info">
-                            <div id="comment_id">회원 이름</div>
-                            <div id="comment_date">2021-12-12</div>
+                            <div id="comment_id">${commentlist.user_id}</div>
+                            <div id="comment_date"><fmt:formatDate value="${commentlist.ask_reg}"/></div>
                         </div>
-                        <div id="comment_content">ㅎㅎ</div>
+                        <div id="comment_content">${commentlist.ask_content}</div>
                         <div id="comment_delete"><input type="button" value="X" id="comment_button"></div>
                     </div>
                     <div class="reply_comment_form">
@@ -152,20 +152,60 @@
                 </c:forEach>
                 <%--댓글 페이징--%>
                 <div id="comment_paging">
-		           <button id="prevbutton"><a href="#"><</a></button>
-		           <c:forEach begin="1" end="5">
-		               <button id="pagingnum"><a href="#">1</a></button>
-		           </c:forEach>
-		           <button id="nextbutton"><a href="#">></a></button>
+                    <c:if test="${gameaskpagemaker.prev}">
+                        <button id="prevbutton" onclick="location.href='gamedetail.do?${gameaskpagemaker.makeQuery(gameaskpagemaker.startPage - 1)}&game_no=${gamedto.game_no}'"><</button>
+                    </c:if>
+                    <c:forEach begin="${gameaskpagemaker.startPage}" end="${gameaskpagemaker.endPage}" var="idx">
+		               <button id="pagingnum" onclick="location.href='gamedetail.do?${gameaskpagemaker.makeQuery(idx)}&game_no=${gamedto.game_no}'">${idx}</button>
+		            </c:forEach>
+                    <c:if test="${gameaskpagemaker.next && gameaskpagemaker.endPage > 0}">
+                        <button id="nextbutton" onclick="location.href='gamedetail.do?${gameaskpagemaker.makeQuery(gameaskpagemaker.endPage + 1)}&game_no=${gamedto.game_no}'">></button>
+                    </c:if>
+
                 </div>
                 <%--댓글 입력 폼--%>
                 <div id="comment_insert_form">
                     <div id="comment_insert">
                         <textarea id="search"></textarea>
-                        <input type="button" id="button" value="등록">
+                        <input type="button" id="button" value="등록" onclick="comment_insert()">
                     </div>
                 </div>
-                
+                    <script type="text/javascript">
+                        function comment_insert(){
+                            var user_id = 'admin';  /*세션 연결 시 변경 예정*/
+                            var ask_content = document.getElementById("search").value;
+                            var ask_type = '질문';
+
+                            var comment = {
+                                "game_no" : ${gamedto.game_no},
+                                "user_id" : user_id,
+                                "ask_content" : ask_content,
+                                "ask_type" : ask_type
+                            }
+
+                            console.log(comment);
+
+                            $.ajax({
+                                type:"post",
+                                url:"/gamedetail_comment_insert.do",
+                                data:JSON.stringify(comment),
+                                contentType:"application/json",
+                                dataType:"json",
+                                success:function (msg){
+                                    if(msg.check === true){
+                                        alert('댓글등록 성공');
+                                        location.href='/gamedetail.do?game_no=' + ${gamedto.game_no};
+                                    }
+                                    else{
+                                        alert('댓글 등록 실패');
+                                    }
+                                },
+                                error:function (request, status, error){
+                                    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                                }
+                            });
+                        }
+                    </script>
             </div>
         </div>
         <%--숨겨진 구역(용병 리스트)--%>
@@ -181,6 +221,7 @@
                         <div id="mergency_button_form"><input type="button" value="초대하기" id="mergency_button"></div>
                     </div>
                 </c:forEach>
+
                 <div style="width: 700px; height: 40px">
 
                 </div>
@@ -189,10 +230,7 @@
     </div>
 </section>
 <footer>
-<div >
-    <div>faq</div>
-    <div>qna</div>
-</div>
+    푸터
 </footer>
 </body>
 </html>

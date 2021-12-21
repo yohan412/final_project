@@ -10,3 +10,4 @@ function show(){
 function replyshow(a){
     $(".reply_comment_form").eq(a).toggle();
 }
+

@@ -177,7 +177,7 @@
     height: 60px;
     display: flex;
     flex-wrap: wrap;
-    margin-top: 40px;
+    margin-top: 20px;
     user-select: none;
     background-color: gray;
     cursor: pointer;
@@ -310,7 +310,7 @@ a{
     align-items: center;
     justify-content: center;
     margin-bottom: 30px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 #rp_comment_insert{
     width: 700px;

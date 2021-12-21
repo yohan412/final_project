@@ -1,4 +1,4 @@
-package com.mvc.fotsal.model.dto;
+package com.mvc.fotsal.paging;
 
 public class GameAskPaging {
     private int page;
@@ -8,7 +8,7 @@ public class GameAskPaging {
 
     public GameAskPaging(){
         this.page = 1;
-        this.perPageNum = 5;
+        this.perPageNum = 10;
     }
 
     public void setPage(int page){
@@ -21,7 +21,7 @@ public class GameAskPaging {
 
     public void setPerPageNum(int perPageNum){
         if(perPageNum <= 0 || perPageNum > 100){
-            this.perPageNum = 5;
+            this.perPageNum = 10;
             return;
         }
         this.perPageNum = perPageNum;
