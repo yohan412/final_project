@@ -34,7 +34,7 @@ public class KakaoService {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
-            sb.append("1d67c7bd87b305d0e49f4ef1c2568313");  //본인이 발급받은 key
+            sb.append("88f1f2f8a004d27ade8f7dea76f94ee3");  //본인이 발급받은 key
             sb.append("&redirect_uri=http://localhost:8787/kakaologin");     // 본인이 설정해 놓은 경로
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
