@@ -60,12 +60,7 @@ public class UserController {
 			}else {
 				System.out.println("비밀번호 불일치");
 			}
-<<<<<<< HEAD
 		} 
-=======
-			
-		}
->>>>>>> 59cb4a4fa8f6fdec6b00dda84e7b85b7c1b93e78
 		
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
 		map.put("check", check);
