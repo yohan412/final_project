@@ -80,82 +80,45 @@ img{
 
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<meta name="viewport" content="width=device-width,initial-scale=1">
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript">
-	$(function(){
-		$("#loginChk").hide();	
-	});
+$(function(){
+	$("#loginChk").hide();	
+});
+
+function login(){
+	var user_id = $("#user_id").val().trim();
+	var user_pw = $("#user_pw").val().trim();
+	var loginVal = {
+			"user_id":user_id,
+			"user_pw":user_pw
+	};
 	
-	function login(){
-		var user_id = $("#user_id").val().trim();
-		var user_pw = $("#user_pw").val().trim();
-		var loginVal = {
-				"user_id":user_id,
-				"user_pw":user_pw
-		};
-		
-		if(user_id == null || user_id == "" || user_pw == null || user_pw == ""){
-			alert("ID 및 PW를 확인해 주세요");
-		}else{
-			$.ajax({
-				type:"post",
-				url:"ajaxlogin.do",
-				data:JSON.stringify(loginVal),
-				contentType:"application/json",
-				dataType:"json",
-				success:function(msg){
-					if(msg.check==true){
-						location.href="index.jsp";
-					}else{
-						$("#loginChk").show();
-						$("#loginChk").html("ID 혹은 PW가 잘못되었습니다.");
-					}
-				},
-				error:function(){
-					alert("통신 실패");
+	if(user_id == null || user_id == "" || user_pw == null || user_pw == ""){
+		alert("ID 및 PW를 확인해 주세요");
+	}else{
+		$.ajax({
+			type:"post",
+			url:"ajaxlogin.do",
+			data:JSON.stringify(loginVal),
+			contentType:"application/json",
+			dataType:"json",
+			success:function(msg){
+				if(msg.check==true){
+					location.href="index.jsp";
+				}else{
+					$("#loginChk").show();
+					$("#loginChk").html("ID 혹은 PW가 잘못되었습니다.");
 				}
-			});
-		}
+			},
+			error:function(){
+				alert("통신 실패");
+			}
+		});
 	}
-
-	//카카오로그인
-	function kakaoLogin() {
-
-	  $.ajax({
-	      url: '/login/getKakaoAuthUrl',
-	      type: 'get',
-	      async: false,
-	      dataType: 'text',
-	      success: function (res) {
-	          location.href = res;
-	      }
-	  });
-
-	}
-
-	$(document).ready(function() {
-
-	    var kakaoInfo = '${kakaoInfo}';
-
-	    if(kakaoInfo != ""){
-	        var data = JSON.parse(kakaoInfo);
-
-	        alert("카카오로그인 성공 \n accessToken : " + data['accessToken']);
-	        alert(
-	        "user : \n" + "email : "
-	        + data['email']  
-	        + "\n gender : " 
-	        + data['gender']
-	        + "\n birthday : "
-	        + data['birthday']);
-	    }
-	});  
+}
 
 </script>
-
-
 </head>
 <body>
 	<section class="Login-form">
@@ -176,7 +139,10 @@ img{
             </div>
             <div id="loginChk"></div>
         	<div class="kakao-login">
-            	<a><img src="img/Kakao.png" onclick="kakaoLogin();"></a>
+            	<a href="https://kauth.kakao.com/oauth/authorize
+					    ?client_id=1d67c7bd87b305d0e49f4ef1c2568313
+					    &redirect_uri=http://localhost:8787/kakaologin
+					    &response_type=code"><img src="img/Kakao.png"></a>
         	</div>
         	<div class="naver-login">
             	<img src="img/Naver.png">
