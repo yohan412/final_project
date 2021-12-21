@@ -52,6 +52,7 @@ public class UserController {
 		System.out.println(dto.getUser_pw());
 		UserDto res = biz.login(dto);
 		System.out.println(res.getUser_pw());
+		System.out.println(passwordEncoder.matches(dto.getUser_pw(),res.getUser_pw()));
 		boolean check = false;
 		if(res != null) {
 			if(passwordEncoder.matches(dto.getUser_pw(),res.getUser_pw())) {
