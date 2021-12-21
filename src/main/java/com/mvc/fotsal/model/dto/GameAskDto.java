@@ -7,25 +7,25 @@ public class GameAskDto {
     private int game_no;
     private String ask_type;
     private int ask_gpno;
-    private int gpsq;
+    private int ask_gpsq;
     private String user_id;
     private String ask_content;
     private Date ask_reg;
-    private String aks_status;
+    private String ask_status;
 
     public GameAskDto() {
     }
 
-    public GameAskDto(int ask_no, int game_no, String ask_type, int ask_gpno, int gpsq, String user_id, String ask_content, Date ask_reg, String aks_status) {
+    public GameAskDto(int ask_no, int game_no, String ask_type, int ask_gpno, int ask_gpsq, String user_id, String ask_content, Date ask_reg, String ask_status) {
         this.ask_no = ask_no;
         this.game_no = game_no;
         this.ask_type = ask_type;
         this.ask_gpno = ask_gpno;
-        this.gpsq = gpsq;
+        this.ask_gpsq = ask_gpsq;
         this.user_id = user_id;
         this.ask_content = ask_content;
         this.ask_reg = ask_reg;
-        this.aks_status = aks_status;
+        this.ask_status = ask_status;
     }
 
     public int getAsk_no() {
@@ -60,12 +60,12 @@ public class GameAskDto {
         this.ask_gpno = ask_gpno;
     }
 
-    public int getGpsq() {
-        return gpsq;
+    public int getAsk_Gpsq() {
+        return ask_gpsq;
     }
 
-    public void setGpsq(int gpsq) {
-        this.gpsq = gpsq;
+    public void setAsk_Gpsq(int ask_gpsq) {
+        this.ask_gpsq = ask_gpsq;
     }
 
     public String getUser_id() {
@@ -92,11 +92,11 @@ public class GameAskDto {
         this.ask_reg = ask_reg;
     }
 
-    public String getAks_status() {
-        return aks_status;
+    public String getAsk_status() {
+        return ask_status;
     }
 
-    public void setAks_status(String aks_status) {
-        this.aks_status = aks_status;
+    public void setAsk_status(String ask_status) {
+        this.ask_status = ask_status;
     }
 }

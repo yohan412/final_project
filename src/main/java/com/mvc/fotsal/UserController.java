@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mvc.fotsal.LoginAPI.KakaoService;
 import com.mvc.fotsal.message.messageApp;
 import com.mvc.fotsal.model.biz.UserBiz;
 import com.mvc.fotsal.model.dto.UserDto;
@@ -32,6 +33,9 @@ public class UserController {
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
 	
+	@Autowired
+    private KakaoService kakaoService;
+	
 	@RequestMapping("/loginform.do")
 	public String loginForm() {
 		logger.info("LOGIN PAGE");
@@ -40,21 +44,23 @@ public class UserController {
 	}
 	
 	//로그인
-	@RequestMapping(value="/ajaxlogin.do")
+	@RequestMapping(value="/ajaxlogin.do", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Boolean> ajaxLogin(HttpSession session, @RequestBody UserDto dto) {
 		logger.info("LOGIN");
 		
+		System.out.println(dto.getUser_pw());
 		UserDto res = biz.login(dto);
-		
+		System.out.println(res.getUser_pw());
 		boolean check = false;
 		if(res != null) {
 			if(passwordEncoder.matches(dto.getUser_pw(),res.getUser_pw())) {
 				session.setAttribute("login", res);
 				 check=true;
+			}else {
+				System.out.println("비밀번호 불일치");
 			}
-			
-		}
+		} 
 		
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
 		map.put("check", check);
@@ -86,9 +92,11 @@ public class UserController {
 									@RequestParam("myaddr1") String addr1,
 									@RequestParam("myaddr2") String addr2) {
 		
+		System.out.println(dto.getUser_pw());
 		dto.setUser_pw(passwordEncoder.encode(dto.getUser_pw()));
 		dto.setUser_birthdate(yy+"-"+mm+"-"+dd);
 		dto.setUser_addr(addr1+" "+addr2);
+		
 		
 		
 		if(biz.insert(dto)>0) {
@@ -127,5 +135,13 @@ public class UserController {
 		
 		return null;
 	}
+	
+	@RequestMapping("/kakaologin")
+    public String home(@RequestParam(value = "code", required = false) String code) throws Exception{
+        System.out.println("#########" + code);
+        String access_Token = kakaoService.getAccessToken(code);
+        System.out.println("###access_Token#### : " + access_Token);
+        return "loginform.do";
+    }
 	
 }

@@ -26,7 +26,7 @@ public class MercenaryController {
 	@RequestMapping("/mercenary_insert.do")
 	public String mercenary_insert(MercenaryDto dto) {
 		logger.info("용병지원서 작성중");
-		
+		System.out.println("포지션값:"+dto.getMercenary_position());
 		int res = biz.insert(dto);
 		
 		if(res>0) {

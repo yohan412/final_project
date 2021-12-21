@@ -1,19 +1,22 @@
 package com.mvc.fotsal;
 
 import com.mvc.fotsal.model.biz.GameBiz;
+import com.mvc.fotsal.model.dto.GameAskDto;
 import com.mvc.fotsal.model.dto.GameDto;
-import com.mvc.fotsal.model.dto.GamePageMaker;
-import com.mvc.fotsal.model.dto.GamePaging;
+import com.mvc.fotsal.paging.GameAskPageMaker;
+import com.mvc.fotsal.paging.GameAskPaging;
+import com.mvc.fotsal.paging.GamePageMaker;
+import com.mvc.fotsal.paging.GamePaging;
+import org.apache.http.HttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.time.LocalTime;
 import java.util.*;
 
@@ -104,9 +107,12 @@ public class GameController {
     }
 
     @RequestMapping("/gamedetail.do")
-    public String GameDetailPage(Model model, int game_no){
+    public String GameDetailPage(Model model, int game_no, GameAskPaging gameAskPaging, HttpServletRequest request){
     	logger.info("Move to GameDetail Page");
         model.addAttribute("gamedto", gameBiz.GameDetail(game_no));
+
+        GameAskPageMaker gameAskPageMaker = new GameAskPageMaker();
+        model.addAttribute("gameaskpagemaker", gameAskPageMaker);
 
         //D-day 모델 지정
         int DdayChk = gameBiz.DdayChk_per(game_no);
@@ -160,7 +166,39 @@ public class GameController {
 
         model.addAttribute("status", status);
 
+        //댓글 구현
+        Map<String, Object> dblist = new HashMap<String, Object>();
+
+        dblist.put("game_no", game_no);
+        dblist.put("gameAskDto", gameAskPaging);
+
+        List<GameAskDto> commentlist = gameBiz.CommentList(dblist);
+
+        /*HttpSession session = request.getSession();*/
+
+        model.addAttribute("commentlist", commentlist);
+
         return "gamedetail";
+    }
+
+    @RequestMapping(value = "/gamedetail_comment_insert.do", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Boolean> Detail_Comment_Insert(@RequestBody GameAskDto gameAskDto){
+        logger.info("Insert Comment");
+
+        Map<String, Boolean> map = new HashMap<String, Boolean>();
+        boolean check = false;
+
+        int res = gameBiz.CommentInsert(gameAskDto);
+        logger.info("res: " + res);
+
+        if(res > 0){
+            logger.info("Insert Success");
+            check = true;
+        }
+        map.put("check", check);
+
+        return map;
     }
 
     @RequestMapping("/gameinsertform.do")

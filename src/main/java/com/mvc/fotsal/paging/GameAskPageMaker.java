@@ -1,19 +1,19 @@
-package com.mvc.fotsal.model.dto;
+package com.mvc.fotsal.paging;
 
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-public class GamePageMaker {
+public class GameAskPageMaker {
     private int totalCount;
     private int startPage;
     private int endPage;
     private boolean prev;
     private boolean next;
     private int displayPageNum = 5;
-    private GamePaging gamePaging;
+    private GameAskPaging gameAskPaging;
 
-    public void setGamePaging(GamePaging gamePaging){
-        this.gamePaging = gamePaging;
+    public void setGameAskPaging(GameAskPaging gameAskPaging){
+        this.gameAskPaging = gameAskPaging;
     }
 
     public void setTotalCount(int totalCount){
@@ -45,32 +45,31 @@ public class GamePageMaker {
         return displayPageNum;
     }
 
-    public GamePaging getGamePaging(){
-        return gamePaging;
+    public GameAskPaging getGameAskPaging(){
+        return gameAskPaging;
     }
 
     private void calcDate(){
-        endPage = (int) (Math.ceil(gamePaging.getPage() / (double) displayPageNum) * displayPageNum);
+        endPage = (int) (Math.ceil(gameAskPaging.getPage() / (double) displayPageNum) * displayPageNum);
         startPage = (endPage - displayPageNum) + 1;
 
-        int tempEndPage = (int) (Math.ceil(totalCount / (double) gamePaging.getPerPageNum() ) );
+        int tempEndPage = (int) (Math.ceil(totalCount / (double) gameAskPaging.getPerPageNum() ) );
 
         if(endPage > tempEndPage){
             endPage = tempEndPage;
         }
 
         prev = startPage == 1 ? false : true;
-        next = endPage * gamePaging.getPerPageNum() >= totalCount ? false : true;
+        next = endPage * gameAskPaging.getPerPageNum() >= totalCount ? false : true;
     }
 
     public String makeQuery(int page){
         UriComponents uriComponents =
                 UriComponentsBuilder.newInstance()
                         .queryParam("page", page)
-                        .queryParam("perPageNum", gamePaging.getPerPageNum())
+                        .queryParam("perPageNum", gameAskPaging.getPerPageNum())
                         .build();
 
         return uriComponents.toUriString();
     }
-
 }

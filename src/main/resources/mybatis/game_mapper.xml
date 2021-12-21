@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="GameBoard">
-    <select id="GameList" resultType="gameDto" parameterType="com.mvc.fotsal.model.dto.GamePaging">
+    <select id="GameList" resultType="gameDto" parameterType="com.mvc.fotsal.paging.GamePaging">
         SELECT
                GAME_NO, USER_ID, GAME_REGION, GAME_STADIUM, GAME_ADDR, GAME_DATE, GAME_TIME, GAME_PEOPLE, GAME_MERCENARY, GAME_CONTENT, GAME_TYPE
         FROM (  SELECT
@@ -15,7 +15,7 @@
         ORDER BY GAME_NO DESC
     </select>
 
-    <select id="ddaychk" resultType="int" parameterType="com.mvc.fotsal.model.dto.GamePaging">
+    <select id="ddaychk" resultType="int" parameterType="com.mvc.fotsal.paging.GamePaging">
         SELECT to_date(GAME_DATE,'YYYY-MM-DD') - to_date(sysdate, 'YYYY-MM-DD') FROM
             (SELECT GAME_NO, GAME_DATE, ROW_NUMBER() over (ORDER BY GAME_NO DESC) AS RNUM
              FROM GAME)
@@ -27,7 +27,7 @@
         SELECT GAME_TIME FROM GAME ORDER BY GAME_NO DESC
     </select>
 
-    <select id="gamemercenary" resultType="int" parameterType="com.mvc.fotsal.model.dto.GamePaging">
+    <select id="gamemercenary" resultType="int" parameterType="com.mvc.fotsal.paging.GamePaging">
         SELECT GAME_MERCENARY FROM
             (SELECT GAME_NO, GAME_MERCENARY, ROW_NUMBER() over (ORDER BY GAME_NO DESC) AS RNUM
              FROM GAME)
@@ -59,6 +59,22 @@
     <select id="gamemercenary_per" resultType="int" parameterType="int">
         SELECT GAME_MERCENARY FROM GAME WHERE GAME_NO = ${game_no}
     </select>
+
+    <select id="commentlist" resultType="com.mvc.fotsal.model.dto.GameAskDto" parameterType="map">
+        SELECT ASK_NO, GAME_NO, ASK_TYPE, ASK_GPNO, ASK_GPSQ, USER_ID, ASK_CONTENT, ASK_REG, ASK_STATUS
+        FROM (
+             SELECT ASK_NO, GAME_NO, ASK_TYPE, ASK_GPNO, ASK_GPSQ, USER_ID, ASK_CONTENT, ASK_REG, ASK_STATUS,
+                    ROW_NUMBER() over (ORDER BY ASK_NO DESC) AS rNum
+                FROM GAME_ASK
+                 )
+        WHERE rNum BETWEEN #{gameAskDto.rowStart} and #{gameAskDto.rowEnd}
+        AND GAME_NO = #{game_no}
+        ORDER BY ASK_NO DESC,ASK_GPNO
+    </select>
+
+    <insert id="commentinsert" parameterType="com.mvc.fotsal.model.dto.GameAskDto">
+        INSERT INTO GAME_ASK VALUES (ASK_NOSQ.nextval, #{game_no}, #{ask_type}, ASK_GPNOSQ.nextval, 1, #{user_id}, #{ask_content}, sysdate, 'N')
+    </insert>
 
     <insert id="gameinsert" parameterType="gameDto">
         INSERT INTO GAME VALUES
