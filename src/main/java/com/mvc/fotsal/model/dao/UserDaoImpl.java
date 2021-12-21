@@ -21,7 +21,7 @@ import com.mvc.fotsal.model.dto.UserDto;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+			System.out.println(res.getUser_id());
 			return res;
 		}
 	
@@ -43,7 +43,7 @@ import com.mvc.fotsal.model.dto.UserDto;
 			int res=0;
 			
 			try {
-				res = sqlSession.selectOne(NAMESPACE+"idChk",user_id);
+				res = sqlSession.selectOne(NAMESPACE+"idchk",user_id);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

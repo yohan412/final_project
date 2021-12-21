@@ -1,4 +1,4 @@
-package com.mvc.fotsal.model.dto;
+package com.mvc.fotsal.paging;
 
 public class GamePaging {
     private int page;

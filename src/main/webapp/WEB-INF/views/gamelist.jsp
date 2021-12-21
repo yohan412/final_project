@@ -42,7 +42,15 @@
                         ${endtime[status.index]}
                     </div>
                     <div id="stadium">${gamelist.game_stadium}</div>
-                    <div id="person">5 vs 5</div>
+                    <div id="person">
+                        <c:choose>
+                            <c:when test="${gamelist.game_people eq 3}">3 vs 3</c:when>
+                            <c:when test="${gamelist.game_people eq 4}">4 vs 4</c:when>
+                            <c:when test="${gamelist.game_people eq 5}">5 vs 5</c:when>
+                            <c:when test="${gamelist.game_people eq 6}">6 vs 6</c:when>
+                            <c:when test="${gamelist.game_people eq 7}">7 vs 7</c:when>
+                        </c:choose>
+                    </div>
                     <div id="state" class="status">
                         ${statuses[status.index]}
                     </div>
@@ -50,15 +58,21 @@
             </c:forEach>
         </div>
         <div id="pagingform">
-            <c:if test="${gamepagemaker.prev}">
-                <button id="prevbutton" onclick="location.href='gamelist.do${gamepagemaker.makeQuery(gamepagemaker.startPage - 1)}'"><a href="gamelist.do${gamepagemaker.makeQuery(gamepagemaker.startPage - 1)}"><</a></button>
-            </c:if>
-            <c:forEach begin="${gamepagemaker.startPage}" end="${gamepagemaker.endPage}" var="idx">
-                <button id="pagingnum" onclick="location.href='gamelist.do${gamepagemaker.makeQuery(idx)}'"><a href="gamelist.do${gamepagemaker.makeQuery(idx)}">${idx}</a></button>
-            </c:forEach>
-            <c:if test="${gamepagemaker.next && gamepagemaker.endPage > 0}">
-                <button id="nextbutton" onclick="location.href='gamelist.do${gamepagemaker.makeQuery(gamepagemaker.endPage + 1)}'"><a href="gamelist.do${gamepagemaker.makeQuery(gamepagemaker.endPage + 1)}">></a></button>
-            </c:if>
+            <div style="width: 200px; height: 100%"></div>
+            <div style="width: 500px; height: 100%; display: flex; align-items: center; justify-content: center">
+                <c:if test="${gamepagemaker.prev}">
+                    <button id="prevbutton" onclick="location.href='gamelist.do?${gamepagemaker.makeQuery(gamepagemaker.startPage - 1)}'"><a href="gamelist.do${gamepagemaker.makeQuery(gamepagemaker.startPage - 1)}"><</a></button>
+                </c:if>
+                <c:forEach begin="${gamepagemaker.startPage}" end="${gamepagemaker.endPage}" var="idx">
+                    <button id="pagingnum" onclick="location.href='gamelist.do${gamepagemaker.makeQuery(idx)}'"><a href="gamelist.do${gamepagemaker.makeQuery(idx)}">${idx}</a></button>
+                </c:forEach>
+                <c:if test="${gamepagemaker.next && gamepagemaker.endPage > 0}">
+                    <button id="nextbutton" onclick="location.href='gamelist.do${gamepagemaker.makeQuery(gamepagemaker.endPage + 1)}'"><a href="gamelist.do${gamepagemaker.makeQuery(gamepagemaker.endPage + 1)}">></a></button>
+                </c:if>
+            </div>
+            <div style="width: 200px; height: 100%; display: flex; align-items: center; justify-content: center">
+                <input type="button" value="경기 등록" onclick="location.href='/gameinsertform.do'">
+            </div>
         </div>
         <div id="serchform">
             <div>

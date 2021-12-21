@@ -1,4 +1,4 @@
-package com.mvc.fotsal.model.dto;
+package com.mvc.fotsal.paging;
 
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;

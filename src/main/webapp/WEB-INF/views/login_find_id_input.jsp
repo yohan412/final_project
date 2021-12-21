@@ -152,6 +152,28 @@ select {
 			var target = "phonechk.do&user_phone="+phonenum.value.trim();
 			open(target,"","width=0,height=0");	
 		}
+		
+		if(phonenum == null || phonenum == "" || user_pw == null || user_pw == ""){
+			alert("ID 및 PW를 확인해 주세요");
+		}else{
+			$.ajax({
+				type:"post",
+				url:"ajaxlogin.do",
+				data:JSON.stringify(loginVal),
+				contentType:"application/json",
+				dataType:"json",
+				success:function(msg){
+					if(msg.check==true){
+						location.href="index.jsp";
+					}else{
+						$("#loginChk").show();
+						$("#loginChk").html("ID 혹은 PW가 잘못되었습니다.");
+					}
+				},
+				error:function(){
+					alert("통신 실패");
+				}
+			});
 	}
 	function rannumchk(){
 		var rannum = document.getElementsByName("rannum")[0].value;
