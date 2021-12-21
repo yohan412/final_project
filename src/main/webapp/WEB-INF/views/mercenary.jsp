@@ -72,11 +72,7 @@
 						    <area  style="cursor: pointer;" target="" class="rightWing" title="우측윙어" onclick="imgSrc_position(this)" coords="407,231,21" shape="circle">
 						    <area  style="cursor: pointer;" target="" class="keeper" title="골키퍼" onclick="imgSrc_position(this)" coords="310,299,22" shape="circle">
 						</map>
-						<input type="hidden" name="mercenary_position" id="attacker" value="공격수">
-						<input type="hidden" name="mercenary_position" id="defender" value="수비수">
-						<input type="hidden" name="mercenary_position" id="leftWing" value="좌측윙어">
-						<input type="hidden" name="mercenary_position" id="rightWing" value="우측윙어">
-						<input type="hidden" name="mercenary_position" id="keeper" value="골키퍼">
+						<input type="hidden" name="mercenary_position" id="position_data" value="${(object).attr('class')}">
 					</div>
 					<hr>
 					<div class="content-introduce">
