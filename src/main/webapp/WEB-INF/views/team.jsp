@@ -16,6 +16,8 @@
 	<div class="main-all-box">
 		<div class="main-top-box">
 			<form action="#" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
+				<input type="hidden" name="user_no" value="${login.getUser_no}" readonly>
+				<input type="hidden" name="team_no" value="${team_nosq.nextval }">
 				<div class="top-box-content">
 					<div class="title-text">	
 						<h2>팀 등록서</h2>
@@ -23,23 +25,23 @@
 					<hr>
 					<div class="content-select-teamname">
 						<h5 class="head-text">1. *팀명</h5>
-						<label class="chk-team-name"><input type="text" name="team-name" placeholder="팀명을 입력해주세요" required></label>
-					</div>
-					<hr>
-					<div class="content-select-position">
-						<h5 class="head-text">2. *현재 인원</h5>
-						<label class="chk-team-person"><input type="number" name="team-person" placeholder="팀 인원을 입력해주세요" required></label>
+						<label class="chk-team-name"><input type="text" name="team_name" placeholder="팀명을 입력해주세요" required></label>
 					</div>
 					<hr>
 					<div class="content-teamlogo">
-						<h5 class="head-text">3. 팀 로고</h5>
-						<input class="upload-name" value="파일명" placeholder="첨부파일" readonly>
+						<h5 class="head-text">2. 팀 로고</h5>
+						<input class="upload-name" name="" value="파일명" placeholder="첨부파일" readonly>
 						<label for="team-logo">팀 로고 선택</label>
 						<input type="file" id="team-logo">
 					</div>
 					<div class="content-introduce">
-						<h5 class="head-text">4. 팀 소개 및 한마디</h5>
-						<textarea rows="10" cols="60" placeholder="팀 소개와 한마디를 적어주세요"></textarea>
+						<h5 class="head-text">3. 팀 소개 및 한마디</h5>
+						<textarea rows="10" cols="60" placeholder="팀 소개와 한마디를 적어주세요" required></textarea>
+					</div>
+					<div class="content-addchk">
+						<h5 class="head-text">4. 모집 여부</h5>
+						<input type="radio" name="team_addchk" value="Y" required>Y
+						<input type="radio" name="team_addchk" value="N">N
 					</div>
 					
 					<div class="content-submit" align="right">
