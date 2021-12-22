@@ -55,7 +55,7 @@ public class UserController {
 		if(res != null) {
 			if(passwordEncoder.matches(dto.getUser_pw(),res.getUser_pw())) {
 				session.setAttribute("login", res);
-				 check=true;
+				check=true;
 			}
 		} 
 		

@@ -16,7 +16,7 @@ public class TeamController {
 	@Autowired
 	private TeamBiz biz;
 	
-	@RequestMapping("/teamlist.do")
+	@RequestMapping(value="/teamlist.do")
 	public String teamList(Model model) { // 팀 게시판(리스트)
 		logger.info("Select Team List, move page teamboard.jsp");
 		model.addAttribute("list",biz.selectList());
@@ -32,9 +32,9 @@ public class TeamController {
 		return "team_detail";
 	}
 	
-	@RequestMapping("/team_insert.do")
+	@RequestMapping(value="/team.do")
 	public String insertForm() { // 팀 등록 페이지
-		logger.info("insert form to team.jsp");
+		logger.info("move page team.jsp");
 		
 		return "team";
 	}

@@ -76,7 +76,7 @@
 			    	  <a href="#">Team</a>
 			 	 </li>
 			 	 <li>
-			    	  <a href="#">Mercenary</a>
+			    	  <a href="mercenary.do">Mercenary</a>
 			 	 </li>
 			 	 <li>
 			    	  <a href="#">QnA</a>
