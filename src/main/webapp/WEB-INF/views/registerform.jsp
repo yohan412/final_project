@@ -150,7 +150,7 @@
 	
 	function pwchk(){
 		var pw1 = document.getElementsByName("user_pw")[0].value;
-		var pw2 = document.getElementsByName("user_pw")[1].value;
+		var pw2 = document.getElementsByName("user_pw2")[0].value;
 		
 		if(pw1!=pw2){
 			alert("비밀번호 입력 오류");
@@ -181,7 +181,7 @@
 					<th>Password</th>
 					<td>
 						<input type="password" id="pw" name="user_pw" size="20" placeholder="비밀번호를 입력하세요" required><br><br>
-						<input type="password" id="pw" name="user_pw" size="20" placeholder="비밀번호 재확인" required>
+						<input type="password" id="pw" name="user_pw2" size="20" placeholder="비밀번호 재확인" required>
 					</td>
 				</tr>
 				<tr>

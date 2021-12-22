@@ -82,6 +82,44 @@ img{
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript">
+	Kakao.init('0489eca4932b8ea38718d86e8712239a'); //발급받은 키 중 javascript키를 사용해준다.
+	console.log(Kakao.isInitialized()); // sdk초기화여부판단
+	//카카오로그인
+	function kakaoLogin() {
+	    Kakao.Auth.login({
+	      success: function (response) {
+	        Kakao.API.request({
+	          url: '/v2/user/me',
+	          success: function (response) {
+	        	  console.log(response)
+	          },
+	          fail: function (error) {
+	            console.log(error)
+	          },
+	        })
+	      },
+	      fail: function (error) {
+	        console.log(error)
+	      },
+	    })
+	  }
+	//카카오로그아웃  
+	function kakaoLogout() {
+	    if (Kakao.Auth.getAccessToken()) {
+	      Kakao.API.request({
+	        url: '/v1/user/unlink',
+	        success: function (response) {
+	        	console.log(response)
+	        },
+	        fail: function (error) {
+	          console.log(error)
+	        },
+	      })
+	      Kakao.Auth.setAccessToken(undefined)
+	    }
+	  }  
+</script>
+<script type="text/javascript">
 $(function(){
 	$("#loginChk").hide();	
 });
@@ -140,9 +178,12 @@ function login(){
             <div id="loginChk"></div>
         	<div class="kakao-login">
             	<a href="https://kauth.kakao.com/oauth/authorize
-					    ?client_id=1d67c7bd87b305d0e49f4ef1c2568313
+					    ?client_id=88f1f2f8a004d27ade8f7dea76f94ee3
 					    &redirect_uri=http://localhost:8787/kakaologin
 					    &response_type=code"><img src="img/Kakao.png"></a>
+        	</div>
+        	<div class="kakao-login">
+            	<a href="javascript:void(0)"><img src="img/Kakao.png" onclick="kakaoLogin();"></a>
         	</div>
         	<div class="naver-login">
             	<img src="img/Naver.png">

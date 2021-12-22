@@ -7,22 +7,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mvc.fotsal.model.biz.QnaBoardBiz;
+import com.mvc.fotsal.model.biz.FaqBoardBiz;
+
 
 @Controller
-public class QnaBoardController {
+public class FaqBoardController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(QnaBoardController.class);
+	private static final Logger logger = LoggerFactory.getLogger(FaqBoardController.class);
 	
 	@Autowired
-	private QnaBoardBiz biz;
+	private FaqBoardBiz biz;
 	
-	@RequestMapping("/qnalist.do")
-	public String list(Model model) {	// qnaboard
-		logger.info("Select QnaBoard List, move page qnaboard.jsp");
+	@RequestMapping("/faqlist.do")
+	public String list(Model model) {	
+		logger.info("Select FaqBoard List, move page faqboard.jsp");
 		model.addAttribute("list",biz.selectList());
-		return "qnaboard";
+		return "faqboard";
 	}
 	
-
 }

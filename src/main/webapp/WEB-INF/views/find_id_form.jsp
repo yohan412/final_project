@@ -145,24 +145,21 @@ select {
 <script type="text/javascript">
 	function phonechk(){
 		var phonenum = document.getElementsByName("user_phone")[0];
+		var phonechkVal = {
+				"user_phone":user_phone
+		};
+		
 		
 		if(phonenum.value.trim()==""||phonenum.value==null){
-			alert("전화번호를 입력해주세요");
-		}else{
-			var target = "phonechk.do&user_phone="+phonenum.value.trim();
-			open(target,"","width=0,height=0");	
-		}
-		
-		if(phonenum == null || phonenum == "" || user_pw == null || user_pw == ""){
 			alert("ID 및 PW를 확인해 주세요");
 		}else{
 			$.ajax({
 				type:"post",
-				url:"ajaxlogin.do",
-				data:JSON.stringify(loginVal),
+				url:"phonechk.do",
+				data:JSON.stringify(phonechlVal),
 				contentType:"application/json",
 				dataType:"json",
-				success:function(msg){
+				success:function(){
 					if(msg.check==true){
 						location.href="index.jsp";
 					}else{

@@ -49,16 +49,13 @@ public class UserController {
 	public Map<String, Boolean> ajaxLogin(HttpSession session, @RequestBody UserDto dto) {
 		logger.info("LOGIN");
 		
-		System.out.println(dto.getUser_pw());
 		UserDto res = biz.login(dto);
-		System.out.println(res.getUser_pw());
+		
 		boolean check = false;
 		if(res != null) {
 			if(passwordEncoder.matches(dto.getUser_pw(),res.getUser_pw())) {
 				session.setAttribute("login", res);
 				 check=true;
-			}else {
-				System.out.println("비밀번호 불일치");
 			}
 		} 
 		
@@ -124,7 +121,8 @@ public class UserController {
 		return "idChk";
 	}
 	
-	@RequestMapping("/phonechk")
+	@RequestMapping("/phonechk.do")
+	@ResponseBody
 	public String phoneChk(String user_phone) {
 		logger.info("PHONE CHECK");
 		
@@ -143,4 +141,10 @@ public class UserController {
         return "loginform.do";
     }
 	
+	@RequestMapping("/find_id_form.do")
+	public String find_id_form() {
+		logger.info("FIND ID FORM");
+		
+		return "find_id_form";
+	}
 }
