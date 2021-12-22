@@ -18,7 +18,7 @@
 </style>
 <body>
 	<!-- header -->
-	<header> header </header>
+	<%@ include file="/WEB-INF/views/header.jsp" %>
 
 	<div>
 		<h1>Q&A 게시판</h1>
@@ -31,11 +31,11 @@
 					<div id="boardselect_form">
 						<div class="boardselect">
 							<p id="faqboard" class="faqboard"
-								onclick="location.href='/faqlist.do'">faq</p>
+								onclick="location.href='/faqlist.do'">FAQ</p>
 						</div>
 						<div class="boardselect">
 							<p id="qnaboard" class="qnaboard"
-								onclick="location.href='/qnalist.do'">q&a</p>
+								onclick="location.href='/qnalist.do'">Q&A</p>
 						</div>
 					</div>
 				</div>
