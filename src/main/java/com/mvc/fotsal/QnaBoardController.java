@@ -12,7 +12,7 @@ import com.mvc.fotsal.model.biz.QnaBoardBiz;
 @Controller
 public class QnaBoardController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+	private static final Logger logger = LoggerFactory.getLogger(QnaBoardController.class);
 	
 	@Autowired
 	private QnaBoardBiz biz;
@@ -22,6 +22,12 @@ public class QnaBoardController {
 		logger.info("Select QnaBoard List, move page qnaboard.jsp");
 		model.addAttribute("list",biz.selectList());
 		return "qnaboard";
+	}
+	
+	@RequestMapping("/faqlist.do")
+	public String faqlist(Model model) {
+		
+		return "faqboard";
 	}
 	
 }
