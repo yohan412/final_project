@@ -32,7 +32,7 @@ public class TeamController {
 		return "team_detail";
 	}
 	
-	@RequestMapping("/team_insert.do")
+	@RequestMapping("/team.do")
 	public String insertForm() { // 팀 등록 페이지
 		logger.info("insert form to team.jsp");
 		
