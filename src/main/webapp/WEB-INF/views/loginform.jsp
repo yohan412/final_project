@@ -156,7 +156,6 @@ function login(){
 		});
 	}
 }
-
 </script>
 </head>
 <body>
@@ -180,8 +179,8 @@ function login(){
         	<div class="kakao-login">
             	<a href="javascript:void(0)"><img src="img/Kakao.png" onclick="kakaoLogin();"></a>
         	</div>
-        	<div class="naver-login">
-            	<img src="img/Naver.png">
+        	<div class="naver-login" id="naverIdLogin">
+            	<a href="${url }"><img src="img/Naver.png"></a>
         	</div>
         	<div class="caption">
             	<a href="">Forgot Password?</a>
