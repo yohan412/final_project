@@ -117,7 +117,8 @@ img{
 	      })
 	      Kakao.Auth.setAccessToken(undefined)
 	    }
-	  }  
+	  }
+	
 </script>
 <script type="text/javascript">
 $(function(){
@@ -176,12 +177,6 @@ function login(){
                 <input type="button" value="SIGNUP" onclick="location.href='registerform.do'">
             </div>
             <div id="loginChk"></div>
-        	<div class="kakao-login">
-            	<a href="https://kauth.kakao.com/oauth/authorize
-					    ?client_id=88f1f2f8a004d27ade8f7dea76f94ee3
-					    &redirect_uri=http://localhost:8787/kakaologin
-					    &response_type=code"><img src="img/Kakao.png"></a>
-        	</div>
         	<div class="kakao-login">
             	<a href="javascript:void(0)"><img src="img/Kakao.png" onclick="kakaoLogin();"></a>
         	</div>
