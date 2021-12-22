@@ -23,6 +23,4 @@
 	
 	<context:component-scan base-package="com.mvc.fotsal" />
 	
-	<beans:bean class="com.care.a01_member.naver.NaverLoginBO" id="naverLoginBO"/>
-	
 </beans:beans>
