@@ -125,7 +125,7 @@ public class UserController {
 		return "idChk";
 	}
 	
-	@RequestMapping("/phonechk")
+	@RequestMapping("/phonechk.do")
 	@ResponseBody
 	public String phoneChk(String user_phone) {
 		logger.info("PHONE CHECK");
@@ -145,4 +145,10 @@ public class UserController {
         return "loginform.do";
     }
 	
+	@RequestMapping("/find_id_form.do")
+	public String find_id_form() {
+		logger.info("FIND ID FORM");
+		
+		return "find_id_form";
+	}
 }
