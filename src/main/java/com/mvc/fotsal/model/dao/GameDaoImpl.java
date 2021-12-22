@@ -155,6 +155,20 @@ public class GameDaoImpl implements GameDao{
     }
 
     @Override
+    public int CommentListCount(){
+        int listcount = 0;
+
+        try{
+            listcount = sqlSessionTemplate.selectOne(NAMESPACE + "CommentListCount");
+        }catch (Exception e){
+            System.out.println("[ERROR]: CommentListCount");
+            e.printStackTrace();
+        }
+
+        return listcount;
+    }
+
+    @Override
     public int CommentInsert(GameAskDto gameAskDto){
         int res = 0;
 
@@ -162,6 +176,90 @@ public class GameDaoImpl implements GameDao{
             res = sqlSessionTemplate.insert(NAMESPACE + "commentinsert", gameAskDto);
         }catch (Exception e){
             System.out.println("[ERROR]: CommentInsert");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    @Override
+    public int Rp_Comment_Insert(GameAskDto gameAskDto){
+        int res = 0;
+
+        try{
+            res = sqlSessionTemplate.insert(NAMESPACE + "rpcommentinsert", gameAskDto);
+        }catch (Exception e){
+            System.out.println("[ERROR]: Rp_Comment_Insert");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    @Override
+    public int Rp_Status_Update(GameAskDto gameAskDto){
+        int res = 0;
+
+        try{
+            res = sqlSessionTemplate.update(NAMESPACE + "rpstatusupdate", gameAskDto);
+        }catch (Exception e){
+            System.out.println("[ERROR]: Rp_Status_Update");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    @Override
+    public List<String> list_ask_status(GameAskPaging gameAskPaging){
+        List<String> res = new ArrayList<String>();
+
+        try{
+            res = sqlSessionTemplate.selectList(NAMESPACE + "ask_status", gameAskPaging);
+        }catch (Exception e){
+            System.out.println("[ERROR]: list_ask_status");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    @Override
+    public List<Integer> list_ask_no(GameAskPaging gameAskPaging){
+        List<Integer> res = new ArrayList<Integer>();
+
+        try{
+            res = sqlSessionTemplate.selectList(NAMESPACE + "ask_no", gameAskPaging);
+        }catch (Exception e){
+            System.out.println("[ERROR]: list_ask_no");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    @Override
+    public List<Integer> list_ask_gpno(GameAskPaging gameAskPaging){
+        List<Integer> res = new ArrayList<Integer>();
+
+        try{
+            res = sqlSessionTemplate.selectList(NAMESPACE + "ask_gpno", gameAskPaging);
+        }catch (Exception e){
+            System.out.println("[ERROR]: list_ask_gpno");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    @Override
+    public List<Integer> list_ask_gpsq(GameAskPaging gameAskPaging){
+        List<Integer> res = new ArrayList<Integer>();
+
+        try{
+            res = sqlSessionTemplate.selectList(NAMESPACE + "ask_gpsq", gameAskPaging);
+        }catch (Exception e){
+            System.out.println("[ERROR]: list_ask_gpsq");
             e.printStackTrace();
         }
 

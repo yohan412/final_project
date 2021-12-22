@@ -55,7 +55,7 @@ public class UserController {
 		if(res != null) {
 			if(passwordEncoder.matches(dto.getUser_pw(),res.getUser_pw())) {
 				session.setAttribute("login", res);
-				check=true;
+				 check=true;
 			}
 		} 
 		
@@ -66,7 +66,7 @@ public class UserController {
 	}
 	
 	//로그아웃
-	@RequestMapping(value="/logout", method = RequestMethod.POST)
+	@RequestMapping(value="/logout.do", method = RequestMethod.POST)
 	public String logout(HttpSession session) {
 		session.invalidate();
 		logger.info("Logout success");

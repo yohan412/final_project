@@ -79,7 +79,7 @@
 			    	  <a href="mercenary.do">Mercenary</a>
 			 	 </li>
 			 	 <li>
-			    	  <a href="#">QnA</a>
+			    	  <a href="qnalist.do">QnA</a>
 			 	 </li>
 			 	 <li>
 			 	 	  <a href="loginform.do" style="align:right;">로그인</a>

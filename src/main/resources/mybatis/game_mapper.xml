@@ -69,12 +69,56 @@
                  )
         WHERE rNum BETWEEN #{gameAskDto.rowStart} and #{gameAskDto.rowEnd}
         AND GAME_NO = #{game_no}
-        ORDER BY ASK_NO DESC,ASK_GPNO
+        ORDER BY ASK_GPNO DESC,ASK_GPSQ
+    </select>
+
+    <select id="CommentListCount" resultType="int">
+        <![CDATA[
+        SELECT COUNT(ASK_NO)
+        FROM GAME_ASK
+        WHERE ASK_NO > 0
+        ]]>
     </select>
 
     <insert id="commentinsert" parameterType="com.mvc.fotsal.model.dto.GameAskDto">
         INSERT INTO GAME_ASK VALUES (ASK_NOSQ.nextval, #{game_no}, #{ask_type}, ASK_GPNOSQ.nextval, 1, #{user_id}, #{ask_content}, sysdate, 'N')
     </insert>
+
+    <insert id="rpcommentinsert" parameterType="com.mvc.fotsal.model.dto.GameAskDto">
+        INSERT INTO GAME_ASK VALUES (ASK_NOSQ.nextval, #{game_no}, #{ask_type}, #{ask_gpno}, #{ask_gpsq} + 1, #{user_id}, #{ask_content}, sysdate, #{ask_status})
+    </insert>
+
+    <update id="rpstatusupdate" parameterType="com.mvc.fotsal.model.dto.GameAskDto">
+        UPDATE GAME_ASK SET ASK_STATUS = 'Y' WHERE ASK_NO = #{ask_no}
+    </update>
+
+    <select id="ask_status" parameterType="com.mvc.fotsal.paging.GameAskPaging" resultType="String">
+        SELECT ASK_STATUS FROM
+        (SELECT ASK_NO, ASK_STATUS, ROW_NUMBER() over (ORDER BY ASK_NO DESC) AS RNUM FROM GAME_ASK)
+        WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+        ORDER BY ASK_NO DESC
+    </select>
+
+    <select id="ask_no" parameterType="com.mvc.fotsal.paging.GameAskPaging" resultType="int">
+        SELECT ASK_NO FROM
+            (SELECT ASK_NO, ROW_NUMBER() over (ORDER BY ASK_NO DESC) AS RNUM FROM GAME_ASK)
+        WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+        ORDER BY ASK_NO DESC
+    </select>
+
+    <select id="ask_gpno" parameterType="com.mvc.fotsal.paging.GameAskPaging" resultType="int">
+        SELECT ASK_GPNO FROM
+        (SELECT ASK_NO, ASK_GPNO, ROW_NUMBER() over (ORDER BY ASK_NO DESC) AS RNUM FROM GAME_ASK)
+        WHERE RNUM BETWEEN #{rowStart} AND ${rowEnd}
+        ORDER BY ASK_NO DESC
+    </select>
+
+    <select id="ask_gpsq" parameterType="com.mvc.fotsal.paging.GameAskPaging" resultType="int">
+        SELECT ASK_GPSQ FROM
+        (SELECT ASK_NO, ASK_GPSQ, ROW_NUMBER() over (ORDER BY ASK_NO DESC ) AS RNUM FROM GAME_ASK)
+        WHERE RNUM BETWEEN #{rowStart} AND ${rowEnd}
+        ORDER BY ASK_NO DESC
+    </select>
 
     <insert id="gameinsert" parameterType="gameDto">
         INSERT INTO GAME VALUES

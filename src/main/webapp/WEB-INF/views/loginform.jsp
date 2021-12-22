@@ -117,7 +117,8 @@ img{
 	      })
 	      Kakao.Auth.setAccessToken(undefined)
 	    }
-	  }  
+	  }
+	
 </script>
 <script type="text/javascript">
 $(function(){
@@ -155,7 +156,6 @@ function login(){
 		});
 	}
 }
-
 </script>
 </head>
 <body>
@@ -177,16 +177,10 @@ function login(){
             </div>
             <div id="loginChk"></div>
         	<div class="kakao-login">
-            	<a href="https://kauth.kakao.com/oauth/authorize
-					    ?client_id=88f1f2f8a004d27ade8f7dea76f94ee3
-					    &redirect_uri=http://localhost:8787/kakaologin
-					    &response_type=code"><img src="img/Kakao.png"></a>
-        	</div>
-        	<div class="kakao-login">
             	<a href="javascript:void(0)"><img src="img/Kakao.png" onclick="kakaoLogin();"></a>
         	</div>
-        	<div class="naver-login">
-            	<img src="img/Naver.png">
+        	<div class="naver-login" id="naverIdLogin">
+            	<a href="${url }"><img src="img/Naver.png"></a>
         	</div>
         	<div class="caption">
             	<a href="">Forgot Password?</a>

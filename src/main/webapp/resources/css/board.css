@@ -139,6 +139,7 @@ a{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 .boardselect{
     width: 200px;      /*해당 width 설정해 둘 사이 간격 설정*/
@@ -147,6 +148,10 @@ a{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+}
+#boardselect_form > div:hover{
+	background: #ccc;
+	color: white;
 }
 #board_middle_form{
 	width: 800px;

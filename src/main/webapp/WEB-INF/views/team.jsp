@@ -16,8 +16,8 @@
 	<div class="main-all-box">
 		<div class="main-top-box">
 			<form action="#" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
-				<input type="hidden" name="user_no" value="${login.getUser_no}" readonly>
-				<input type="hidden" name="team_no" value="${team_nosq.nextval }">
+				<input type="hidden" name="user_no" value="${login.getUser_no()}" readonly>
+				<input type="hidden" name="team_no" value="${team_nosq.nextval}">
 				<div class="top-box-content">
 					<div class="title-text">	
 						<h2>팀 등록서</h2>

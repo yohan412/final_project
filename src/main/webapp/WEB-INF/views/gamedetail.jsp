@@ -145,21 +145,105 @@
                     </div>
                     <div class="reply_comment_form">
                         <div id="rp_comment_insert">
-                            <textarea id="rp_search"></textarea>
-                            <input type="button" id="button" value="등록">
+                            <textarea class="rp_search"></textarea>
+                            <input type="button" id="button" value="${ask_no[status.index]}" onclick="rp_comment_insert(${status.index})">
+                            <input type="hidden" class="ask_status" value="${ask_status[status.index]}">
+                            <input type="hidden" class="ask_no" value="${ask_no[status.index]}">
+                            <input type="hidden" class="ask_gpno" value="${ask_gpno[status.index]}">
+                            <input type="hidden" class="ask_gpsq" value="${ask_gpsq[status.index]}">
                         </div>
                     </div>
+                    <script type="text/javascript">
+                        function rp_comment_insert(idx){
+                            var author = '${gamedto.user_id}';
+                            var user_id = 'admin';
+                            var ask_type = '답변';
+                            var ask_content = $(".rp_search").eq(idx).val();
+                            var ask_status = $(".ask_status").eq(idx).val();      //기존은 N
+                            var ask_no = $(".ask_no").eq(idx).val();
+                            var ask_gpno = $(".ask_gpno").eq(idx).val();
+                            var ask_gpsq = $(".ask_gpsq").eq(idx).val();
+                            console.log(ask_gpno);
+                            console.log(ask_gpsq);
+
+                            if(author === user_id){
+                                if(ask_status === 'Y'){
+                                    alert('이미 답변한 사항입니다');
+                                }else{
+                                    if(ask_content == null || ask_content === ""){
+                                        alert('내용을 입력하세요');
+                                    }else{
+                                        var comment = {
+                                            "game_no"   : ${gamedto.game_no},               //현재 게시글 번호
+                                            "ask_type"  : ask_type,                         //답변 상태로 변경
+                                            "user_id"   : user_id,                          //로그인 중인 아이디
+                                            "ask_content"   : 'RE : ' + ask_content,        //답글 내용
+                                            "ask_gpno"      : ask_gpno,     //답글 번호
+                                            "ask_gpsq"      : ask_gpsq,     //답글 순서
+                                            "ask_status"    : 'Y'                           //답변 여부
+                                        }
+
+                                        var no = {
+                                            "ask_no" : ask_no
+                                        }
+                                        console.log(comment);
+                                        console.log(no);
+
+                                        $.ajax({
+                                            type: "post",
+                                            url: "/gamedetail_rp_comment_insert.do",
+                                            data:JSON.stringify(comment),
+                                            contentType: "application/json",
+                                            dataType: "json",
+                                            success: function (msg){
+                                                if(msg.check == true){
+                                                    alert('댓글등록 성공');
+                                                    $.ajax({
+                                                        type:"post",
+                                                        url:"/rp_comment_update.do",
+                                                        data: JSON.stringify(no),
+                                                        contentType:"application/json",
+                                                        dataType:"json",
+                                                        success: function (msg){
+                                                            if(msg.check == true){
+                                                                alert("수정 성공");
+                                                                location.href='/gamedetail.do?game_no=' + ${gamedto.game_no};
+                                                            }else{
+                                                                alert('수정 실패');
+
+                                                            }
+                                                        },
+                                                        error:function (request, status, error){
+                                                            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                                                        }
+                                                    });
+                                                }else{
+                                                    alert('댓글 등록 실패');
+                                                }
+                                            },
+                                            error:function (request, status, error){
+                                                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                                            }
+                                        });
+
+                                    }
+                                }
+                            }else{
+                                alert('경기 등록자만 답글을 작성할 수 있습니다');
+                            }
+                        }
+                    </script>
                 </c:forEach>
                 <%--댓글 페이징--%>
                 <div id="comment_paging">
                     <c:if test="${gameaskpagemaker.prev}">
-                        <button id="prevbutton" onclick="location.href='gamedetail.do?${gameaskpagemaker.makeQuery(gameaskpagemaker.startPage - 1)}&game_no=${gamedto.game_no}'"><</button>
+                        <button id="prevbutton" onclick="location.href='gamedetail.do${gameaskpagemaker.makeQuery(gameaskpagemaker.startPage - 1)}&game_no=${gamedto.game_no}'"><</button>
                     </c:if>
                     <c:forEach begin="${gameaskpagemaker.startPage}" end="${gameaskpagemaker.endPage}" var="idx">
-		               <button id="pagingnum" onclick="location.href='gamedetail.do?${gameaskpagemaker.makeQuery(idx)}&game_no=${gamedto.game_no}'">${idx}</button>
+		               <button id="pagingnum" onclick="location.href='gamedetail.do${gameaskpagemaker.makeQuery(idx)}&game_no=${gamedto.game_no}'">${idx}</button>
 		            </c:forEach>
                     <c:if test="${gameaskpagemaker.next && gameaskpagemaker.endPage > 0}">
-                        <button id="nextbutton" onclick="location.href='gamedetail.do?${gameaskpagemaker.makeQuery(gameaskpagemaker.endPage + 1)}&game_no=${gamedto.game_no}'">></button>
+                        <button id="nextbutton" onclick="location.href='gamedetail.do${gameaskpagemaker.makeQuery(gameaskpagemaker.endPage + 1)}&game_no=${gamedto.game_no}'">></button>
                     </c:if>
 
                 </div>
@@ -185,25 +269,29 @@
 
                             console.log(comment);
 
-                            $.ajax({
-                                type:"post",
-                                url:"/gamedetail_comment_insert.do",
-                                data:JSON.stringify(comment),
-                                contentType:"application/json",
-                                dataType:"json",
-                                success:function (msg){
-                                    if(msg.check === true){
-                                        alert('댓글등록 성공');
-                                        location.href='/gamedetail.do?game_no=' + ${gamedto.game_no};
+                            if(ask_content == null || ask_content === ""){
+                                alert("내용을 입력하세요")
+                            }else{
+                                $.ajax({
+                                    type:"post",
+                                    url:"/gamedetail_comment_insert.do",
+                                    data:JSON.stringify(comment),
+                                    contentType:"application/json",
+                                    dataType:"json",
+                                    success:function (msg){
+                                        if(msg.check === true){
+                                            alert('댓글등록 성공');
+                                            location.href='/gamedetail.do?game_no=' + ${gamedto.game_no};
+                                        }
+                                        else{
+                                            alert('댓글 등록 실패');
+                                        }
+                                    },
+                                    error:function (request, status, error){
+                                        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                                     }
-                                    else{
-                                        alert('댓글 등록 실패');
-                                    }
-                                },
-                                error:function (request, status, error){
-                                    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                                }
-                            });
+                                });
+                            }
                         }
                     </script>
             </div>

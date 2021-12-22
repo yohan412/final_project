@@ -9,9 +9,9 @@
 <title>boardwrite</title>
     <link href='<c:url value="${path}/resources/css/body.css"/>' rel="stylesheet">
 </head>
-<header><h1>header</h1></header>>
+<header><h1>header</h1></header>
 <body>
-	<form action="" method="post">
+	<form action="board_insert.do" method="post">
 		제목 : <input type="text" name="title" placeholder="제목" />
 		<br/>
 		글쓴이 : <input type="text" name="writer" placeholder="작성자"  />
@@ -23,7 +23,7 @@
 		<textarea name="contents" rows="5" cols="50" ></textarea>
 		<br/>
 		<input type="submit" value="등록">&nbsp;
-		<input type="reset" value="취소" onclick="">
+		<input type="reset" value="취소" onclick="location.href='qnaboard.do'">
 	</form>
 	<footer><h1>footer</h1></footer>	
 </body>

@@ -21,12 +21,12 @@ public class QnaBoardImpl implements QnaBoardBiz{
 
 	@Override
 	public QnaBoardDto selectOne(int qna_no) {
-		return null;
+		return dao.selectOne(qna_no);
 	}
 
 	@Override
 	public int insert(QnaBoardDto dto) {
-		return 0;
+		return dao.insert(dto);
 	}
 
 	@Override
