@@ -24,10 +24,5 @@ public class QnaBoardController {
 		return "qnaboard";
 	}
 	
-	@RequestMapping("/faqlist.do")
-	public String faqlist(Model model) {
-		
-		return "faqboard";
-	}
-	
+
 }
