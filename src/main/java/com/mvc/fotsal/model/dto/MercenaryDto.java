@@ -4,14 +4,14 @@ public class MercenaryDto {
 	private int user_no; // 유저 테이블의 user_no 
 	private String mercenary_intro; // 자기소개
 	private String mercenary_foot; // 주발
-	private int mercenary_rate; //승률
+	private double mercenary_rate; //승률
 	private String mercenary_position; //포지션
 	
 	public MercenaryDto() {
 		super();
 	}
 
-	public MercenaryDto(int user_no, String mercenary_intro, String mercenary_foot, int mercenary_rate,
+	public MercenaryDto(int user_no, String mercenary_intro, String mercenary_foot, double mercenary_rate,
 			String mercenary_position) {
 		super();
 		this.user_no = user_no;
@@ -45,7 +45,7 @@ public class MercenaryDto {
 		this.mercenary_foot = mercenary_foot;
 	}
 
-	public int getMercenary_rate() {
+	public double getMercenary_rate() {
 		return mercenary_rate;
 	}
 

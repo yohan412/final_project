@@ -12,28 +12,21 @@
 		return "redirect:index.do"; // 메인페이지로 이동
 	}
 	
-	function imgSrc_position(object) { // 클릭 시 포지션 이미지 변경 및 공격수~골키퍼 문자열 리턴
-		if($(object).attr('class') == 'attacker'){
+	function imgSrc_position(value) { // 클릭 시 포지션 이미지 변경 및 공격수~골키퍼 문자열 리턴
+		if(value == '공격수'){
 			document.getElementById("position").src = "img/footsalField01.png";
-		} else if($(object).attr('class')  == 'defender'){
+		} else if(value == '수비수'){
 			document.getElementById("position").src = "img/footsalField02.png";
-		} else if($(object).attr('class')  == 'leftWing'){
+		} else if(value == '좌측윙어'){
 			document.getElementById("position").src = "img/footsalField03.png";
-		} else if($(object).attr('class')  == 'rightWing'){
+		} else if(value == '우측윙어'){
 			document.getElementById("position").src = "img/footsalField04.png";
 		} else {
 			document.getElementById("position").src = "img/footsalField05.png";
 		}
-	    const position = $(object).attr('class');
+        console.log(value);
+        $('input[name=mercenary_position]').attr('value', value);
 	    console.log($('input:hidden'));
-	    $('input:hidden').each(function() {
-	        console.log($(this))
-	        if ($(this).attr('id') == position) {
-	            console.log($(this).val());
-	            return $(this).val();
-	        }
-	            console.log($(this).attr('id'));
-	    });
 	}
 
 </script>
@@ -66,13 +59,13 @@
 					<div class="select-position-detail">
 						<img src="img/footsalFieldBasic.png" id="position" usemap="#image-map">
 						<map name="image-map">
-						    <area  style="cursor: pointer;" target="" class="attacker" title="공격수" onclick="imgSrc_position(this)" coords="312,187,23" shape="circle">
-						    <area  style="cursor: pointer;" target="" class="defender" title="수비수" onclick="imgSrc_position(this)" coords="310,246,22" shape="circle">
-						    <area  style="cursor: pointer;" target="" class="leftWing" title="좌측윙어" onclick="imgSrc_position(this)" coords="210,234,22" shape="circle">
-						    <area  style="cursor: pointer;" target="" class="rightWing" title="우측윙어" onclick="imgSrc_position(this)" coords="407,231,21" shape="circle">
-						    <area  style="cursor: pointer;" target="" class="keeper" title="골키퍼" onclick="imgSrc_position(this)" coords="310,299,22" shape="circle">
+						    <area  style="cursor: pointer;" target="" class="attacker" title="공격수" onclick="imgSrc_position('공격수')" coords="312,187,23" shape="circle">
+						    <area  style="cursor: pointer;" target="" class="defender" title="수비수" onclick="imgSrc_position('수비수')" coords="310,246,22" shape="circle">
+						    <area  style="cursor: pointer;" target="" class="leftWing" title="좌측윙어" onclick="imgSrc_position('좌측윙어')" coords="210,234,22" shape="circle">
+						    <area  style="cursor: pointer;" target="" class="rightWing" title="우측윙어" onclick="imgSrc_position('우측윙어')" coords="407,231,21" shape="circle">
+						    <area  style="cursor: pointer;" target="" class="keeper" title="골키퍼" onclick="imgSrc_position('골키퍼')" coords="310,299,22" shape="circle">
 						</map>
-						<input type="hidden" name="mercenary_position" id="position_data" value="${(object).attr('class')}">
+						<input type="hidden" name="mercenary_position" id="hiddenInput" value="">
 					</div>
 					<hr>
 					<div class="content-introduce">
@@ -93,25 +86,6 @@
 </footer>
 </body>
 <script type="text/javascript">
-	
-	${".select-position-detail"}.click(function(e) ){
-	 // 클릭시에 세션이 없으면 로그인 해달라고 말하기
-		// var userno = "<모듈러=userno%>";
-		// if(userno == 0) {
-		// alert("로그인을 해주세요.");
-		//	return;
-		}
-		$.ajax({
-			type: "POST",
-			url: "http://localhost:8787/fostal/MercenaryController",
-			dataType: "text", 	// return 타입
-
-			success : function(imgLink){
-				if()
-			}
-		})
-		
-	}
 	
 </script>
 </html>
