@@ -26,11 +26,11 @@ header
 		<div id="boardselect_form">
 			<div class="boardselect">
 				<p id="faqboard" class="faqboard"
-					onclick="location.href='faqboard.jsp'">faq</p>
+					onclick="location.href='/fnalist.do'">faq</p>
 			</div>
 			<div class="boardselect">
 				<p id="qnaboard" class="qnaboard"
-					onclick="location.href='qnaboard.jsp'">q&a</p>
+					onclick="location.href='/qnalist.do'">q&a</p>
 			</div>
 		</div>
 	</div>

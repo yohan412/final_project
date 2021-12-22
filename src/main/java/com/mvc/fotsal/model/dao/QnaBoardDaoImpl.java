@@ -31,7 +31,17 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 
 	@Override
 	public QnaBoardDto selectOne(int qna_no) {
-		return null;
+		QnaBoardDto dto = null;
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE+"selectOne", qna_no);
+		} catch (Exception e) {
+			System.out.println("[error] : select one");
+			e.printStackTrace();
+		}
+		
+		
+		return dto;
 	}
 
 	@Override
