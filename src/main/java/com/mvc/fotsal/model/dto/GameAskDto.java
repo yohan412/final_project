@@ -60,11 +60,11 @@ public class GameAskDto {
         this.ask_gpno = ask_gpno;
     }
 
-    public int getAsk_Gpsq() {
+    public int getAsk_gpsq() {
         return ask_gpsq;
     }
 
-    public void setAsk_Gpsq(int ask_gpsq) {
+    public void setAsk_gpsq(int ask_gpsq) {
         this.ask_gpsq = ask_gpsq;
     }
 

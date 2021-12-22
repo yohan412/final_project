@@ -1,12 +1,15 @@
 package com.mvc.fotsal;
 
 import com.mvc.fotsal.model.biz.GameBiz;
+import com.mvc.fotsal.model.biz.UserBiz;
 import com.mvc.fotsal.model.dto.GameAskDto;
 import com.mvc.fotsal.model.dto.GameDto;
+import com.mvc.fotsal.model.dto.UserDto;
 import com.mvc.fotsal.paging.GameAskPageMaker;
 import com.mvc.fotsal.paging.GameAskPaging;
 import com.mvc.fotsal.paging.GamePageMaker;
 import com.mvc.fotsal.paging.GamePaging;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.apache.http.HttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,15 +31,16 @@ public class GameController {
     private GameBiz gameBiz;
 
     @RequestMapping("/gamelist.do")
-    public String GameListPage(Model model, GamePaging gamePaging){
+    public String GameListPage(Model model, GamePaging gamePaging, HttpServletRequest request){
         logger.info("Move to GameList Page");
+
+        HttpSession session = request.getSession();                                 //세션 관련
 
         model.addAttribute("gamelist", gameBiz.GameList(gamePaging));   //리스트 모델 추가
 
         GamePageMaker gamePageMaker = new GamePageMaker();                          //페이징 선언
         gamePageMaker.setGamePaging(gamePaging);
         gamePageMaker.setTotalCount(gameBiz.listCount());
-
         model.addAttribute("gamepagemaker", gamePageMaker);             //페이징 지정
 
         model.addAttribute("ddaychk", gameBiz.DdayChk(gamePaging));
@@ -107,11 +111,13 @@ public class GameController {
     }
 
     @RequestMapping("/gamedetail.do")
-    public String GameDetailPage(Model model, int game_no, GameAskPaging gameAskPaging, HttpServletRequest request){
+    public String GameDetailPage(Model model, int game_no, GameAskPaging gameAskPaging){
     	logger.info("Move to GameDetail Page");
         model.addAttribute("gamedto", gameBiz.GameDetail(game_no));
 
         GameAskPageMaker gameAskPageMaker = new GameAskPageMaker();
+        gameAskPageMaker.setGameAskPaging(gameAskPaging);
+        gameAskPageMaker.setTotalCount(gameBiz.CommentListCount());
         model.addAttribute("gameaskpagemaker", gameAskPageMaker);
 
         //D-day 모델 지정
@@ -174,9 +180,12 @@ public class GameController {
 
         List<GameAskDto> commentlist = gameBiz.CommentList(dblist);
 
-        /*HttpSession session = request.getSession();*/
-
         model.addAttribute("commentlist", commentlist);
+
+        model.addAttribute("ask_status", gameBiz.list_ask_status(gameAskPaging));
+        model.addAttribute("ask_no", gameBiz.list_ask_no(gameAskPaging));
+        model.addAttribute("ask_gpno", gameBiz.list_ask_gpno(gameAskPaging));
+        model.addAttribute("ask_gpsq", gameBiz.list_ask_gpsq(gameAskPaging));
 
         return "gamedetail";
     }
@@ -196,6 +205,47 @@ public class GameController {
             logger.info("Insert Success");
             check = true;
         }
+        map.put("check", check);
+
+        return map;
+    }
+
+    @RequestMapping(value = "/gamedetail_rp_comment_insert.do", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Boolean> Detail_rp_Comment_Insert(@RequestBody GameAskDto gameAskDto){
+        logger.info("Insert rp Comment");
+
+        Map<String, Boolean> map = new HashMap<String, Boolean>();
+        boolean check = false;
+
+        int res = gameBiz.Rp_Comment_Insert(gameAskDto);
+
+        logger.info("res: " + res);
+
+        if(res > 0){
+            logger.info("Insert Success");
+            check = true;
+        }
+
+        map.put("check", check);
+        return map;
+    }
+
+    @RequestMapping(value = "/rp_comment_update.do", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Boolean> Detail_rp_Comment_Update(@RequestBody GameAskDto gameAskDto){
+        logger.info("Update Comment");
+
+        Map<String, Boolean> map = new HashMap<String, Boolean>();
+        boolean check = false;
+
+        int res = gameBiz.Rp_Status_Update(gameAskDto);
+
+        if(res > 0){
+            logger.info("Update Success");
+            check = true;
+        }
+
         map.put("check", check);
 
         return map;

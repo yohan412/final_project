@@ -257,14 +257,19 @@ a{
 }
 #prevbutton{
     margin-right:3px;
-
+    color: black;
+    cursor: pointer;
 }
 #nextbutton{
     margin-left:3px;
+    color: black;
+    cursor: pointer;
 }
 #pagingnum{
     margin-left:5px;
     margin-right:5px;
+    color: black;
+    cursor: pointer;
 }
 #comment_insert_form{
     width: 900px;
@@ -317,7 +322,7 @@ a{
     height: 120px;
     border: 1px solid black;
 }
-#rp_comment_insert #rp_search{
+#rp_comment_insert .rp_search{
     font-size: 16px;
     width: 566px;
     height: 116px;

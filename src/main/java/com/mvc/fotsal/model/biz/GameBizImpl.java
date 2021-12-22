@@ -18,31 +18,26 @@ public class GameBizImpl implements GameBiz{
 
     @Override
     public List<GameDto> GameList(GamePaging gamePaging) {
-
         return gameDao.GameList(gamePaging);
     }
 
     @Override
     public int listCount() {
-
         return gameDao.listCount();
     }
 
     @Override
     public List<Integer> DdayChk(GamePaging gamePaging){
-
         return gameDao.Ddaychk(gamePaging);
     }
 
     @Override
     public List<String> GameTime(){
-
         return gameDao.GameTime();
     }
 
     @Override
     public List<Integer> GameMercenary(GamePaging gamePaging){
-
         return gameDao.GameMercenary(gamePaging);
     }
 
@@ -72,8 +67,43 @@ public class GameBizImpl implements GameBiz{
     }
 
     @Override
+    public int CommentListCount(){
+        return gameDao.CommentListCount();
+    }
+
+    @Override
     public int CommentInsert(GameAskDto gameAskDto){
         return gameDao.CommentInsert(gameAskDto);
+    }
+
+    @Override
+    public int Rp_Comment_Insert(GameAskDto gameAskDto){
+        return gameDao.Rp_Comment_Insert(gameAskDto);
+    }
+
+    @Override
+    public int Rp_Status_Update(GameAskDto gameAskDto){
+        return gameDao.Rp_Status_Update(gameAskDto);
+    }
+
+    @Override
+    public List<String> list_ask_status(GameAskPaging gameAskPaging){
+        return gameDao.list_ask_status(gameAskPaging);
+    }
+
+    @Override
+    public List<Integer> list_ask_no(GameAskPaging gameAskPaging){
+        return gameDao.list_ask_no(gameAskPaging);
+    }
+
+    @Override
+    public List<Integer> list_ask_gpno(GameAskPaging gameAskPaging){
+        return gameDao.list_ask_gpno(gameAskPaging);
+    }
+
+    @Override
+    public List<Integer> list_ask_gpsq(GameAskPaging gameAskPaging){
+        return gameDao.list_ask_gpsq(gameAskPaging);
     }
 
     @Override
