@@ -12,13 +12,13 @@ import com.mvc.fotsal.model.biz.QnaBoardBiz;
 @Controller
 public class QnaBoardController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(QnaBoardController.class);
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
 	@Autowired
 	private QnaBoardBiz biz;
 	
 	@RequestMapping("/qnalist.do")
-	public String list(Model model) {	// qnaboard 게시판 리스트
+	public String list(Model model) {	// qnaboard
 		logger.info("Select QnaBoard List, move page qnaboard.jsp");
 		model.addAttribute("list",biz.selectList());
 		return "qnaboard";
