@@ -21,7 +21,7 @@ public interface GameDao {
     public String GameTime_per(int game_no);
     public int GameMercenary_per(int game_no);
     public List<GameAskDto> CommentList(Map<String, Object> dblist);
-    public int CommentListCount();
+    public int CommentListCount(int game_no);
     public int CommentInsert(GameAskDto gameAskDto);
     public int Rp_Comment_Insert(GameAskDto gameAskDto);
     public int Rp_Status_Update(GameAskDto gameAskDto);

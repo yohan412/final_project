@@ -155,11 +155,11 @@ public class GameDaoImpl implements GameDao{
     }
 
     @Override
-    public int CommentListCount(){
+    public int CommentListCount(int game_no){
         int listcount = 0;
 
         try{
-            listcount = sqlSessionTemplate.selectOne(NAMESPACE + "CommentListCount");
+            listcount = sqlSessionTemplate.selectOne(NAMESPACE + "CommentListCount", game_no);
         }catch (Exception e){
             System.out.println("[ERROR]: CommentListCount");
             e.printStackTrace();

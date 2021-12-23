@@ -62,14 +62,15 @@
 
     <select id="commentlist" resultType="com.mvc.fotsal.model.dto.GameAskDto" parameterType="map">
         SELECT ASK_NO, GAME_NO, ASK_TYPE, ASK_GPNO, ASK_GPSQ, USER_ID, ASK_CONTENT, ASK_REG, ASK_STATUS
-        FROM (
-             SELECT ASK_NO, GAME_NO, ASK_TYPE, ASK_GPNO, ASK_GPSQ, USER_ID, ASK_CONTENT, ASK_REG, ASK_STATUS,
-                    ROW_NUMBER() over (ORDER BY ASK_NO DESC) AS rNum
+        FROM
+            (
+                SELECT ASK_NO, GAME_NO, ASK_TYPE, ASK_GPNO, ASK_GPSQ, USER_ID, ASK_CONTENT, ASK_REG, ASK_STATUS,
+                       ROW_NUMBER() over (ORDER BY ASK_GPNO DESC ) AS RNUM
                 FROM GAME_ASK
-                 )
-        WHERE rNum BETWEEN #{gameAskDto.rowStart} and #{gameAskDto.rowEnd}
-        AND GAME_NO = #{game_no}
-        ORDER BY ASK_GPNO DESC,ASK_GPSQ
+            )
+        WHERE RNUM BETWEEN 1 AND 10
+          AND GAME_NO = ${game_no}
+        ORDER BY ASK_GPNO DESC, ASK_GPSQ
     </select>
 
     <select id="CommentListCount" resultType="int">
@@ -77,6 +78,7 @@
         SELECT COUNT(ASK_NO)
         FROM GAME_ASK
         WHERE ASK_NO > 0
+        AND GAME_NO = #{game_no}
         ]]>
     </select>
 
