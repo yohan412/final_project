@@ -67,7 +67,7 @@
 		  	 		   <a href="#">Home</a>
 		  	 	 </li>
 		 	 	 <li>
-		    	 	  <a href="#">Game</a>
+		    	 	  <a href="gamelist.do">Game</a>
 		   	  	 </li>
 		 	 	 <li>
 			    	  <a href="#">Stadium</a>
