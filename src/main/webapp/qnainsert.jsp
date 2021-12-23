@@ -23,7 +23,7 @@
 		<textarea name="contents" rows="5" cols="50" ></textarea>
 		<br/>
 		<input type="submit" value="등록">&nbsp;
-		<input type="reset" value="취소" onclick="location.href='qnaboard.do'">
+		<input type="reset" value="취소" onclick="location.href='qnalist.do'">
 	</form>
 	<footer><h1>footer</h1></footer>	
 </body>

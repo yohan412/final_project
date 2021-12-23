@@ -22,7 +22,15 @@ public class QnaBoardController {
 		logger.info("Select QnaBoard List, move page qnaboard.jsp");
 		model.addAttribute("list",biz.selectList());
 		return "qnaboard";
+
 	}
-	
+
+	@RequestMapping("/qnadetail.do")
+	public String detail(Model model, int qna_no) {
+		logger.info("SELECT ONE");
+		model.addAttribute("dto", biz.selectOne(qna_no));
+		
+		return "qnadetail";
+	}
 
 }
