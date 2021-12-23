@@ -26,7 +26,7 @@ public class TeamBizImpl implements TeamBiz{
 
 	@Override
 	public int insert(TeamDto dto) {
-		return 0;
+		return dao.insert(dto);
 	}
 
 	@Override

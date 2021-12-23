@@ -32,7 +32,17 @@ public class TeamDaoImpl implements TeamDao{
 	
 	@Override
 	public int insert(TeamDto dto) {
-		return 0;
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE+"insert",dto);
+		} catch (Exception e) {
+			System.out.println("error: team insert failed");
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 	@Override

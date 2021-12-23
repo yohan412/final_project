@@ -15,7 +15,7 @@
 <section>
 	<div class="main-all-box">
 		<div class="main-top-box">
-			<form action="#" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
+			<form action="teamInsert.do" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
 				<input type="hidden" name="user_no" value="${login.getUser_no()}" readonly>
 				<input type="hidden" name="team_no" value="${team_nosq.nextval}">
 				<div class="top-box-content">
@@ -36,7 +36,7 @@
 					</div>
 					<div class="content-introduce">
 						<h5 class="head-text">3. 팀 소개 및 한마디</h5>
-						<textarea rows="10" cols="60" placeholder="팀 소개와 한마디를 적어주세요" required></textarea>
+						<textarea rows="10" cols="60" name="team_intro" placeholder="팀 소개와 한마디를 적어주세요" required></textarea>
 					</div>
 					<div class="content-addchk">
 						<h5 class="head-text">4. 모집 여부</h5>

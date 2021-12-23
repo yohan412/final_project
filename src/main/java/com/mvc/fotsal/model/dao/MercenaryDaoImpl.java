@@ -35,7 +35,7 @@ public class MercenaryDaoImpl implements MercenaryDao{
 		try {
 			res = sqlSession.insert(NAMESPACE+"insert",dto);
 		} catch (Exception e) {
-			System.out.println("error: insert failed");
+			System.out.println("error: mercenary insert failed");
 			e.printStackTrace();
 		}
 		

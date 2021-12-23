@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mvc.fotsal.model.biz.TeamBiz;
+import com.mvc.fotsal.model.dto.TeamDto;
 
 @Controller
 public class TeamController {
@@ -15,6 +16,27 @@ public class TeamController {
 
 	@Autowired
 	private TeamBiz biz;
+	
+	@RequestMapping(value="/team.do")
+	public String insertForm() { // 팀 등록 페이지
+		logger.info("move page team.jsp");
+		
+		return "team";
+	}
+	
+	@RequestMapping(value="/teamInsert.do")
+	public String team_insert(TeamDto dto) {
+		logger.info("팀 등록서 작성중");
+		int res = biz.insert(dto);
+		
+		if(res>0) {
+			logger.info("팀 등록서 작성완료");
+			return "redirect:teamlist.do";
+		}else {
+			logger.info("팀 등록서 작성실패");
+			return "redirect:team.do";
+		}
+	}
 	
 	@RequestMapping(value="/teamlist.do")
 	public String teamList(Model model) { // 팀 게시판(리스트)
@@ -24,7 +46,7 @@ public class TeamController {
 		return "teamboard";
 	}
 	
-	@RequestMapping("/team_detail.do")
+	@RequestMapping(value="/team_detail.do")
 	public String detail(Model model, int team_no) { // 팀 자세히보기
 		logger.info("move page team_detail.jsp");
 		model.addAttribute("dto", biz.selectOne(team_no));
@@ -32,11 +54,5 @@ public class TeamController {
 		return "team_detail";
 	}
 	
-	@RequestMapping(value="/team.do")
-	public String insertForm() { // 팀 등록 페이지
-		logger.info("move page team.jsp");
-		
-		return "team";
-	}
 
 }

@@ -2,8 +2,12 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="teamInfo">
-
+<mapper namespace="team_info">
+	
+	<insert id="insert" parameterType="teamDto">
+		INSERT INTO TEAM_INFO
+		VALUES(#{team_name),#{team_intro},TEAM_NOSQ.NEXTVAL,{team_addchk})
+	</insert>
 
 
 
