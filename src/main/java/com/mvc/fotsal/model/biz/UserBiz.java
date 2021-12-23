@@ -7,4 +7,5 @@ public interface UserBiz {
 	public int insert(UserDto dto);
 	public int idChk(String user_id);
 	public UserDto findId(UserDto dto);
+	public int changePw(UserDto dto);
 }
