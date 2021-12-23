@@ -13,7 +13,7 @@ public class MercenaryBizImpl implements MercenaryBiz{
 	private MercenaryDao dao;
 
 	@Override
-	public MercenaryDto mercenaryDetail(MercenaryDto dto) {
+	public MercenaryDto mercenaryDetail(int user_no) {
 		return null;
 	}
 

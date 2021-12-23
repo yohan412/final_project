@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mvc.fotsal.model.biz.MercenaryBiz;
@@ -23,10 +24,9 @@ public class MercenaryController {
 		return "mercenary";
 	}
 	
-	@RequestMapping(value="/mercenary_insert.do")
+	@RequestMapping(value="/mercenaryInsert.do")
 	public String mercenary_insert(MercenaryDto dto) {
 		logger.info("용병지원서 작성중");
-		System.out.println("포지션값:"+dto.getMercenary_position());
 		int res = biz.insert(dto);
 		
 		if(res>0) {
@@ -39,18 +39,22 @@ public class MercenaryController {
 		
 	}
 	
-	private void alert(String string) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@RequestMapping(value="/mercenaryDetail.do") // 용병 지원 자세히보기
-	public String mercenaryDetail() {
+	public String mercenaryDetail(Model model, int user_no) {
 		logger.info("move page mercenary_detail.jsp");
-		
+		model.addAttribute("detail", biz.mercenaryDetail(user_no));
 		
 		
 		return "mercenary_detail";
+	}
+	
+	@RequestMapping(value="/mercenaryUpdate.do")
+	public String mercenaryUpdate(Model model, int user_no) {
+		logger.info("move page mercenary_update.jsp");
+		
+		model.addAttribute("detail", biz.mercenaryDetail(user_no));
+		
+		return "mercenary_update";
 	}
 	
 	@RequestMapping(value="/index.do") // 메인페이지로 이동하기
