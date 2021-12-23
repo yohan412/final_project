@@ -211,11 +211,25 @@ public class GameDaoImpl implements GameDao{
     }
 
     @Override
-    public List<String> list_ask_status(GameAskPaging gameAskPaging){
+    public List<String> list_user_id(Map<String, Object> dblist){
         List<String> res = new ArrayList<String>();
 
         try{
-            res = sqlSessionTemplate.selectList(NAMESPACE + "ask_status", gameAskPaging);
+            res = sqlSessionTemplate.selectList(NAMESPACE + "user_id", dblist);
+        }catch (Exception e){
+            System.out.println("[ERROR]: list_user_id");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    @Override
+    public List<String> list_ask_status(Map<String, Object> dblist){
+        List<String> res = new ArrayList<String>();
+
+        try{
+            res = sqlSessionTemplate.selectList(NAMESPACE + "ask_status", dblist);
         }catch (Exception e){
             System.out.println("[ERROR]: list_ask_status");
             e.printStackTrace();
@@ -225,11 +239,11 @@ public class GameDaoImpl implements GameDao{
     }
 
     @Override
-    public List<Integer> list_ask_no(GameAskPaging gameAskPaging){
+    public List<Integer> list_ask_no(Map<String, Object> dblist){
         List<Integer> res = new ArrayList<Integer>();
 
         try{
-            res = sqlSessionTemplate.selectList(NAMESPACE + "ask_no", gameAskPaging);
+            res = sqlSessionTemplate.selectList(NAMESPACE + "ask_no", dblist);
         }catch (Exception e){
             System.out.println("[ERROR]: list_ask_no");
             e.printStackTrace();
@@ -239,11 +253,11 @@ public class GameDaoImpl implements GameDao{
     }
 
     @Override
-    public List<Integer> list_ask_gpno(GameAskPaging gameAskPaging){
+    public List<Integer> list_ask_gpno(Map<String, Object> dblist){
         List<Integer> res = new ArrayList<Integer>();
 
         try{
-            res = sqlSessionTemplate.selectList(NAMESPACE + "ask_gpno", gameAskPaging);
+            res = sqlSessionTemplate.selectList(NAMESPACE + "ask_gpno", dblist);
         }catch (Exception e){
             System.out.println("[ERROR]: list_ask_gpno");
             e.printStackTrace();
@@ -253,13 +267,27 @@ public class GameDaoImpl implements GameDao{
     }
 
     @Override
-    public List<Integer> list_ask_gpsq(GameAskPaging gameAskPaging){
+    public List<Integer> list_ask_gpsq(Map<String, Object> dblist){
         List<Integer> res = new ArrayList<Integer>();
 
         try{
-            res = sqlSessionTemplate.selectList(NAMESPACE + "ask_gpsq", gameAskPaging);
+            res = sqlSessionTemplate.selectList(NAMESPACE + "ask_gpsq", dblist);
         }catch (Exception e){
             System.out.println("[ERROR]: list_ask_gpsq");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    @Override
+    public int Comment_Delete(GameAskDto gameAskDto){
+        int res = 0;
+
+        try{
+            res = sqlSessionTemplate.delete(NAMESPACE + "deletecomment", gameAskDto);
+        }catch (Exception e){
+            System.out.println("[ERROR]: Comment_Delete");
             e.printStackTrace();
         }
 

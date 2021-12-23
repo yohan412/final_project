@@ -87,23 +87,33 @@ public class GameBizImpl implements GameBiz{
     }
 
     @Override
-    public List<String> list_ask_status(GameAskPaging gameAskPaging){
-        return gameDao.list_ask_status(gameAskPaging);
+    public List<String> list_user_id(Map<String, Object> dblist){
+        return gameDao.list_user_id(dblist);
     }
 
     @Override
-    public List<Integer> list_ask_no(GameAskPaging gameAskPaging){
-        return gameDao.list_ask_no(gameAskPaging);
+    public List<String> list_ask_status(Map<String, Object> dblist){
+        return gameDao.list_ask_status(dblist);
     }
 
     @Override
-    public List<Integer> list_ask_gpno(GameAskPaging gameAskPaging){
-        return gameDao.list_ask_gpno(gameAskPaging);
+    public List<Integer> list_ask_no(Map<String, Object> dblist){
+        return gameDao.list_ask_no(dblist);
     }
 
     @Override
-    public List<Integer> list_ask_gpsq(GameAskPaging gameAskPaging){
-        return gameDao.list_ask_gpsq(gameAskPaging);
+    public List<Integer> list_ask_gpno(Map<String, Object> dblist){
+        return gameDao.list_ask_gpno(dblist);
+    }
+
+    @Override
+    public List<Integer> list_ask_gpsq(Map<String, Object> dblist){
+        return gameDao.list_ask_gpsq(dblist);
+    }
+
+    @Override
+    public int Comment_Delete(GameAskDto gameAskDto){
+        return gameDao.Comment_Delete(gameAskDto);
     }
 
     @Override
