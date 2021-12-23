@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,16 +79,27 @@
 			    	  <a href="#">Team</a>
 			 	 </li>
 			 	 <li>
-			    	  <a href="mercenary.do">Mercenary</a>
+			    	  <a href="mercenaryDetail.do">Mercenary</a>
 			 	 </li>
 			 	 <li>
 			    	  <a href="qnalist.do">QnA</a>
 			 	 </li>
 			 	 <li>
-			 	 	  <a href="loginform.do" style="align:right;">로그인</a>
-			 	 </li>
-			 	 <li>
-
+					  <!-- 로그인 하지 않은 상태 -->
+					  <c:if test="${login == null }">
+					  	<a href="loginform.do">로그인</a>
+					  </c:if>
+				 </li>
+				 <li>
+				 	  <c:if test="${login == null }">
+					  	<a href="registerform.do">회원가입</a>
+					  </c:if>
+				 </li>
+				 <li>
+					  <!-- 로그인한 상태 -->
+					  <c:if test="${login != null }">
+					  	<a href="loginform.do">로그아웃</a>
+					  </c:if>
 			 	 </li>
 			 	 <li>
 			 	 	  <span sec:authentication="user_id"></span>

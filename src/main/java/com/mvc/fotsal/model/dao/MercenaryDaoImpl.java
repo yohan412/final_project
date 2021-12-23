@@ -13,9 +13,18 @@ public class MercenaryDaoImpl implements MercenaryDao{
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public MercenaryDto mercenaryDetail(MercenaryDto dto) {
+	public MercenaryDto mercenaryDetail(int user_no) {
+		MercenaryDto detail = null;
 		
-		return null;
+		try {
+			detail = sqlSession.selectOne(NAMESPACE+"detail",user_no);
+		} catch (Exception e) {
+			System.out.println("error: select one failed");
+			e.printStackTrace();
+		}
+		
+		
+		return detail;
 	}
 
 	@Override
@@ -26,6 +35,7 @@ public class MercenaryDaoImpl implements MercenaryDao{
 		try {
 			res = sqlSession.insert(NAMESPACE+"insert",dto);
 		} catch (Exception e) {
+			System.out.println("error: insert failed");
 			e.printStackTrace();
 		}
 		

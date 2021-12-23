@@ -31,11 +31,11 @@
 					<div id="boardselect_form">
 						<div class="boardselect">
 							<p id="faqboard" class="faqboard"
-								onclick="location.href='/faqlist.do'">FAQ</p>
+								onclick="location.href='faqlist.do'">FAQ</p>
 						</div>
 						<div class="boardselect">
 							<p id="qnaboard" class="qnaboard"
-								onclick="location.href='/qnalist.do'">Q&A</p>
+								onclick="location.href='qnalist.do'">Q&A</p>
 						</div>
 					</div>
 				</div>
