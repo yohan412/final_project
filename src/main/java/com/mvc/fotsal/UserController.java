@@ -171,4 +171,37 @@ public class UserController {
 		return "change_pw_form";
 	}
 	
+	@RequestMapping("/change_pw.do")
+	public String change_pw(UserDto dto,@RequestParam("mybirthyy") String yy,
+									@RequestParam("mybirthmm") String mm,
+									@RequestParam("mybirthdd") String dd,Model model) {
+		logger.info("CHANGE PW");
+		
+		dto.setUser_birthdate(yy+"-"+mm+"-"+dd);
+		int res=biz.changePw(dto);
+		
+		if(res>0) {
+			model.addAttribute("user_id",dto.getUser_id());
+			return "change_pw_input";
+		}else {
+			return "redirect:change_pw_form.do";
+		}
+		
+	}
+	
+	@RequestMapping("/change_pw_input.do")
+	public String chage_pw_input(UserDto dto,Model model) {
+		logger.info("CHANGE_PW_INPUT");
+		
+		dto.setUser_pw(passwordEncoder.encode(dto.getUser_pw()));
+		int res = biz.changePwInput(dto);
+		
+		if(res>0) {
+			return "redirect:loginform.do";
+		}else {
+			model.addAttribute("user_id",dto.getUser_id());
+			return "change_pw_input";
+		}
+	}
+	
 }
