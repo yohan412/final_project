@@ -3,7 +3,6 @@ package com.mvc.fotsal;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -18,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mvc.fotsal.auth.SNS;
-import com.mvc.fotsal.auth.SNSLogin;
 import com.mvc.fotsal.message.messageApp;
 import com.mvc.fotsal.model.biz.UserBiz;
 import com.mvc.fotsal.model.dto.UserDto;
@@ -35,22 +32,11 @@ public class UserController {
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
 	
-	@Inject
-	private SNS naverSns;
-	
 	@RequestMapping("/loginform.do")
 	public String loginForm() {
 		logger.info("LOGIN PAGE");
 		
 		return "loginform";
-	}
-	
-	@RequestMapping(value="/login", method = RequestMethod.GET)
-	public void login(Model model) throws Exception {
-		logger.info("login GET ....");
-		
-		SNSLogin snsLogin = new SNSLogin(naverSns);
-		model.addAttribute("naver_url", snsLogin.getNaverAuthURL());
 	}
 	
 	//로그인
@@ -76,7 +62,7 @@ public class UserController {
 	}
 	
 	//로그아웃
-	@RequestMapping(value="/logout.do", method = RequestMethod.POST)
+	@RequestMapping(value="/logout", method = RequestMethod.POST)
 	public String logout(HttpSession session) {
 		session.invalidate();
 		logger.info("Logout success");
