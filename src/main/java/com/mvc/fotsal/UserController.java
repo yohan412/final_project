@@ -3,6 +3,7 @@ package com.mvc.fotsal;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -17,7 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mvc.fotsal.LoginAPI.KakaoService;
+import com.mvc.fotsal.auth.SNS;
+import com.mvc.fotsal.auth.SNSLogin;
 import com.mvc.fotsal.message.messageApp;
 import com.mvc.fotsal.model.biz.UserBiz;
 import com.mvc.fotsal.model.dto.UserDto;
@@ -33,14 +35,22 @@ public class UserController {
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
 	
-	@Autowired
-    private KakaoService kakaoService;
+	@Inject
+	private SNS naverSns;
 	
 	@RequestMapping("/loginform.do")
 	public String loginForm() {
 		logger.info("LOGIN PAGE");
 		
 		return "loginform";
+	}
+	
+	@RequestMapping(value="/login", method = RequestMethod.GET)
+	public void login(Model model) throws Exception {
+		logger.info("login GET ....");
+		
+		SNSLogin snsLogin = new SNSLogin(naverSns);
+		model.addAttribute("naver_url", snsLogin.getNaverAuthURL());
 	}
 	
 	//로그인
@@ -130,15 +140,7 @@ public class UserController {
 		
 		return ran;
 	}
-	
-	@RequestMapping("/kakaologin")
-    public String home(@RequestParam(value = "code", required = false) String code) throws Exception{
-        System.out.println("#########" + code);
-        String access_Token = kakaoService.getAccessToken(code);
-        System.out.println("###access_Token#### : " + access_Token);
-        return "loginform.do";
-    }
-	
+	 
 	@RequestMapping("/find_id_form.do")
 	public String find_id_form() {
 		logger.info("FIND ID FORM");

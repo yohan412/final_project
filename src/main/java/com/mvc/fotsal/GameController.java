@@ -117,7 +117,7 @@ public class GameController {
 
         GameAskPageMaker gameAskPageMaker = new GameAskPageMaker();
         gameAskPageMaker.setGameAskPaging(gameAskPaging);
-        gameAskPageMaker.setTotalCount(gameBiz.CommentListCount());
+        gameAskPageMaker.setTotalCount(gameBiz.CommentListCount(game_no));
         model.addAttribute("gameaskpagemaker", gameAskPageMaker);
 
         //D-day 모델 지정
