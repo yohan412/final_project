@@ -18,15 +18,15 @@ public class FaqBoardDaoImpl implements FaqBoardDao{
 
 	@Override
 	public List<FaqBoardDto> selectList() {
-		List<FaqBoardDto> list = new ArrayList<FaqBoardDto>();
+		List<FaqBoardDto> faqlist = new ArrayList<FaqBoardDto>();
 		
 		try {
-			list = sqlSession.selectList(NAMESPACE+"selectList");
+			faqlist = sqlSession.selectList(NAMESPACE+"selectList");
 		} catch (Exception e) {
 			System.out.println("[error] : select list");
 			e.printStackTrace();
 		}
-		return list;
+		return faqlist;
 	}
 
 	@Override

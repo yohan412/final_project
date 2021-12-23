@@ -132,15 +132,13 @@ public class UserController {
 	}
 	
 	@RequestMapping("/phonechk.do")
-	@ResponseBody
-	public String phoneChk(String user_phone) {
-		logger.info("PHONE CHECK");
+	public String phoneChk(@RequestParam("user_phone")String user_phone) {
+		logger.info("PHONE CHECK :"+user_phone);
 		
 		String ran = messageApp.sendsms(user_phone);
 		
 		
-		
-		return null;
+		return ran;
 	}
 	 
 	@RequestMapping("/find_id_form.do")

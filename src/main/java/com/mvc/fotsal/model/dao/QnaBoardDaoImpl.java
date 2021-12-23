@@ -17,16 +17,16 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 
 	@Override
 	public List<QnaBoardDto> selectList() {
-		List<QnaBoardDto> list = new ArrayList<QnaBoardDto>();
+		List<QnaBoardDto> qnalist = new ArrayList<QnaBoardDto>();
 		
 		try {
-			list = sqlSession.selectList(NAMESPACE+"selectList");
+			qnalist = sqlSession.selectList(NAMESPACE+"selectList");
 		} catch (Exception e) {
 			System.out.println("[error] : select list");
 			e.printStackTrace();
 		}
 		
-		return list;
+		return qnalist;
 	}
 
 	@Override

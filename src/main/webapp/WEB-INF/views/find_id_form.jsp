@@ -141,36 +141,31 @@ select {
 	border-radius: 10px;
 }
 </style>
-<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	function phonechk(){
-		var phonenum = document.getElementsByName("user_phone")[0];
-		var phonechkVal = {
-				"user_phone":user_phone
-		};
+		var phone = document.getElementsByName("user_phone")[0];
 		
 		
-		if(phonenum.value.trim()==""||phonenum.value==null){
-			alert("ID 및 PW를 확인해 주세요");
+		if(phone.value.trim()==""||phone.value==null){
+			alert("전화번호를 입력해 주세요");
 		}else{
 			$.ajax({
 				type:"post",
 				url:"phonechk.do",
-				data:JSON.stringify(phonechlVal),
-				contentType:"application/json",
-				dataType:"json",
-				success:function(){
-					if(msg.check==true){
-						location.href="index.jsp";
+				data:{user_phone:phone.value},
+				success:function(ran){
+					if(ran!=null){
+						document.getElementsByName("rannum")[0].value=ran;
 					}else{
-						$("#loginChk").show();
-						$("#loginChk").html("ID 혹은 PW가 잘못되었습니다.");
+						alert("문자서비스 오류");
 					}
 				},
 				error:function(){
 					alert("통신 실패");
 				}
 			});
+		}
 	}
 	function rannumchk(){
 		var rannum = document.getElementsByName("rannum")[0].value;
@@ -356,12 +351,13 @@ select {
 				<div id="phone_wrap">
 					
 					<div id="button1">
-						<input type="button" value="인증번호 받기"	class="button1" onclick="phonechk();">
+						<input type="button" value="인증번호 받기"	class="button1" onclick="phonechk()">
 					</div>
 					<div id="phone_certification">
 					 <span class="box"> 
 					 	<input type="text" id="dd" class="int" name="inputnum" placeholder="인증번호 6자리" value="" required="required">
 					 	<input type="hidden" name="rannum" value="null">
+					 </span>
 					</div>
 				</div>
 			</div>
@@ -374,7 +370,7 @@ select {
 					<span>확인</span>
 				</button>
 				<br><br>
-				<button type="button" onclick="'" id="button2" style="background-color: gray;">
+				<button type="button" onclick="index.do'" id="button2" style="background-color: gray;">
 					<span>취소</span>
 				</button>
 			</div>
