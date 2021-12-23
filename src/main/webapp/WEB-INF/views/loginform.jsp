@@ -81,7 +81,7 @@ img{
 }
 
 </style>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js" charset="utf-8"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript">
 	Kakao.init('0489eca4932b8ea38718d86e8712239a'); //발급받은 키 중 javascript키를 사용해준다.
@@ -121,15 +121,17 @@ img{
 	    }
 	  }
 	
-	// 네이버 로그인 버튼 클릭
-	function loginWithNaver() {
-	    $.ajax({
-	        url: '/login/getNaverAuthUrl',
-	        type: 'get',
-	    }).done(function (res) {
-	        location.href = res;
-	    });
-	}
+	// 네이버 로그인
+	var naverLogin = new naver.LoginWithNaverId({ 
+		clientId: "WcZgXDWPFq0qvi6_Qqt6", 
+		callbackUrl: "http://localhost:8787/callback", 
+		isPopup: false,  //팝업을 통한 연동처리 여부 
+		loginButton: {color: "green", type: 3, height: 62}
+	});
+	
+	naverLogin.init();
+	
+
 	
 </script>
 <script type="text/javascript">
@@ -192,6 +194,7 @@ function login(){
             	<a href="javascript:void(0)"><img src="img/Kakao.png" onclick="kakaoLogin();"></a>
         	</div>
         	<div class="naver-login">
+        	<div id="naver_id_login"></div>
             	<a href="javascript:void(0)"><img src="img/naver.png" onclick="loginWithNaver();"></a>
         	</div>
         	<div class="caption">
