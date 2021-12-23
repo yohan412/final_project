@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -119,6 +121,16 @@ img{
 	    }
 	  }
 	
+	// 네이버 로그인 버튼 클릭
+	function loginWithNaver() {
+	    $.ajax({
+	        url: '/login/getNaverAuthUrl',
+	        type: 'get',
+	    }).done(function (res) {
+	        location.href = res;
+	    });
+	}
+	
 </script>
 <script type="text/javascript">
 $(function(){
@@ -179,8 +191,8 @@ function login(){
         	<div class="kakao-login">
             	<a href="javascript:void(0)"><img src="img/Kakao.png" onclick="kakaoLogin();"></a>
         	</div>
-        	<div class="naver-login" id="naverIdLogin">
-            	<a href="${url }"><img src="img/Naver.png"></a>
+        	<div class="naver-login">
+            	<a href="javascript:void(0)"><img src="img/naver.png" onclick="loginWithNaver();"></a>
         	</div>
         	<div class="caption">
             	<a href="">Forgot Password?</a>
