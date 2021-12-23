@@ -67,8 +67,8 @@ public class GameBizImpl implements GameBiz{
     }
 
     @Override
-    public int CommentListCount(){
-        return gameDao.CommentListCount();
+    public int CommentListCount(int game_no){
+        return gameDao.CommentListCount(game_no);
     }
 
     @Override
