@@ -33,4 +33,9 @@ public class UserBizImpl implements UserBiz {
 		return dao.findId(dto);
 	}
 
+	@Override
+	public int changePw(UserDto dto) {
+		return dao.changePw(dto);
+	}
+
 }

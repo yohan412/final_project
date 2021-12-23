@@ -189,7 +189,7 @@ select {
 			가입시 입력하셨던 전화번호를 작성해주세요. <br> 입력하신 전화번호로 인증번호를 발송해 드립니다.
 		</h5>
 		<div id="content">
-		<form action="chage_pw.do" method="post"  onsubmit="return rannumchk()">
+		<form action="change_pw.do" method="post"  onsubmit="return rannumchk()">
 			<div>
 				<h3 class="join_title">
 					<label for="USER_ID">ID</label>

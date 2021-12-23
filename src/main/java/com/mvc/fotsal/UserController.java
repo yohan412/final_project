@@ -171,4 +171,20 @@ public class UserController {
 		return "change_pw_form";
 	}
 	
+	@RequestMapping("/change_pw")
+	public int change_pw(UserDto dto,@RequestParam("mybirthyy") String yy,
+									@RequestParam("mybirthmm") String mm,
+									@RequestParam("mybirthdd") String dd) {
+		logger.info("CHANGE PW");
+		
+		dto.setUser_birthdate(yy+"-"+mm+"-"+dd);
+		int res=biz.changePw(dto);
+		
+		if(res>0) {
+			
+		}
+		
+		return res;
+	}
+	
 }

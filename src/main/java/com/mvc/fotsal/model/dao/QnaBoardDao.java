@@ -5,7 +5,7 @@ import java.util.List;
 import com.mvc.fotsal.model.dto.QnaBoardDto;
 
 public interface QnaBoardDao {
-	String NAMESPACE = "qnaInfo.";
+	String NAMESPACE = "qnainfo.";
 	
 	public List<QnaBoardDto> selectList();
 	public QnaBoardDto selectOne(int qna_no);
