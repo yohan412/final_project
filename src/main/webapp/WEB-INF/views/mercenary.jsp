@@ -40,7 +40,7 @@
 <section>
 	<div class="main-all-box">
 		<div class="main-top-box">
-			<form action="mercenary_insert.do" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
+			<form action="mercenaryInsert.do" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
 				<input type="hidden" name="user_no" value="${login.getUser_no()}" readonly>
 				<div class="top-box-content">
 					<div class="title-text">	
