@@ -12,77 +12,6 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="${path}/resources/js/gameinsert.js"></script>
-    <script type="text/javascript">
-        function sd(){
-            var region = $('select[name=game_region]').val();
-            var stadium = $('input[name=game_stadium]').val();
-            var addr = $('input[name=game_addr]').val();
-            var date = $('input[name=game_date]').val();
-            var time = $('input[name=game_time]').val();
-            var people = $('select[name=game_people]').val();
-            var mercenary = $('input[name=game_mercenary]').val();
-            var content = $('textarea[name=game_content]').val();
-            var type = $('input[name=game_type]:checked').val();
-
-            if(region === '예시' || people === '선택' || !stadium || !addr || !date || !time){
-                if(region === '예시'){
-                    alert('지역을 선택하세요');
-                }
-                if(people === '선택'){
-                    alert('인원수를 선택하세요');
-                }
-                if(!stadium){
-                    alert("경기장 이름을 입력하세요");
-                }
-                if(!addr){
-                    alert("경기장 주소 확인을 하세요");
-                }
-                if(!date){
-                    alert("경기 날짜를 입력하세요");
-                }
-                if(!time){
-                    alert("경기 시간을 입력하세요");
-                }
-            }else{
-                if(!mercenary){
-                    mercenary = 0;
-                    alert(mercenary);
-                }
-                var inputvar = {
-                    "user_id" : 'admin',
-                    "game_region" : region,
-                    "game_stadium" : stadium,
-                    "game_addr" : addr,
-                    "game_date" : date,
-                    "game_time" : time,
-                    "game_people" : people,
-                    "game_mercenary" : mercenary,
-                    "game_content" : content,
-                    "game_type" : type
-                };
-                console.log(inputvar);
-                $.ajax({
-                    type:"post",
-                    url:"/gameinsert.do",
-                    data:JSON.stringify(inputvar),
-                    contentType:"application/json",
-                    dataType:"json",
-                    success:function (msg){
-                        if(msg.check == true){
-                            alert('등록 성공');
-                            location.href='gamelist.do';
-                        }
-                        else{
-                            alert('실패');
-                        }
-                    },
-                    error:function (){
-                        alert('통신 오류');
-                    }
-                });
-            }
-        };
-    </script>
 </head>
 <body>
 <header>
@@ -245,7 +174,7 @@
                         <textarea id="textarea" name="game_content"></textarea>
                     </div>
                 </div>
-                <div id="button_form"><input type="button" value="경기 등록" id="button" onclick="sd()"></div>
+                <div id="button_form"><input type="button" value="경기 등록" id="button" onclick="sd('${userDto.user_id}')"></div>
             </div>
     </div>
 </section>

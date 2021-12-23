@@ -66,9 +66,9 @@
             (
                 SELECT ASK_NO, GAME_NO, ASK_TYPE, ASK_GPNO, ASK_GPSQ, USER_ID, ASK_CONTENT, ASK_REG, ASK_STATUS,
                        ROW_NUMBER() over (ORDER BY ASK_GPNO DESC ) AS RNUM
-                FROM GAME_ASK
+                FROM GAME_ASK where GAME_NO = #{game_no} ORDER BY ASK_GPNO DESC, ASK_GPSQ
             )
-        WHERE RNUM BETWEEN 1 AND 10
+        WHERE RNUM BETWEEN #{gameAskDto.rowStart} AND #{gameAskDto.rowEnd}
           AND GAME_NO = ${game_no}
         ORDER BY ASK_GPNO DESC, ASK_GPSQ
     </select>
@@ -94,33 +94,49 @@
         UPDATE GAME_ASK SET ASK_STATUS = 'Y' WHERE ASK_NO = #{ask_no}
     </update>
 
-    <select id="ask_status" parameterType="com.mvc.fotsal.paging.GameAskPaging" resultType="String">
+    <select id="user_id" parameterType="map" resultType="String">
+        SELECT USER_ID FROM
+        (SELECT GAME_NO, ASK_GPNO, ASK_GPSQ, USER_ID, ROW_NUMBER() over (ORDER BY ASK_GPNO DESC) AS RNUM FROM GAME_ASK  where GAME_NO = #{game_no} ORDER BY ASK_GPNO DESC, ASK_GPSQ)
+        WHERE RNUM BETWEEN #{gameAskDto.rowStart} AND #{gameAskDto.rowEnd}
+        AND GAME_NO = #{game_no}
+        ORDER BY ASK_GPNO DESC, ASK_GPSQ
+    </select>
+
+    <select id="ask_status" parameterType="map" resultType="String">
         SELECT ASK_STATUS FROM
-        (SELECT ASK_NO, ASK_STATUS, ROW_NUMBER() over (ORDER BY ASK_NO DESC) AS RNUM FROM GAME_ASK)
-        WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
-        ORDER BY ASK_NO DESC
+        (SELECT GAME_NO, ASK_GPNO, ASK_GPSQ, ASK_STATUS, ROW_NUMBER() over (ORDER BY ASK_GPNO DESC) AS RNUM FROM GAME_ASK where GAME_NO = #{game_no} ORDER BY ASK_GPNO DESC, ASK_GPSQ)
+        WHERE RNUM BETWEEN #{gameAskDto.rowStart} AND #{gameAskDto.rowEnd}
+        AND GAME_NO = #{game_no}
+        ORDER BY ASK_GPNO DESC, ASK_GPSQ
     </select>
 
-    <select id="ask_no" parameterType="com.mvc.fotsal.paging.GameAskPaging" resultType="int">
+    <select id="ask_no" parameterType="map" resultType="int">
         SELECT ASK_NO FROM
-            (SELECT ASK_NO, ROW_NUMBER() over (ORDER BY ASK_NO DESC) AS RNUM FROM GAME_ASK)
-        WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
-        ORDER BY ASK_NO DESC
+            (SELECT ASK_NO, GAME_NO, ASK_GPNO, ASK_GPSQ, ROW_NUMBER() over (ORDER BY ASK_GPNO DESC) AS RNUM FROM GAME_ASK where GAME_NO = #{game_no} ORDER BY ASK_GPNO DESC, ASK_GPSQ)
+        WHERE RNUM BETWEEN #{gameAskDto.rowStart} AND #{gameAskDto.rowEnd}
+        AND GAME_NO = ${game_no}
+        ORDER BY ASK_GPNO DESC, ASK_GPSQ
     </select>
 
-    <select id="ask_gpno" parameterType="com.mvc.fotsal.paging.GameAskPaging" resultType="int">
+    <select id="ask_gpno" parameterType="map" resultType="int">
         SELECT ASK_GPNO FROM
-        (SELECT ASK_NO, ASK_GPNO, ROW_NUMBER() over (ORDER BY ASK_NO DESC) AS RNUM FROM GAME_ASK)
-        WHERE RNUM BETWEEN #{rowStart} AND ${rowEnd}
-        ORDER BY ASK_NO DESC
+        (SELECT ASK_NO, GAME_NO, ASK_GPNO, ASK_GPSQ, ROW_NUMBER() over (ORDER BY ASK_GPNO DESC) AS RNUM FROM GAME_ASK where GAME_NO = #{game_no} ORDER BY ASK_GPNO DESC, ASK_GPSQ)
+        WHERE RNUM BETWEEN #{gameAskDto.rowStart} AND #{gameAskDto.rowEnd}
+        AND GAME_NO = #{game_no}
+        ORDER BY ASK_GPNO DESC, ASK_GPSQ
     </select>
 
-    <select id="ask_gpsq" parameterType="com.mvc.fotsal.paging.GameAskPaging" resultType="int">
+    <select id="ask_gpsq" parameterType="map" resultType="int">
         SELECT ASK_GPSQ FROM
-        (SELECT ASK_NO, ASK_GPSQ, ROW_NUMBER() over (ORDER BY ASK_NO DESC ) AS RNUM FROM GAME_ASK)
-        WHERE RNUM BETWEEN #{rowStart} AND ${rowEnd}
-        ORDER BY ASK_NO DESC
+        (SELECT ASK_NO, GAME_NO, ASK_GPNO, ASK_GPSQ, ROW_NUMBER() over (ORDER BY ASK_GPNO DESC ) AS RNUM FROM GAME_ASK where GAME_NO = #{game_no} ORDER BY ASK_GPNO DESC, ASK_GPSQ)
+        WHERE RNUM BETWEEN #{gameAskDto.rowStart} AND #{gameAskDto.rowEnd}
+        AND GAME_NO = #{game_no}
+        ORDER BY ASK_GPNO DESC, ASK_GPSQ
     </select>
+
+    <delete id="deletecomment" parameterType="com.mvc.fotsal.model.dto.GameAskDto">
+        DELETE FROM GAME_ASK WHERE ASK_NO = #{ask_no}
+    </delete>
 
     <insert id="gameinsert" parameterType="gameDto">
         INSERT INTO GAME VALUES

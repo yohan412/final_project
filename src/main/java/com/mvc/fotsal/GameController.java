@@ -9,8 +9,6 @@ import com.mvc.fotsal.paging.GameAskPageMaker;
 import com.mvc.fotsal.paging.GameAskPaging;
 import com.mvc.fotsal.paging.GamePageMaker;
 import com.mvc.fotsal.paging.GamePaging;
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import org.apache.http.HttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +27,9 @@ public class GameController {
 
     @Autowired
     private GameBiz gameBiz;
+
+    @Autowired
+    private UserBiz userBiz;
 
     @RequestMapping("/gamelist.do")
     public String GameListPage(Model model, GamePaging gamePaging, HttpServletRequest request){
@@ -111,7 +112,7 @@ public class GameController {
     }
 
     @RequestMapping("/gamedetail.do")
-    public String GameDetailPage(Model model, int game_no, GameAskPaging gameAskPaging){
+    public String GameDetailPage(Model model, int game_no, GameAskPaging gameAskPaging, HttpServletRequest request){
     	logger.info("Move to GameDetail Page");
         model.addAttribute("gamedto", gameBiz.GameDetail(game_no));
 
@@ -182,10 +183,17 @@ public class GameController {
 
         model.addAttribute("commentlist", commentlist);
 
-        model.addAttribute("ask_status", gameBiz.list_ask_status(gameAskPaging));
-        model.addAttribute("ask_no", gameBiz.list_ask_no(gameAskPaging));
-        model.addAttribute("ask_gpno", gameBiz.list_ask_gpno(gameAskPaging));
-        model.addAttribute("ask_gpsq", gameBiz.list_ask_gpsq(gameAskPaging));
+        model.addAttribute("user_id", gameBiz.list_user_id(dblist));
+        model.addAttribute("ask_status", gameBiz.list_ask_status(dblist));
+        model.addAttribute("ask_no", gameBiz.list_ask_no(dblist));
+        model.addAttribute("ask_gpno", gameBiz.list_ask_gpno(dblist));
+        model.addAttribute("ask_gpsq", gameBiz.list_ask_gpsq(dblist));
+
+        //세션
+        HttpSession session = request.getSession();
+        UserDto userDto = (UserDto) session.getAttribute("login");
+
+        model.addAttribute("userDto", userDto);
 
         return "gamedetail";
     }
@@ -251,9 +259,35 @@ public class GameController {
         return map;
     }
 
+    @RequestMapping(value = "/comment_delete.do", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Boolean> Comment_Delete(@RequestBody GameAskDto gameAskDto){
+        logger.info("Delete Comment");
+
+        Map<String, Boolean> map = new HashMap<String, Boolean>();
+        boolean check = false;
+
+        int res = gameBiz.Comment_Delete(gameAskDto);
+
+        if(res > 0){
+            logger.info("Delete Success");
+            check = true;
+        }
+
+        map.put("check", true);
+
+        return map;
+    }
+
     @RequestMapping("/gameinsertform.do")
-    public String GameInsertPage(){
+    public String GameInsertPage(Model model, HttpServletRequest request){
         logger.info("Move to GameInsert Page");
+
+        //세션
+        HttpSession session = request.getSession();
+        UserDto userDto = (UserDto) session.getAttribute("login");
+
+        model.addAttribute("userDto", userDto);
 
         return "gameinsert";
     }
