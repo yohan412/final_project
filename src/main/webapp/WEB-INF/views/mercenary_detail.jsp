@@ -37,19 +37,19 @@
 					</div>
 					<div class="select-position-detail">
 					<c:choose>
-						<c:when test="${detail.getMercenary_position == '공격수' }">
+						<c:when test="${detail.getMercenary_position() == '공격수' }">
 							<img src="img/footsalField01.png" readonly>
 						</c:when>
-						<c:when test="${detail.getMercenary_position == '수비수' }">
+						<c:when test="${detail.getMercenary_position() == '수비수' }">
 							<img src="img/footsalField02.png" readonly>
 						</c:when>
-						<c:when test="${detail.getMercenary_position == '좌측윙어' }">
+						<c:when test="${detail.getMercenary_position() == '좌측윙어' }">
 							<img src="img/footsalField03.png" readonly>
 						</c:when>
-						<c:when test="${detail.getMercenary_position == '우측윙어' }">
+						<c:when test="${detail.getMercenary_position() == '우측윙어' }">
 							<img src="img/footsalField04.png" readonly>
 						</c:when>
-						<c:when test="${detail.getMercenary_position == '골키퍼' }">
+						<c:when test="${detail.getMercenary_position() == '골키퍼' }">
 							<img src="img/footsalField05.png" readonly>
 						</c:when>
 					</c:choose>
@@ -60,7 +60,7 @@
 						<textarea rows="10" cols="60" placeholder="자기소개와 한마디를 적어주세요" readonly>${detail.getMercenary_intro() }</textarea>
 					</div>
 					<div class="content-submit" align="right">
-						<input id="pointer" type="button" value="경기 초대하기" onclick="">
+						<input id="pointer" type="button" value="경기 초대하기" onclick=""><!-- 문자api 적용 -->
 						<input id="pointer" type="button" value="목록" onclick="location.href='gamedetail.do?game_no=${gamedto.getGame_no()}'">
 						<input id="pointer" type="button" value="수정" onclick="location.href='mercenaryUpdate.do?user_no=${detail.getUser_no()}'">
 					</div>
