@@ -88,8 +88,14 @@
 					  <!-- 로그인 하지 않은 상태 -->
 					  <c:if test="${login == null }">
 					  	<a href="loginform.do">로그인</a>
+					  </c:if>
+				 </li>
+				 <li>
+				 	  <c:if test="${login == null }">
 					  	<a href="registerform.do">회원가입</a>
 					  </c:if>
+				 </li>
+				 <li>
 					  <!-- 로그인한 상태 -->
 					  <c:if test="${login != null }">
 					  	<a href="loginform.do">로그아웃</a>
