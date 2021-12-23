@@ -5,8 +5,8 @@ import com.mvc.fotsal.model.dto.MercenaryDto;
 public interface MercenaryDao {
 	String NAMESPACE = "mercenary_info.";
 	
-	public MercenaryDto mercenaryDetail(MercenaryDto dto); // 용병지원서 자세히보기
-	public int insert(MercenaryDto dto);
-	public int update(MercenaryDto dto);
-	public int delete(int user_no);
+	public MercenaryDto mercenaryDetail(int user_no); // 용병지원서 자세히보기
+	public int insert(MercenaryDto dto); // 용병지원서 작성
+	public int update(MercenaryDto dto); // 용병지원서 수정
+	public int delete(int user_no); // 용병지원서 삭제
 }

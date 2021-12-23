@@ -74,6 +74,19 @@ import com.mvc.fotsal.model.dto.UserDto;
 			
 			return res;
 		}
+
+		@Override
+		public int changePwInput(UserDto dto) {
+			int res=0;
+			
+			try {
+				res=sqlSession.update(NAMESPACE+"changepwinput",dto);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return res;
+		}
 		
 		
 }

@@ -27,4 +27,10 @@
 		SELECT * FROM USER_INFO WHERE USER_EMAIL=#{user_email} AND USER_PHONE=#{user_phone} AND USER_ID=#{user_id}
 	</select>
 	
+	<update id="changepwinput" parameterType="UserDto">
+		UPDATE USER_INFO
+		SET USER_PW=#{user_pw}
+		WHERE USER_ID=#{user_id}
+	</update>
+	
 </mapper>

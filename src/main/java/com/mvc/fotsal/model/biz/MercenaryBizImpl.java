@@ -14,7 +14,7 @@ public class MercenaryBizImpl implements MercenaryBiz{
 
 	@Override
 	public MercenaryDto mercenaryDetail(int user_no) {
-		return null;
+		return dao.mercenaryDetail(user_no);
 	}
 
 	@Override

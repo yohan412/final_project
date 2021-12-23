@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mvc.fotsal.model.biz.MercenaryBiz;
 import com.mvc.fotsal.model.dto.MercenaryDto;
@@ -40,9 +41,10 @@ public class MercenaryController {
 	}
 	
 	@RequestMapping(value="/mercenaryDetail.do") // 용병 지원 자세히보기
-	public String mercenaryDetail(Model model, int user_no) {
+	public String mercenaryDetail(Model model,@RequestParam("user_no")int user_no) {
 		logger.info("move page mercenary_detail.jsp");
 		model.addAttribute("detail", biz.mercenaryDetail(user_no));
+		
 		
 		
 		return "mercenary_detail";

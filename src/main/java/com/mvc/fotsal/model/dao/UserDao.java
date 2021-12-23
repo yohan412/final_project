@@ -11,4 +11,5 @@ public interface UserDao {
 	public int idChk(String user_id);
 	public UserDto findId(UserDto dto);
 	public int changePw(UserDto dto);
+	public int changePwInput(UserDto dto);
 }
