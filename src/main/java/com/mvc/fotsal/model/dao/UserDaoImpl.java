@@ -48,6 +48,19 @@ import com.mvc.fotsal.model.dto.UserDto;
 			}
 			return res;
 		}
+
+		@Override
+		public UserDto findId(UserDto dto) {
+			UserDto res = null;
+			
+			try {
+				res=sqlSession.selectOne(NAMESPACE+"findid",dto);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return res;
+		}
 		
 		
 }

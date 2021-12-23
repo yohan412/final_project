@@ -19,5 +19,8 @@
 		SELECT * FROM USER_INFO WHERE USER_ID=#{user_id}
 	</select>
 	
+	<select id="findid" parameterType="UserDto" resultType="UserDto">
+		SELECT * FROM USER_INFO WHERE USER_EMAIL=#{user_email} AND USER_PHONE=#{user_phone}
+	</select>
 	
 </mapper>

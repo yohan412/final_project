@@ -122,11 +122,11 @@ public class UserController {
 	}
 	
 	@RequestMapping("/phonechk.do")
+	@ResponseBody
 	public String phoneChk(@RequestParam("user_phone")String user_phone) {
 		logger.info("PHONE CHECK :"+user_phone);
 		
 		String ran = messageApp.sendsms(user_phone);
-		
 		
 		return ran;
 	}
@@ -145,4 +145,28 @@ public class UserController {
 		
 		return "find_id_form";
 	}
+	
+	@RequestMapping("/find_id.do")
+	public String find_id(UserDto dto,@RequestParam("mybirthyy") String yy,
+								@RequestParam("mybirthmm") String mm,
+								@RequestParam("mybirthdd") String dd,Model model) {
+		
+		logger.info("FIND ID");
+		dto.setUser_birthdate(yy+"-"+mm+"-"+dd);
+		
+		UserDto res = biz.findId(dto);
+		
+		logger.info(res.getUser_id());
+		model.addAttribute("user_id",res.getUser_id());
+		
+		return "find_id";
+	}
+	
+	@RequestMapping("/change_pw_form.do")
+	public String change_pw_form() {
+		logger.info("CHANGE PW FORM");
+		
+		return "change_pw_form";
+	}
+	
 }

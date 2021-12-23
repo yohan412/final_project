@@ -28,4 +28,9 @@ public class UserBizImpl implements UserBiz {
 		return dao.idChk(user_id);
 	}
 
+	@Override
+	public UserDto findId(UserDto dto) {
+		return dao.findId(dto);
+	}
+
 }
