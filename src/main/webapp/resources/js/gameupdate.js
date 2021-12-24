@@ -27,7 +27,6 @@ function Addr_api() {
 
         }
     }).open();
-
 }
 
 function sd(user_id){
@@ -64,42 +63,10 @@ function sd(user_id){
             alert("경기 시간을 입력하세요");
             return false;
         }
-    }else{
-        if(!mercenary){
+    }else {
+        if (!mercenary) {
             mercenary = 0;
         }
         return true;
-        /*var inputvar = {
-            "user_id" : user_id,
-            "game_region" : region,
-            "game_stadium" : stadium,
-            "game_addr" : addr,
-            "game_date" : date,
-            "game_time" : time,
-            "game_people" : people,
-            "game_mercenary" : mercenary,
-            "game_content" : content,
-            "game_type" : type
-        };
-        console.log(inputvar);
-        $.ajax({
-            type:"post",
-            url:"/gameinsert.do",
-            data:JSON.stringify(inputvar),
-            contentType:"application/json",
-            dataType:"json",
-            success:function (msg){
-                if(msg.check == true){
-                    alert('등록 성공');
-                    location.href='gamelist.do';
-                }
-                else{
-                    alert('실패');
-                }
-            },
-            error:function (){
-                alert('통신 오류');
-            }
-        });*/
     }
 };

@@ -309,12 +309,30 @@ public class GameDaoImpl implements GameDao{
     }
 
     @Override
-    public int GameUpdate() {
-        return 0;
+    public int GameUpdate(GameDto gameDto) {
+        int res = 0;
+
+        try{
+            res = sqlSessionTemplate.update(NAMESPACE + "gameupdate", gameDto);
+        }catch (Exception e){
+            System.out.println("[ERROR]: GameUpdate");
+            e.printStackTrace();
+        }
+
+        return res;
     }
 
     @Override
-    public int GameDelete() {
-        return 0;
+    public int GameDelete(int game_no) {
+        int res = 0;
+
+        try{
+            res = sqlSessionTemplate.delete(NAMESPACE + "gamedelete", game_no);
+        }catch (Exception e){
+            System.out.println("[ERROR]: GameDelete");
+            e.printStackTrace();
+        }
+
+        return res;
     }
 }

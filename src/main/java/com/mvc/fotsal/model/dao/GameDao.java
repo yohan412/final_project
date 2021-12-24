@@ -32,6 +32,6 @@ public interface GameDao {
     public List<Integer> list_ask_gpsq(Map<String, Object> dblist);
     public int Comment_Delete(GameAskDto gameAskDto);
     public int GameInsert(GameDto gameDto);
-    public int GameUpdate();
-    public int GameDelete();
+    public int GameUpdate(GameDto gameDto);
+    public int GameDelete(int game_no);
 }

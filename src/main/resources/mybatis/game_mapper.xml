@@ -142,5 +142,17 @@
         INSERT INTO GAME VALUES
         (GAME_NOSQ.nextval, #{user_id}, #{game_region}, #{game_stadium}, #{game_addr},
          #{game_date}, #{game_time}, #{game_people}, #{game_mercenary}, #{game_content}, #{game_type})
+         <selectKey keyProperty="game_no" resultType="Integer" order="AFTER">
+             SELECT GAME_NOSQ.currval FROM DUAL
+         </selectKey>
     </insert>
+
+    <update id="gameupdate" parameterType="gameDto">
+        UPDATE GAME SET GAME_REGION = #{game_region}, GAME_STADIUM = #{game_stadium}, GAME_ADDR = #{game_addr}, GAME_DATE = #{game_date}, GAME_TIME = #{game_time},
+                        GAME_PEOPLE = #{game_people}, GAME_MERCENARY = #{game_mercenary}, GAME_CONTENT = #{game_content}, GAME_TYPE = #{game_type} WHERE GAME_NO = ${game_no}
+    </update>
+
+    <delete id="gamedelete" parameterType="int">
+        DELETE GAME WHERE GAME_NO = #{game_no}
+    </delete>
 </mapper>

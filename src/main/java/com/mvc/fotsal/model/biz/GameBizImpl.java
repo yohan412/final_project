@@ -122,12 +122,12 @@ public class GameBizImpl implements GameBiz{
     }
 
     @Override
-    public int GameUpdate() {
-        return gameDao.GameUpdate();
+    public int GameUpdate(GameDto gameDto) {
+        return gameDao.GameUpdate(gameDto);
     }
 
     @Override
-    public int GameDelete() {
-        return gameDao.GameDelete();
+    public int GameDelete(int game_no) {
+        return gameDao.GameDelete(game_no);
     }
 }

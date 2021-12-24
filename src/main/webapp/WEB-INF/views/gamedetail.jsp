@@ -15,7 +15,7 @@
 </head>
 <body>
 <header>
-    헤더
+    <%@ include file="/WEB-INF/views/header.jsp" %>
 </header>
 <section>
     <div id="mainform">
@@ -123,6 +123,9 @@
                 <%--기타 내용 구역--%>
                	<textarea id="textarea_form" readonly>${gamedto.game_content}</textarea>
             </div>
+            <div id="picture_form" style="width: 900px; min-height: 150px; background-color: #166cea">
+
+            </div>
             <%--버튼 구역--%>
             <div id="button_form">
                 <input type="button" value="수정하기" class="button" onclick="move_to_update_form('${gamedto.user_id}','${userDto.user_id}', ${gamedto.game_no})">
@@ -183,6 +186,7 @@
             <div id="mergency_list_form">
                 <c:forEach begin="1" end="10">
                     <div id="mergency_list">
+                        <div id="mergency_id">아이디</div>
                         <div id="mergency_foot">주발</div>
                         <div id="mergency_position">포지션</div>
                         <div id="mergency_rate">50%</div>

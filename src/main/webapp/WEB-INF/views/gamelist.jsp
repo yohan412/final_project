@@ -14,7 +14,7 @@
 </head>
 <body>
 <header>
-로고
+    <%@ include file="/WEB-INF/views/header.jsp" %>
 </header>
 <section>
     <div id="mainform">
@@ -71,7 +71,16 @@
                 </c:if>
             </div>
             <div style="width: 200px; height: 100%; display: flex; align-items: center; justify-content: center">
-                <input type="button" value="경기 등록" onclick="location.href='/gameinsertform.do'">
+                <input type="button" value="경기 등록" onclick="game_insert('${userDto.user_id}')">
+                <script type="text/javascript">
+                    function game_insert(user_id){
+                        if(user_id === "" || user_id == null){
+                            alert('회원만 경기 등록이 가능합니다');
+                        }else{
+                            location.href='/gameinsertform.do';
+                        }
+                    }
+                </script>
             </div>
         </div>
         <div id="serchform">

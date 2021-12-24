@@ -12,12 +12,16 @@ import com.mvc.fotsal.paging.GamePaging;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.*;
 
@@ -34,8 +38,6 @@ public class GameController {
     @RequestMapping("/gamelist.do")
     public String GameListPage(Model model, GamePaging gamePaging, HttpServletRequest request){
         logger.info("Move to GameList Page");
-
-        HttpSession session = request.getSession();                                 //세션 관련
 
         model.addAttribute("gamelist", gameBiz.GameList(gamePaging));   //리스트 모델 추가
 
@@ -107,6 +109,12 @@ public class GameController {
         }
 
         model.addAttribute("statuses", statuses);
+
+        //세션
+        HttpSession session = request.getSession();
+        UserDto userDto = (UserDto) session.getAttribute("login");
+
+        model.addAttribute("userDto", userDto);
 
         return "gamelist";
     }
@@ -292,24 +300,100 @@ public class GameController {
         return "gameinsert";
     }
 
-    @RequestMapping(value = "/gameinsert.do", method = RequestMethod.POST)
-    @ResponseBody
-    public Map<String, Boolean> GameInsert(Model model, @RequestBody GameDto gameDto){
+    @RequestMapping(value = "/gameinsert.do")
+    public String GameInsert(Model model, GameDto gameDto, HttpServletRequest request){
         logger.info("Insert Game");
 
-        Map<String, Boolean> map = new HashMap<String, Boolean>();
-        boolean check = false;
+        String date = request.getParameter("date");
+        logger.info("date " + date);
+
+        SimpleDateFormat sdf =  new SimpleDateFormat("yyyy-MM-dd");
+        Date ssdate;
+		try {
+			ssdate = sdf.parse(date);
+            gameDto.setGame_date(ssdate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
 
         int res = gameBiz.GameInsert(gameDto);
-        logger.info("res: " + res);
 
         if(res > 0){
             logger.info("Insert Success");
-            check = true;
+            return "redirect:gamedetail.do?game_no=" + gameDto.getGame_no();
+        }else{
+            logger.info("Insert Fail");
+            return "redirect:gamelist.do";
         }
-        map.put("check", check);
 
-        return map;
+    }
+
+    @RequestMapping(value = "/gameupdateform.do")
+    public String GameUpdatePage(Model model, int game_no, HttpServletRequest request){
+        logger.info("Move to Game Update Page");
+
+        //세션
+        HttpSession session = request.getSession();
+        UserDto userDto = (UserDto) session.getAttribute("login");
+
+        model.addAttribute("userDto", userDto);
+
+        //수정할 경기 내용
+        model.addAttribute("gameDto", gameBiz.GameDetail(game_no));
+
+        return "gameupdate";
+    }
+
+    @RequestMapping(value = "/gameupdate.do")
+    public String GameUpdate(Model model, GameDto gameDto, HttpServletRequest request){
+        logger.info("Update Game");
+
+        //세션
+        HttpSession session = request.getSession();
+        UserDto userDto = (UserDto) session.getAttribute("login");
+
+        model.addAttribute("userDto", userDto);
+
+        int game_no = Integer.parseInt(request.getParameter("game_no"));
+
+        String date = request.getParameter("date");
+        logger.info("date " + date);
+
+        SimpleDateFormat sdf =  new SimpleDateFormat("yyyy-MM-dd");
+        Date ssdate;
+        try {
+            ssdate = sdf.parse(date);
+            gameDto.setGame_date(ssdate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        int res = gameBiz.GameUpdate(gameDto);
+
+        if(res > 0){
+            logger.info("Update Success");
+            return "redirect:gamedetail.do?game_no=" + game_no;
+        }else{
+            logger.info("Update Fail");
+            return "redirect:gameuploadform.do?game_no="+ game_no;
+        }
+
+    }
+
+    @RequestMapping("/gamedelete.do")
+    public String GameDelete(int game_no){
+        logger.info("Delete Game");
+
+        int res = gameBiz.GameDelete(game_no);
+
+        if(res > 0){
+            logger.info("Delete Success");
+            return "redirect:gamelist.do";
+        }else{
+            logger.info("Delete Fail");
+            return "redirect:gamedetail.do?game_no" + game_no;
+        }
     }
 
 }
