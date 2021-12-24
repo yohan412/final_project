@@ -6,7 +6,7 @@
 	
 	<insert id="insert" parameterType="teamDto">
 		INSERT INTO TEAM_INFO
-		VALUES(#{team_name),#{team_intro},TEAM_NOSQ.NEXTVAL,{team_addchk})
+		VALUES(#{user_no},#{team_name},#{team_intro},TEAM_NOSQ.NEXTVAL,#{team_addchk})
 	</insert>
 
 
