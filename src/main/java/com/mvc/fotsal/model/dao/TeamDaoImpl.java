@@ -1,5 +1,6 @@
 package com.mvc.fotsal.model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -21,7 +22,16 @@ public class TeamDaoImpl implements TeamDao{
 
 	@Override
 	public List<TeamDto> selectList() {
-		return null;
+		List<TeamDto> teamlist = new ArrayList<TeamDto>();
+		
+		try {
+			teamlist = sqlSession.selectList(NAMESPACE+"selectList");
+		} catch (Exception e) {
+			System.out.println("error: select list failed");
+			e.printStackTrace();
+		}
+		
+		return teamlist;
 	}
 
 	@Override
