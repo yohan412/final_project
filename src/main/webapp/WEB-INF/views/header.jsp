@@ -76,7 +76,7 @@
 			    	  <a href="#">Stadium</a>
 			  	 </li>
 			 	 <li>
-			    	  <a href="#">Team</a>
+			    	  <a href="team.do">Team</a>
 			 	 </li>
 			 	 <li>
 			    	  <a href="mercenaryDetail.do">Mercenary</a>
