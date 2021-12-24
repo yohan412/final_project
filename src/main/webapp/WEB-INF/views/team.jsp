@@ -10,14 +10,13 @@
 </head>
 <body>
 <header>
-로고 및 로그인 반응형메뉴바 자리(헤더)
+	<%@ include file="header.jsp" %>
 </header>
 <section>
 	<div class="main-all-box">
 		<div class="main-top-box">
 			<form action="teamInsert.do" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
 				<input type="hidden" name="user_no" value="${login.getUser_no()}" readonly>
-				<input type="hidden" name="team_no" value="${team_nosq.nextval}">
 				<div class="top-box-content">
 					<div class="title-text">	
 						<h2>팀 등록서</h2>
@@ -55,7 +54,7 @@
 	</div>
 </section>
 <footer>
-푸터자리
+	<%@ include file="footer.jsp" %>
 </footer>
 </body>
 <script type="text/javascript">
