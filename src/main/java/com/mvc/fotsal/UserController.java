@@ -32,7 +32,7 @@ public class UserController {
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
 	
-	@RequestMapping("/loginform.do")
+	@RequestMapping("/loginform.do") // 로그인페이지 이동
 	public String loginForm() {
 		logger.info("LOGIN PAGE");
 		
@@ -62,12 +62,12 @@ public class UserController {
 	}
 	
 	//로그아웃
-	@RequestMapping(value="/logout", method = RequestMethod.POST)
+	@RequestMapping(value="/logout.do", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
-		session.invalidate();
 		logger.info("Logout success");
+		session.invalidate();
 		
-		return "redirect:/";
+		return "redirect:/index.jsp";
 	}
 	
 	@RequestMapping("/registerform.do")

@@ -4,13 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="userinfo">
 	
-	<select id="login" parameterType="UserDto" resultType="UserDto">
+	<select id="login" parameterType="userDto" resultType="userDto">
 		SELECT USER_NO, USER_ID, USER_PW, USER_NAME
 		FROM USER_INFO
 		WHERE USER_ID = #{user_id}
 	</select>
 	
-	<insert id="insert" parameterType="UserDto">
+	<insert id="insert" parameterType="userDto">
 		INSERT INTO USER_INFO
 		VALUES(USER_NOSQ.NEXTVAL,#{user_id},#{user_pw},#{user_name},#{user_gender},#{user_birthdate},#{user_email},#{user_phone},#{user_zip},#{user_addr},USER)
 	</insert>
@@ -19,15 +19,15 @@
 		SELECT * FROM USER_INFO WHERE USER_ID=#{user_id}
 	</select>
 	
-	<select id="findid" parameterType="UserDto" resultType="UserDto">
+	<select id="findid" parameterType="userDto" resultType="userDto">
 		SELECT * FROM USER_INFO WHERE USER_EMAIL=#{user_email} AND USER_PHONE=#{user_phone}
 	</select>
 	
-	<select id="changepw" parameterType="UserDto" resultType="_int">
+	<select id="changepw" parameterType="userDto" resultType="_int">
 		SELECT * FROM USER_INFO WHERE USER_EMAIL=#{user_email} AND USER_PHONE=#{user_phone} AND USER_ID=#{user_id}
 	</select>
 	
-	<update id="changepwinput" parameterType="UserDto">
+	<update id="changepwinput" parameterType="userDto">
 		UPDATE USER_INFO
 		SET USER_PW=#{user_pw}
 		WHERE USER_ID=#{user_id}

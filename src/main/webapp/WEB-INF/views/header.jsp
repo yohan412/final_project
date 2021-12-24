@@ -97,8 +97,13 @@
 				 </li>
 				 <li>
 					  <!-- 로그인한 상태 -->
+			 	 	  <c:if test="${login != null }">
+					  	<a href="logout.do">로그아웃</a>
+					  </c:if>
+			 	 </li>
+			 	 <li>
 					  <c:if test="${login != null }">
-					  	<a href="loginform.do">로그아웃</a>
+					  	<span>${login.user_name }님</span>
 					  </c:if>
 			 	 </li>
 			 	 <li>
