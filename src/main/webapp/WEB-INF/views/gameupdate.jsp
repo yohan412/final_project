@@ -21,9 +21,9 @@
 <section>
     <div id="mainform">
         <div id="titleform"><div style="font-size: 30px; font-weight: bold">경기 수정</div></div>
-        <div id="top_form">
-            <form:form action="/gameupdate.do" method="post" onsubmit="return sd(${userDto.user_id})">
-                <input type="hidden" name="game_no" value="${gameDto.game_no}">
+        <form:form action="/gameupdate.do" method="post" onsubmit="return sd('${userDto.user_id}')">
+            <input type="hidden" name="game_no" value="${gameDto.game_no}">
+            <div id="top_form">
                 <div id="region_form">
                     <div class="font">지역이름</div>
                     <div class="info">
@@ -67,7 +67,7 @@
                 <div id="game_date_form">
                     <div class="font">경기 날짜</div>
                     <div class="info">
-                        <input type="date" placeholder="날짜 입력" name="date" id="game_date">
+                        <input type="date" name="date" placeholder="날짜 입력" id="game_date">
                     </div>
                 </div>
                 <div id="game_time_form">
@@ -183,8 +183,8 @@
                     </div>
                 </div>
                 <div id="button_form"><input type="submit" value="경기 수정" id="button"></div>
-            </form:form>
-        </div>
+            </div>
+        </form:form>
     </div>
 </section>
 <footer>

@@ -63,8 +63,8 @@ function sd(user_id){
             alert("경기 시간을 입력하세요");
             return false;
         }
-    }else {
-        if (!mercenary) {
+    }else{
+        if(!mercenary){
             mercenary = 0;
         }
         return true;
