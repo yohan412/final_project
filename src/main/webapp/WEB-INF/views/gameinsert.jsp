@@ -176,6 +176,9 @@
                     <div class="info">
                         <textarea id="textarea" name="game_content"></textarea>
                     </div>
+                    <form id="fileForm" method="post" enctype="multipart/form-data"> 
+                    	<input type="file" name="file" multiple="true"> 
+                    </form>
                 </div>
                 <div id="button_form"><input type="submit" value="경기 등록" id="button"></div>
             </div>

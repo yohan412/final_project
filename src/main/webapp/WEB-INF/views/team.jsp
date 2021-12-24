@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,14 +11,13 @@
 </head>
 <body>
 <header>
-로고 및 로그인 반응형메뉴바 자리(헤더)
+	<%@ include file="header.jsp" %>
 </header>
 <section>
 	<div class="main-all-box">
 		<div class="main-top-box">
-			<form action="teamInsert.do" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
+			<form:form action="teamInsert.do" method="post" enctype="multipart/form-data" modelAttribute="uploadFile"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
 				<input type="hidden" name="user_no" value="${login.getUser_no()}" readonly>
-				<input type="hidden" name="team_no" value="${team_nosq.nextval}">
 				<div class="top-box-content">
 					<div class="title-text">	
 						<h2>팀 등록서</h2>
@@ -30,7 +30,10 @@
 					<hr>
 					<div class="content-teamlogo">
 						<h5 class="head-text">2. 팀 로고</h5>
-						<input class="upload-name" name="" value="파일명" placeholder="첨부파일" readonly>
+						<input class="upload-name" name="pic_name" value="" placeholder="첨부파일" readonly>
+						<input class="upload-path" type="hidden" name="pic_path" value="">
+						<p style="color:red; font-weight:blod;"><form:errors path="pic_path" /></p>
+						
 						<label for="team-logo">팀 로고 선택</label>
 						<input type="file" id="team-logo">
 					</div>
@@ -50,18 +53,22 @@
 					</div>
 					
 				</div>
-			</form>
+			</form:form>
 		</div>
 	</div>
 </section>
 <footer>
-푸터자리
+	<%@ include file="footer.jsp" %>
 </footer>
 </body>
 <script type="text/javascript">
 	$("#team-logo").on('change',function(){
 	  var fileName = $("#team-logo").val();
 	  $(".upload-name").val(fileName);
+	  var value = $("#team-logo").val();
+      $('input[name=pic_name]').attr('value', value);
+      $('input[name=pic_path]').attr('value', value);
+      console.log(value);
 });
 </script>
 </html>

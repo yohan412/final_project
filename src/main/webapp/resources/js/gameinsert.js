@@ -90,6 +90,24 @@ function sd(user_id){
             dataType:"json",
             success:function (msg){
                 if(msg.check == true){
+                
+					//파일업로드
+				    var formData = new FormData($('#fileForm')[0]); 
+				    
+				    $.ajax({ 
+				    				type: "POST", enctype: 'multipart/form-data', // 필수 
+							    	url: '/multipartUpload.do', data: formData, // 필수 
+							    	processData: false, // 필수 
+							    	contentType: false, // 필수 
+						    		cache: false, 
+						    		success: function (result) { 
+					    		
+					    			}, 
+					    				error: function (e) { 
+					    				alert('파일업로드 실패');
+					    			} 
+				    			});    
+                
                     alert('등록 성공');
                     location.href='gamelist.do';
                 }
@@ -102,4 +120,8 @@ function sd(user_id){
             }
         });*/
     }
+    
+   
+
+
 };

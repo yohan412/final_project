@@ -16,7 +16,7 @@ public class TeamBizImpl implements TeamBiz{
 
 	@Override
 	public List<TeamDto> selectList() {
-		return null;
+		return dao.selectList();
 	}
 
 	@Override

@@ -13,11 +13,11 @@
 </head>
 <body>
 <header>
-로고 및 로그인 반응형메뉴바 자리(헤더)
+	<%@ include file="header.jsp" %>
 </header>
 <section>
 	<div class="main-all-box">
-		<h1 style="text-align: center;">팀명</h1>
+		<h1 style="text-align: center;">팀 명단</h1>
 		<div class="table-board-list">
 			<table class="team-table-striped" style="text-align: center; inline-block; border: 1px solid #dddddd" align="center">
 				<colgroup>
@@ -31,41 +31,28 @@
 						<th style="background-color: #eeeeee; text-align: center;">팀 번호</th>
 						<th style="background-color: #eeeeee; text-align: center;">팀 로고</th>
 						<th style="background-color: #eeeeee; text-align: center;">팀명</th>
-						<th style="background-color: #eeeeee; text-align: center;">등록일</th>
+						<th style="background-color: #eeeeee; text-align: center;">모집여부(Y/N)</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<!-- for문 반복해서 db값 가져오기 -->
-						<td class="team-no">1</td>
-						<td class="team-logo">팀 로고</td>
-						<td class="team-name"><a href="#">팀명</a></td>
-						<td class="team-date">등록일</td>
-					</tr>
-					<tr>
-						<td class="team-no">1</td>
-						<td class="team-logo">팀 로고</td>
-						<td class="team-name"><a href="#">팀명</a></td>
-						<td class="team-date">등록일</td>
-					</tr>
-					<tr>
-						<td class="team-no">1</td>
-						<td class="team-logo">팀 로고</td>
-						<td class="team-name"><a href="#">팀명</a></td>
-						<td class="team-date">등록일</td>
-					</tr>
-					<tr>
-						<td class="team-no">1</td>
-						<td class="team-logo">팀 로고</td>
-						<td class="team-name"><a href="#">팀명</a></td>
-						<td class="team-date">등록일</td>
-					</tr>
-					<tr>
-						<td class="team-no">1</td>
-						<td class="team-logo">팀 로고</td>
-						<td class="team-name"><a href="#">팀명</a></td>
-						<td class="team-date">등록일</td>
-					</tr>
+					<c:choose>
+					<c:when test = "${empty list }">
+						<tr>
+							<td colspan="4" align="center">-------- 작성된 글이 없습니다 ----------</td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${list }" var="TeamDto">
+							<tr>
+								<td>${dto.team_no }</td> <!-- 팀 번호 -->
+								<td>${dto.pic_path }</td> <!-- 팀 로고 사진 -->
+								<td><a href="detail.do?team_no=${dto.team_no }">${dto.team_name }</a></td>
+								<!-- 팀 번호가 일치하는 팀이름 -->
+								<td>${dto.team_addchk }</td> <!-- 팀 모집여부 -->
+							</tr>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
 				</tbody>
 			</table>		
 		</div>
@@ -82,7 +69,7 @@
 	</div>
 </section>
 <footer>
-푸터자리
+	<%@ include file="footer.jsp" %>
 </footer>
 </body>
 </html>

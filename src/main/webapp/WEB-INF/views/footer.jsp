@@ -7,12 +7,11 @@
 <title>Insert title here</title>
 <style type="text/css">
 	footer{
-		width:90%;
+		width: 90%;
 		text-align:center;
 		bottom:0;
 		margin-bottom: 0;
 		position: absolute;
-		display: inline-block;
 	}
 	footer hr{
 		width: 100%;
