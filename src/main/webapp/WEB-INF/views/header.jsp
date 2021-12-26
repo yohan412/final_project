@@ -79,7 +79,7 @@
 			    	  <a href="team.do">Team</a>
 			 	 </li>
 			 	 <li>
-			    	  <a href="mercenaryDetail.do">Mercenary</a>
+			    	  <a href="mercenary.do">Mercenary</a>
 			 	 </li>
 			 	 <li>
 			    	  <a href="qnalist.do">QnA</a>

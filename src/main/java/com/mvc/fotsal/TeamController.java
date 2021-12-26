@@ -28,6 +28,10 @@ public class TeamController {
 	public String team_insert(TeamDto dto) {
 		logger.info("팀 등록서 작성중");
 		int res = biz.insert(dto);
+		System.out.println("team_name:"+dto.getTeam_name());
+		System.out.println("team_name:"+dto.getUser_no());
+		System.out.println("team_name:"+dto.getTeam_intro());
+		System.out.println("team_name:"+dto.getTeam_addchk());
 		
 		if(res>0) {
 			logger.info("팀 등록서 작성완료");
