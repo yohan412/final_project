@@ -32,5 +32,6 @@ public class FaqBoardDaoImpl implements FaqBoardDao{
 	public FaqBoardDto selectOne(int faq_no) {
 		return null;
 	}
+	
 
 }

@@ -29,11 +29,11 @@
 			<div id="boardselect_form">
 				<div id="board_list">
 					<div id="boardselect_form">
-						<div class="boardselect">
+						<div class="boardselect" id="faq">
 							<p id="faqboard" class="faqboard"
 								onclick="location.href='faqlist.do'">FAQ</p>
 						</div>
-						<div class="boardselect">
+						<div class="boardselect" id="qna">
 							<p id="qnaboard" class="qnaboard"
 								onclick="location.href='qnalist.do'">Q&A</p>
 						</div>
@@ -81,7 +81,7 @@
 						</c:choose>
 						<tr>
 							<td colspan="5" align="right"><input type="button"
-								value="글 작성" onclick="location.href='insertform.do'"></td>
+								value="글 작성" onclick="location.href='qna.do'"></td>
 						</tr>
 						</tbody>
 

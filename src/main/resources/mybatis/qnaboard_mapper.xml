@@ -14,8 +14,8 @@
 		SELECT * FROM WHERE QNA_NO = #{qna_no}			
 	</select>
 	
-		<select id="insert" parameterType="qnaboardDto">
+	<insert id="insert" parameterType="qnaboardDto">
 		INSERT INTO QNA
-		VALUES(QNA_NOSEQ.NEXTVAL, #{user_id}, #{qna_title}, #{qna_content}, SYSDATE)
-	</select>
+		VALUES(QNA_NOSQ.NEXTVAL, QNA_GPNOSQ.NEXTVAL, #{user_id}, #{qna_title}, #{qna_content}, #{qna_type} ,SYSDATE)
+	</insert>
 </mapper>

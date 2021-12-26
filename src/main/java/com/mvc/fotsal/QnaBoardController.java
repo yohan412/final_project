@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mvc.fotsal.model.biz.QnaBoardBiz;
+import com.mvc.fotsal.model.dto.QnaBoardDto;
 
 @Controller
 public class QnaBoardController {
@@ -31,6 +32,26 @@ public class QnaBoardController {
 		model.addAttribute("dto", biz.selectOne(qna_no));
 		
 		return "qnadetail";
+	}
+	
+	@RequestMapping("/qna.do")
+	public String qna() {
+		
+		return "qnainsert";
+	}
+	
+	@RequestMapping("/qnainsert.do")
+	public String insert(QnaBoardDto dto) {
+		logger.info("INSERT QNA");
+		int res = biz.insert(dto);
+		
+		if(res>0) {
+			logger.info("QNA INSERT 성공");
+			return "redirect:qnalist.do";
+		} else {
+			logger.info("QNA INSERT 실패");
+			return "redirect:qnainsert.do";
+		}
 	}
 
 }
