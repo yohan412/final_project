@@ -4,6 +4,8 @@ import com.mvc.fotsal.model.dto.GameAskDto;
 import com.mvc.fotsal.model.dto.GameDto;
 import com.mvc.fotsal.paging.GameAskPaging;
 import com.mvc.fotsal.paging.GamePaging;
+import com.mvc.fotsal.paging.GameSearch;
+import oracle.net.jdbc.TNSAddress.SOException;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,11 +20,11 @@ public class GameDaoImpl implements GameDao{
     private SqlSessionTemplate sqlSessionTemplate;
 
     @Override
-    public List<GameDto> GameList(GamePaging gamePaging) {
+    public List<GameDto> GameList(GameSearch gameSearch) {
         List<GameDto> list = new ArrayList<GameDto>();
 
         try{
-            list = sqlSessionTemplate.selectList(NAMESPACE + "GameList", gamePaging);
+            list = sqlSessionTemplate.selectList(NAMESPACE + "GameList", gameSearch);
         }catch (Exception e){
             System.out.println("[ERROR] : GameList");
             e.printStackTrace();
@@ -32,11 +34,11 @@ public class GameDaoImpl implements GameDao{
     }
 
     @Override
-    public int listCount() {
+    public int listCount(GameSearch gameSearch) {
         int listcount = 0;
 
         try{
-            listcount = sqlSessionTemplate.selectOne(NAMESPACE + "ListCount");
+            listcount = sqlSessionTemplate.selectOne(NAMESPACE + "ListCount", gameSearch);
         }catch (Exception e){
             System.out.println("[ERROR] : listCount");
             e.printStackTrace();
@@ -330,6 +332,20 @@ public class GameDaoImpl implements GameDao{
             res = sqlSessionTemplate.delete(NAMESPACE + "gamedelete", game_no);
         }catch (Exception e){
             System.out.println("[ERROR]: GameDelete");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    @Override
+    public String FindPhone(String user_id){
+        String res = null;
+
+        try{
+            res = sqlSessionTemplate.selectOne(NAMESPACE + "findphone", user_id);
+        }catch (Exception e){
+            System.out.println("[ERROR]: FindPhone");
             e.printStackTrace();
         }
 

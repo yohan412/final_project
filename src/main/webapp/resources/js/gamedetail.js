@@ -44,8 +44,13 @@ function delete_game(author, user_id, game_no){
 
 }
 
-function apply(){
-
+function support_game(author_info, user_name){
+    if(user_name === "" || user_name == null){
+        alert('로그인 후 지원하세요');
+    }else{
+        // location.href='/gamesupport.do?author=' + author_info + '&user_name=' + user_name;
+        alert('전송');
+    }
 }
 
 function rp_comment_insert(idx, game_no, s_author, s_user_id){
