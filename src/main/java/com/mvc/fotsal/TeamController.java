@@ -3,7 +3,6 @@ package com.mvc.fotsal;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.MultipartRequest;
 
 import com.mvc.fotsal.model.biz.TeamBiz;
 import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
+import com.mvc.fotsal.upload.Upload;
 
 @Controller
 public class TeamController {
@@ -24,6 +23,8 @@ public class TeamController {
 
 	@Autowired
 	private TeamBiz biz;
+	
+	private Upload upload;
 	
 	@RequestMapping(value="/team.do")
 	public String insertForm() { // 팀 등록 페이지
@@ -49,11 +50,11 @@ public class TeamController {
 			//========================파일 업로드==============================
 			logger.info("파일 업로드 작업중");
 			
-			String uploadpath = mtf.getRealPath("upload"); //upload파일에 실제 경로 설정
+			String uploadpath = mtf.getRealPath("resources")+"\\upload"; //upload파일에 실제 경로 설정
 			
 			System.out.println(uploadpath);
 			
-			List<MultipartFile> fileList = mtf.getFiles("file");
+			List<MultipartFile> fileList = mtf.getFiles("upload_file");
 			
 			for (MultipartFile mf : fileList) {
 	            String originFileName = mf.getOriginalFilename(); // 원본 파일 명
@@ -66,8 +67,10 @@ public class TeamController {
 	            
 	            try {
 	                mf.transferTo(new File(safeFile));
-	                PicDto pic = new PicDto(dto.getTeam_no(), originFileName, safeFile);
 	                
+	                PicDto pic = new PicDto(upload.findno(dto), originFileName, safeFile);
+	                
+	                upload.teampic(pic);
 	                
 	            } catch (IllegalStateException e) {
 	                e.printStackTrace();

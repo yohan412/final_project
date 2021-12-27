@@ -42,5 +42,12 @@
 		INSERT INTO TEAM_PIC
 		VALUES(#{boardno},#{pic_name},#{pic_path})
 	</insert>
+	
+	<select id="findNo" parameterType="teamDto" resultType="teamDto">
+		SELECT *
+		FROM TEAM_INFO
+		WHERE USER_NO=#{user_no}
+		AND TEAM_NAME=#{team_name}
+	</select>
 
 </mapper>

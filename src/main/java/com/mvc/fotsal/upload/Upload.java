@@ -4,8 +4,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mvc.fotsal.model.dto.PicDto;
+import com.mvc.fotsal.model.dto.TeamDto;
 
-public class Uplaod {
+public class Upload {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
@@ -23,6 +24,21 @@ public class Uplaod {
 		}
 		
 		return res;
+	}
+	
+	public int findno(TeamDto dto) {
+		
+		String NAMESPACE = "team_info.";
+		
+		TeamDto teamdto = null;
+		
+		try {
+			teamdto=sqlSession.selectOne(NAMESPACE+"findNo",dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return teamdto.getTeam_no();
 	}
 
 }
