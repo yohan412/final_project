@@ -5,10 +5,7 @@ import com.mvc.fotsal.model.biz.UserBiz;
 import com.mvc.fotsal.model.dto.GameAskDto;
 import com.mvc.fotsal.model.dto.GameDto;
 import com.mvc.fotsal.model.dto.UserDto;
-import com.mvc.fotsal.paging.GameAskPageMaker;
-import com.mvc.fotsal.paging.GameAskPaging;
-import com.mvc.fotsal.paging.GamePageMaker;
-import com.mvc.fotsal.paging.GamePaging;
+import com.mvc.fotsal.paging.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +22,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.*;
 
+import com.mvc.fotsal.message.gamemessageApp;
+
 @Controller
 public class GameController {
     private static final Logger logger = LoggerFactory.getLogger(GameController.class);
@@ -35,15 +34,16 @@ public class GameController {
     @Autowired
     private UserBiz userBiz;
 
-    @RequestMapping("/gamelist.do")
-    public String GameListPage(Model model, GamePaging gamePaging, HttpServletRequest request){
+    @RequestMapping(value = "/gamelist.do", method = RequestMethod.GET)
+    public String GameListPage(Model model, GamePaging gamePaging, @ModelAttribute("gameSearch") GameSearch gameSearch, HttpServletRequest request){
         logger.info("Move to GameList Page");
 
-        model.addAttribute("gamelist", gameBiz.GameList(gamePaging));   //리스트 모델 추가
+        model.addAttribute("gamelist", gameBiz.GameList(gameSearch));   //리스트 모델 추가
 
         GamePageMaker gamePageMaker = new GamePageMaker();                          //페이징 선언
-        gamePageMaker.setGamePaging(gamePaging);
-        gamePageMaker.setTotalCount(gameBiz.listCount());
+        gamePageMaker.setGamePaging(gameSearch);
+        gamePageMaker.setTotalCount(gameBiz.listCount(gameSearch));
+
         model.addAttribute("gamepagemaker", gamePageMaker);             //페이징 지정
 
         model.addAttribute("ddaychk", gameBiz.DdayChk(gamePaging));
@@ -394,6 +394,21 @@ public class GameController {
             logger.info("Delete Fail");
             return "redirect:gamedetail.do?game_no" + game_no;
         }
+    }
+
+    @RequestMapping("/gamesupport.do")
+    public String GameSupport(HttpServletRequest request){
+        logger.info("Game Support SMS");
+
+        //프론트에서 게시글 작성자의 아이디를 받아온 뒤 백에서 게시글 작성자의 전화번호를 얻는다
+        String author_id = request.getParameter("author");           //작성자 아이디
+        String user_name = request.getParameter("user_name");        //지원자 이름
+
+        String phone = gameBiz.FindPhone(author_id);                       //작성자 전화번호
+
+        gamemessageApp.sendsms(phone, user_name);                          //문자 보내기 기능
+
+        return phone;
     }
 
 }

@@ -114,7 +114,7 @@ public class TeamController {
 		logger.info("move page team_updateForm.jsp");
 		
 		model.addAttribute("teamDto", biz.selectOne(team_no));
-		
+
 		return "team_updateForm";
 	}
 	
@@ -122,10 +122,7 @@ public class TeamController {
 	public String updateRes(TeamDto dto) { // 팀 수정하기
 		
 		int res = biz.update(dto);
-		System.out.println("소개: "+dto.getTeam_intro());
-		System.out.println("팀명: "+dto.getTeam_name());
-		System.out.println("모집여부: "+dto.getTeam_addchk());
-		System.out.println("팀번호: "+dto.getTeam_no());
+
 		if(res>0) {
 			logger.info("팀 등록서 수정완료");
 			return "redirect:team_detail.do?team_no="+dto.getTeam_no();
@@ -135,5 +132,18 @@ public class TeamController {
 		}
 		
 	}
-
+	
+	@RequestMapping(value="/team_delete.do")
+	public String delete(int team_no) {
+		logger.info("delete to team");
+		int res = biz.delete(team_no);
+		
+		if(res>0) {
+			return "redirect:teamlist.do";
+		}else {
+			return "redirect:team_detail.do?team_no="+team_no;
+		}
+		
+	}
+	
 }

@@ -71,10 +71,6 @@ public class TeamDto {
 		this.team_addchk = team_addchk;
 	}
 
-	@Override
-	public String toString() {
-		return "TeamDto [user_no=" + user_no + ", team_name=" + team_name + ", team_intro=" + team_intro + ", team_no="
-				+ team_no + ", team_addchk=" + team_addchk + ", pic_path=" + pic_path + "]";
-	}
+
 
 }

@@ -1,5 +1,7 @@
 package com.mvc.fotsal;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mvc.fotsal.model.biz.QnaBoardBiz;
 import com.mvc.fotsal.model.dto.QnaBoardDto;
+import com.mvc.fotsal.model.dto.UserDto;
 
 @Controller
 public class QnaBoardController {
@@ -41,16 +44,27 @@ public class QnaBoardController {
 	}
 	
 	@RequestMapping("/qnainsert.do")
-	public String insert(QnaBoardDto dto) {
+	public String insert(QnaBoardDto dto, HttpServletRequest request) {
+		UserDto user = (UserDto) request.getSession().getAttribute("login");
 		logger.info("INSERT QNA");
+		dto.setUser_id(user.getUser_id());
 		int res = biz.insert(dto);
+		
+		System.out.println(dto.getQna_type());
+		System.out.println(dto.getQna_title());
+		System.out.println(dto.getQna_content());
+		System.out.println(dto.getQna_reg());
+		System.out.println(dto.getQna_gpno());
+		System.out.println(dto.getQna_gpsq());
+		System.out.println(dto.getQna_no());
+		
 		
 		if(res>0) {
 			logger.info("QNA INSERT 성공");
 			return "redirect:qnalist.do";
 		} else {
 			logger.info("QNA INSERT 실패");
-			return "redirect:qnainsert.do";
+			return "redirect:qna.do";
 		}
 	}
 

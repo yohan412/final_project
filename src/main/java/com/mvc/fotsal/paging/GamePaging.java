@@ -49,5 +49,13 @@ public class GamePaging {
         return rowEnd;
     }
 
-
+    @Override
+    public String toString() {
+        return "GamePaging{" +
+                "page=" + page +
+                ", perPageNum=" + perPageNum +
+                ", rowStart=" + rowStart +
+                ", rowEnd=" + rowEnd +
+                '}';
+    }
 }

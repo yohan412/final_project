@@ -5,6 +5,7 @@ import com.mvc.fotsal.model.dto.GameAskDto;
 import com.mvc.fotsal.model.dto.GameDto;
 import com.mvc.fotsal.paging.GameAskPaging;
 import com.mvc.fotsal.paging.GamePaging;
+import com.mvc.fotsal.paging.GameSearch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,13 +18,13 @@ public class GameBizImpl implements GameBiz{
     private GameDao gameDao;
 
     @Override
-    public List<GameDto> GameList(GamePaging gamePaging) {
-        return gameDao.GameList(gamePaging);
+    public List<GameDto> GameList(GameSearch gameSearch) {
+        return gameDao.GameList(gameSearch);
     }
 
     @Override
-    public int listCount() {
-        return gameDao.listCount();
+    public int listCount(GameSearch gameSearch) {
+        return gameDao.listCount(gameSearch);
     }
 
     @Override
@@ -129,5 +130,10 @@ public class GameBizImpl implements GameBiz{
     @Override
     public int GameDelete(int game_no) {
         return gameDao.GameDelete(game_no);
+    }
+
+    @Override
+    public String FindPhone(String user_id){
+        return gameDao.FindPhone(user_id);
     }
 }
