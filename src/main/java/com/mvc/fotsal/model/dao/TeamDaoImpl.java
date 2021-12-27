@@ -36,7 +36,18 @@ public class TeamDaoImpl implements TeamDao{
 
 	@Override
 	public TeamDto selectOne(int team_no) {
-		return null;
+		
+		TeamDto detail = null;
+		
+		try {
+			detail = sqlSession.selectOne(NAMESPACE+"selectOne",team_no);
+		} catch (Exception e) {
+			System.out.println("error: select detail failed");
+			e.printStackTrace();
+		}
+		
+		
+		return detail;
 	}
 	
 	@Override
@@ -56,7 +67,17 @@ public class TeamDaoImpl implements TeamDao{
 
 	@Override
 	public int update(TeamDto dto) {
-		return 0;
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE+"update", dto);
+		} catch (Exception e) {
+			System.out.println("error: team update failed");
+			e.printStackTrace();
+		}
+		
+		
+		return res;
 	}
 
 	@Override

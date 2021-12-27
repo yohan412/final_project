@@ -59,3 +59,9 @@ section{
     border: 1px solid #dddddd;
     color: #999999;
 }
+.content-select-teamname label .detail-team-name{
+	height: 20px;
+	padding: 0 10px;
+    border: 1px solid #999999;
+    color: black;
+}

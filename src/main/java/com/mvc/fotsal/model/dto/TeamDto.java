@@ -6,20 +6,31 @@ public class TeamDto {
 	private String team_intro; //팀소개
 	private int team_no; //팀번호
 	private char team_addchk; //모집여부
+	private String pic_path; // 팀 로고
 	
 	public TeamDto() {
 		super();
 	}
 
-	public TeamDto(int user_no, String team_name, String team_intro, int team_no, char team_addchk) {
+	public TeamDto(int user_no, String team_name, String team_intro, int team_no, char team_addchk, String pic_path) {
 		super();
 		this.user_no = user_no;
 		this.team_name = team_name;
 		this.team_intro = team_intro;
 		this.team_no = team_no;
 		this.team_addchk = team_addchk;
+		this.pic_path = pic_path;
 	}
 
+
+	public String getPic_path() {
+		return pic_path;
+	}
+
+	public void setPic_path(String pic_path) {
+		this.pic_path = pic_path;
+	}
+	
 	public int getUser_no() {
 		return user_no;
 	}
@@ -59,5 +70,11 @@ public class TeamDto {
 	public void setTeam_addchk(char team_addchk) {
 		this.team_addchk = team_addchk;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "TeamDto [user_no=" + user_no + ", team_name=" + team_name + ", team_intro=" + team_intro + ", team_no="
+				+ team_no + ", team_addchk=" + team_addchk + ", pic_path=" + pic_path + "]";
+	}
+
 }

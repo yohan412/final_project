@@ -1,5 +1,7 @@
 package com.mvc.fotsal;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,18 +47,49 @@ public class TeamController {
 	@RequestMapping(value="/teamlist.do")
 	public String teamList(Model model) { // 팀 게시판(리스트)
 		logger.info("Select Team List, move page teamboard.jsp");
-		model.addAttribute("list",biz.selectList());
 		
+		model.addAttribute("list",biz.selectList());
+		/*List<TeamDto> list = biz.selectList();
+		for(TeamDto dto : list) {
+			System.out.println(dto.toString());
+			}*/
 		return "teamboard";
 	}
+	
 	
 	@RequestMapping(value="/team_detail.do")
 	public String detail(Model model, int team_no) { // 팀 자세히보기
 		logger.info("move page team_detail.jsp");
-		model.addAttribute("dto", biz.selectOne(team_no));
+		model.addAttribute("teamDto", biz.selectOne(team_no));
 		
 		return "team_detail";
 	}
 	
+	@RequestMapping(value="/team_updateForm.do")
+	public String update(Model model, int team_no) { //팀 수정 폼 페이지
+		logger.info("move page team_updateForm.jsp");
+		
+		model.addAttribute("teamDto", biz.selectOne(team_no));
+		
+		return "team_updateForm";
+	}
+	
+	@RequestMapping(value="/team_updateResult.do")
+	public String updateRes(TeamDto dto) { // 팀 수정하기
+		
+		int res = biz.update(dto);
+		System.out.println("소개: "+dto.getTeam_intro());
+		System.out.println("팀명: "+dto.getTeam_name());
+		System.out.println("모집여부: "+dto.getTeam_addchk());
+		System.out.println("팀번호: "+dto.getTeam_no());
+		if(res>0) {
+			logger.info("팀 등록서 수정완료");
+			return "redirect:team_detail.do?team_no="+dto.getTeam_no();
+		}else {
+			logger.info("팀 등록서 수정실패");
+			return "redirect:team_updateForm.do?team_no="+dto.getTeam_no();
+		}
+		
+	}
 
 }

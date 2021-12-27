@@ -21,7 +21,8 @@ public class TeamBizImpl implements TeamBiz{
 
 	@Override
 	public TeamDto selectOne(int team_no) {
-		return null;
+		
+		return dao.selectOne(team_no);
 	}
 
 	@Override
@@ -31,7 +32,7 @@ public class TeamBizImpl implements TeamBiz{
 
 	@Override
 	public int update(TeamDto dto) {
-		return 0;
+		return dao.update(dto);
 	}
 
 	@Override

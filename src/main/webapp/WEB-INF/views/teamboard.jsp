@@ -24,7 +24,7 @@
 					<col class="team-no">
 					<col class="team-logo">
 					<col class="team-name">
-					<col class="team-date">
+					<col class="team-addchk">
 				</colgroup>
 				<thead>
 					<tr>
@@ -42,13 +42,13 @@
 						</tr>
 					</c:when>
 					<c:otherwise>
-						<c:forEach items="${list }" var="TeamDto">
+						<c:forEach items="${list }" var="Teamdto">
 							<tr>
-								<td>${dto.team_no }</td> <!-- 팀 번호 -->
-								<td>${dto.pic_path }</td> <!-- 팀 로고 사진 -->
-								<td><a href="detail.do?team_no=${dto.team_no }">${dto.team_name }</a></td>
+								<td>${Teamdto.team_no }</td> <!-- 팀 번호 -->
+								<td></td> <!-- 팀 로고 사진 -->
+								<td><a href="team_detail.do?team_no=${Teamdto.team_no }">${Teamdto.team_name }</a></td>
 								<!-- 팀 번호가 일치하는 팀이름 -->
-								<td>${dto.team_addchk }</td> <!-- 팀 모집여부 -->
+								<td>${Teamdto.team_addchk }</td> <!-- 팀 모집여부 -->
 							</tr>
 						</c:forEach>
 					</c:otherwise>
@@ -65,6 +65,9 @@
 	               <button id="pagingnum"><a href="#">1</a></button>
 	           </c:forEach>
 	           <button id="nextbutton"><a href="#">></a></button>
+		</div>
+		<div class="content-submit-list" align="right">
+			<input id="pointer" type="button" value="작성하기" onclick="location.href='team.do'">
 		</div>
 	</div>
 </section>
