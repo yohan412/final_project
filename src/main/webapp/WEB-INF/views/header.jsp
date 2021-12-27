@@ -107,6 +107,11 @@
 					  </c:if>
 			 	 </li>
 			 	 <li>
+			 	 	  <c:if test="${login != null }">
+			 	 	  	<a href="mypage.do">마이페이지</a>
+			 	 	  </c:if>
+			 	 </li>
+			 	 <li>
 			 	 	  <span sec:authentication="user_id"></span>
 			 	 </li>
 		 	 </ul>
