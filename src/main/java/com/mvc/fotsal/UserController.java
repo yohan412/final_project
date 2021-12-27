@@ -190,4 +190,10 @@ public class UserController {
 		}
 	}
 	
+	@RequestMapping("/mypage.do")
+	public String mypage() {
+		
+		return "mypage";
+	}
+	
 }

@@ -4,13 +4,14 @@ import com.mvc.fotsal.model.dto.GameAskDto;
 import com.mvc.fotsal.model.dto.GameDto;
 import com.mvc.fotsal.paging.GameAskPaging;
 import com.mvc.fotsal.paging.GamePaging;
+import com.mvc.fotsal.paging.GameSearch;
 
 import java.util.List;
 import java.util.Map;
 
 public interface GameBiz {
-    public List<GameDto> GameList(GamePaging gamePaging);
-    public int listCount();
+    public List<GameDto> GameList(GameSearch gameSearch);
+    public int listCount(GameSearch gameSearch);
     public List<String> GameTime();
     public List<Integer> DdayChk(GamePaging gamePaging);
     public List<Integer> GameMercenary(GamePaging gamePaging);
@@ -32,4 +33,5 @@ public interface GameBiz {
     public int GameInsert(GameDto gameDto);
     public int GameUpdate(GameDto gameDto);
     public int GameDelete(int game_no);
+    public String FindPhone(String user_id);
 }

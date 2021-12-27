@@ -68,13 +68,13 @@
 								</tr>
 							</c:when>
 							<c:otherwise>
-								<c:forEach items="${list }" var="QnaBoardDto">
+								<c:forEach items="${list }" var="dto">
 									<tr>
 										<td>${dto.qna_no }</td>
 										<td>${dto.user_id}</td>
 										<td><a href="detail.do?qna_no=${dto.qna_no }">${dto.qna_title }</a></td>
 										<td>${dto.qna_content }</td>
-										<td>${dto.qun_reg }</td>
+										<td>${dto.qna_reg }</td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
