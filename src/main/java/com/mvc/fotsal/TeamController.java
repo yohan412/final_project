@@ -1,13 +1,16 @@
 package com.mvc.fotsal;
 
 import java.util.List;
-
+import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartRequest;
 
 import com.mvc.fotsal.model.biz.TeamBiz;
 import com.mvc.fotsal.model.dto.TeamDto;
@@ -27,13 +30,17 @@ public class TeamController {
 	}
 	
 	@RequestMapping(value="/teamInsert.do")
-	public String team_insert(TeamDto dto) {
+	public String team_insert(MultipartHttpServletRequest mtf,TeamDto dto) {
 		logger.info("팀 등록서 작성중");
 		int res = biz.insert(dto);
 		System.out.println("team_name:"+dto.getTeam_name());
 		System.out.println("team_name:"+dto.getUser_no());
 		System.out.println("team_name:"+dto.getTeam_intro());
 		System.out.println("team_name:"+dto.getTeam_addchk());
+		
+		String uploadpath = mtf.getRealPath("upload"); //upload파일에 실제 경로 설정
+		
+
 		
 		if(res>0) {
 			logger.info("팀 등록서 작성완료");
