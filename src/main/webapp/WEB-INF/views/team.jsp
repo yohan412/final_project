@@ -16,7 +16,7 @@
 <section>
 	<div class="main-all-box">
 		<div class="main-top-box">
-			<form action="teamInsert.do" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
+			<form action="teamInsert.do" method="post" entype="multipart/form-data"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
 				<input type="hidden" name="user_no" value="${login.getUser_no()}" readonly>
 				<div class="top-box-content">
 					<div class="title-text">	
@@ -35,7 +35,7 @@
 						<p style="color:red; font-weight:blod;"><form:errors path="pic_path" /></p>
 						
 						<label for="team-logo">팀 로고 선택</label>
-						<input type="file" id="team-logo">
+						<input type="file" multiple="multiple" id="team-logo" name="upload_file">
 					</div>
 					<div class="content-introduce">
 						<h5 class="head-text">3. 팀 소개 및 한마디</h5>
