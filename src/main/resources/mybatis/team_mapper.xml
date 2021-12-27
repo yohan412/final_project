@@ -36,6 +36,7 @@
 	<update id="update" parameterType="teamDto">
 		UPDATE TEAM_INFO
 		SET TEAM_NAME=#{team_name}, TEAM_INTRO=#{team_intro}, TEAM_ADDCHK=#{team_addchk}
+		WHERE TEAM_NO=#{team_no}
 	</update>
 
 
