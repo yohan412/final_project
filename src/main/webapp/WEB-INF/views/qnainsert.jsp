@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +19,7 @@
 	<div class="main-all-box">
 		<div class="main-top-box">
 			<form action="qnainsert.do" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
-				<input type="hidden" name="user_no" value="${login.getUser_no()}" readonly>
-				<input type="hidden" name="user_id" value="${login.getUser_id()}" readonly>
+            	<input type="hidden" name="user_id" value="${login.getUser_id()}" readonly>
 				
 				<div class="top-box-content">
 					<div class="title-text">	
@@ -26,13 +27,10 @@
 					</div>
 					<hr>
 					<div class="content-select-foot">
-						<select id="cg">
-							<option name="qna_type" value="신고">신고</option>
-							<option name="qna_type" value="계정문의">계정문의</option>
-							<option name="qna_type" value="이용방법문의">이용방법문의</option>
-						</select>
+						<input type="radio" name="qna_type" value="신고">신고
+						<input type="radio" name="qna_type" value="일반문의">일반문의
 						
-						<input type="text" naem="qna_title" placeholder="제목을 입력해주세요">
+						<input type="text" name="qna_title" placeholder="제목을 입력해주세요">
 					</div>
 					<hr>
 					<div class="content-select-position">
@@ -46,7 +44,7 @@
 						<input type="file" id="team-logo">
 					</div>
 					<div class="content-submit" align="right">
-						<input id="pointer" type="button" value="이전" onclick="location.href='index.do'">
+						<input id="pointer" type="button" value="이전" onclick="location.href='qnalist.do'">
 						<input id="pointer" type="submit" value="작성완료">
 					</div>
 				</div>
