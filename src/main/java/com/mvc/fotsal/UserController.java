@@ -190,10 +190,12 @@ public class UserController {
 		}
 	}
 	
-	@RequestMapping("/mypage.do")
-	public String mypage() {
-		
-		return "mypage";
-	}
+	//사용자 정보 상세조회
+    @RequestMapping("/mypage.do")
+    public String mypage() {
+        logger.info("USER_INFO");
+        
+        return "mypage";
+    }
 	
 }
