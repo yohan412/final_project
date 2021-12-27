@@ -1,5 +1,7 @@
 package com.mvc.fotsal;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
@@ -13,6 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.MultipartRequest;
 
 import com.mvc.fotsal.model.biz.TeamBiz;
+import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
 
 @Controller
@@ -38,12 +41,43 @@ public class TeamController {
 		System.out.println("team_name:"+dto.getTeam_intro());
 		System.out.println("team_name:"+dto.getTeam_addchk());
 		
-		String uploadpath = mtf.getRealPath("upload"); //upload파일에 실제 경로 설정
 		
-
 		
 		if(res>0) {
 			logger.info("팀 등록서 작성완료");
+			
+			//========================파일 업로드==============================
+			logger.info("파일 업로드 작업중");
+			
+			String uploadpath = mtf.getRealPath("upload"); //upload파일에 실제 경로 설정
+			
+			System.out.println(uploadpath);
+			
+			List<MultipartFile> fileList = mtf.getFiles("file");
+			
+			for (MultipartFile mf : fileList) {
+	            String originFileName = mf.getOriginalFilename(); // 원본 파일 명
+	            long fileSize = mf.getSize(); // 파일 사이즈
+
+	            System.out.println("originFileName : " + originFileName);
+	            System.out.println("fileSize : " + fileSize);
+
+	            String safeFile = uploadpath + System.currentTimeMillis() + originFileName;
+	            
+	            try {
+	                mf.transferTo(new File(safeFile));
+	                PicDto pic = new PicDto(dto.getTeam_no(), originFileName, safeFile);
+	                
+	                
+	            } catch (IllegalStateException e) {
+	                e.printStackTrace();
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
+			
+			//===============================================================
+			
 			return "redirect:teamlist.do";
 		}else {
 			logger.info("팀 등록서 작성실패");

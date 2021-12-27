@@ -38,7 +38,9 @@
 		SET TEAM_NAME=#{team_name}, TEAM_INTRO=#{team_intro}, TEAM_ADDCHK=#{team_addchk}
 	</update>
 
-
-
+	<insert id="insert_pic" parameterType="picDto">
+		INSERT INTO TEAM_PIC
+		VALUES(#{boardno},#{pic_name},#{pic_path})
+	</insert>
 
 </mapper>

@@ -13,6 +13,7 @@
 		<typeAlias type="com.mvc.fotsal.model.dto.TeamDto" alias="teamDto"/>
 		<typeAlias type="com.mvc.fotsal.model.dto.QnaBoardDto" alias="QnaBoardDto"/>
 		<typeAlias type="com.mvc.fotsal.model.dto.FaqBoardDto" alias="FaqBoardDto"/>
+		<typeAlias type="com.mvc.fotsal.model.dto.PicDto" alias="picDto"/>
   	</typeAliases>
   	
   	<mappers>
