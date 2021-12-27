@@ -37,7 +37,7 @@ public class TeamBizImpl implements TeamBiz{
 
 	@Override
 	public int delete(int team_no) {
-		return 0;
+		return dao.delete(team_no);
 	}
 	
 	

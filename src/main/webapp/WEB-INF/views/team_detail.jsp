@@ -15,7 +15,7 @@
 <section>
 	<div class="main-all-box">
 		<div class="main-top-box">
-			<form action="#" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
+			<form action="team_updateForm.do" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
 				<div class="top-box-content">
 					<div class="title-text">	
 						<h2>Welcome ${teamDto.team_name }</h2>
@@ -43,7 +43,7 @@
 					<div class="content-submit" align="right">
 						<input id="pointer" type="button" value="목록" onclick="location.href='teamlist.do'">
 						<input id="pointer" type="button" value="수정" onclick="location.href='team_updateForm.do?team_no=${teamDto.team_no}'">
-						<input id="pointer" type="button" value="삭제" onclick="location.href='teamdelete.do'">
+						<input id="pointer" type="button" value="삭제" onclick="location.href='team_delete.do'">
 					</div>
 					
 				</div>

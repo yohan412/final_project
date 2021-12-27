@@ -15,7 +15,7 @@
 <section>
 	<div class="main-all-box">
 		<div class="main-top-box">
-			<form action="#" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
+			<form action="team_updateResult.do" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
 				<div class="top-box-content">
 					<div class="title-text">	
 						<h2>Welcome ${teamDto.team_name }</h2>
@@ -23,7 +23,9 @@
 					<hr>
 					<div class="content-select-teamname">
 						<h5 class="head-text">1. 팀명</h5>
-						<label class="chk-team-name"><input type="text" name="team_name" placeholder="${teamDto.team_name }" required></label>
+						<input type="hidden" name="team_no" value="${teamDto.team_no }">
+						<label class="chk-team-name"><input type="text" name="team_name" placeholder="${teamDto.team_name }"
+						 value="${teamDto.team_name }" required></label>
 					</div>
 					<hr>
 					<div class="content-select-position">
@@ -49,7 +51,7 @@
 					
 					<div class="content-submit" align="right">
 						<input id="pointer" type="button" value="목록" onclick="location.href='teamlist.do'">
-						<input id="pointer" type="button" value="수정완료" onclick="location.href='team_updateResult.do'">
+						<input id="pointer" type="submit" value="수정완료">
 					</div>
 					
 				</div>
