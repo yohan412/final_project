@@ -3,13 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="GameBoard">
-    <select id="GameList" resultType="gameDto" parameterType="com.mvc.fotsal.paging.GamePaging">
+    <select id="GameList" resultType="gameDto" parameterType="com.mvc.fotsal.paging.GameSearch">
         SELECT
                GAME_NO, USER_ID, GAME_REGION, GAME_STADIUM, GAME_ADDR, GAME_DATE, GAME_TIME, GAME_PEOPLE, GAME_MERCENARY, GAME_CONTENT, GAME_TYPE
         FROM (  SELECT
                   GAME_NO, USER_ID, GAME_REGION, GAME_STADIUM, GAME_ADDR, GAME_DATE, GAME_TIME, GAME_PEOPLE, GAME_MERCENARY, GAME_CONTENT, GAME_TYPE,
                      ROW_NUMBER() over (ORDER BY GAME_NO DESC) AS rNum
                 FROM GAME
+                WHERE 1=1
+                    <include refid="search"></include>
             )
         WHERE rNum BETWEEN #{rowStart} AND #{rowEnd}
         ORDER BY GAME_NO DESC
@@ -35,13 +37,19 @@
         ORDER BY GAME_NO DESC
     </select>
 
-    <select id="ListCount" resultType="int">
-        <![CDATA[
+    <select id="ListCount" resultType="int" parameterType="com.mvc.fotsal.paging.GameSearch">
             SELECT COUNT(GAME_NO)
             FROM GAME
-            WHERE GAME_NO > 0
-            ]]>
+            WHERE 1=1
+                <include refid="search"></include>
+            AND GAME_NO > 0
     </select>
+
+    <sql id="search">
+        <if test="searchType != null">
+            <if test="searchType == 't'.toString()">AND GAME_ADDR LIKE '%' || #{keyword} || '%' OR GAME_STADIUM LIKE '%' || #{keyword} || '%' OR GAME_REGION LIKE '%' || #{keyword} || '%'</if>
+        </if>
+    </sql>
 
     <select id="GameDetail" resultType="gameDto" parameterType="int">
         SELECT * FROM GAME WHERE GAME_NO = #{game_no}
@@ -155,4 +163,9 @@
     <delete id="gamedelete" parameterType="int">
         DELETE GAME WHERE GAME_NO = #{game_no}
     </delete>
+
+    <select id="findphone" parameterType="String">
+        SELECT USER_PHONE FROM USER_INFO WHERE USER_ID = #{user_id}
+    </select>
+
 </mapper>
