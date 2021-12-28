@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.mvc.fotsal.model.biz.TeamBiz;
 import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
-import com.mvc.fotsal.upload.Upload;
 
 @Controller
 public class TeamController {
@@ -24,7 +23,6 @@ public class TeamController {
 	@Autowired
 	private TeamBiz biz;
 	
-	private Upload upload;
 	
 	@RequestMapping(value="/team.do")
 	public String insertForm() { // 팀 등록 페이지
@@ -50,8 +48,7 @@ public class TeamController {
 			//========================파일 업로드==============================
 			logger.info("파일 업로드 작업중");
 			
-			String uploadpath = mtf.getRealPath("resources")+"\\upload"; //upload파일에 실제 경로 설정
-			
+			String uploadpath = mtf.getRealPath("resources\\upload"); //upload폴더에 실제 경로 설정
 			System.out.println(uploadpath);
 			
 			List<MultipartFile> fileList = mtf.getFiles("upload_file");
@@ -63,14 +60,17 @@ public class TeamController {
 	            System.out.println("originFileName : " + originFileName);
 	            System.out.println("fileSize : " + fileSize);
 
-	            String safeFile = uploadpath + System.currentTimeMillis() + originFileName;
-	            
+	            String safeFile = uploadpath +"\\"+ System.currentTimeMillis() + originFileName;
+	            System.out.println(dto.getUser_no()+dto.getTeam_name());
+	            System.out.println(biz.findno(dto));
 	            try {
 	                mf.transferTo(new File(safeFile));
 	                
-	                PicDto pic = new PicDto(upload.findno(dto), originFileName, safeFile);
+	                PicDto pic = new PicDto(biz.findno(dto), originFileName, safeFile);
 	                
-	                upload.teampic(pic);
+	                System.out.println(pic);
+	                
+	                biz.teampic(pic);
 	                
 	            } catch (IllegalStateException e) {
 	                e.printStackTrace();
