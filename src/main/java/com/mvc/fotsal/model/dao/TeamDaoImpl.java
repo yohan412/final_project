@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
 
 @Repository
@@ -84,7 +85,39 @@ public class TeamDaoImpl implements TeamDao{
 	public int delete(int team_no) {
 		return 0;
 	}
-
 	
+	@Override
+	public int teampic(PicDto pic){
+		
+		String NAMESPACE = "team_info.";
+		
+		int res =0;
+		
+		try {
+			res=sqlSession.insert(NAMESPACE+"insert_pic", pic);
+		} catch (Exception e) {
+			System.out.println("error: teampic");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
+	@Override
+	public int findno(TeamDto dto) {
+		
+		String NAMESPACE = "team_info.";
+		
+		TeamDto teamdto = null;
+		
+		try {
+			teamdto=sqlSession.selectOne(NAMESPACE+"findNo",dto);
+		} catch (Exception e) {
+			System.out.println("error: findno");
+			e.printStackTrace();
+		}
+		
+		return teamdto.getTeam_no();
+	}
 
 }
