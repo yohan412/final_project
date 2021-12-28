@@ -54,3 +54,12 @@ var areaSelectMaker = function(a1, a2){
     }
 
 }
+
+function stadium_insert(user_id){
+    if(user_id === "" || user_id == null){
+        alert('잘못된 접근');
+        location.href='stadiumlist.do';
+    }else{
+        location.href='stadiuminsertform.do';
+    }
+}
