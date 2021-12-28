@@ -46,7 +46,7 @@
         <!-- max upload size in bytes -->
         <beans:property name="maxUploadSize" value="5242880" /> <!-- 5MB -->
         <!-- max size of file in memory (in bytes) -->
-        <beans:property name="maxInMemorySize" value="5242880" /> <!-- 1MB -->
+        <beans:property name="maxInMemorySize" value="5242880" /> <!-- 5MB -->
     </beans:bean>
 
 
