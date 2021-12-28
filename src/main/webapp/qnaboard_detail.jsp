@@ -7,7 +7,12 @@
 <title>Q&A BOARD DETAIL</title>
 </head>
 <body>
+<header>
+	<!-- <%@ include file="header.jsp" %> -->
+</header>
+<section>
 	<h1>DETAIL</h1>
+	
 	<table border="1">
 		<tr>
 			<th>작성자</th>
@@ -29,5 +34,6 @@
 			</td>
 		</tr>
 	</table>
+</section>
 </body>
 </html>
