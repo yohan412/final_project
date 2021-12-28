@@ -35,12 +35,6 @@ public class TeamController {
 	public String team_insert(MultipartHttpServletRequest mtf,TeamDto dto) {
 		logger.info("팀 등록서 작성중");
 		int res = biz.insert(dto);
-		System.out.println("team_name:"+dto.getTeam_name());
-		System.out.println("team_name:"+dto.getUser_no());
-		System.out.println("team_name:"+dto.getTeam_intro());
-		System.out.println("team_name:"+dto.getTeam_addchk());
-		
-		
 		
 		if(res>0) {
 			logger.info("팀 등록서 작성완료");
@@ -61,8 +55,6 @@ public class TeamController {
 	            System.out.println("fileSize : " + fileSize);
 
 	            String safeFile = uploadpath +"\\"+ System.currentTimeMillis() + originFileName;
-	            System.out.println(dto.getUser_no()+dto.getTeam_name());
-	            System.out.println(biz.findno(dto));
 	            try {
 	                mf.transferTo(new File(safeFile));
 	                
