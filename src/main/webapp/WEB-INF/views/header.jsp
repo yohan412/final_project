@@ -103,7 +103,7 @@
 			 	 </li>
 			 	 <li>
 			 	 	  <c:if test="${login != null }">
-			 	 	  	<a href="mypage.do">마이페이지</a>
+			 	 	  	<a href="mypage.do?user_id=${login.user_id }">마이페이지</a>
 			 	 	  </c:if>
 			 	 </li>
 			 	 <li>

@@ -87,6 +87,20 @@ import com.mvc.fotsal.model.dto.UserDto;
 			
 			return res;
 		}
-		
+
+		@Override
+		public UserDto selectOne(String user_id) {
+			UserDto dto = null;
+			
+			try {
+				dto = sqlSession.selectOne(NAMESPACE+"selectOne", user_id);
+			} catch (Exception e) {
+				System.out.println("[error]: select One");
+				e.printStackTrace();
+			}
+			
+			return dto;
+		}
+
 		
 }

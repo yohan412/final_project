@@ -40,11 +40,8 @@ td input[type="button"]{
 </script>
 </head>
 <body>
-<header style="text-align:center; margin-top:20px;">
-	헤더
-</header>
-<br><br><hr>
 <section>
+	<%@ include file="/WEB-INF/views/header.jsp" %>
 	<div style="text-align: center; margin-top: 30px;">	
 		<h1>내 정보 관리</h1>
 	</div>
@@ -53,35 +50,35 @@ td input[type="button"]{
 			<table align="center" method="post" cellpadding="5">
 				<tr>
 					<th>아이디</th>
-					<td><input type="text" id="id" name="userId" value="${dto.user_id }" style="width:300px;"></td>
+					<td>${login.user_id }</td>
 				</tr>
 				<tr>
 					<th>이름</th>
-					<td><input type="text" id="name" name="userName" value="${dto.user_name }" style="width:300px;"></td>
+					<td>${login.user_name }</td>
 				</tr>
 				<tr>
 					<th>성별</th>
-					<td><input type="text" id="gender" name="userGender" value="${dto.user_gender }" style="width:300px;"></td>
+					<td>${login.user_gender }</td>
 				</tr>
 				<tr>
 					<th>생년월일</th>
-					<td><input type="text" id="date" name="Date" value="${dto.user_birthdate }" style="width:300px;"></td>
+					<td>${login.user_birthdate }</td>
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td><input type="text" id="email" name="Email" value="${dto.user_email }" style="width:300px;"></td>
+					<td>${login.user_email }</td>
 				</tr>
 				<tr>
 					<th>핸드폰</th>
-					<td><input type="text" id="phone" name="Phone" value="${dto.user_phone }" style="width:300px;"></td>
+					<td>${login.user_phone }</td>
 				</tr>
 				<tr>
 					<th>우편번호</th>
-					<td><input type="text" id="zip" name="Zip" value="${dto.user_zip }" style="width:100px;"></td>
+					<td>${login.user_zip }</td>
 				</tr>
 				<tr>
 					<th>주소</th>
-					<td><input type="text" id="addr" name="Addr" value="${dto.user_addr }" style="width:300px;"></td>
+					<td>${login.user_addr }</td>
 				</tr>
 				<tr>
 					<td colspan="10" style="text-align: right;">
@@ -92,8 +89,7 @@ td input[type="button"]{
 			</table>
 		</form>
 	</div>
+	<%@ include file="/WEB-INF/views/footer.jsp" %>
 </section>
-<hr><br><br>
-<footer style="text-align:center;">푸터</footer>
 </body>
 </html>
