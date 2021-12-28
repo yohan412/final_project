@@ -14,6 +14,7 @@
 		<typeAlias type="com.mvc.fotsal.model.dto.QnaBoardDto" alias="QnaBoardDto"/>
 		<typeAlias type="com.mvc.fotsal.model.dto.FaqBoardDto" alias="FaqBoardDto"/>
 		<typeAlias type="com.mvc.fotsal.model.dto.PicDto" alias="picDto"/>
+		<typeAlias type="com.mvc.fotsal.model.dto.StadiumDto" alias="stadiumDto"/>
   	</typeAliases>
   	
   	<mappers>
@@ -23,6 +24,7 @@
 		<mapper resource="/mybatis/team_mapper.xml"/>
 		<mapper resource="/mybatis/qnaboard_mapper.xml"/>
 		<mapper resource="/mybatis/faqboard_mapper.xml"/>
+		<mapper resource="/mybatis/stadium_mapper.xml"/>
   	</mappers>
   	
   </configuration>
