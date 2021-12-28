@@ -67,7 +67,7 @@
 	           <button id="nextbutton"><a href="#">></a></button>
 		</div>
 		<div class="content-submit-list" align="right">
-			<input id="pointer" type="button" value="작성하기" onclick="location.href='team.do'">
+			<input id="pointer" type="button" value="작성하기" onclick="loginChk(${login.user_no})">
 		</div>
 	</div>
 </section>
@@ -75,4 +75,13 @@
 	<%@ include file="footer.jsp" %>
 </footer>
 </body>
+<script type="text/javascript">
+	function loginChk(user_no){
+		if(user_no == null){
+			alert('로그인 하셔야 작성이 가능합니다');
+		}else{
+			location.href='team.do';
+		}
+	}
+</script>
 </html>

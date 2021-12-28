@@ -42,8 +42,9 @@
 					
 					<div class="content-submit" align="right">
 						<input id="pointer" type="button" value="목록" onclick="location.href='teamlist.do'">
+						<input id="pointer" type="button" value="지원" onclick="sign_up(${login.user_no},${mercenaryDto.user_no })">
 						<input id="pointer" type="button" value="수정" onclick="location.href='team_updateForm.do?team_no=${teamDto.team_no}'">
-						<input id="pointer" type="button" value="삭제" onclick="location.href='team_delete.do'">
+						<input id="pointer" type="button" value="삭제" onclick="team_deleteChk(${login.user_no},${teamDto.user_no},${teamDto.team_no})">
 					</div>
 					
 				</div>
@@ -59,6 +60,34 @@
 	$("#team-logo").on('change',function(){
 	  var fileName = $("#team-logo").val();
 	  $(".upload-name").val(fileName);
-});
+	});
+	
+	function team_deleteChk(login_no, user_no, team_no){
+		if(login_no != user_no){
+			alert('팀장만 삭제할 수 있습니다');
+		}else{
+			if(user_no === login_no){
+				var chk = confirm('정말 삭제하시겠습니까?')
+				
+				if(chk){
+					location.href='team_delete.do?team_no='+team_no;
+				}else{
+					alert('취소되었습니다.');
+				}
+			}
+		}
+	}
+	
+	function sign_up(login_no, user_no){
+		if(login_no != user_no){
+			alert('용병지원서를 먼저 작성해주세요.');
+		}else{
+			if(login_no == user_no){
+				location.href='team_inviteMsg.do'
+			}else{
+				alert('용병지원서를 먼저 작성해주세요.');
+			}
+		}
+	}
 </script>
 </html>

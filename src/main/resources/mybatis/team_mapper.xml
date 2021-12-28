@@ -38,6 +38,11 @@
 		SET TEAM_NAME=#{team_name}, TEAM_INTRO=#{team_intro}, TEAM_ADDCHK=#{team_addchk}
 		WHERE TEAM_NO=#{team_no}
 	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE TEAM_INFO
+		WHERE TEAM_NO=#{team_no}
+	</delete>
 
 
 
