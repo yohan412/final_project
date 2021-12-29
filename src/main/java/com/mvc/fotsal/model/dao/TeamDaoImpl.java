@@ -83,7 +83,17 @@ public class TeamDaoImpl implements TeamDao{
 
 	@Override
 	public int delete(int team_no) {
-		return 0;
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE+"delete",team_no);
+		} catch (Exception e) {
+			System.out.println("error: team delete failed");
+			e.printStackTrace();
+		}
+		
+		
+		return res;
 	}
 	
 	@Override

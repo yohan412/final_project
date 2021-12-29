@@ -121,18 +121,6 @@ img{
 	    }
 	  }
 	
-	// 네이버 로그인
-	var naverLogin = new naver.LoginWithNaverId({ 
-		clientId: "WcZgXDWPFq0qvi6_Qqt6", 
-		callbackUrl: "http://localhost:8787/callback", 
-		isPopup: false,  //팝업을 통한 연동처리 여부 
-		loginButton: {color: "green", type: 3, height: 62}
-	});
-	
-	naverLogin.init();
-	
-
-	
 </script>
 <script type="text/javascript">
 $(function(){
@@ -195,7 +183,7 @@ function login(){
         	</div>
         	<div class="naver-login">
         	<div id="naver_id_login"></div>
-            	<a href="javascript:void(0)"><img src="img/naver.png" onclick="loginWithNaver();"></a>
+            	<a href="javascript:void(0)"><img src="img/naver.png" onclick=""></a>
         	</div>
         	<div class="caption">
             	<a href="">Forgot Password?</a>

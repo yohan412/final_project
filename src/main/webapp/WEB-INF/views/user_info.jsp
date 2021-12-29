@@ -82,7 +82,7 @@ td input[type="button"]{
 				</tr>
 				<tr>
 					<td colspan="10" style="text-align: right;">
-						<input type="button" value="수정" onclick="">
+						<input type="button" value="수정" onclick="locaion.href='user_update.do?user_id=${login.user_id}'">
 						<input type="button" value="회원탈퇴" onclick="">
 					</td>
 				</tr>

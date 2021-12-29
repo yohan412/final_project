@@ -3,15 +3,19 @@ package com.mvc.fotsal;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.mvc.fotsal.message.messageApp;
 import com.mvc.fotsal.model.biz.TeamBiz;
 import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
@@ -23,7 +27,6 @@ public class TeamController {
 	@Autowired
 	private TeamBiz biz;
 	
-	
 	@RequestMapping(value="/team.do")
 	public String insertForm() { // 팀 등록 페이지
 		logger.info("move page team.jsp");
@@ -31,10 +34,26 @@ public class TeamController {
 		return "team";
 	}
 	
+	@RequestMapping(value="/team_inviteMsg.do")
+	@ResponseBody
+	public void team_inviteMsg(@RequestParam("user_phone")String user_phone) {
+		logger.info("user phone number: "+user_phone);
+		
+		messageApp.team_inviteMsg(user_phone);
+		
+	}
+	
 	@RequestMapping(value="/teamInsert.do")
 	public String team_insert(MultipartHttpServletRequest mtf,TeamDto dto) {
 		logger.info("팀 등록서 작성중");
 		int res = biz.insert(dto);
+		System.out.println("team_name:"+dto.getTeam_name());
+		System.out.println("team_name:"+dto.getUser_no());
+		System.out.println("team_name:"+dto.getTeam_intro());
+		System.out.println("team_name:"+dto.getTeam_addchk());
+		
+		String uploadpath = mtf.getRealPath("resources\\upload"); //upload폴더에 실제 경로 설정
+		System.out.println(uploadpath);
 		
 		if(res>0) {
 			logger.info("팀 등록서 작성완료");
@@ -42,8 +61,6 @@ public class TeamController {
 			//========================파일 업로드==============================
 			logger.info("파일 업로드 작업중");
 			
-			String uploadpath = mtf.getRealPath("resources\\upload"); //upload폴더에 실제 경로 설정
-			System.out.println(uploadpath);
 			
 			List<MultipartFile> fileList = mtf.getFiles("upload_file");
 			
@@ -55,6 +72,8 @@ public class TeamController {
 	            System.out.println("fileSize : " + fileSize);
 
 	            String safeFile = uploadpath +"\\"+ System.currentTimeMillis() + originFileName;
+	            System.out.println(dto.getUser_no()+dto.getTeam_name());
+	            System.out.println(biz.findno(dto));
 	            try {
 	                mf.transferTo(new File(safeFile));
 	                
@@ -70,7 +89,6 @@ public class TeamController {
 	                e.printStackTrace();
 	            }
 	        }
-			
 			//===============================================================
 			
 			return "redirect:teamlist.do";
