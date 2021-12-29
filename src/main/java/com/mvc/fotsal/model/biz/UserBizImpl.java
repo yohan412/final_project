@@ -48,5 +48,10 @@ public class UserBizImpl implements UserBiz {
 		return dao.selectOne(user_id);
 	}
 
+	@Override
+	public int update(UserDto dto) {
+		return dao.update(dto);
+	}
+
 
 }
