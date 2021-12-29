@@ -35,37 +35,137 @@
 
 #search_box{
     width: 300px;
-    height: 40px;
+    height: 30px;
     border: 1px solid black;
+    background-color: blue;
 }
 
 #search_box #search{
     font-size: 16px;
-    width: 208px;
-    height: 20px;
+    width: 280px;
+    height: 10px;
     padding:10px;
     border: 0px;
     outline: none;
     float: left;
 }
 
-#search_box #button{
-    width: 70px;
-    height: 100%;
-    border: 0px;
-    outline: none;
-    float: right;
-    cursor: pointer;
-}
-
 #select_box_form{
     width: 450px;
     height: 80px;
-    background-color: green;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#select_region_form{
+    width: 225px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#stadium_region{
+    width: 200px;
+    height: 30px;
+}
+
+#select_detail_form{
+    width: 225px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#stadium_detail{
+    width: 200px;
+    height: 30px;
 }
 
 #search_button_form{
     width: 150px;
     height: 80px;
-    background-color: darkblue;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#search_button{
+    width: 100px;
+    height: 30px;
+    border: 0;
+    outline: 0;
+    background-color: #166cea;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+#listform{
+    width: 900px;
+    min-height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.list{
+    background-color: lightgray;
+    width: 900px;
+    height: 180px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.stadium_picture_form{
+    width: 300px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.stadium_img{
+    width: 200px;
+    height: 150px;
+    background-color: firebrick;
+}
+
+.stadium_introduce_form{
+    width: 600px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.stadium_introduce{
+    width: 500px;
+    height: 150px;
+    white-space: pre;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+}
+
+#pagingform{
+    width: 900px;
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }

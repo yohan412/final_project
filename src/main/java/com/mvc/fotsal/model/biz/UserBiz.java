@@ -9,4 +9,5 @@ public interface UserBiz {
 	public UserDto findId(UserDto dto);
 	public int changePw(UserDto dto);
 	public int changePwInput(UserDto dto);
+	public UserDto selectOne(String user_id);
 }

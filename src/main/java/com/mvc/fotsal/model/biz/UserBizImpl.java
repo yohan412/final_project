@@ -43,4 +43,10 @@ public class UserBizImpl implements UserBiz {
 		return dao.changePwInput(dto);
 	}
 
+	@Override
+	public UserDto selectOne(String user_id) {
+		return dao.selectOne(user_id);
+	}
+
+
 }

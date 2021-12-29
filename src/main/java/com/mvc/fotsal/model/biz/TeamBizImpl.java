@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mvc.fotsal.model.dao.TeamDao;
+import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
 
 @Service
@@ -38,6 +39,16 @@ public class TeamBizImpl implements TeamBiz{
 	@Override
 	public int delete(int team_no) {
 		return dao.delete(team_no);
+	}
+
+	@Override
+	public int teampic(PicDto dto) {
+		return dao.teampic(dto);
+	}
+
+	@Override
+	public int findno(TeamDto dto) {
+		return dao.findno(dto);
 	}
 	
 	

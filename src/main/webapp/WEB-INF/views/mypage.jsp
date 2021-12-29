@@ -40,11 +40,8 @@ td input[type="button"]{
 </script>
 </head>
 <body>
-<header style="text-align:center; margin-top:20px;">
-	헤더
-</header>
-<br><br><hr>
 <section>
+	<%@ include file="/WEB-INF/views/header.jsp" %>
 	<div style="text-align: center; margin-top: 30px;">	
 		<h1>내 정보 관리</h1>
 	</div>
@@ -53,27 +50,35 @@ td input[type="button"]{
 			<table align="center" method="post" cellpadding="5">
 				<tr>
 					<th>아이디</th>
-					<td><input type="text" id="id" name="userId" placeholder="KH" style="width:300px;"></td>
+					<td>${login.user_id }</td>
 				</tr>
 				<tr>
 					<th>이름</th>
-					<td><input type="text" id="name" name="userName" placeholder="홍길동" style="width:300px;"></td>
+					<td>${login.user_name }</td>
+				</tr>
+				<tr>
+					<th>성별</th>
+					<td>${login.user_gender }</td>
 				</tr>
 				<tr>
 					<th>생년월일</th>
-					<td><input type="text" id="date" name="Date" placeholder="2021.12.10" style="width:300px;"></td>
+					<td>${login.user_birthdate }</td>
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td><input type="text" id="email" name="Email" placeholder="dknkdw@naver.com" style="width:300px;"></td>
+					<td>${login.user_email }</td>
 				</tr>
 				<tr>
 					<th>핸드폰</th>
-					<td><input type="text" id="phone" name="Phone" placeholder="010-1234-5678" style="width:300px;"></td>
+					<td>${login.user_phone }</td>
 				</tr>
 				<tr>
-					<th>자기소개</th>
-					<td><textarea cols="39" rows="10" placeholder="안녕하세요 홍길동입니다."></textarea>></td>
+					<th>우편번호</th>
+					<td>${login.user_zip }</td>
+				</tr>
+				<tr>
+					<th>주소</th>
+					<td>${login.user_addr }</td>
 				</tr>
 				<tr>
 					<td colspan="10" style="text-align: right;">
@@ -84,8 +89,7 @@ td input[type="button"]{
 			</table>
 		</form>
 	</div>
+	<%@ include file="/WEB-INF/views/footer.jsp" %>
 </section>
-<hr><br><br>
-<footer style="text-align:center;">푸터</footer>
 </body>
 </html>
