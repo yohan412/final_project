@@ -102,5 +102,19 @@ import com.mvc.fotsal.model.dto.UserDto;
 			return dto;
 		}
 
+		@Override
+		public int update(UserDto dto) {
+			int res = 0;
+			
+			try {
+				res = sqlSession.update(NAMESPACE+"update", dto);
+			} catch (Exception e) {
+				System.out.println("[error]: update");
+				e.printStackTrace();
+			}
+			
+			return res;
+		}
+
 		
 }

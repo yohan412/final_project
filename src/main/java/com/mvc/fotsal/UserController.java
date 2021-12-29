@@ -191,12 +191,21 @@ public class UserController {
 	}
 	
 	//사용자 정보 상세조회
-    @RequestMapping("/mypage.do")
+    @RequestMapping("/user_info.do")
     public String mypage(Model model, String user_id) {
         logger.info("USER_INFO");
         model.addAttribute("login", biz.selectOne(user_id));
         
-        return "mypage";
+        return "user_info";
+    }
+    
+    //사용자 정보 수정
+    @RequestMapping("/user_update.do")
+    public String user_update(Model model, String user_id) {
+    	logger.info("UPDATE FORM");
+    	
+    	model.addAttribute("login", biz.selectOne(user_id));
+    	return "user_update";
     }
 	
 }
