@@ -1,5 +1,9 @@
 package com.mvc.fotsal;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mvc.fotsal.message.messageApp;
 import com.mvc.fotsal.model.biz.TeamBiz;
+import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
 
 @Controller
@@ -38,7 +44,7 @@ public class TeamController {
 	}
 	
 	@RequestMapping(value="/teamInsert.do")
-	public String team_insert(MultipartHttpServletRequest mtf, TeamDto dto) { 
+	public String team_insert(MultipartHttpServletRequest mtf,TeamDto dto) {
 		logger.info("팀 등록서 작성중");
 		int res = biz.insert(dto);
 		System.out.println("team_name:"+dto.getTeam_name());
@@ -46,12 +52,45 @@ public class TeamController {
 		System.out.println("team_name:"+dto.getTeam_intro());
 		System.out.println("team_name:"+dto.getTeam_addchk());
 		
-		String uploadpath = mtf.getRealPath("upload"); //upload파일에 실제 경로 설정
-		
-
+		String uploadpath = mtf.getRealPath("resources\\upload"); //upload폴더에 실제 경로 설정
+		System.out.println(uploadpath);
 		
 		if(res>0) {
 			logger.info("팀 등록서 작성완료");
+			
+			//========================파일 업로드==============================
+			logger.info("파일 업로드 작업중");
+			
+			
+			List<MultipartFile> fileList = mtf.getFiles("upload_file");
+			
+			for (MultipartFile mf : fileList) {
+	            String originFileName = mf.getOriginalFilename(); // 원본 파일 명
+	            long fileSize = mf.getSize(); // 파일 사이즈
+
+	            System.out.println("originFileName : " + originFileName);
+	            System.out.println("fileSize : " + fileSize);
+
+	            String safeFile = uploadpath +"\\"+ System.currentTimeMillis() + originFileName;
+	            System.out.println(dto.getUser_no()+dto.getTeam_name());
+	            System.out.println(biz.findno(dto));
+	            try {
+	                mf.transferTo(new File(safeFile));
+	                
+	                PicDto pic = new PicDto(biz.findno(dto), originFileName, safeFile);
+	                
+	                System.out.println(pic);
+	                
+	                biz.teampic(pic);
+	                
+	            } catch (IllegalStateException e) {
+	                e.printStackTrace();
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
+			//===============================================================
+			
 			return "redirect:teamlist.do";
 		}else {
 			logger.info("팀 등록서 작성실패");
