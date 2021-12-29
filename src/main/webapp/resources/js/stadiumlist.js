@@ -1,5 +1,9 @@
 $(function(){
     areaSelectMaker("#stadium_region","#stadium_detail");
+    $('#stadium_introduce').on('mousedown', function(e) {
+        e.preventDefault();
+    });
+
 });
 
 var areaSelectMaker = function(a1, a2){

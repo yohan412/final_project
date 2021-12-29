@@ -1,5 +1,6 @@
 package com.mvc.fotsal.model.dao;
 
+import com.mvc.fotsal.model.dto.StadiumDto;
 import com.mvc.fotsal.model.dto.UserDto;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,20 @@ public class StadiumDaoImpl implements StadiumDao{
             System.out.println("[ERROR]: selectuser");
             e.printStackTrace();
         }
+        return res;
+    }
+
+    @Override
+    public int insert(StadiumDto stadiumDto) {
+        int res = 0;
+
+        try {
+            res = sqlSessionTemplate.insert(NAMESPACE + "insert", stadiumDto);
+        }catch (Exception e){
+            System.out.println("[ERROR]: insert");
+            e.printStackTrace();
+        }
+
         return res;
     }
 }

@@ -1,11 +1,11 @@
 #mainform{
-    width: 900px;
+    width: 800px;
     display: flex;
     flex-wrap: wrap;
 }
 
 #titleform{
-    width: 900px;
+    width: 800px;
     height: 100px;
     display: flex;
     align-items: center;
@@ -16,7 +16,7 @@
 }
 
 #top_form{
-    width: 900px;
+    width: 800px;
     min-height: 730px;
     display: flex;
     flex-wrap: wrap;
@@ -32,9 +32,12 @@
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
+
+
 .info{
-    width: 620px;
+    width: 420px;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -46,7 +49,7 @@
 }
 
 #stadium_name_form{
-    width: 900px;
+    width: 800px;
     height: 80px;
     display: flex;
     flex-wrap: wrap;
@@ -55,7 +58,7 @@
 }
 
 #stadium_addr_form{
-    width: 900px;
+    width: 800px;
     height: 80px;
     display: flex;
     flex-wrap: wrap;
@@ -63,8 +66,43 @@
     justify-content: center;
 }
 
+.addr_title{
+    width: 180px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addr_info{
+    width: 280px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button_form{
+    width: 140px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#addr_button{
+    width: 80px;
+    height: 40px;
+    border: 0;
+    outline: 0;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #166cea;
+}
+
 #stadium_webaddr_form{
-    width: 900px;
+    width: 800px;
     height: 80px;
     display: flex;
     flex-wrap: wrap;
@@ -73,7 +111,7 @@
 }
 
 #stadium_phone_form{
-    width: 900px;
+    width: 800px;
     height: 80px;
     display: flex;
     flex-wrap: wrap;
@@ -83,11 +121,55 @@
 
 #stadium_content_form{
     width: 100%;
-    height: 200px;
+    min-height: 200px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+}
+.content_title_form{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#content_title{
+    width: 180px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: bold;
+    user-select: none;
+}
+
+#content_textarea_form{
+    width: 800px;
+    height: 220px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#textarea_form{
+    width: 600px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#textarea{
+    width: 590px;
+    height: 100%;
+    resize: none;
+    font-family: "Open Sans", Arial, Verdana;
+}
+
+#textarea:focus{
+    outline: none;
 }
 
 #stadium_upload_form{
@@ -97,4 +179,17 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+}
+
+#button{
+    width: 200px;
+    height: 60px;
+    border: 0;
+    outline: 0;
+    font-size: 25px;
+    font-weight: bold;
+    user-select: none;
+    color: white;
+    cursor: pointer;
+    background-color: #166cea;
 }

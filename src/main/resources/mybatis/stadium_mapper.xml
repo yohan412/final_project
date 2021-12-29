@@ -7,4 +7,13 @@
         SELECT * FROM USER_INFO WHERE USER_ID = #{user_id}
     </select>
 
+    <insert id="insert" parameterType="userDto">
+        INSERT INTO STADIUM VALUES
+        (STADIUM_NOSQ.nextval, #{stadium_name}, #{stadium_addr}, #{stadium_content}, #{stadium_webaddr}, #{stadium_phonenum})
+        <selectKey keyProperty="stadium_no" resultType="Integer" order="AFTER">
+            SELECT STADIUM_NOSQ.nextval FROM DUAL
+        </selectKey>
+    </insert>
+
+
 </mapper>
