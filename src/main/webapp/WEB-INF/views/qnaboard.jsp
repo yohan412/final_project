@@ -72,7 +72,7 @@
 									<tr>
 										<td>${dto.qna_no }</td>
 										<td>${dto.user_id}</td>
-										<td><a href="detail.do?qna_no=${dto.qna_no }">${dto.qna_title }</a></td>
+										<td><a href="qnadetail.do?qna_no=${dto.qna_no }">${dto.qna_title }</a></td>
 										<td>${dto.qna_content }</td>
 										<td>${dto.qna_reg }</td>
 									</tr>

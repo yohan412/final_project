@@ -24,7 +24,7 @@
             <div id="searchform">
                 <div id="search_box_form">
                     <div id="search_box">
-                        <input type="text" name="search" id="search" value="" onkeypress="if(event.keyCode===13){gamesearch()}" >
+                        <input type="text" name="search" id="search" onkeypress="if(event.keyCode===13){gamesearch()}" >
                     </div>
                 </div>
                 <div id="select_box_form">
@@ -41,12 +41,15 @@
             </div>
             <div id="listform">
                 <c:forEach begin="1" end="5">
-                    <div class="list" onclick="location.href='stadiumdetail.do?stadium_no=1'">
+                    <div class="list" onclick="location.href='stadiumdetail.do'">
                         <div class="stadium_picture_form">
                             <img src="" class="stadium_img" title="width=200px, height=150px">
                         </div>
                         <div class="stadium_introduce_form">
-                            <div class="stadium_introduce">${gamedto.game_content}</div>
+                            <textarea id="stadium_introduce">1. David Carlson didn't really like his daughter staying for hours at his house. The house was very
+                    3. "MUCKY" describes having a lot of wet soil or dirt. Water can be said to be "MUCKY", as well as ground and people. Dirty can be any dirt and any degree. If I have a slight amount of dirt on my pants, they would be dirty, but not muddy or "MUCKY". They would have to have a lot of dirt for that. Filthy is used when something is extremely dirty. Filthy always means dirty. Dirty does not always mean filthy. Also muddy and "MUCKY" apply to a particular kind of dirty - one that involves mud.
+                    3. "MUCKY" describes having a lot of wet soil or dirt. Water can be
+                        said to be "MUCKY", as well as ground and people. Dirty can be any dirt and any degree. If I have a slight</textarea>
                         </div>
                     </div>
                 </c:forEach>

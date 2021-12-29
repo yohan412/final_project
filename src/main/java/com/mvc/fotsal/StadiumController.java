@@ -3,6 +3,7 @@ package com.mvc.fotsal;
 import com.mvc.fotsal.model.biz.GameBiz;
 import com.mvc.fotsal.model.biz.StadiumBiz;
 import com.mvc.fotsal.model.biz.UserBiz;
+import com.mvc.fotsal.model.dto.StadiumDto;
 import com.mvc.fotsal.model.dto.UserDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +41,7 @@ public class StadiumController {
     }
 
     @RequestMapping("/stadiuminsertform.do")
-    public String StadiumInsert(Model model, HttpServletRequest request){
+    public String StadiumInsertPage(Model model, HttpServletRequest request){
         logger.info("Move to Stadium Insert Page");
 
         //세션
@@ -50,5 +51,33 @@ public class StadiumController {
         model.addAttribute("userDto", userDto);
 
         return "stadium_insert";
+    }
+
+    @RequestMapping("/stadiuminsert.do")
+    public String StadiumInsert(Model model, StadiumDto stadiumDto){
+        logger.info("Insert Stadium");
+
+        int res = stadiumBiz.insert(stadiumDto);
+
+        if(res > 0){
+            logger.info("insert Success");
+            return "redirect:stadiumlist.do";
+        }else{
+            logger.info("insert Fail");
+            return "redirect:stadiumlist.do";
+        }
+    }
+
+    @RequestMapping("/stadiumdetail.do")
+    public String StadiumDetail(Model model, HttpServletRequest request){
+        logger.info("Move to Stadium Detail Page");
+
+        //세션
+        HttpSession session = request.getSession();
+        UserDto login = (UserDto) session.getAttribute("login");
+        UserDto userDto = stadiumBiz.selectuser(login);
+        model.addAttribute("userDto", userDto);
+
+        return "stadiumdetail";
     }
 }

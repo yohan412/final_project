@@ -151,14 +151,24 @@
     justify-content: center;
 }
 
-.stadium_introduce{
+#stadium_introduce{
     width: 500px;
     height: 150px;
-    white-space: pre;
     overflow: hidden;
+    border: 0;
+    outline: 0;
+    resize: none;
+    font-family: "Open Sans", Arial, Verdana;
+    font-size: 16px;
+    cursor: pointer;
     display: -webkit-box;
-    -webkit-line-clamp: 7;
+    -webkit-line-clamp: 8;
     -webkit-box-orient: vertical;
+    background-color: lightgray;
+}
+
+*.unselectable {
+    -webkit-user-select: none;
 }
 
 #pagingform{
