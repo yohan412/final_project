@@ -5,6 +5,9 @@ section{
 td, th{
 	border: 1px solid #eeeeee;
 }
+.page-list li {
+	list-style: none; float: left; padding: 6px;
+}
 .main-all-box{
 	width: 900px;
 }
@@ -26,17 +29,6 @@ td, th{
 .team-date{
 	width: 14%;
 	text-align: center;
-}
-#prevbutton{
-    margin-right:3px;
-
-}
-#nextbutton{
-    margin-left:3px;
-}
-#pagingnum{
-    margin-left:5px;
-    margin-right:5px;
 }
 .content-submit-list{
 	margin-right: 125px;
