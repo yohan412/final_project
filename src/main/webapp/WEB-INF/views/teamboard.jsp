@@ -45,7 +45,7 @@
 						<c:forEach items="${list }" var="Teamdto">
 							<tr>
 								<td>${Teamdto.team_no }</td> <!-- 팀 번호 -->
-								<td></td> <!-- 팀 로고 사진 -->
+								<td><img class="pic_path" src=""></td> <!-- 팀 로고 사진 -->
 								<td><a href="team_detail.do?team_no=${Teamdto.team_no }">${Teamdto.team_name }</a></td>
 								<!-- 팀 번호가 일치하는 팀이름 -->
 								<td>${Teamdto.team_addchk }</td> <!-- 팀 모집여부 -->
@@ -76,6 +76,7 @@
 </footer>
 </body>
 <script type="text/javascript">
+
 	function loginChk(user_no){
 		if(user_no == null){
 			alert('로그인 하셔야 작성이 가능합니다');
@@ -83,5 +84,17 @@
 			location.href='team.do';
 		}
 	}
+	
+	$.ajax({
+		type : "post",
+		url : "/final_project/team_info/teamlist.do",
+		dataType : "html",
+		success : function(){
+			$(".pic_path").attr("src", res.value);
+		},
+		error : function(request, status, error){
+			alert("pic_path 에러 발생");
+		}
+	})
 </script>
 </html>
