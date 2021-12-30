@@ -32,7 +32,7 @@ public class TeamDaoImpl implements TeamDao{
 	}
 	
 	@Override
-	public int listCount() {
+	public int listCount(TeamListPaging TLP) {
 		
 		int res = 0;
 		

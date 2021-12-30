@@ -5,9 +5,7 @@ section{
 td, th{
 	border: 1px solid #eeeeee;
 }
-.page-list li {
-	list-style: none; float: left; padding: 6px;
-}
+
 .main-all-box{
 	width: 900px;
 }

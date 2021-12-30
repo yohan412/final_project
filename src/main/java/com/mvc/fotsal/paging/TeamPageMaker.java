@@ -19,13 +19,14 @@ public class TeamPageMaker {
 	
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
+		calcDate();
 	}
 	
 	public TeamListPaging getTLP() {
 		return TLP;
 	}
-	public void setTLP(TeamListPaging tLP) {
-		TLP = tLP;
+	public void setTLP(TeamListPaging TLP) {
+		this.TLP = TLP;
 	}
 	public int getStartPage() {
 		return startPage;
