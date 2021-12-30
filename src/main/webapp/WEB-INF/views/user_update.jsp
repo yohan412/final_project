@@ -13,6 +13,7 @@
 	</div>
 	<div class="user_update">
 		<form action="updateres.do" method="post">
+			<input type="hidden" name="user_id" value="${login.user_id }">
 			<table align="center" method="post" cellpadding="5">
 				<tr>
 					<th>아이디</th>
@@ -49,7 +50,7 @@
 				<tr>
 					<td colspan="10" style="text-align: right;">
 						<input type="submit" value="완료">
-						<input type="button" value="취소" onclick="locaion.href='user_info.do'">
+						<input type="button" value="취소" onclick="location.href='user_info.do'">
 					</td>
 				</tr>
 			</table>

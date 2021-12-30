@@ -46,7 +46,6 @@ td input[type="button"]{
 		<h1>내 정보 관리</h1>
 	</div>
 	<div class="user_info">
-		<form action="" method="post">
 			<table align="center" method="post" cellpadding="5">
 				<tr>
 					<th>아이디</th>
@@ -73,7 +72,7 @@ td input[type="button"]{
 					<td>${login.user_phone }</td>
 				</tr>
 				<tr>
-					<th>우편번호</th>
+					<th>우편번호</th> 
 					<td>${login.user_zip }</td>
 				</tr>
 				<tr>
@@ -82,12 +81,11 @@ td input[type="button"]{
 				</tr>
 				<tr>
 					<td colspan="10" style="text-align: right;">
-						<input type="button" value="수정" onclick="locaion.href='user_update.do?user_id=${login.user_id}'">
+						<input type="button" value="수정" onclick="location.href='updateform.do?user_id=${login.user_id}'">
 						<input type="button" value="회원탈퇴" onclick="">
 					</td>
 				</tr>
 			</table>
-		</form>
 	</div>
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
 </section>

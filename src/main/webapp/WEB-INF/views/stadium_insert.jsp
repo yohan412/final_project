@@ -12,8 +12,7 @@
 <link href='<c:url value="${path}/resources/css/stadiuminsert.css"/>' rel="stylesheet">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="/resources/js/stadiuminsert.js"></script>
-</style>
+<script type="text/javascript" src="${path}/resources/js/stadiuminsert.js"></script>
 </head>
 <body>
 <header>
@@ -22,7 +21,7 @@
 <section>
     <div id="mainform">
         <div id="titleform">경기장 작성</div>
-        <form:form action="/stadiuminsert.do" method="post" onsubmit="return sd(${userDto.user_id})">
+        <form:form action="/stadiuminsert.do" method="post" onsubmit="return sd('${userDto.user_id}')">
             <div id="top_form">
                 <div id="stadium_name_form">
                     <div style="width: 100px; height: 100%"></div>
