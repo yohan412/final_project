@@ -384,7 +384,7 @@ function nextSlide() {
 	    </div>
 	            
 	    <div class="mySlideDiv fade">
-	        <img src="/img/futsalimg04.jpg"> 
+	        <img src="/upload/1640834856011LogoSample_ByTailorBrands_edit.jpg"> 
 	    </div>
 	     
 	    <div class="mySlideDiv fade">
