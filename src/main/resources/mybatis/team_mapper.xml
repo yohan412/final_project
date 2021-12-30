@@ -22,9 +22,11 @@
 	</select>
 	
 	<select id="listCount" resultType="int">
+		<![CDATA[
 			SELECT COUNT(TEAM_NO)
 			FROM TEAM_INFO
 			WHERE TEAM_NO > 0
+		]]>
 	</select>
 
 	

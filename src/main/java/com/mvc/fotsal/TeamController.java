@@ -108,7 +108,7 @@ public class TeamController {
 		
 		TeamPageMaker pageMaker = new TeamPageMaker();
 		pageMaker.setTLP(TLP);
-		pageMaker.setTotalCount(biz.listCount(TLP)); // 최대 리스트 갯수 카운트
+		pageMaker.setTotalCount(biz.listCount()); // 최대 리스트 갯수 카운트
 		
 		model.addAttribute("pageMaker", pageMaker);
 		System.out.println(TLP.toString());

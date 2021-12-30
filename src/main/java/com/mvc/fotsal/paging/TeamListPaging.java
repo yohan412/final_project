@@ -8,7 +8,7 @@ public class TeamListPaging {
 	
 	public TeamListPaging() {
 		this.page = 1; // 시작페이지
-		this.perPageNum = 10; // 뷰에서의 최대 표현 페이지
+		this.perPageNum = 10; // 뷰에서의 최대 표현 리스트
 	}
 
 	public void setPage(int page) {
@@ -21,7 +21,7 @@ public class TeamListPaging {
 
 
 	public void setPerPageNum(int perPageNum) {
-		if (perPageNum <= 0 || perPageNum > 100) { // 0보다 작거나 0과 같거나 and 99보다 작다면, 즉 범위를 1~99까지로 제한
+		if (perPageNum <= 0 || perPageNum > 100) { 
  			this.perPageNum = 10;
 			return;
 		}
