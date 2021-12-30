@@ -55,7 +55,7 @@ public class TeamController {
 		System.out.println("team_name:"+dto.getTeam_intro());
 		System.out.println("team_name:"+dto.getTeam_addchk());
 		
-		String uploadpath = mtf.getSession().getServletContext().getRealPath("resources\\upload"); //upload폴더에 실제 경로 설정
+		String uploadpath = mtf.getRealPath("resources\\upload"); //upload폴더에 실제 경로 설정
 		System.out.println(uploadpath);
 		
 		if(res>0) {
@@ -74,15 +74,13 @@ public class TeamController {
 	            System.out.println("originFileName : " + originFileName);
 	            System.out.println("fileSize : " + fileSize);
 
-	            String safeFile = uploadpath+System.currentTimeMillis() + originFileName;
+	            String safeFile = uploadpath+"\\"+System.currentTimeMillis() + originFileName;
 	            System.out.println(dto.getUser_no()+dto.getTeam_name());
 	            System.out.println(biz.findno(dto));
 	            try {
 	                mf.transferTo(new File(safeFile));
 	                
 	                PicDto pic = new PicDto(biz.findno(dto), originFileName, System.currentTimeMillis() + originFileName);
-	                
-	                System.out.println(pic);
 	                
 	                biz.teampic(pic);
 	                
