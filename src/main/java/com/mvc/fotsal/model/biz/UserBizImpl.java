@@ -49,8 +49,8 @@ public class UserBizImpl implements UserBiz {
 	}
 
 	@Override
-	public int userUpdate(String user_id) {
-		return dao.userUpdate(user_id);
+	public int userUpdate(UserDto dto) {
+		return dao.userUpdate(dto);
 	}
 
 

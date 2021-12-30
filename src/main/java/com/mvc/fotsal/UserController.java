@@ -50,7 +50,7 @@ public class UserController {
 		boolean check = false;
 		if(res != null) {
 			if(passwordEncoder.matches(dto.getUser_pw(),res.getUser_pw())) {
-				session.setAttribute("login", res);
+				session.setAttribute("dto", res);
 				 check=true;
 			}
 		} 
@@ -194,7 +194,7 @@ public class UserController {
     @RequestMapping("/user_info.do")
     public String mypage(Model model, String user_id) {
         logger.info("USER_INFO");
-        model.addAttribute("login", biz.selectOne(user_id));
+        model.addAttribute("dto", biz.selectOne(user_id));
         
         return "user_info";
     }
@@ -204,22 +204,22 @@ public class UserController {
     public String user_update(Model model, String user_id) {
     	logger.info("UPDATE FORM");
     	
-    	model.addAttribute("login", biz.selectOne(user_id));
+    	model.addAttribute("dto", biz.selectOne(user_id));
     	return "user_update";
     }
     
     //사용자 정보 업데이트
     @RequestMapping("/updateres.do")
-    public String updateRes(String user_id) {
+    public String updateRes(UserDto dto) {
     	logger.info("UPDATE RES");
     	
-    	int res = biz.userUpdate(user_id);
+    	int res = biz.userUpdate(dto);
     	if(res>0) {
 			logger.info("사용자정보 수정완료");
-    		return "redirect:user_info.do?user_id="+user_id;
+    		return "redirect:user_info.do?user_id="+dto.getUser_id();
     	} else {
 			logger.info("사용자정보 수정실패");
-    		return "redirect:updateform.do?user_id="+user_id;
+    		return "redirect:updateform.do?user_id="+dto.getUser_id();
     	}
     	
     }

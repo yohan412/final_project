@@ -10,6 +10,6 @@ public interface UserBiz {
 	public int changePw(UserDto dto);
 	public int changePwInput(UserDto dto);
 	public UserDto selectOne(String user_id);
-	public int userUpdate(String user_id);
+	public int userUpdate(UserDto dto);
 	
 }
