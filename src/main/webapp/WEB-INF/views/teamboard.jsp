@@ -46,7 +46,7 @@
 						<c:forEach items="${list }" var="Teamdto">
 							<tr>
 								<td>${Teamdto.team_no }</td> <!-- 팀 번호 -->
-								<td><img class="pic_path" src="/upload/${Teamdto.pic_path }"></td> <!-- 팀 로고 사진 -->
+								<td><img class="pic_path" src="/upload/${Teamdto.pic_path }" alt="로고없음"></td> <!-- 팀 로고 사진 -->
 								<td><a href="team_detail.do?team_no=${Teamdto.team_no }">${Teamdto.team_name }</a></td>
 								<!-- 팀 번호가 일치하는 팀이름 -->
 								<td>${Teamdto.team_addchk }</td> <!-- 팀 모집여부 -->
