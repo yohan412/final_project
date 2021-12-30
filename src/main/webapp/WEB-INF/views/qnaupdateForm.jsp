@@ -21,6 +21,7 @@
 						<div class="form-group">
 							<label>카테고리</label>
 							<label class="detail-qna-cartagory" style="font-weight:bold;">${dto.qna_type }</label>
+							
 						</div>
 						<div class="form-group">
 							<label>작성자</label>
