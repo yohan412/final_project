@@ -39,4 +39,10 @@
 		WHERE USER_ID = #{user_id}
 	</select>
 	
+	<update id="userUpdate" parameterType="userDto">
+		UPDATE USER_INFO
+		SET USER_EMAIL = #{user_email}, USER_PHONE = #{user_phone}, USER_ZIP = #{user_zip}, USER_ADDR = #{user_addr}
+		WHERE USER_ID = #{user_id}
+	</update>
+	
 </mapper>

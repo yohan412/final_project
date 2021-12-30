@@ -199,13 +199,37 @@ public class UserController {
         return "user_info";
     }
     
-    //사용자 정보 수정
-    @RequestMapping("/user_update.do")
+    //사용자 정보 수정페이지
+    @RequestMapping("/updateform.do")
     public String user_update(Model model, String user_id) {
     	logger.info("UPDATE FORM");
     	
     	model.addAttribute("login", biz.selectOne(user_id));
     	return "user_update";
     }
+    
+    //사용자 정보 업데이트
+    @RequestMapping("/updateres.do")
+    public String updateRes(String user_id) {
+    	logger.info("UPDATE RES");
+    	
+    	int res = biz.userUpdate(user_id);
+    	if(res>0) {
+			logger.info("사용자정보 수정완료");
+    		return "redirect:user_info.do?user_id="+user_id;
+    	} else {
+			logger.info("사용자정보 수정실패");
+    		return "redirect:updateform.do?user_id="+user_id;
+    	}
+    	
+    }
+
+    
+    
+    
+    
+    
+    
+    
 	
 }
