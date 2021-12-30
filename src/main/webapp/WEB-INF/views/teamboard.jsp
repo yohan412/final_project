@@ -46,7 +46,7 @@
 						<c:forEach items="${list }" var="Teamdto">
 							<tr>
 								<td>${Teamdto.team_no }</td> <!-- 팀 번호 -->
-								<td><img class="pic_path" src="/upload/${Teamdto.pic_path }" alt="로고없음"></td> <!-- 팀 로고 사진 -->
+								<td class="team-logo-pic"><img class="pic_path" src="/upload/${Teamdto.pic_path }" alt="로고없음"></td> <!-- 팀 로고 사진 -->
 								<td><a href="team_detail.do?team_no=${Teamdto.team_no }">${Teamdto.team_name }</a></td>
 								<!-- 팀 번호가 일치하는 팀이름 -->
 								<td>${Teamdto.team_addchk }</td> <!-- 팀 모집여부 -->
@@ -61,15 +61,15 @@
 		<div class="page-list" align="center">
 			
 				<c:if test="${pageMaker.prev }">
-					<a href="list${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a>
+					<a href="location.href='teamlist.do${pageMaker.makeQuery(pageMaker.startPage - 1)}'">이전</a>
 				</c:if>
 				
 				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage }" var="idx">
-					<a href="list${pageMaker.makeQuery(idx) }">${idx}</a>
+					<a href="location.href='teamlist.do${pageMaker.makeQuery(idx) }'">${idx}</a>
 				</c:forEach>
 				
 				<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
-					<a href="list${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a>
+					<a href="location.href='teamlist.do${pageMaker.makeQuery(pageMaker.endPage + 1)}'">다음</a>
 				</c:if>
 				
 		</div>
