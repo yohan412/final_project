@@ -46,7 +46,7 @@
 						<c:forEach items="${list }" var="Teamdto">
 							<tr>
 								<td>${Teamdto.team_no }</td> <!-- 팀 번호 -->
-								<td><img class="pic_path" src="${Teamdto.pic_path }"></td> <!-- 팀 로고 사진 -->
+								<td><img class="pic_path" src="/upload/${Teamdto.pic_path }"></td> <!-- 팀 로고 사진 -->
 								<td><a href="team_detail.do?team_no=${Teamdto.team_no }">${Teamdto.team_name }</a></td>
 								<!-- 팀 번호가 일치하는 팀이름 -->
 								<td>${Teamdto.team_addchk }</td> <!-- 팀 모집여부 -->
@@ -59,19 +59,19 @@
 		</div>
 		<!-- 페이지 리스트 -->
 		<div class="page-list" align="center">
-			<ul>
+			
 				<c:if test="${pageMaker.prev }">
-					<li><a href="list${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
+					<a href="list${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a>
 				</c:if>
 				
 				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage }" var="idx">
-					<li><a href="list${pageMaker.makeQuery(idx) }">${idx}</a></li>
+					<a href="list${pageMaker.makeQuery(idx) }">${idx}</a>
 				</c:forEach>
 				
 				<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
-					<li><a href="list${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
+					<a href="list${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a>
 				</c:if>
-			</ul>
+				
 		</div>
 		<div class="content-submit-list" align="right">
 			<input id="pointer" type="button" value="작성하기" onclick="loginChk(${login.user_no})">
