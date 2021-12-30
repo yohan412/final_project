@@ -74,7 +74,7 @@ public class TeamController {
 	            System.out.println("originFileName : " + originFileName);
 	            System.out.println("fileSize : " + fileSize);
 
-	            String safeFile = uploadpath +"\\"+ System.currentTimeMillis() + originFileName;
+	            String safeFile = System.currentTimeMillis() + originFileName;
 	            System.out.println(dto.getUser_no()+dto.getTeam_name());
 	            System.out.println(biz.findno(dto));
 	            try {
