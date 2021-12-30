@@ -34,6 +34,7 @@ public class QnaBoardController {
 	public String detail(Model model, int qna_no) {
 		logger.info("SELECT ONE");
 		model.addAttribute("dto", biz.selectOne(qna_no));
+		System.out.println(qna_no);
 		
 		return "qnadetail";
 	}
@@ -72,10 +73,10 @@ public class QnaBoardController {
 	@RequestMapping("/qnaupdateForm.do")
 	public String updateForm(Model model, int qna_no) {
 		logger.info("UPDATE FORM");
-		System.out.println(qna_no);
 
 		
 		model.addAttribute("dto", biz.selectOne(qna_no));
+		
 		return "qnaupdateForm";
 	}
 	

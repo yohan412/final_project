@@ -11,7 +11,7 @@
 	</select>
 	
 	<select id="selectOne" resultType="QnaBoardDto" parameterType="int">
-		SELECT QNA_TYPE, USER_ID, QNA_TITLE, QNA_CONTENT FROM QNA WHERE QNA_NO = #{qna_no}			
+		SELECT QNA_NO, QNA_TYPE, USER_ID, QNA_TITLE, QNA_CONTENT FROM QNA WHERE QNA_NO = #{qna_no}			
 	</select>
 	
 	<insert id="insert" parameterType="QnaBoardDto">
