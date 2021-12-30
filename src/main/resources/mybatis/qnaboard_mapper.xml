@@ -10,12 +10,18 @@
 		ORDER BY QNA_NO DESC
 	</select>
 	
-	<select id="QnaBoardDetail" resultType="QnaBoardDto" parameterType="int">
-		SELECT * FROM WHERE QNA_NO = #{qna_no}			
+	<select id="selectOne" resultType="QnaBoardDto" parameterType="int">
+		SELECT QNA_TYPE, USER_ID, QNA_TITLE, QNA_CONTENT FROM QNA WHERE QNA_NO = #{qna_no}			
 	</select>
 	
 	<insert id="insert" parameterType="QnaBoardDto">
 		INSERT INTO QNA
 		VALUES(QNA_NOSQ.NEXTVAL, QNA_GPNOSQ.NEXTVAL, 1, #{qna_title}, #{qna_content}, #{user_id}, SYSDATE , #{qna_type})
 	</insert>
+	
+	<update id="update">
+		UPDATE QNA
+		SET QNA_TITLE = {qna_title}, QNA_CONTENT = #{qna_content}
+		WHERE USER_ID = #{user_id}
+	</update>
 </mapper>

@@ -2,13 +2,14 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>팀 등록서</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="resources/css/teamboard.css">
 </head>
 <body>
@@ -45,7 +46,7 @@
 						<c:forEach items="${list }" var="Teamdto">
 							<tr>
 								<td>${Teamdto.team_no }</td> <!-- 팀 번호 -->
-								<td><img class="pic_path" src=""></td> <!-- 팀 로고 사진 -->
+								<td><img class="pic_path" src="${Teamdto.pic_path }"></td> <!-- 팀 로고 사진 -->
 								<td><a href="team_detail.do?team_no=${Teamdto.team_no }">${Teamdto.team_name }</a></td>
 								<!-- 팀 번호가 일치하는 팀이름 -->
 								<td>${Teamdto.team_addchk }</td> <!-- 팀 모집여부 -->
@@ -57,14 +58,20 @@
 			</table>		
 		</div>
 		<!-- 페이지 리스트 -->
-			<!-- <c:if test="${}"> -->
-			<!-- </c:if> -->
 		<div class="page-list" align="center">
-	           <button id="prevbutton"><a href="#"><</a></button>
-	           <c:forEach begin="1" end="5">
-	               <button id="pagingnum"><a href="#">1</a></button>
-	           </c:forEach>
-	           <button id="nextbutton"><a href="#">></a></button>
+			<ul>
+				<c:if test="${pageMaker.prev }">
+					<li><a href="list${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
+				</c:if>
+				
+				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage }" var="idx">
+					<li><a href="list${pageMaker.makeQuery(idx) }">${idx}</a></li>
+				</c:forEach>
+				
+				<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
+					<li><a href="list${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
+				</c:if>
+			</ul>
 		</div>
 		<div class="content-submit-list" align="right">
 			<input id="pointer" type="button" value="작성하기" onclick="loginChk(${login.user_no})">
@@ -85,16 +92,5 @@
 		}
 	}
 	
-	$.ajax({
-		type : "post",
-		url : "/final_project/team_info/teamlist.do",
-		dataType : "html",
-		success : function(){
-			$(".pic_path").attr("src", res.value);
-		},
-		error : function(request, status, error){
-			alert("pic_path 에러 발생");
-		}
-	})
 </script>
 </html>

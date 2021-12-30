@@ -61,7 +61,16 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 
 	@Override
 	public int update(QnaBoardDto dto) {
-		return 0;
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE+"update", dto);
+		} catch (Exception e) {
+			System.out.println("[error] : update");
+			e.printStackTrace();
+		}
+				
+		return res;
 	}
 
 	@Override
