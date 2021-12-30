@@ -52,7 +52,7 @@ public class TeamController {
 		System.out.println("team_name:"+dto.getTeam_intro());
 		System.out.println("team_name:"+dto.getTeam_addchk());
 		
-		String uploadpath = mtf.getRealPath("resources\\upload"); //upload폴더에 실제 경로 설정
+		String uploadpath = mtf.getSession().getServletContext().getRealPath("resources\\upload"); //upload폴더에 실제 경로 설정
 		System.out.println(uploadpath);
 		
 		if(res>0) {
