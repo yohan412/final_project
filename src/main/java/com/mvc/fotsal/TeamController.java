@@ -74,13 +74,13 @@ public class TeamController {
 	            System.out.println("originFileName : " + originFileName);
 	            System.out.println("fileSize : " + fileSize);
 
-	            String safeFile = System.currentTimeMillis() + originFileName;
+	            String safeFile = uploadpath+System.currentTimeMillis() + originFileName;
 	            System.out.println(dto.getUser_no()+dto.getTeam_name());
 	            System.out.println(biz.findno(dto));
 	            try {
 	                mf.transferTo(new File(safeFile));
 	                
-	                PicDto pic = new PicDto(biz.findno(dto), originFileName, safeFile);
+	                PicDto pic = new PicDto(biz.findno(dto), originFileName, System.currentTimeMillis() + originFileName);
 	                
 	                System.out.println(pic);
 	                
