@@ -31,11 +31,11 @@ function Addr_api() {
 }
 
 function sd(user_id){
-    var stadium_name = $("#stadium_name").val();
-    var stadium_addr = $("#stadium_addr").val();
-    var stadium_webaddr= $("#stadium_webaddr").val();
-    var stadium_phone = $("#stadium_phone").val();
-    var stadium_content = $("#textarea").val();
+    var stadium_name    = $('input[name=stadium_name]').val();
+    var stadium_addr    = $('input[name=stadium_addr]').val();
+    var stadium_webaddr = $('input[name=stadium_webaddr]').val();
+    var stadium_phone   = $('input[name=stadium_phonenum]').val();
+    var stadium_content = $('#textarea').val();
 
     if(!stadium_name || !stadium_addr || !stadium_webaddr || !stadium_phone || !stadium_content){
         if(!stadium_name){

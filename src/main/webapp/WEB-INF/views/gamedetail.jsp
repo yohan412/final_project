@@ -130,6 +130,7 @@
             <div id="button_form">
                 <input type="button" value="수정하기" class="button" onclick="move_to_update_form('${gamedto.user_id}','${userDto.user_id}', ${gamedto.game_no})">
                 <input type="button" value="삭제하기" class="button" onclick="delete_game('${gamedto.user_id}','${userDto.user_id}', ${gamedto.game_no})">
+                <input type="button" value="목록" class="button" onclick="location.href='gamelist.do'">
             </div>
         </div>
         <%--하단 내용 구역--%>
