@@ -24,7 +24,7 @@
             <div id="searchform">
                 <div id="search_box_form">
                     <div id="search_box">
-                        <input type="text" name="search" id="search" value="" onkeypress="if(event.keyCode===13){gamesearch()}" >
+                        <input type="text" name="search" id="search" onkeypress="if(event.keyCode===13){gamesearch()}" >
                     </div>
                 </div>
                 <div id="select_box_form">
@@ -40,13 +40,13 @@
                 </div>
             </div>
             <div id="listform">
-                <c:forEach begin="1" end="5">
-                    <div class="list" onclick="location.href='stadiumdetail.do?stadium_no=1'">
+                <c:forEach items="${list}" var="stadiumlist" varStatus="status">
+                    <div class="list" onclick="location.href='stadiumdetail.do?stadium_no=${stadiumlist.stadium_no}'">
                         <div class="stadium_picture_form">
                             <img src="" class="stadium_img" title="width=200px, height=150px">
                         </div>
                         <div class="stadium_introduce_form">
-                            <div class="stadium_introduce">${gamedto.game_content}</div>
+                            <textarea id="stadium_introduce">${stadiumlist.stadium_content}</textarea>
                         </div>
                     </div>
                 </c:forEach>
@@ -54,15 +54,15 @@
             <div id="pagingform">
                 <div style="width: 200px; height: 100%"></div>
                 <div style="width: 500px; height: 100%; display: flex; align-items: center; justify-content: center; background-color: blue">
-<%--                    <c:if test="${gamepagemaker.prev}">
-                        <input type="button" id="prevbutton" onclick="location.href='gamelist.do${gamepagemaker.makeSearch(gamepagemaker.startPage - 1)}'" value="<">
+                    <c:if test="${pageMaker.prev}">
+                        <input type="button" id="prevbutton" onclick="location.href='stadiumlist.do${pageMaker.makeQuery(pageMaker.startPage - 1)}'" value="<">
                     </c:if>
-                    <c:forEach begin="${gamepagemaker.startPage}" end="${gamepagemaker.endPage}" var="idx">
-                        <input type="button" id="pagingnum" onclick="location.href='gamelist.do${gamepagemaker.makeSearch(idx)}'" value="${idx}">
+                    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+                        <input type="button" id="pagingnum" onclick="location.href='stadiumlist.do${pageMaker.makeQuery(idx)}'" value="${idx}">
                     </c:forEach>
-                    <c:if test="${gamepagemaker.next && gamepagemaker.endPage > 0}">
-                        <input type="button" id="nextbutton" onclick="location.href='gamelist.do${gamepagemaker.makeSearch(gamepagemaker.endPage + 1)}'" value=">">
-                    </c:if>--%>
+                    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+                        <input type="button" id="nextbutton" onclick="location.href='stadiumlist.do${pageMaker.makeQuery(pageMaker.endPage + 1)}'" value=">">
+                    </c:if>
                 </div>
                 <div style="width: 200px; height: 100%; display: flex; align-items: center; justify-content: center">
                     <input type="button" value="경기장 등록" id="stadium_insert_button" onclick="stadium_insert('${userDto.user_id}')">

@@ -12,7 +12,7 @@
 <link href='<c:url value="${path}/resources/css/stadiuminsert.css"/>' rel="stylesheet">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</style>
+<script type="text/javascript" src="${path}/resources/js/stadiuminsert.js"></script>
 </head>
 <body>
 <header>
@@ -21,21 +21,24 @@
 <section>
     <div id="mainform">
         <div id="titleform">경기장 작성</div>
-        <form role="form" method="get" onsubmit="return false">
+        <form:form action="/stadiuminsert.do" method="post" onsubmit="return sd('${userDto.user_id}')">
             <div id="top_form">
                 <div id="stadium_name_form">
+                    <div style="width: 100px; height: 100%"></div>
                     <div class="font">경기장 이름</div>
                     <div class="info">
-                        <input type="text" placeholder="경기장 이름" name="game_stadium" id="stadium_name" class="inputform">
+                        <input type="text" placeholder="경기장 이름" name="stadium_name" id="stadium_name" class="inputform">
                     </div>
+                    <div style="width: 100px; height: 100%"></div>
                 </div>
                 <div id="stadium_addr_form">
+                    <div style="width: 100px; height: 100%"></div>
                     <div class="addr_title">
                         <div class="font">경기장 주소</div>
                     </div>
                     <div class="addr_info">
                         <div style="width: 100%; height: 50%; display: flex; align-items: center">
-                            <input type="text" placeholder="경기장 주소" name="game_addr" id="stadium_addr" class="inputform" readonly>
+                            <input type="text" placeholder="경기장 주소" name="stadium_addr" id="stadium_addr" class="inputform" readonly>
                         </div>
                     </div>
                     <div class="button_form">
@@ -43,39 +46,51 @@
                             <input type="button" value="주소 찾기" id="addr_button" onclick="Addr_api();">
                         </div>
                     </div>
+                    <div style="width: 100px; height: 100%"></div>
                 </div>
                 <div id="stadium_webaddr_form">
+                    <div style="width: 100px; height: 100%"></div>
                     <div class="font">경기장 홈페이지 주소</div>
                     <div class="info">
-                        <input type="text" placeholder="경기장 홈페이지" name="game_stadium" id="stadium_name" class="inputform">
+                        <input type="text" placeholder="경기장 홈페이지 주소" name="stadium_webaddr" id="stadium_webaddr" class="inputform">
                     </div>
+                    <div style="width: 100px; height: 100%"></div>
                 </div>
                 <div id="stadium_phone_form">
+                    <div style="width: 100px; height: 100%"></div>
                     <div class="font">경기장 전화번호</div>
                     <div class="info">
-                        <input type="text" placeholder="경기장 이름" name="game_stadium" id="stadium_name" class="inputform">
+                        <input type="text" placeholder="경기장 전화번호" name="stadium_phonenum" id="stadium_phone" class="inputform">
                     </div>
+                    <div style="width: 100px; height: 100%"></div>
                 </div>
                 <div id="stadium_content_form">
                     <div class="content_title_form">
+                        <div style="width: 100px; height: 100%"></div>
                         <div id="content_title">
                             기타 내용
                         </div>
-                        <div style="width: 180px; height: 70%"></div>
+                        <div style="width: 520px; height: 100%"></div>
                     </div>
-                    <div class="info">
-                        <textarea id="textarea" name="game_content"></textarea>
+                    <div id="content_textarea_form">
+                        <div style="width: 100px; height: 100%"></div>
+                        <div id="textarae_form">
+                            <textarea id="textarea" name="stadium_content"></textarea>
+                        </div>
+                        <div style="width: 100px; height: 100%"></div>
                     </div>
                 </div>
                 <div id="stadium_upload_form">
+                    <div style="width: 100px; height: 100%"></div>
                     <div>
-                        <div>경기장 사진 업로드</div>
+                        <div class="font">경기장 사진 업로드</div>
                     </div>
-                    <div>업로드 기능 공간</div>
+                    <div class="info">업로드 기능 공간</div>
+                    <div style="width: 100px; height: 100%"></div>
                 </div>
                 <div id="button_form"><input type="submit" value="경기장 등록" id="button"></div>
             </div>
-        </form>
+        </form:form>
     </div>
 </section>
 <footer>

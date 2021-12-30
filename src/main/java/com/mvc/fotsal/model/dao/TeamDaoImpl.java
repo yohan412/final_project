@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
+import com.mvc.fotsal.paging.TeamListPaging;
 
 @Repository
 public class TeamDaoImpl implements TeamDao{
@@ -17,12 +18,7 @@ public class TeamDaoImpl implements TeamDao{
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public TeamDto teamDetail(TeamDto dto) {
-		return null;
-	}
-
-	@Override
-	public List<TeamDto> selectList() {
+	public List<TeamDto> selectList(TeamListPaging TLP) {
 		List<TeamDto> teamlist = new ArrayList<TeamDto>();
 		
 		try {
@@ -33,6 +29,21 @@ public class TeamDaoImpl implements TeamDao{
 		}
 		
 		return teamlist;
+	}
+	
+	@Override
+	public int listCount(TeamListPaging TLP) {
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"listCount");
+		} catch (Exception e) {
+			System.out.println("error: select listCount failed");
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 	@Override
@@ -129,5 +140,6 @@ public class TeamDaoImpl implements TeamDao{
 		
 		return teamdto.getTeam_no();
 	}
+
 
 }

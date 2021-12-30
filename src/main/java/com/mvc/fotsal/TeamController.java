@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,6 +20,8 @@ import com.mvc.fotsal.message.messageApp;
 import com.mvc.fotsal.model.biz.TeamBiz;
 import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
+import com.mvc.fotsal.paging.TeamListPaging;
+import com.mvc.fotsal.paging.TeamPageMaker;
 
 @Controller
 public class TeamController {
@@ -70,16 +73,15 @@ public class TeamController {
 
 	            System.out.println("originFileName : " + originFileName);
 	            System.out.println("fileSize : " + fileSize);
-
-	            String safeFile = uploadpath +"\\"+ System.currentTimeMillis() + originFileName;
+	            
+	            String FileName = System.currentTimeMillis() + originFileName;
+	            String safeFile = uploadpath+"\\"+FileName;
 	            System.out.println(dto.getUser_no()+dto.getTeam_name());
 	            System.out.println(biz.findno(dto));
 	            try {
 	                mf.transferTo(new File(safeFile));
 	                
-	                PicDto pic = new PicDto(biz.findno(dto), originFileName, safeFile);
-	                
-	                System.out.println(pic);
+	                PicDto pic = new PicDto(biz.findno(dto), originFileName, FileName);
 	                
 	                biz.teampic(pic);
 	                
@@ -98,15 +100,18 @@ public class TeamController {
 		}
 	}
 	
-	@RequestMapping(value="/teamlist.do")
-	public String teamList(Model model) { // 팀 게시판(리스트)
+	@RequestMapping(value="/teamlist.do", method = RequestMethod.GET)
+	public String teamList(Model model, TeamListPaging TLP) { // 팀 게시판(리스트)
 		logger.info("Select Team List, move page teamboard.jsp");
 		
-		model.addAttribute("list",biz.selectList());
-		/*List<TeamDto> list = biz.selectList();
-		for(TeamDto dto : list) {
-			System.out.println(dto.toString());
-			}*/
+		model.addAttribute("list",biz.selectList(TLP));
+		
+		TeamPageMaker pageMaker = new TeamPageMaker();
+		pageMaker.setTLP(TLP);
+		pageMaker.setTotalCount(biz.listCount(TLP)); // 최대 리스트 갯수 카운트
+		
+		model.addAttribute("pageMaker", pageMaker);
+		System.out.println(TLP.toString());
 		return "teamboard";
 	}
 	
