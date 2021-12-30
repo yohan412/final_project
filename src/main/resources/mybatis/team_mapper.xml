@@ -48,7 +48,7 @@
 	</update>
 	
 	<delete id="delete" parameterType="int">
-		DELETE TEAM_INFO, TEAM_NOSQ
+		DELETE TEAM_INFO
 		WHERE TEAM_NO=#{team_no}
 	</delete>
 
