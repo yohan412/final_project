@@ -61,15 +61,15 @@
 		<div class="page-list" align="center">
 			
 				<c:if test="${pageMaker.prev }">
-					<a href="location.href='teamlist.do${pageMaker.makeQuery(pageMaker.startPage - 1)}'">이전</a>
+					<a href="teamlist.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a>
 				</c:if>
 				
 				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage }" var="idx">
-					<a href="location.href='teamlist.do${pageMaker.makeQuery(idx) }'">${idx}</a>
+					<a href="teamlist.do${pageMaker.makeQuery(idx) }">${idx}</a>
 				</c:forEach>
 				
 				<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
-					<a href="location.href='teamlist.do${pageMaker.makeQuery(pageMaker.endPage + 1)}'">다음</a>
+					<a href="teamlist.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a>
 				</c:if>
 				
 		</div>
