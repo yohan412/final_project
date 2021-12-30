@@ -19,9 +19,9 @@
 		VALUES(QNA_NOSQ.NEXTVAL, QNA_GPNOSQ.NEXTVAL, 1, #{qna_title}, #{qna_content}, #{user_id}, SYSDATE , #{qna_type})
 	</insert>
 	
-	<update id="update">
+	<update id="update" parameterType="QnaBoardDto">
 		UPDATE QNA
-		SET QNA_TITLE = {qna_title}, QNA_CONTENT = #{qna_content}
-		WHERE USER_ID = #{user_id}
+		SET QNA_TITLE = {qna_title}, QNA_CONTENT = #{qna_content}, QNA_TYPE = #{qna_type}
+		WHERE QNA_NO = #{qna_no}
 	</update>
 </mapper>
