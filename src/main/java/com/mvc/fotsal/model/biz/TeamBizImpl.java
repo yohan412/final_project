@@ -22,8 +22,8 @@ public class TeamBizImpl implements TeamBiz{
 	}
 	
 	@Override
-	public int listCount(TeamListPaging TLP) {
-		return dao.listCount(TLP);
+	public int listCount() {
+		return dao.listCount();
 	}
 
 	@Override

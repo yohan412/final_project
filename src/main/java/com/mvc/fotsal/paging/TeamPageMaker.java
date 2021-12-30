@@ -13,66 +13,66 @@ public class TeamPageMaker {
     private TeamListPaging TLP;
     
     
-	public int getTotalCount() {
-		return totalCount;
-	}
-	
-	public void setTotalCount(int totalCount) {
-		this.totalCount = totalCount;
-		calcDate();
-	}
-	
-	public TeamListPaging getTLP() {
-		return TLP;
-	}
-	public void setTLP(TeamListPaging TLP) {
-		this.TLP = TLP;
-	}
-	public int getStartPage() {
-		return startPage;
-	}
-	
-	public int getEndPage() {
-		return endPage;
-	}
-	
-	public int getDisplayPageNum() {
-		return displayPageNum;
-	}
+    public void setTLP(TeamListPaging TLP){
+        this.TLP = TLP;
+    }
 
-	public boolean isPrev() {
-		return prev;
-	}
+    public void setTotalCount(int totalCount){
+        this.totalCount = totalCount;
+        calcDate();
+    }
 
-	public boolean isNext() {
-		return next;
-	}
+    public int getTotalCount(){
+        return totalCount;
+    }
+
+    public int getStartPage(){
+        return startPage;
+    }
+
+    public int getEndPage(){
+        return endPage;
+    }
+
+    public boolean isPrev(){
+        return prev;
+    }
+
+    public boolean isNext(){
+        return next;
+    }
+
+    public int getDisplayPageNum(){
+        return displayPageNum;
+    }
+
+    public TeamListPaging getTLP(){
+        return TLP;
+    }
 	
-	private void calcDate() {
-		endPage = (int)(Math.ceil(TLP.getPage() / (double) displayPageNum) * displayPageNum);
-		startPage = (endPage - displayPageNum) + 1;
-		
-		int tempEndPage = (int)(Math.ceil(totalCount / (double) TLP.getPerPageNum() ) );
-		
-		if(endPage > tempEndPage) {
-			endPage = tempEndPage;
-		}
-		
-		prev = startPage == 1 ? false : true;
-		next = endPage * TLP.getPerPageNum() >= totalCount ? false : true;
-		
-	}
-	
-	public String makeQuery(int page) {
-		UriComponents uriComponents =
-				UriComponentsBuilder.newInstance()
-				.queryParam("page", page)
-				.queryParam("perPageNum", TLP.getPerPageNum())
-				.build();
-		
-		
-		return uriComponents.toUriString();
-	}
+    private void calcDate(){
+        endPage = (int) (Math.ceil(TLP.getPage() / (double) displayPageNum) * displayPageNum);
+        startPage = (endPage - displayPageNum) + 1;
+
+        int tempEndPage = (int) (Math.ceil(totalCount / (double) TLP.getPerPageNum() ) );
+
+        if(endPage > tempEndPage){
+            endPage = tempEndPage;
+        }
+
+        prev = startPage == 1 ? false : true;
+        next = endPage * TLP.getPerPageNum() >= totalCount ? false : true;
+    }
+
+    public String makeQuery(int page){
+        UriComponents uriComponents =
+                UriComponentsBuilder.newInstance()
+                        .queryParam("page", page)
+                        .queryParam("perPageNum", TLP.getPerPageNum())
+                        .build();
+
+        return uriComponents.toUriString();
+    }
 	
 	public String makeSearch(int page) {
 		
