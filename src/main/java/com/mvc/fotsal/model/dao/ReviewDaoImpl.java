@@ -18,7 +18,7 @@ public class ReviewDaoImpl implements ReviewDao{
         List<ReviewDto> res = new ArrayList<ReviewDto>();
 
         try {
-            res = sqlSessionTemplate.
+            res = sqlSessionTemplate.selectList(NAMESPACE + "reviewlist");
         }catch (Exception e){
             System.out.println("[ERROR]: ReviewList");
             e.printStackTrace();
