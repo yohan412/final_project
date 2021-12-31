@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="StadiumBoard">
-    <select id="user" parameterType="userDto" resultType="userDto">
+    <select id="user" parameterType="com.mvc.fotsal.model.dto.UserDto" resultType="com.mvc.fotsal.model.dto.UserDto">
         SELECT * FROM USER_INFO WHERE USER_ID = #{user_id}
     </select>
 

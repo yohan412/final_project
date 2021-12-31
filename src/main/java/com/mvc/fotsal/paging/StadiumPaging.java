@@ -20,7 +20,7 @@ public class StadiumPaging {
     }
 
     public void setPerPageNum(int perPageNum){
-        if(perPageNum <= 0 || perPageNum > 100){
+        if(perPageNum <= 0 || perPageNum > 25){
             this.perPageNum = 5;
             return;
         }

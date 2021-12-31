@@ -36,7 +36,7 @@ public class StadiumController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto login = (UserDto) session.getAttribute("login");
+        UserDto login = (UserDto) session.getAttribute("dto");
         UserDto userDto = stadiumBiz.selectuser(login);
         model.addAttribute("userDto", userDto);
 
@@ -58,7 +58,7 @@ public class StadiumController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto login = (UserDto) session.getAttribute("login");
+        UserDto login = (UserDto) session.getAttribute("dto");
         UserDto userDto = stadiumBiz.selectuser(login);
         model.addAttribute("userDto", userDto);
 
@@ -86,7 +86,7 @@ public class StadiumController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto login = (UserDto) session.getAttribute("login");
+        UserDto login = (UserDto) session.getAttribute("dto");
         UserDto userDto = stadiumBiz.selectuser(login);
         model.addAttribute("userDto", userDto);
 
@@ -102,7 +102,7 @@ public class StadiumController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto login = (UserDto) session.getAttribute("login");
+        UserDto login = (UserDto) session.getAttribute("dto");
         UserDto userDto = stadiumBiz.selectuser(login);
         model.addAttribute("userDto", userDto);
 
