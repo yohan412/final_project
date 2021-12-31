@@ -124,10 +124,21 @@
                 <div style="width: 100%; height: 300px"></div>
                 <div id="button_form">
                     <div style="width: 25px; height: 100%"></div>
-                    <div id="update_button_form"><input type="button" value="수정" class="buttons" onclick="location.href='stadiumupdateform.do?stadium_no=${detail.stadium_no}'"></div>
-                    <div id="delete_button_form"><input type="button" value="삭제" class="buttons" onclick="location.href='stadiumdelete.do?stadium_no=${detail.stadium_no}'"></div>
+                    <div id="update_button_form"><input type="button" value="수정" class="buttons" id="updatebtn" onclick="location.href='stadiumupdateform.do?stadium_no=${detail.stadium_no}'"></div>
+                    <div id="delete_button_form"><input type="button" value="삭제" class="buttons" id="deletebtn" onclick="location.href='stadiumdelete.do?stadium_no=${detail.stadium_no}'"></div>
                     <div id="list_button_form"><input type="button" value="목록" class="buttons" onclick="location.href='stadiumlist.do'"></div>
                     <div style="width: 25px; height: 100%"></div>
+                    <script type="text/javascript">
+                        $(function (){
+                            if(${userDto.user_role eq 'ADMIN'}){
+                                $("#updatebtn").show();
+                                $("#deletebtn").show();
+                            }else{
+                                $("#updatebtn").hide();
+                                $("#deletebtn").hide();
+                            }
+                        })
+                    </script>
                 </div>
             </div>
         </div>

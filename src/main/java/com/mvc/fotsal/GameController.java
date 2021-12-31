@@ -112,7 +112,7 @@ public class GameController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto userDto = (UserDto) session.getAttribute("login");
+        UserDto userDto = (UserDto) session.getAttribute("dto");
 
         model.addAttribute("userDto", userDto);
 
@@ -199,7 +199,7 @@ public class GameController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto userDto = (UserDto) session.getAttribute("login");
+        UserDto userDto = (UserDto) session.getAttribute("dto");
 
         model.addAttribute("userDto", userDto);
 
@@ -293,7 +293,7 @@ public class GameController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto userDto = (UserDto) session.getAttribute("login");
+        UserDto userDto = (UserDto) session.getAttribute("dto");
 
         model.addAttribute("userDto", userDto);
 
@@ -335,7 +335,7 @@ public class GameController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto userDto = (UserDto) session.getAttribute("login");
+        UserDto userDto = (UserDto) session.getAttribute("dto");
 
         model.addAttribute("userDto", userDto);
 
@@ -351,7 +351,7 @@ public class GameController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto userDto = (UserDto) session.getAttribute("login");
+        UserDto userDto = (UserDto) session.getAttribute("dto");
 
         model.addAttribute("userDto", userDto);
 
