@@ -17,14 +17,16 @@
 		FROM (SELECT TEAM_NO, USER_NO, TEAM_INTRO, TEAM_NAME, TEAM_ADDCHK,
 			ROW_NUMBER() OVER(ORDER BY TEAM_NO DESC) AS rNum FROM TEAM_INFO) t
 			LEFT JOIN TEAM_PIC p ON t.TEAM_NO = p.TEAM_NO
-		WHERE rNum BETWEEN 1 AND 10
+		WHERE rNum BETWEEN #{rowStart} AND #{rowEnd}
 		ORDER BY TEAM_NO DESC
 	</select>
 	
 	<select id="listCount" resultType="int">
+		<![CDATA[
 			SELECT COUNT(TEAM_NO)
 			FROM TEAM_INFO
 			WHERE TEAM_NO > 0
+		]]>
 	</select>
 
 	

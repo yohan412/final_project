@@ -15,5 +15,38 @@
         </selectKey>
     </insert>
 
+    <select id="stadiumlist" resultType="stadiumDto" parameterType="com.mvc.fotsal.paging.StadiumPaging">
+        SELECT STADIUM_NO, STADIUM_NAME, STADIUM_ADDR, STADIUM_CONTENT, STADIUM_WEBADDR, STADIUM_PHONENUM
+        FROM (SELECT
+                  STADIUM_NO, STADIUM_NAME, STADIUM_ADDR, STADIUM_CONTENT, STADIUM_WEBADDR, STADIUM_PHONENUM,
+                     ROW_NUMBER() over (ORDER BY STADIUM_NO DESC) AS RNUM
+            FROM STADIUM
+            )
+        WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+        ORDER BY STADIUM_NO DESC
+    </select>
+
+    <select id="listCount" resultType="int">
+        <![CDATA[
+            SELECT COUNT(STADIUM_NO)
+            FROM STADIUM
+            WHERE STADIUM_NO > 0
+        ]]>
+    </select>
+
+    <select id="stadiumdetail" parameterType="stadiumDto" resultType="stadiumDto">
+        SELECT * FROM STADIUM WHERE STADIUM_NO = #{stadium_no}
+    </select>
+
+    <update id="stadiumupdate" parameterType="stadiumDto">
+        UPDATE STADIUM SET STADIUM_NAME = #{stadium_name}, STADIUM_ADDR = #{stadium_addr},
+                           STADIUM_CONTENT = #{stadium_content}, STADIUM_WEBADDR = #{stadium_webaddr},
+                           STADIUM_PHONENUM = #{stadium_phonenum}
+                        WHERE STADIUM_NO = #{stadium_no}
+    </update>
+
+    <delete id="stadiumdelete" parameterType="int">
+        DELETE STADIUM WHERE STADIUM_NO = #{stadium_no}
+    </delete>
 
 </mapper>

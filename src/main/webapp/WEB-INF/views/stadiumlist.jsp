@@ -40,16 +40,13 @@
                 </div>
             </div>
             <div id="listform">
-                <c:forEach begin="1" end="5">
-                    <div class="list" onclick="location.href='stadiumdetail.do'">
+                <c:forEach items="${list}" var="stadiumlist" varStatus="status">
+                    <div class="list" onclick="location.href='stadiumdetail.do?stadium_no=${stadiumlist.stadium_no}'">
                         <div class="stadium_picture_form">
                             <img src="" class="stadium_img" title="width=200px, height=150px">
                         </div>
                         <div class="stadium_introduce_form">
-                            <textarea id="stadium_introduce">1. David Carlson didn't really like his daughter staying for hours at his house. The house was very
-                    3. "MUCKY" describes having a lot of wet soil or dirt. Water can be said to be "MUCKY", as well as ground and people. Dirty can be any dirt and any degree. If I have a slight amount of dirt on my pants, they would be dirty, but not muddy or "MUCKY". They would have to have a lot of dirt for that. Filthy is used when something is extremely dirty. Filthy always means dirty. Dirty does not always mean filthy. Also muddy and "MUCKY" apply to a particular kind of dirty - one that involves mud.
-                    3. "MUCKY" describes having a lot of wet soil or dirt. Water can be
-                        said to be "MUCKY", as well as ground and people. Dirty can be any dirt and any degree. If I have a slight</textarea>
+                            <textarea id="stadium_introduce">${stadiumlist.stadium_content}</textarea>
                         </div>
                     </div>
                 </c:forEach>
@@ -57,15 +54,15 @@
             <div id="pagingform">
                 <div style="width: 200px; height: 100%"></div>
                 <div style="width: 500px; height: 100%; display: flex; align-items: center; justify-content: center; background-color: blue">
-<%--                    <c:if test="${gamepagemaker.prev}">
-                        <input type="button" id="prevbutton" onclick="location.href='gamelist.do${gamepagemaker.makeSearch(gamepagemaker.startPage - 1)}'" value="<">
+                    <c:if test="${pageMaker.prev}">
+                        <input type="button" id="prevbutton" onclick="location.href='stadiumlist.do${pageMaker.makeQuery(pageMaker.startPage - 1)}'" value="<">
                     </c:if>
-                    <c:forEach begin="${gamepagemaker.startPage}" end="${gamepagemaker.endPage}" var="idx">
-                        <input type="button" id="pagingnum" onclick="location.href='gamelist.do${gamepagemaker.makeSearch(idx)}'" value="${idx}">
+                    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+                        <input type="button" id="pagingnum" onclick="location.href='stadiumlist.do${pageMaker.makeQuery(idx)}'" value="${idx}">
                     </c:forEach>
-                    <c:if test="${gamepagemaker.next && gamepagemaker.endPage > 0}">
-                        <input type="button" id="nextbutton" onclick="location.href='gamelist.do${gamepagemaker.makeSearch(gamepagemaker.endPage + 1)}'" value=">">
-                    </c:if>--%>
+                    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+                        <input type="button" id="nextbutton" onclick="location.href='stadiumlist.do${pageMaker.makeQuery(pageMaker.endPage + 1)}'" value=">">
+                    </c:if>
                 </div>
                 <div style="width: 200px; height: 100%; display: flex; align-items: center; justify-content: center">
                     <input type="button" value="경기장 등록" id="stadium_insert_button" onclick="stadium_insert('${userDto.user_id}')">

@@ -22,7 +22,7 @@ public class TeamDaoImpl implements TeamDao{
 		List<TeamDto> teamlist = new ArrayList<TeamDto>();
 		
 		try {
-			teamlist = sqlSession.selectList(NAMESPACE+"selectList");
+			teamlist = sqlSession.selectList(NAMESPACE+"selectList", TLP);
 		} catch (Exception e) {
 			System.out.println("error: select list failed");
 			e.printStackTrace();
@@ -32,7 +32,7 @@ public class TeamDaoImpl implements TeamDao{
 	}
 	
 	@Override
-	public int listCount(TeamListPaging TLP) {
+	public int listCount() {
 		
 		int res = 0;
 		

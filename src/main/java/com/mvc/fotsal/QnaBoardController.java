@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mvc.fotsal.model.biz.QnaBoardBiz;
 import com.mvc.fotsal.model.dto.QnaBoardDto;
+import com.mvc.fotsal.model.dto.TeamDto;
 import com.mvc.fotsal.model.dto.UserDto;
 
 @Controller
@@ -33,6 +34,7 @@ public class QnaBoardController {
 	public String detail(Model model, int qna_no) {
 		logger.info("SELECT ONE");
 		model.addAttribute("dto", biz.selectOne(qna_no));
+		System.out.println(qna_no);
 		
 		return "qnadetail";
 	}
@@ -66,6 +68,31 @@ public class QnaBoardController {
 			logger.info("QNA INSERT 실패");
 			return "redirect:qna.do";
 		}
+	}
+	
+	@RequestMapping("/qnaupdateForm.do")
+	public String updateForm(Model model, int qna_no) {
+		logger.info("UPDATE FORM");
+
+		
+		model.addAttribute("dto", biz.selectOne(qna_no));
+		
+		return "qnaupdateForm";
+	}
+	
+	@RequestMapping(value="/qnaupdateResult.do")
+	public String updateRes(QnaBoardDto dto) { // 팀 수정하기
+		
+		int res = biz.update(dto);
+
+		if(res>0) {
+			logger.info("qna 수정완료");
+			return "redirect:qnadetail.do?qna_no="+dto.getQna_no();
+		}else {
+			logger.info("qna 수정실패");
+			return "redirect:qnaupdateForm.do?qna_no="+dto.getQna_no();
+		}
+		
 	}
 
 }

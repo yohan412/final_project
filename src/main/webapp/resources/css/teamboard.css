@@ -5,7 +5,11 @@ section{
 td, th{
 	border: 1px solid #eeeeee;
 }
-
+.team-logo-pic, .pic_path{
+	width: 150px;
+	height: 100px;
+	object-fit: cover;
+}
 .main-all-box{
 	width: 900px;
 }

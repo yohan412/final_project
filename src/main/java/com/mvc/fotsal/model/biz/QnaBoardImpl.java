@@ -31,12 +31,12 @@ public class QnaBoardImpl implements QnaBoardBiz{
 
 	@Override
 	public int update(QnaBoardDto dto) {
-		return 0;
+		return dao.update(dto);
 	}
 
 	@Override
 	public int delete(int qna_no) {
-		return 0;
+		return dao.delete(qna_no);
 	}
 
 }
