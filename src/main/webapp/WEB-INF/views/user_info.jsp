@@ -49,40 +49,40 @@ td input[type="button"]{
 			<table align="center" method="post" cellpadding="5">
 				<tr>
 					<th>아이디</th>
-					<td>${dto.user_id }</td>
+					<td>${login.user_id }</td>
 				</tr>
 				<tr>
 					<th>이름</th>
-					<td>${dto.user_name }</td>
+					<td>${login.user_name }</td>
 				</tr>
 				<tr>
 					<th>성별</th>
-					<td>${dto.user_gender }</td>
+					<td>${login.user_gender }</td>
 				</tr>
 				<tr>
 					<th>생년월일</th>
-					<td>${dto.user_birthdate }</td>
+					<td>${login.user_birthdate }</td>
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td>${dto.user_email }</td>
+					<td>${login.user_email }</td>
 				</tr>
 				<tr>
 					<th>핸드폰</th>
-					<td>${dto.user_phone }</td>
+					<td>${login.user_phone }</td>
 				</tr>
 				<tr>
 					<th>우편번호</th> 
-					<td>${dto.user_zip }</td>
+					<td>${login.user_zip }</td>
 				</tr>
 				<tr>
 					<th>주소</th>
-					<td>${dto.user_addr }</td>
+					<td>${login.user_addr }</td>
 				</tr>
 				<tr>
 					<td colspan="10" style="text-align: right;">
-						<input type="button" value="수정" onclick="location.href='updateform.do?user_id=${dto.user_id}'">
-						<input type="button" value="회원탈퇴" onclick="">
+						<input type="button" value="수정" onclick="location.href='updateform.do?user_id=${login.user_id}'">
+						<input type="button" value="회원탈퇴" onclick="location.href='user_delete.do?user_id=${login.user_id}'">
 					</td>
 				</tr>
 			</table>
