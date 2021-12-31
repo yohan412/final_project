@@ -61,27 +61,42 @@
 		<div class="page-list" align="center">
 			
 				<c:if test="${pageMaker.prev }">
-					<a href="teamlist.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a>
+					<a href="teamlist.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a>
 				</c:if>
 				
 				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage }" var="idx">
-					<a href="teamlist.do${pageMaker.makeQuery(idx) }">${idx}</a>
+					<a href="teamlist.do${pageMaker.makeSearch(idx) }">${idx}</a>
 				</c:forEach>
 				
 				<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
-					<a href="teamlist.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a>
+					<a href="teamlist.do${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a>
 				</c:if>
 				
 		</div>
+		<div class="search" align="center">
+			<select id="searchOption" name="searchType">
+				<option value="n"<c:out value="${STLP.searchType == null ? 'selected' : '' }"/>>분류없음</option>
+				<option value="w"<c:out value="${STLP.searchType == 'w' ? 'selected' : '' }"/>>작성자</option>
+				<option value="t"<c:out value="${STLP.searchType == 't' ? 'selected' : '' }"/>>팀명</option>
+				<option value="c"<c:out value="${STLP.searchType == 'c' ? 'selected' : '' }"/>>모집여부</option>
+			</select>
+			
+			<input type="text" id="keywordInput" name="keyword"  value="${STLP.keyword }"/>
+			<input type="button" id="searchBtn" value="검색">
+			
+		</div>
 		<div class="content-submit-list" align="right">
-			<input id="pointer" type="button" value="작성하기" onclick="loginChk(${login.user_no})">
+			<input id="pointer" type="button" value="작성하기" style="margin-top:15px;" onclick="loginChk(${login.user_no})">
+		</div>
+		<div class="a-blank-space" style="height: 150px;">
+			
 		</div>
 	</div>
 </section>
+</body>
 <footer>
 	<%@ include file="footer.jsp" %>
 </footer>
-</body>
 <script type="text/javascript">
 
 	function loginChk(user_no){
@@ -92,5 +107,17 @@
 		}
 	}
 	
+	$(function(){
+		$('#searchBtn').click(function(){
+			if($('#keywordInput').val() == ""){
+				alert('검색 내용을 입력해주세요');
+			}else{
+				self.location = "teamlist.do" + '${pageMaker.makeQuery(1)}' + 
+				"&searchType=" + $("select option:selected").val() + 
+				"&keyword=" + encodeURIComponent($('#keywordInput').val());
+			}
+
+		})
+	});
 </script>
 </html>

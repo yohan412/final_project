@@ -7,12 +7,13 @@ public class TeamDto {
 	private int team_no; //팀번호
 	private char team_addchk; //모집여부
 	private String pic_path; // 팀 로고
+	private String user_id;
 	
 	public TeamDto() {
 		super();
 	}
 
-	public TeamDto(int user_no, String team_name, String team_intro, int team_no, char team_addchk, String pic_path) {
+	public TeamDto(int user_no, String team_name, String team_intro, int team_no, char team_addchk, String pic_path, String user_id) {
 		super();
 		this.user_no = user_no;
 		this.team_name = team_name;
@@ -20,8 +21,17 @@ public class TeamDto {
 		this.team_no = team_no;
 		this.team_addchk = team_addchk;
 		this.pic_path = pic_path;
+		this.user_id = user_id;
 	}
 
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
 
 	public String getPic_path() {
 		return pic_path;
