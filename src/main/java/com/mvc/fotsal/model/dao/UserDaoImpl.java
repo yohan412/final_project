@@ -116,5 +116,19 @@ import com.mvc.fotsal.model.dto.UserDto;
 			return res;
 		}
 
+		@Override
+		public int delete(String user_id) {
+			int res = 0;
+			
+			try {
+				res = sqlSession.delete(NAMESPACE+"delete", user_id);
+			} catch (Exception e) {
+				System.out.println("[error]: delete");
+				e.printStackTrace();
+			}
+			
+			return res;
+		}
+
 		
 }

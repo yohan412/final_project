@@ -1,12 +1,12 @@
 package com.mvc.fotsal.paging;
 
-public class StadiumPaging {
+public class ReviewPaging {
     private int page;
     private int perPageNum;
     private int rowStart;
     private int rowEnd;
 
-    public StadiumPaging(){
+    public ReviewPaging(){
         this.page = 1;
         this.perPageNum = 5;
     }
@@ -47,15 +47,5 @@ public class StadiumPaging {
     public int getRowEnd(){
         rowEnd = rowStart + perPageNum - 1;
         return rowEnd;
-    }
-
-    @Override
-    public String toString() {
-        return "StadiumPaging{" +
-                "page=" + page +
-                ", perPageNum=" + perPageNum +
-                ", rowStart=" + rowStart +
-                ", rowEnd=" + rowEnd +
-                '}';
     }
 }

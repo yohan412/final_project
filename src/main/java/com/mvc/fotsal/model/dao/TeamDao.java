@@ -5,6 +5,7 @@ import java.util.List;
 import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
 import com.mvc.fotsal.paging.TeamListPaging;
+import com.mvc.fotsal.paging.TeamSearch;
 
 public interface TeamDao {
 	String NAMESPACE = "team_info.";
@@ -21,7 +22,7 @@ public interface TeamDao {
 	
 	public int findno(TeamDto dto); // 팀 등록시 이미지와 동일한 team_no 여부 판단
 	
-	public List<TeamDto> selectList(TeamListPaging TLP); // 팀 리스트 및 페이징
-	public int listCount(); // 팀 총 갯수
+	public List<TeamDto> selectList(TeamSearch STLP); // 팀 리스트 및 페이징
+	public int listCount(TeamSearch STLP); // 팀 총 갯수
 
 }

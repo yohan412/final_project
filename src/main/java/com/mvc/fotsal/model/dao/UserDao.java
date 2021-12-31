@@ -14,4 +14,5 @@ public interface UserDao {
 	public int changePwInput(UserDto dto);
 	public UserDto selectOne(String user_id);
 	public int userUpdate(UserDto dto);
+	public int delete(String user_id);
 }

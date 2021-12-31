@@ -35,3 +35,27 @@ td, th{
 .content-submit-list{
 	margin-right: 125px;
 }
+#keywordInput{
+	font-size: 16px;
+	height: 16px;
+	width: 300px;
+	margin-top: 15px;
+	padding: 10px;
+	border: 1px solid;
+}
+#searchOption{
+	padding: 10px;
+	font-size: 16px;
+	height: 40px;
+}
+#searchBtn{
+	padding: 11px;
+	padding-top: 8px;
+	font-size: 16px;
+	width: 51px;
+	height: 40px;
+	border: 0px;
+	background: #1b5ac2;
+	color: #ffffff;
+	margin-top: 10px;
+}

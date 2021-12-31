@@ -86,29 +86,29 @@
 			 	 </li>
 			 	 <li>
 					  <!-- 로그인 하지 않은 상태 -->
-					  <c:if test="${dto == null }">
+					  <c:if test="${login == null }">
 					  	<a href="loginform.do">로그인</a>
 					  </c:if>
 				 </li>
 				 <li>
-				 	  <c:if test="${dto == null }">
+				 	  <c:if test="${login == null }">
 					  	<a href="registerform.do">회원가입</a>
 					  </c:if>
 				 </li>
 				 <li>
 					  <!-- 로그인한 상태 -->
-			 	 	  <c:if test="${dto != null }">
+			 	 	  <c:if test="${login != null }">
 					  	<a href="logout.do">로그아웃</a>
 					  </c:if>
 			 	 </li>
 			 	 <li>
-			 	 	  <c:if test="${dto != null }">
-			 	 	  	<a href="user_info.do?user_id=${dto.user_id }">마이페이지</a>
+			 	 	  <c:if test="${login != null }">
+			 	 	  	<a href="user_info.do?user_id=${login.user_id }">마이페이지</a>
 			 	 	  </c:if>
 			 	 </li>
 			 	 <li>
-					  <c:if test="${dto != null }">
-					  	<span>${dto.user_name }님</span>
+					  <c:if test="${login != null }">
+					  	<span>${login.user_name }님</span>
 					  </c:if>
 			 	 </li>
 			 	 <li>

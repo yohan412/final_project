@@ -1,10 +1,13 @@
 package com.mvc.fotsal;
 
 import com.mvc.fotsal.model.biz.GameBiz;
+import com.mvc.fotsal.model.biz.ReviewBiz;
 import com.mvc.fotsal.model.biz.StadiumBiz;
 import com.mvc.fotsal.model.biz.UserBiz;
 import com.mvc.fotsal.model.dto.StadiumDto;
 import com.mvc.fotsal.model.dto.UserDto;
+import com.mvc.fotsal.paging.ReviewPageMaker;
+import com.mvc.fotsal.paging.ReviewPaging;
 import com.mvc.fotsal.paging.StadiumPageMaker;
 import com.mvc.fotsal.paging.StadiumPaging;
 import org.slf4j.Logger;
@@ -17,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class StadiumController {
@@ -27,6 +32,8 @@ public class StadiumController {
 
     @Autowired
     private StadiumBiz stadiumBiz;
+    @Autowired
+    private ReviewBiz reviewBiz;
 
     @RequestMapping("/stadiumlist.do")
     public String StadiumList(Model model, HttpServletRequest request, StadiumPaging stadiumPaging){
@@ -36,7 +43,7 @@ public class StadiumController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto login = (UserDto) session.getAttribute("login");
+        UserDto login = (UserDto) session.getAttribute("dto");
         UserDto userDto = stadiumBiz.selectuser(login);
         model.addAttribute("userDto", userDto);
 
@@ -58,7 +65,7 @@ public class StadiumController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto login = (UserDto) session.getAttribute("login");
+        UserDto login = (UserDto) session.getAttribute("dto");
         UserDto userDto = stadiumBiz.selectuser(login);
         model.addAttribute("userDto", userDto);
 
@@ -81,17 +88,30 @@ public class StadiumController {
     }
 
     @RequestMapping("/stadiumdetail.do")
-    public String StadiumDetail(Model model, HttpServletRequest request,int stadium_no){
+    public String StadiumDetail(Model model, HttpServletRequest request, int stadium_no, ReviewPaging reviewPaging){
         logger.info("Move to Stadium Detail Page");
 
         //세션
         HttpSession session = request.getSession();
-        UserDto login = (UserDto) session.getAttribute("login");
+        UserDto login = (UserDto) session.getAttribute("dto");
         UserDto userDto = stadiumBiz.selectuser(login);
         model.addAttribute("userDto", userDto);
 
         //디테일
         model.addAttribute("detail", stadiumBiz.detail(stadium_no));
+
+        //리뷰 관련
+        Map<String, Object> reviewmap = new HashMap<String, Object>();
+        reviewmap.put("reviewPaging", reviewPaging);
+        reviewmap.put("stadium_no", stadium_no);
+        //리뷰 리스트
+        model.addAttribute("review", reviewBiz.reviewlist(reviewmap));
+
+        //리뷰 페이징 구현
+        ReviewPageMaker reviewPageMaker = new ReviewPageMaker();
+        reviewPageMaker.setReviewPaging(reviewPaging);
+        reviewPageMaker.setTotalCount(reviewBiz.listcount());
+        model.addAttribute("reviewpagemaker", reviewPageMaker);
 
         return "stadiumdetail";
     }
@@ -102,7 +122,7 @@ public class StadiumController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto login = (UserDto) session.getAttribute("login");
+        UserDto login = (UserDto) session.getAttribute("dto");
         UserDto userDto = stadiumBiz.selectuser(login);
         model.addAttribute("userDto", userDto);
 
@@ -141,4 +161,5 @@ public class StadiumController {
             return "redirect:stadiumdetail.do?stadium_no=" + stadium_no;
         }
     }
+
 }

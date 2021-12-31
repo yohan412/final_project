@@ -83,7 +83,7 @@
 			alert('용병지원서를 먼저 작성해주세요.');
 		}else{
 			if(login_no == user_no){
-				location.href='team_inviteMsg.do'
+				location.href='team_inviteMsg.do';
 			}else{
 				alert('용병지원서를 먼저 작성해주세요.');
 			}
