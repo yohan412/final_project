@@ -4,12 +4,12 @@ import java.util.List;
 
 import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
-import com.mvc.fotsal.paging.TeamListPaging;
+import com.mvc.fotsal.paging.TeamSearch;
 
 public interface TeamBiz {
 	
-	public List<TeamDto> selectList(TeamListPaging TLP); // 팀 리스트 및 페이징
-	public int listCount(); // 팀 총 갯수
+	public List<TeamDto> selectList(TeamSearch STLP); // 팀 리스트 및 페이징
+	public int listCount(TeamSearch STLP); // 팀 총 갯수
 	
 	public TeamDto selectOne(int team_no); // 팀 자세히보기
 	

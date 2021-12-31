@@ -12,22 +12,34 @@
 		<result property="team_addchk" column="TEAM_ADDCHK" />
 	</resultMap>
 	
-	<select id="selectList" resultMap="teamBoardMap"  parameterType="com.mvc.fotsal.paging.TeamListPaging">
-		SELECT t.TEAM_NO, t.USER_NO, p.PIC_PATH, t.TEAM_INTRO, t.TEAM_NAME, t.TEAM_ADDCHK
+	<select id="selectList" resultMap="teamBoardMap"  parameterType="com.mvc.fotsal.paging.TeamSearch">
+		SELECT t.TEAM_NO, t.USER_NO, p.PIC_PATH, t.TEAM_INTRO, t.TEAM_NAME, t.TEAM_ADDCHK, u.USER_ID
 		FROM (SELECT TEAM_NO, USER_NO, TEAM_INTRO, TEAM_NAME, TEAM_ADDCHK,
-			ROW_NUMBER() OVER(ORDER BY TEAM_NO DESC) AS rNum FROM TEAM_INFO) t
-			LEFT JOIN TEAM_PIC p ON t.TEAM_NO = p.TEAM_NO
+				ROW_NUMBER() OVER(ORDER BY TEAM_NO DESC) AS rNum FROM TEAM_INFO
+				WHERE 1=1
+				<include refid="search"></include> 
+				) t
+		LEFT JOIN TEAM_PIC p ON t.TEAM_NO = p.TEAM_NO
+		LEFT JOIN USER_INFO u ON t.USER_NO = u.USER_NO
 		WHERE rNum BETWEEN #{rowStart} AND #{rowEnd}
 		ORDER BY TEAM_NO DESC
 	</select>
 	
-	<select id="listCount" resultType="int">
-		<![CDATA[
+	<select id="listCount" resultType="int" parameterType="com.mvc.fotsal.paging.TeamSearch">
 			SELECT COUNT(TEAM_NO)
 			FROM TEAM_INFO
-			WHERE TEAM_NO > 0
-		]]>
+			WHERE 1=1
+		<include refid="search"></include>
+			AND TEAM_NO > 0
 	</select>
+	
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 'w'.toString()">AND USER_ID LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 't'.toString()">AND TEAM_NAME LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'c'.toString()">AND TEAM_ADDCHK LIKE '%' || #{keyword} || '%'</if>
+		</if>
+	</sql>
 
 	
 	<select id="selectOne" resultType="teamDto" parameterType="int">

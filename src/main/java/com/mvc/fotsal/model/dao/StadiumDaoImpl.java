@@ -23,7 +23,6 @@ public class StadiumDaoImpl implements StadiumDao{
             res = sqlSessionTemplate.selectOne(NAMESPACE + "user", userDto);
         }catch (Exception e){
             System.out.println("[ERROR]: selectuser");
-            e.printStackTrace();
         }
         return res;
     }

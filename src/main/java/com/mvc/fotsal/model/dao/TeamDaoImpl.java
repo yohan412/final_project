@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
 import com.mvc.fotsal.paging.TeamListPaging;
+import com.mvc.fotsal.paging.TeamSearch;
 
 @Repository
 public class TeamDaoImpl implements TeamDao{
@@ -18,11 +19,11 @@ public class TeamDaoImpl implements TeamDao{
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public List<TeamDto> selectList(TeamListPaging TLP) {
+	public List<TeamDto> selectList(TeamSearch STLP) {
 		List<TeamDto> teamlist = new ArrayList<TeamDto>();
 		
 		try {
-			teamlist = sqlSession.selectList(NAMESPACE+"selectList", TLP);
+			teamlist = sqlSession.selectList(NAMESPACE+"selectList", STLP);
 		} catch (Exception e) {
 			System.out.println("error: select list failed");
 			e.printStackTrace();
@@ -32,12 +33,12 @@ public class TeamDaoImpl implements TeamDao{
 	}
 	
 	@Override
-	public int listCount() {
+	public int listCount(TeamSearch STLP) {
 		
 		int res = 0;
 		
 		try {
-			res = sqlSession.selectOne(NAMESPACE+"listCount");
+			res = sqlSession.selectOne(NAMESPACE+"listCount", STLP);
 		} catch (Exception e) {
 			System.out.println("error: select listCount failed");
 			e.printStackTrace();

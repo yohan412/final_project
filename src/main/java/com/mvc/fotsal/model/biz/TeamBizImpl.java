@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.mvc.fotsal.model.dao.TeamDao;
 import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
-import com.mvc.fotsal.paging.TeamListPaging;
+import com.mvc.fotsal.paging.TeamSearch;
 
 @Service
 public class TeamBizImpl implements TeamBiz{
@@ -17,13 +17,13 @@ public class TeamBizImpl implements TeamBiz{
 	private TeamDao dao;
 
 	@Override
-	public List<TeamDto> selectList(TeamListPaging TLP) {
-		return dao.selectList(TLP);
+	public List<TeamDto> selectList(TeamSearch STLP) {
+		return dao.selectList(STLP);
 	}
 	
 	@Override
-	public int listCount() {
-		return dao.listCount();
+	public int listCount(TeamSearch STLP) {
+		return dao.listCount(STLP);
 	}
 
 	@Override
