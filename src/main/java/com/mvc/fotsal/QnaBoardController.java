@@ -82,7 +82,6 @@ public class QnaBoardController {
 	
 	@RequestMapping(value="/qnaupdateResult.do")
 	public String updateRes(QnaBoardDto dto) { // 팀 수정하기
-		
 		int res = biz.update(dto);
 
 		if(res>0) {

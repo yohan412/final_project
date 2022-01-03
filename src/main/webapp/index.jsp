@@ -7,26 +7,20 @@
 <title>Insert title here</title>
 <style type="text/css">
 	
-	header{
-		height: 200px;
-	}
-	
 	.banner_box{
 		display: flex;
 		 justify-content: center; 
 	}
 	
 	.banner_wraper {
-		 height: 150px; 
 		 width: 90%; 
+		 height: 250px;
 		 position: absolute; 
 		 overflow: hidden;
 	 }
 	
 	.banner_list {
-		background-color:gray;
 		width: 250px;
-		height: 80px;
 		position: absolute;
 	}
 	
@@ -239,7 +233,69 @@
     left: 0px;
     top: 10px;
 }
-
+/*====================================배너 디자인===================================*/
+#banner_item {
+  display: flex;
+  list-style: none;
+}
+#banner_item li {
+  position: relative;
+  margin: 0 3em;
+}
+.image,
+.shadow {
+  transform: rotateX(45deg) rotateZ(-25deg);
+  transform-style: preserve-3d;
+  transition: .3s;
+}
+.image {
+  position: relative;
+}
+.image img {
+  vertical-align: bottom;
+  filter: grayscale(100%);
+  transition: .3s;
+}
+.image::before,
+.image::after {
+  content: '';
+  position: absolute;
+}
+.image::before {
+  bottom: -8px;
+  left: 0;
+  background-color: #d0d0d0;
+  width: 100%;
+  height: 16px;
+  transform: rotateX(90deg) translateY(-8px);
+}
+.image::after {
+  top: 0;
+  left: -8px;
+  width: 16px;
+  height: 100%;
+  background-color: #bbb;
+  transform: rotateY(90deg) translateX(8px);
+}
+.shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  box-shadow: -35px 45px 15px rgba(0, 0, 0, .1);
+}
+ul li:hover .image,
+ul li:hover .shadow {
+  transform: rotate(0);
+}
+ul li:hover .image img {
+  filter: grayscale(0);
+}
+ul li:hover .shadow {
+  box-shadow: 0 5px 40px rgba(0, 0, 0, .5);
+}
 </style>
 <script type="text/javascript"	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -357,7 +413,7 @@ function nextSlide() {
 		}
 	
 	};
-
+	
 	//======================================================================================
 	
 	function searchToggle(obj, evt){
@@ -384,7 +440,7 @@ function nextSlide() {
 	    </div>
 	            
 	    <div class="mySlideDiv fade">
-	        <img src="/upload/1640834856011LogoSample_ByTailorBrands_edit.jpg"> 
+	        <img src="/img/futsalimg04.jpg"> 
 	    </div>
 	     
 	    <div class="mySlideDiv fade">
@@ -404,71 +460,59 @@ function nextSlide() {
 	            
 	</div>
 	<br><br>
-	<div class="banner_box">
-		<div class="banner_wraper">
-			<div class="banner_list">
-				<div style="float: left">
-					<a>2021-12-10</a><br>
-					<a>5 vs 5</a>
-				</div>
-				<div style="float: right">
-					<input type="button" value="용병신청" onclick=""><br>
-					<input type="button" value="상세사항" onclick="">
-				</div>
+		<div class="banner_box">
+			<div class="banner_wraper">
+				<div class="banner_list">
+					<ul id="banner_item">
+					  	<li>
+					    	<div class="image"><img src="https://unsplash.it/300/200?image=593"></div>
+						    <div class="shadow"></div>
+					  	</li>
+					</ul>
 			</div>
 			<div class="banner_list">
-				<div style="float: left">
-					<a>2021-12-10</a><br>
-					<a>5 vs 5</a>
-				</div>
-				<div style="float: right">
-					<input type="button" value="용병신청" onclick=""><br>
-					<input type="button" value="상세사항" onclick="">
-				</div>
+					<ul id="banner_item">
+					  	<li>
+					  	 	<div class="image"><img src="https://unsplash.it/300/200?image=718"></div>
+					  		<div class="shadow"></div>
+					  	</li>
+					</ul>
 			</div>
 			<div class="banner_list">
-				<div style="float: left">
-					<a>2021-12-10</a><br>
-					<a>5 vs 5</a>
-				</div>
-				<div style="float: right">
-					<input type="button" value="용병신청" onclick=""><br>
-					<input type="button" value="상세사항" onclick="">
-				</div>
+					<ul id="banner_item">
+					  	<li>
+					    	<div class="image"><img src="https://unsplash.it/300/200?image=433"></div>
+					    	<div class="shadow"></div>
+					  	</li>
+					</ul>
 			</div>
 			<div class="banner_list">
-				<div style="float: left">
-					<a>2021-12-10</a><br>
-					<a>5 vs 5</a>
-				</div>
-				<div style="float: right">
-					<input type="button" value="용병신청" onclick=""><br>
-					<input type="button" value="상세사항" onclick="">
-				</div>
+					<ul id="banner_item">
+					  	<li>
+					    	<div class="image"><img src="https://unsplash.it/300/200?image=433"></div>
+					    	<div class="shadow"></div>
+					  	</li>
+					</ul>
 			</div>
 			<div class="banner_list">
-				<div style="float: left">
-					<a>2021-12-10</a><br>
-					<a>5 vs 5</a>
-				</div>
-				<div style="float: right">
-					<input type="button" value="용병신청" onclick=""><br>
-					<input type="button" value="상세사항" onclick="">
-				</div>
+					<ul id="banner_item">
+					  	<li>
+					    	<div class="image"><img src="https://unsplash.it/300/200?image=433"></div>
+					    	<div class="shadow"></div>
+					  	</li>
+					</ul>
 			</div>
 			<div class="banner_list">
-				<div style="float: left">
-					<a>2021-12-10</a><br>
-					<a>5 vs 5</a>
-				</div>
-				<div style="float: right">
-					<input type="button" value="용병신청" onclick=""><br>
-					<input type="button" value="상세사항" onclick="">
-				</div>
+					<ul id="banner_item">
+					  	<li>
+					    	<div class="image"><img src="https://unsplash.it/300/200?image=433"></div>
+					    	<div class="shadow"></div>
+					  	</li>
+					</ul>
 			</div>
-			
+			</div>
 		</div>
-	</div>
+		
 	<div>
 		
 	</div>
