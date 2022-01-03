@@ -7,12 +7,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mvc.fotsal.model.biz.QnaBoardBiz;
 import com.mvc.fotsal.model.dto.QnaBoardDto;
-import com.mvc.fotsal.model.dto.TeamDto;
 import com.mvc.fotsal.model.dto.UserDto;
+import com.mvc.fotsal.paging.QnaPageMaker;
+import com.mvc.fotsal.paging.QnaSearch;
 
 @Controller
 public class QnaBoardController {
@@ -22,10 +25,21 @@ public class QnaBoardController {
 	@Autowired
 	private QnaBoardBiz biz;
 	
-	@RequestMapping("/qnalist.do")
-	public String list(Model model) {	// qnaboard
+	@RequestMapping(value="/qnalist.do", method = RequestMethod.GET)
+	public String list(Model model, @ModelAttribute("STLP") QnaSearch STLP) {	// qnaboard
 		logger.info("Select QnaBoard List, move page qnaboard.jsp");
-		model.addAttribute("list",biz.selectList());
+		
+		model.addAttribute("list",biz.selectList(STLP));
+		
+		QnaPageMaker pageMaker = new QnaPageMaker();
+		pageMaker.setTLP(STLP);
+		pageMaker.setTotalCount(biz.listCount(STLP));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		System.out.println(STLP.toString());
+		
+		
 		return "qnaboard";
 
 	}
@@ -34,7 +48,6 @@ public class QnaBoardController {
 	public String detail(Model model, int qna_no) {
 		logger.info("SELECT ONE");
 		model.addAttribute("dto", biz.selectOne(qna_no));
-		System.out.println(qna_no);
 		
 		return "qnadetail";
 	}
@@ -51,14 +64,6 @@ public class QnaBoardController {
 		logger.info("INSERT QNA");
 		dto.setUser_id(user.getUser_id());
 		int res = biz.insert(dto);
-		
-		System.out.println(dto.getQna_type());
-		System.out.println(dto.getQna_title());
-		System.out.println(dto.getQna_content());
-		System.out.println(dto.getQna_reg());
-		System.out.println(dto.getQna_gpno());
-		System.out.println(dto.getQna_gpsq());
-		System.out.println(dto.getQna_no());
 		
 		
 		if(res>0) {
@@ -94,9 +99,10 @@ public class QnaBoardController {
 		
 	}
 	
-	@RequestMapping("/delete.do")
+	@RequestMapping("/qnadelete.do")
 	public String delete(int qna_no) {
 		logger.info("DELETE");
+		System.out.println(qna_no);
 		
 		int res = biz.delete(qna_no);
 		if(res>0) {
