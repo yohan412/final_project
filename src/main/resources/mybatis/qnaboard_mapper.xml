@@ -16,8 +16,7 @@
 			SELECT COUNT(QNA_NO)
 			FROM QNA
 			WHERE 1=1
-		<include refid="search"></include>
-			AND TEAM_NO > 0
+			AND QNA_NO > 0
 	</select>
 	
 	
