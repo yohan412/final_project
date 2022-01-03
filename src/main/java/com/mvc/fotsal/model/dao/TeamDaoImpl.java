@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mvc.fotsal.model.dto.MercenaryDto;
 import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
 import com.mvc.fotsal.paging.TeamListPaging;
@@ -141,6 +142,7 @@ public class TeamDaoImpl implements TeamDao{
 		
 		return teamdto.getTeam_no();
 	}
+
 
 
 }

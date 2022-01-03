@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mvc.fotsal.message.messageApp;
 import com.mvc.fotsal.model.biz.TeamBiz;
+import com.mvc.fotsal.model.dto.MercenaryDto;
 import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
 import com.mvc.fotsal.paging.TeamPageMaker;
@@ -124,6 +125,7 @@ public class TeamController {
 		logger.info("move page team_detail.jsp");
 		model.addAttribute("teamDto", biz.selectOne(team_no));
 		
+
 		return "team_detail";
 	}
 	

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mvc.fotsal.model.dao.TeamDao;
+import com.mvc.fotsal.model.dto.MercenaryDto;
 import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
 import com.mvc.fotsal.paging.TeamSearch;
@@ -56,6 +57,7 @@ public class TeamBizImpl implements TeamBiz{
 	public int findno(TeamDto dto) {
 		return dao.findno(dto);
 	}
+
 
 	
 	
