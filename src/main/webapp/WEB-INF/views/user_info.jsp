@@ -27,17 +27,6 @@ td input[type="button"]{
     width: 100px; height: 30px;
 }
 </style>
-<script type="text/javascript">
-	function updateuser(userno){
-		location.href="logincontroller.jsp?command=updateform&userno="+userno;
-	}
-	function deleteuser(userno){
-		var returnValue = confirm("정말로 탈퇴하시겠습니까?");
-		if(returnValue == true){
-			location.href="logincontroller.jsp?command=deleteuser&userno="+userno;
-		}
-	}
-</script>
 </head>
 <body>
 <section>
