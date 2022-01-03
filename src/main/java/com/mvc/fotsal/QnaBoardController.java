@@ -93,5 +93,19 @@ public class QnaBoardController {
 		}
 		
 	}
+	
+	@RequestMapping("/delete.do")
+	public String delete(int qna_no) {
+		logger.info("DELETE");
+		
+		int res = biz.delete(qna_no);
+		if(res>0) {
+			return "redirect:qnalist.do";
+		}else {
+			return "redirect:qnadetail.do?qna_no"+qna_no;
+		}
+		
+	}
+	
 
 }

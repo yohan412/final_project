@@ -75,7 +75,16 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 
 	@Override
 	public int delete(int qna_no) {
-		return 0;
+		
+		int res = 0;
+		try {
+			res = sqlSession.delete(NAMESPACE+"delete",qna_no);
+		} catch (Exception e) {
+			System.out.println("[error] : delete");
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 	
 }
