@@ -14,13 +14,13 @@
 	
 	.banner_wraper {
 		 width: 90%; 
-		 height: 250px;
+		 height: 180px;
 		 position: absolute; 
 		 overflow: hidden;
 	 }
 	
 	.banner_list {
-		width: 250px;
+		width: 200px;
 		position: absolute;
 	}
 	
