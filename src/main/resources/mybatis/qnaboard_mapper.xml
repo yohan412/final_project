@@ -16,6 +16,7 @@
 			SELECT COUNT(QNA_NO)
 			FROM QNA
 			WHERE 1=1
+
 			AND QNA_NO > 0
 	</select>
 	

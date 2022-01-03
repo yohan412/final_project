@@ -1,5 +1,7 @@
 package com.mvc.fotsal.model.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -51,6 +53,12 @@ public class MercenaryDaoImpl implements MercenaryDao{
 	@Override
 	public int delete(int user_no) {
 		return 0;
+	}
+
+	@Override
+	public List<MercenaryDto> selectList() {
+		
+		return null;
 	}
 	
 }
