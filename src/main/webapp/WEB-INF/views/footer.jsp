@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 	footer{
-		width: 90%;
+		width: auto;
 		text-align:center;
 		bottom:0;
 		margin-bottom: 0;

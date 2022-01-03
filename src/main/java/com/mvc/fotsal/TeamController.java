@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,8 +21,8 @@ import com.mvc.fotsal.message.messageApp;
 import com.mvc.fotsal.model.biz.TeamBiz;
 import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
-import com.mvc.fotsal.paging.TeamListPaging;
 import com.mvc.fotsal.paging.TeamPageMaker;
+import com.mvc.fotsal.paging.TeamSearch;
 
 @Controller
 public class TeamController {
@@ -101,17 +102,19 @@ public class TeamController {
 	}
 	
 	@RequestMapping(value="/teamlist.do", method = RequestMethod.GET)
-	public String teamList(Model model, TeamListPaging TLP) { // 팀 게시판(리스트)
+	public String teamList(Model model, @ModelAttribute("STLP") TeamSearch STLP) { // 팀 게시판(리스트)
 		logger.info("Select Team List, move page teamboard.jsp");
 		
-		model.addAttribute("list",biz.selectList(TLP));
+		model.addAttribute("list",biz.selectList(STLP));
 		
 		TeamPageMaker pageMaker = new TeamPageMaker();
-		pageMaker.setTLP(TLP);
-		pageMaker.setTotalCount(biz.listCount()); // 최대 리스트 갯수 카운트
+		pageMaker.setTLP(STLP);
+		pageMaker.setTotalCount(biz.listCount(STLP)); // 최대 리스트 갯수 카운트
 		
 		model.addAttribute("pageMaker", pageMaker);
-		System.out.println(TLP.toString());
+		
+		System.out.println(STLP.toString());
+		
 		return "teamboard";
 	}
 	

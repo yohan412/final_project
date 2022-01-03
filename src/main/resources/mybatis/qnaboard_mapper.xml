@@ -21,7 +21,7 @@
 	
 	<update id="update" parameterType="QnaBoardDto">
 		UPDATE QNA
-		SET QNA_TITLE = {qna_title}, QNA_CONTENT = #{qna_content}, QNA_TYPE = #{qna_type}
+		SET QNA_TITLE = #{qna_title}, QNA_CONTENT = #{qna_content}, QNA_TYPE = #{qna_type}
 		WHERE QNA_NO = #{qna_no}
 	</update>
 </mapper>

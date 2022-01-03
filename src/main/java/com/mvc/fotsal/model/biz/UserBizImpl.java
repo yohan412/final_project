@@ -53,6 +53,11 @@ public class UserBizImpl implements UserBiz {
 		return dao.userUpdate(dto);
 	}
 
+	@Override
+	public int delete(String user_id) {
+		return dao.delete(user_id);
+	}
+
 
 	
 

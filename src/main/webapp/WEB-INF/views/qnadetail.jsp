@@ -9,7 +9,7 @@
 </head>
 <body>
 	<header> 
-	<%@ include file="/WEB-INF/views/header.jsp" %>
+	<%-- <%@ include file="/WEB-INF/views/header.jsp" %> --%>
 	</header>
 	<section>
 		<div class="main-all-box">
