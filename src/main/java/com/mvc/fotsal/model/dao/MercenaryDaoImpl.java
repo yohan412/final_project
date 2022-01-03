@@ -13,11 +13,12 @@ public class MercenaryDaoImpl implements MercenaryDao{
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public MercenaryDto mercenaryDetail(int user_no) {
+	public MercenaryDto selectOne(int user_no) {
+		
 		MercenaryDto detail = null;
 		
 		try {
-			detail = sqlSession.selectOne(NAMESPACE+"detail",user_no);
+			detail = sqlSession.selectOne(NAMESPACE+"selectOne",user_no);
 		} catch (Exception e) {
 			System.out.println("error: select one failed");
 			e.printStackTrace();

@@ -25,6 +25,16 @@ public class MercenaryController {
 		return "mercenary";
 	}
 	
+	@RequestMapping(value="/mercenaryList.do")
+	public String mList(Model model) {
+		logger.info("Select Mercenary List, move page gamedetail.jsp");
+		
+		model.addAttribute("mList",biz.selectList());
+		
+		return "gamedetail";
+	}
+	
+	
 	@RequestMapping(value="/mercenaryInsert.do")
 	public String mercenary_insert(MercenaryDto dto) {
 		logger.info("용병지원서 작성중");
@@ -43,7 +53,7 @@ public class MercenaryController {
 	@RequestMapping(value="/mercenaryDetail.do") // 용병 지원 자세히보기
 	public String mercenaryDetail(Model model,@RequestParam("user_no")int user_no) {
 		logger.info("move page mercenary_detail.jsp");
-		model.addAttribute("detail", biz.mercenaryDetail(user_no));
+		model.addAttribute("mDto", biz.selectOne(user_no));
 		
 		
 		
@@ -54,9 +64,9 @@ public class MercenaryController {
 	public String mercenaryUpdate(Model model, int user_no) {
 		logger.info("move page mercenary_update.jsp");
 		
-		model.addAttribute("detail", biz.mercenaryDetail(user_no));
+		model.addAttribute("mDto", biz.selectOne(user_no));
 		
-		return "mercenary_update";
+		return "mercenary_updateForm";
 	}
 	
 	@RequestMapping(value="/index.do") // 메인페이지로 이동하기

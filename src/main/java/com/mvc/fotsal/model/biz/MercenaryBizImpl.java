@@ -1,5 +1,7 @@
 package com.mvc.fotsal.model.biz;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +15,8 @@ public class MercenaryBizImpl implements MercenaryBiz{
 	private MercenaryDao dao;
 
 	@Override
-	public MercenaryDto mercenaryDetail(int user_no) {
-		return dao.mercenaryDetail(user_no);
+	public MercenaryDto selectOne(int user_no) {
+		return dao.selectOne(user_no);
 	}
 
 	@Override
@@ -30,5 +32,11 @@ public class MercenaryBizImpl implements MercenaryBiz{
 	@Override
 	public int delete(int user_no) {
 		return 0;
+	}
+
+	@Override
+	public List<MercenaryDto> selectList() {
+		
+		return dao.selectList();
 	}
 }

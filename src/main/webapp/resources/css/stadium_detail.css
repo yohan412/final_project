@@ -130,14 +130,14 @@
 
 #bottom_form{
     width: 100%;
-    min-height: 800px;
+    height: 450px;
     display: flex;
     flex-wrap: wrap;
 }
 
 #bot_left_form{
     width: 550px;
-    height: 400px;
+    height: 450px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -277,15 +277,16 @@
 
 #bot_bottom{
     width: 900px;
-    height: 400px;
+    /*height: 400px;*/
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
 
 #bot_review_insert_form{
     width: 890px;
-    height: 390px;
+    height: 410px;
     display: flex;
     flex-wrap: wrap;
     background-color: lightgray;
@@ -295,6 +296,7 @@
     height: 70px;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 20px;
 }
 .rv_title{
     width: 190px;
@@ -341,11 +343,75 @@
     display: flex;
     flex-wrap: wrap;
 }
-#rv_button_form{
+.rv_button_form{
     width: 135px;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+}
+
+/*<!---->*/
+#bot_review_view_form{
+    width: 900px;
+    height: 410px;
+    background-color: lightgray;
+    position: relative;
+    display: none;
+    z-index: 999;
+}
+#review_view_form{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-wrap: wrap;
+}
+#review_view_title{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+#review_content{
+    width: 100%;
+    height: 260px;
+    display: flex;
+    flex-wrap: wrap;
+}
+#review_view_button_form{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.rv_buttons_form{
+    width: 300px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#review_v_title{
+    width: 670px;
+    height: 90%;
+    border: 0;
+    outline: 0;
+    font-size: 20px;
+    background-color: #8c8c8c;
+}
+
+#review_v_content{
+    width: 670px;
+    height: 250px;
+    font-size: 20px;
+    font-family: "Open Sans", Arial, Verdana;
+    resize: none;
+    border: 0;
+    outline: 0;
+    background-color: #8c8c8c;
 }

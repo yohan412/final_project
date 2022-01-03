@@ -4,6 +4,7 @@ import com.mvc.fotsal.model.biz.GameBiz;
 import com.mvc.fotsal.model.biz.ReviewBiz;
 import com.mvc.fotsal.model.biz.StadiumBiz;
 import com.mvc.fotsal.model.biz.UserBiz;
+import com.mvc.fotsal.model.dto.ReviewDto;
 import com.mvc.fotsal.model.dto.StadiumDto;
 import com.mvc.fotsal.model.dto.UserDto;
 import com.mvc.fotsal.paging.ReviewPageMaker;
@@ -43,7 +44,7 @@ public class StadiumController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto login = (UserDto) session.getAttribute("dto");
+        UserDto login = (UserDto) session.getAttribute("login");
         UserDto userDto = stadiumBiz.selectuser(login);
         model.addAttribute("userDto", userDto);
 
@@ -65,7 +66,7 @@ public class StadiumController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto login = (UserDto) session.getAttribute("dto");
+        UserDto login = (UserDto) session.getAttribute("login");
         UserDto userDto = stadiumBiz.selectuser(login);
         model.addAttribute("userDto", userDto);
 
@@ -93,7 +94,7 @@ public class StadiumController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto login = (UserDto) session.getAttribute("dto");
+        UserDto login = (UserDto) session.getAttribute("login");
         UserDto userDto = stadiumBiz.selectuser(login);
         model.addAttribute("userDto", userDto);
 
@@ -122,7 +123,7 @@ public class StadiumController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto login = (UserDto) session.getAttribute("dto");
+        UserDto login = (UserDto) session.getAttribute("login");
         UserDto userDto = stadiumBiz.selectuser(login);
         model.addAttribute("userDto", userDto);
 
@@ -162,4 +163,18 @@ public class StadiumController {
         }
     }
 
+    @RequestMapping("/review_insert.do")
+    public String Stadium_Review_insert(Model model, ReviewDto reviewDto){
+        logger.info("Insert Review");
+
+        int res = reviewBiz.insert(reviewDto);
+
+        if(res > 0){
+            logger.info("Review Insert Success");
+            return "redirect:stadiumlist.do?stadium_no=" + reviewDto.getStadium_no();
+        }else{
+            logger.info("Review Insert Fail");
+            return "redirect:stadiumlist.do?stadium_no=" + reviewDto.getStadium_no();
+        }
+    }
 }

@@ -13,7 +13,7 @@
 <header>
 	<%@ include file="header.jsp" %>
 </header>
-<section>
+<section class="body">
 	<div class="main-all-box">
 		<div class="main-top-box">
 			<form action="teamInsert.do" method="post" enctype="multipart/form-data"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->

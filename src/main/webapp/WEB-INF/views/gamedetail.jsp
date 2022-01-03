@@ -187,17 +187,17 @@
             <div id="mergency_list_form">
                 <c:forEach begin="1" end="10">
                     <div id="mergency_list">
-                        <div id="mergency_id">아이디</div>
-                        <div id="mergency_foot">주발</div>
-                        <div id="mergency_position">포지션</div>
-                        <div id="mergency_rate">50%</div>
+                        <div id="mergency_id">${mDto.user_id }</div>
+                        <div id="mergency_foot">${mDto.mercenary_foot }</div>
+                        <div id="mergency_position">${mDto.mercenary_position }</div>
+                        <div id="mergency_rate">${mDto.mercenary_rate }</div>
                         <div id="mergency_button_form"><input type="button" value="초대하기" id="mergency_button"></div>
                     </div>
                 </c:forEach>
                 <script type="text/javascript">
                     $(function (){
                         var author = '${gamedto.user_id}';        //글 작성자 아이디
-                        var user_id = '${userDto.user_id}';                  //세션 아이디
+                        var user_id = '${login.user_id}';                  //세션 아이디
 
                         if (author === user_id){
                             $("#hidden_form").show();
