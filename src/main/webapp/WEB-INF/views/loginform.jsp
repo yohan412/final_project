@@ -158,6 +158,12 @@ function login(){
 		});
 	}
 }
+
+</script>
+
+<!-- =========================================네아로====================================================  -->
+<!-- 네이버 스크립트 -->
+
 </script>
 </head>
 <body>
@@ -182,9 +188,10 @@ function login(){
             	<a href="javascript:void(0)"><img src="img/Kakao.png" onclick="kakaoLogin();"></a>
         	</div>
         	<div class="naver-login">
-        	<div id="naver_id_login"></div>
-            	<a href="javascript:void(0)"><img src="img/naver.png" onclick=""></a>
-        	</div>
+	        	<div id="naver_id_login">
+	            	<a id="naverIdLogin_loginButton" href="javascript:void(0)"><img src="img/Naver.png" onclick=""></a>
+	        	</div>
+	        </div>
         	<div class="caption">
             	<a href="">Forgot Password?</a>
         	</div>
