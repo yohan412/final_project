@@ -4,14 +4,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="qnainfo">
 	
-	<select id="selectList" resultType="QnaBoardDto">
+	<select id="selectList" resultType="QnaBoardDto" parameterType="com.mvc.fotsal.paging.QnaSearch">
 		SELECT QNA_NO, USER_ID, QNA_TITLE, QNA_CONTENT, QNA_REG
-		FROM QNA
+		FROM (SELECT QNA_NO, USER_ID, QNA_TITLE, QNA_CONTENT, QNA_REG, 
+				ROW_NUMBER() OVER(ORDER BY QNA_NO DESC) AS RNUM FROM QNA) MP 
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
 		ORDER BY QNA_NO DESC
 	</select>
 	
+	<select id="listCount" resultType="int" parameterType="com.mvc.fotsal.paging.QnaSearch">
+			SELECT COUNT(QNA_NO)
+			FROM QNA
+			WHERE 1=1
+
+			AND QNA_NO > 0
+	</select>
+	
+	
 	<select id="selectOne" resultType="QnaBoardDto" parameterType="int">
-		SELECT QNA_NO, QNA_TYPE, USER_ID, QNA_TITLE, QNA_CONTENT FROM QNA WHERE QNA_NO = #{qna_no}			
+		SELECT u.USER_NO,q.QNA_NO, q.QNA_TYPE, q.USER_ID, q.QNA_TITLE, q.QNA_CONTENT FROM QNA q 
+		LEFT JOIN USER_INFO u ON q.USER_ID = u.USER_ID
+		WHERE q.QNA_NO = #{qna_no}			
 	</select>
 	
 	<insert id="insert" parameterType="QnaBoardDto">
@@ -24,4 +37,10 @@
 		SET QNA_TITLE = #{qna_title}, QNA_CONTENT = #{qna_content}, QNA_TYPE = #{qna_type}
 		WHERE QNA_NO = #{qna_no}
 	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM QNA
+		WHERE QNA_NO=#{qna_no}
+	</delete>
+	
 </mapper>

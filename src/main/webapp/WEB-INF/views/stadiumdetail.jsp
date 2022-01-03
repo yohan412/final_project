@@ -105,11 +105,13 @@
             <div id="bot_left_form">
                 <div id="review_form">
                     <div id="review_table">
-                        <c:forEach items="${review}" var="review" varStatus="status">
-                            <div class="review_list">
-                                <div class="review_id">${review.user_id}</div>
-                                <div class="review_title"><span>${review.review_title}</span></div>
-                                <div class="review_regdate"><fmt:formatDate value="${review.review_reg}" pattern="yyyy-MM-dd"/></div>
+                        <%--<c:forEach items="${review}" var="review" varStatus="status">--%>
+                        <c:forEach begin="0" end="4" varStatus="status">
+                            <div class="review_list" onclick="view_review_detail_form(${status.index},'${userDto.user_id}', ${detail.stadium_no}, 'sd','dfdfd','2021-01-01')">
+                                <input type="hidden" value="${status.index}" class="idx">
+                                <div class="review_id"><%--${review.user_id}--%>sd</div>
+                                <div class="review_title"><span><%--${review.review_title}--%>dfd</span></div>
+                                <div class="review_regdate"><%--<fmt:formatDate value="${review.review_reg}" pattern="yyyy-MM-dd"/>--%>2022-01-01</div>
                             </div>
                         </c:forEach>
                     </div>
@@ -126,7 +128,7 @@
                     </div>
                 </div>
                 <div id="review_button_form">
-                    <input type="button" value="리뷰 작성" id="review_insert" class="buttons">
+                    <input type="button" value="리뷰 작성" id="review_insert" class="buttons" onclick="view_review_insert_form()">
                 </div>
             </div>
             <div id="bot_right_form">
@@ -150,26 +152,94 @@
                     </script>
                 </div>
             </div>
-            <div id="bot_bottom">
-                <div id="bot_review_insert_form">
-                    <div id="insert_review_title">
-                        <div class="rv_title">제목</div>
-                        <div class="rv_input_form"><input type="text" id="title_input"></div>
+        </div>
+        <div id="bot_review_view_form" class="review_sd">
+            <div id="review_view_form">
+                <div id="review_view_title">
+                    <div class="rv_title">제목</div>
+                    <div class="rv_input_form" id="review_v_title_input"><input type="text" id="review_v_title" readonly></div>
+                </div>
+                <div id="review_content">
+                    <div class="rv_title">내용</div>
+                    <div class="rv_input_form" id="review_v_content_input"><textarea id="review_v_content" readonly></textarea></div>
+                </div>
+                <div id="review_view_button_form">
+                    <div style="width: 600px; height: 100%"></div>
+                    <div class="rv_buttons_form">
+                        <input type="button" class="buttons" id="review_update" value="수정" onclick="review_update();" style="margin-right: 10px">
+                        <input type="button" class="buttons" id="review_delete" value="삭제" onclick="review_delete();" style="margin-left: 10px">
+                        <input type="button" class="buttons" id="review_update_ac" value="수정" onclick="review_update_ac();" style="margin-left: 10px">
+                        <input type="button" class="buttons" id="review_update_cancel" value="취소" onclick="review_update_cancel();" style="margin-left: 10px">
                     </div>
-                    <div id="insert_review_content">
-                        <div class="rv_title">내용</div>
-                        <div class="rv_input_form"><textarea id="rv_text"></textarea></div>
-                    </div>
-                    <div id="review_insert_button_form">
-                        <div style="width: 755px; height: 100%"></div>
-                        <div id="rv_button_form">
-                            <input type="button" class="buttons" value="입력" onclick="review_insert();">
-                        </div>
-                    </div>
+                    <script type="text/javascript">
+                        $(function (){
+                            $("#review_update_ac").hide();
+                            $("#review_update_cancel").hide();
+                        });
+                    </script>
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            $(document).ready(function (){
+                $('body').on("click", function (e){
+                    var form = $("#review_view_form");
+                    var id = e.target.getAttribute('id');
+
+                    if(id === 'overlay'){
+                        document.body.style.backgroundColor = 'white';
+                        document.body.style.cursor = 'default';
+
+                        $("#bot_review_view_form")
+                            .css('display', 'none')
+                            .css('bottom', "0px");
+
+                        $("#review_v_title").empty();
+                        $("#review_v_content").empty();
+
+                        $("#review_update_ac").hide();
+                        $("#review_update_cancel").hide();
+                        $("#review_update").show();
+                        $("#review_delete").show();
+
+                        $("input[type=button]").prop('disabled', false);
+                        $("#review_update").prop('disabled', true);
+                        $("#review_delete").prop('disabled', true);
+                        $("#review_update_ac").prop('disabled', true);
+                        $("#review_update_cancel").prop('disabled', true);
+
+                        $("#review_v_title").attr("readonly", true);
+                        $("#review_v_content").attr("readonly", true);
+
+                        $("#overlay").fadeOut();
+                    }
+                });
+            })
+        </script>
+        <div id="bot_bottom">
+            <div id="bot_review_insert_form">
+                <form:form action="/review_insert.do" method="post" onsubmit="return review_insert('${userDto.user_id}')">
+                <input type="hidden" name="stadium_no" value="${detail.stadium_no}">
+                <input type="hidden" name="user_id" value="${userDto.user_id}">
+                <div id="insert_review_title">
+                    <div class="rv_title">제목</div>
+                    <div class="rv_input_form"><input type="text" name="review_title" id="title_input"></div>
+                </div>
+                <div id="insert_review_content">
+                    <div class="rv_title">내용</div>
+                    <div class="rv_input_form"><textarea name="review_content" id="rv_text"></textarea></div>
+                </div>
+                <div id="review_insert_button_form">
+                    <div style="width: 755px; height: 100%"></div>
+                    <div class="rv_button_form">
+                        <input type="submit" class="buttons" value="입력">
+                    </div>
+                </div>
+                </form:form>
+            </div>
+        </div>
     </div>
+    <div id="overlay" style="position: fixed; width: 100vw; height: 100vh; display: none; z-index: 998"></div>
 </section>
 <footer>
 

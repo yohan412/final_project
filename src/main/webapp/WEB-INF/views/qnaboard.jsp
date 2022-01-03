@@ -40,6 +40,8 @@
 					</div>
 				</div>
 			</div>
+			</div>
+	
 			<div id="board_middle_form">
 				<div class="middle">
 					<p id="newone" class="newone">최신순</p>
@@ -86,10 +88,25 @@
 						</tbody>
 					</table>
 				</div>
-
+	<!-- 페이지 리스트 -->
+			<div class="page-list" align="center">
+			
+				<c:if test="${pageMaker.prev }">
+					<a href="qnalist.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a>
+				</c:if>
+				
+				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage }" var="idx">
+					<a href="qnalist.do${pageMaker.makeSearch(idx) }">${idx}</a>
+				</c:forEach>
+				
+				<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
+					<a href="qnalist.do${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a>
+				</c:if>
+				
+		</div>
 			</div>
 		</div>
-		<div></div>
+
 
 
 		<div id="serchform">
@@ -105,12 +122,7 @@
 					type="button" id="button" value="검색">
 			</div>
 		</div>
-		<div class="paging">
-			<a href="#" class="bt first">처음 페이지</a> <a href="#" class="bt prev">이전
-				페이지</a> <a href="#" class="num">1</a> <a href="#" class="num">2</a> <a
-				href="#" class="num">3</a> <a href="#" class="bt next">다음 페이지</a> <a
-				href="#" class="bt last">마지막 페이지</a>
-		</div>
+
 		<!-- footer -->
 
 		<footer> footer </footer>

@@ -16,7 +16,7 @@
 <header>
 	<%@ include file="header.jsp" %>
 </header>
-<section>
+<section class="body">
 	<div class="main-all-box">
 		<h1 style="text-align: center;">팀 명단</h1>
 		<div class="table-board-list">

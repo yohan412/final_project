@@ -1,6 +1,7 @@
 package com.mvc.fotsal;
 
 import com.mvc.fotsal.model.biz.GameBiz;
+import com.mvc.fotsal.model.biz.MercenaryBiz;
 import com.mvc.fotsal.model.biz.UserBiz;
 import com.mvc.fotsal.model.dto.GameAskDto;
 import com.mvc.fotsal.model.dto.GameDto;
@@ -33,6 +34,9 @@ public class GameController {
 
     @Autowired
     private UserBiz userBiz;
+    
+    @Autowired
+    private MercenaryBiz mBiz;
 
     @RequestMapping(value = "/gamelist.do", method = RequestMethod.GET)
     public String GameListPage(Model model, GamePaging gamePaging, @ModelAttribute("gameSearch") GameSearch gameSearch, HttpServletRequest request){
@@ -112,7 +116,7 @@ public class GameController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto userDto = (UserDto) session.getAttribute("dto");
+        UserDto userDto = (UserDto) session.getAttribute("login");
 
         model.addAttribute("userDto", userDto);
 
@@ -123,6 +127,8 @@ public class GameController {
     public String GameDetailPage(Model model, int game_no, GameAskPaging gameAskPaging, HttpServletRequest request){
     	logger.info("Move to GameDetail Page");
         model.addAttribute("gamedto", gameBiz.GameDetail(game_no));
+        
+        
 
         GameAskPageMaker gameAskPageMaker = new GameAskPageMaker();
         gameAskPageMaker.setGameAskPaging(gameAskPaging);
@@ -199,8 +205,9 @@ public class GameController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto userDto = (UserDto) session.getAttribute("dto");
+        UserDto userDto = (UserDto) session.getAttribute("login");
 
+        model.addAttribute("mDto", mBiz.selectOne(1) );
         model.addAttribute("userDto", userDto);
 
         return "gamedetail";
@@ -293,7 +300,7 @@ public class GameController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto userDto = (UserDto) session.getAttribute("dto");
+        UserDto userDto = (UserDto) session.getAttribute("login");
 
         model.addAttribute("userDto", userDto);
 
@@ -335,7 +342,7 @@ public class GameController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto userDto = (UserDto) session.getAttribute("dto");
+        UserDto userDto = (UserDto) session.getAttribute("login");
 
         model.addAttribute("userDto", userDto);
 
@@ -351,7 +358,7 @@ public class GameController {
 
         //세션
         HttpSession session = request.getSession();
-        UserDto userDto = (UserDto) session.getAttribute("dto");
+        UserDto userDto = (UserDto) session.getAttribute("login");
 
         model.addAttribute("userDto", userDto);
 
