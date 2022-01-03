@@ -22,7 +22,9 @@
 	
 	
 	<select id="selectOne" resultType="QnaBoardDto" parameterType="int">
-		SELECT QNA_NO, QNA_TYPE, USER_ID, QNA_TITLE, QNA_CONTENT FROM QNA WHERE QNA_NO = #{qna_no}			
+		SELECT u.USER_NO,q.QNA_NO, q.QNA_TYPE, q.USER_ID, q.QNA_TITLE, q.QNA_CONTENT FROM QNA q 
+		LEFT JOIN USER_INFO u ON q.USER_ID = u.USER_ID
+		WHERE q.QNA_NO = #{qna_no}			
 	</select>
 	
 	<insert id="insert" parameterType="QnaBoardDto">
