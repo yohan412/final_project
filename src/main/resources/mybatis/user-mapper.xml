@@ -5,7 +5,7 @@
 <mapper namespace="userinfo">
 	
 	<select id="login" parameterType="userDto" resultType="userDto">
-		SELECT USER_NO, USER_ID, USER_PW, USER_NAME
+		SELECT USER_NO, USER_ID, USER_PW, USER_NAME, USER_PHONE
 		FROM USER_INFO
 		WHERE USER_ID = #{user_id}
 	</select>

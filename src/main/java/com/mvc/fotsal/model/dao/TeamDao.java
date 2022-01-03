@@ -2,6 +2,7 @@ package com.mvc.fotsal.model.dao;
 
 import java.util.List;
 
+import com.mvc.fotsal.model.dto.MercenaryDto;
 import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
 import com.mvc.fotsal.paging.TeamListPaging;
