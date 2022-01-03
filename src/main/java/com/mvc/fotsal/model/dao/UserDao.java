@@ -13,6 +13,6 @@ public interface UserDao {
 	public int changePw(UserDto dto);
 	public int changePwInput(UserDto dto);
 	public UserDto selectOne(String user_id);
-	public int userUpdate(UserDto dto);
+	public int update(UserDto dto);
 	public int delete(String user_id);
 }

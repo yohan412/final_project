@@ -50,7 +50,7 @@ public class MercenaryController {
 		return "mercenary_detail";
 	}
 	
-	@RequestMapping(value="/mercenaryUpdate.do")
+	@RequestMapping(value="/mercenaryUpdate.do") // 용병지원서 수정
 	public String mercenaryUpdate(Model model, int user_no) {
 		logger.info("move page mercenary_update.jsp");
 		

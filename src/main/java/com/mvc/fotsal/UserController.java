@@ -1,6 +1,6 @@
 package com.mvc.fotsal;
 
-import java.util.HashMap;
+import java.util.HashMap; 
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -194,7 +194,7 @@ public class UserController {
     @RequestMapping("/user_info.do")
     public String mypage(Model model, String user_id) {
         logger.info("USER_INFO");
-        model.addAttribute("dto", biz.selectOne(user_id));
+        model.addAttribute("login", biz.selectOne(user_id));
         
         return "user_info";
     }
@@ -204,7 +204,7 @@ public class UserController {
     public String user_update(Model model, String user_id) {
     	logger.info("UPDATE FORM");
     	
-    	model.addAttribute("dto", biz.selectOne(user_id));
+    	model.addAttribute("login", biz.selectOne(user_id));
     	return "user_update";
     }
     
@@ -213,7 +213,7 @@ public class UserController {
     public String updateRes(UserDto dto) {
     	logger.info("UPDATE RES");
     	
-    	int res = biz.userUpdate(dto);
+    	int res = biz.update(dto);
     	if(res>0) {
 			logger.info("사용자정보 수정완료");
     		return "redirect:user_info.do?user_id="+dto.getUser_id();
@@ -232,7 +232,7 @@ public class UserController {
     	int res = biz.delete(user_id);
     	if(res>0) {
     		logger.info("회원정보 삭제 완료");
-    		return "redirect:index.jsp";
+    		return "redirect:loginform.do";
     	} else {
     		logger.info("회원정보 삭제 실패");
     		return "redirect:user_info.do?user_id="+user_id;
