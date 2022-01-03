@@ -12,10 +12,16 @@
 		<result property="mercenary_position" column="MERCENARY_POSITION" />
 	</resultMap>
 	
-	<select id="detail" resultType="mercenaryDto" parameterType="int">
-		SELECT USER_NO, MERCENARY_INTRO, MERCENARY_FOOT, MERCENARY_RATE, MERCENARY_POSITION
-		FROM MERCENARY_INFO
-		WHERE USER_NO = #{user_no}
+	
+	
+	
+	<select id="selectOne" resultType="mercenaryDto" parameterType="int">
+		SELECT g.GAME_NO, m.USER_NO, m.MERCENARY_INTRO, m.MERCENARY_FOOT, m.MERCENARY_RATE, m.MERCENARY_POSITION, 
+		u.USER_ID
+		FROM MERCENARY_INFO m
+		LEFT JOIN USER_INFO u ON m.USER_NO = u.USER_NO
+		LEFT JOIN GAME g ON g.USER_ID = u.USER_ID
+		WHERE m.USER_NO = #{user_no} AND g.GAME_NO = #{game_no}
 	</select>
 	
 	<insert id="insert" parameterType="mercenaryDto">

@@ -31,13 +31,10 @@
 
 </script>
 <title>용병지원서</title>
-
 </head>
 <body>
-<header>
 	<%@ include file="header.jsp" %>
-</header>
-<section>
+<section class="body">
 	<div class="main-all-box">
 		<div class="main-top-box">
 			<form action="mercenaryInsert.do" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
@@ -82,9 +79,7 @@
 		</div>
 	</div>
 </section>
-<footer>
 	<%@ include file="footer.jsp" %>
-</footer>
 </body>
 <script type="text/javascript">
 	
