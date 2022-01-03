@@ -38,14 +38,16 @@
 					<div class="content-introduce">
 						<h5 class="head-text">4. 팀 소개 및 한마디</h5>
 						<textarea rows="10" cols="60" name="team_intro" readonly>${teamDto.team_intro }</textarea>
+						<input type="hidden" id="team_wirter" name="user_phone" value="${teamDto.user_phone }" readonly>
 					</div>
 					
 					<div class="content-submit" align="right">
 						<input id="pointer" type="button" value="목록" onclick="location.href='teamlist.do'">
-						<input id="pointer" type="button" value="지원" onclick="sign_up(${login.user_no},${mercenaryDto.user_no })">
+						<input id="pointer" type="button" value="지원" onclick="sign_up(${login.user_no})">
 						<input id="pointer" type="button" value="수정" onclick="location.href='team_updateForm.do?team_no=${teamDto.team_no}'">
 						<input id="pointer" type="button" value="삭제" onclick="team_deleteChk(${login.user_no},${teamDto.user_no},${teamDto.team_no})">
 					</div>
+					
 					
 				</div>
 			</form>
@@ -57,6 +59,7 @@
 </footer>
 </body>
 <script type="text/javascript">
+
 	$("#team-logo").on('change',function(){
 	  var fileName = $("#team-logo").val();
 	  $(".upload-name").val(fileName);
@@ -77,17 +80,25 @@
 			}
 		}
 	}
+	var phone = document.getElementsByName("user_phone")[0];
 	
-	function sign_up(login_no, user_no){
-		if(login_no != user_no){
-			alert('용병지원서를 먼저 작성해주세요.');
+	function sign_up(login_no){
+		if(login_no == null || login_no == ""){
+			alert('로그인을 해주세요.');
 		}else{
-			if(login_no == user_no){
-				location.href='team_inviteMsg.do';
-			}else{
-				alert('용병지원서를 먼저 작성해주세요.');
+				$.ajax({
+					type: "post",
+					url: "team_inviteMsg.do",
+					data:{user_phone:phone.value},
+					success: function(){
+						alert("문자전송 완료");
+					},
+					error: function(){
+						alert("통신실패");
+					}
+				});
 			}
+			
 		}
-	}
 </script>
 </html>

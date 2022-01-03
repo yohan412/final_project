@@ -75,7 +75,7 @@ public static String numberGen() {
 	    
 	    // 4 params(to, from, type, text) are mandatory. must be filled
 	    HashMap<String, String> params = new HashMap<String, String>();
-	    params.put("to", "01046829426"); //수신번호
+	    params.put("to", args); //수신번호
 	    params.put("from", "01094271829"); //발신번호
 	    params.put("type", "SMS");
 	    params.put("text", "팀에 지원자가 있습니다. 웹 페이지에서 확인해주세요."); //문자내용

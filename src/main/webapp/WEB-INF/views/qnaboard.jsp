@@ -84,9 +84,6 @@
 								value="글 작성" onclick="location.href='qna.do'"></td>
 						</tr>
 						</tbody>
-
-
-
 					</table>
 				</div>
 

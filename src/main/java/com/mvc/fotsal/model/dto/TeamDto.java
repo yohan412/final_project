@@ -7,13 +7,14 @@ public class TeamDto {
 	private int team_no; //팀번호
 	private char team_addchk; //모집여부
 	private String pic_path; // 팀 로고
-	private String user_id;
+	private String user_id; // 유저 아이디
+	private String user_phone; // 유저 핸드폰번호
 	
 	public TeamDto() {
 		super();
 	}
 
-	public TeamDto(int user_no, String team_name, String team_intro, int team_no, char team_addchk, String pic_path, String user_id) {
+	public TeamDto(int user_no, String team_name, String team_intro, int team_no, char team_addchk, String pic_path, String user_id, String user_phone) {
 		super();
 		this.user_no = user_no;
 		this.team_name = team_name;
@@ -22,6 +23,7 @@ public class TeamDto {
 		this.team_addchk = team_addchk;
 		this.pic_path = pic_path;
 		this.user_id = user_id;
+		this.user_phone = user_phone;
 	}
 
 
@@ -79,6 +81,14 @@ public class TeamDto {
 
 	public void setTeam_addchk(char team_addchk) {
 		this.team_addchk = team_addchk;
+	}
+
+	public String getUser_phone() {
+		return user_phone;
+	}
+
+	public void setUser_phone(String user_phone) {
+		this.user_phone = user_phone;
 	}
 
 

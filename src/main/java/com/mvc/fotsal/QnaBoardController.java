@@ -82,7 +82,6 @@ public class QnaBoardController {
 	
 	@RequestMapping(value="/qnaupdateResult.do")
 	public String updateRes(QnaBoardDto dto) { // 팀 수정하기
-		
 		int res = biz.update(dto);
 
 		if(res>0) {
@@ -94,5 +93,19 @@ public class QnaBoardController {
 		}
 		
 	}
+	
+	@RequestMapping("/delete.do")
+	public String delete(int qna_no) {
+		logger.info("DELETE");
+		
+		int res = biz.delete(qna_no);
+		if(res>0) {
+			return "redirect:qnalist.do";
+		}else {
+			return "redirect:qnadetail.do?qna_no"+qna_no;
+		}
+		
+	}
+	
 
 }
