@@ -103,13 +103,13 @@ import com.mvc.fotsal.model.dto.UserDto;
 		}
 
 		@Override
-		public int userUpdate(UserDto dto) {
+		public int update(UserDto dto) {
 			int res = 0;
 			
 			try {
-				res = sqlSession.update(NAMESPACE+"userUpdate", dto);
+				res = sqlSession.update(NAMESPACE+"update", dto);
 			} catch (Exception e) {
-				System.out.println("[error]: userUpdate");
+				System.out.println("[error]: Update");
 				e.printStackTrace();
 			}
 			

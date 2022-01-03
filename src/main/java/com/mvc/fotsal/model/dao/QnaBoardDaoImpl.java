@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mvc.fotsal.model.dto.QnaBoardDto;
+import com.mvc.fotsal.paging.QnaSearch;
 
 @Repository
 public class QnaBoardDaoImpl implements QnaBoardDao{
@@ -16,18 +17,33 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public List<QnaBoardDto> selectList() {
+	public List<QnaBoardDto> selectList(QnaSearch STLP) {
 		List<QnaBoardDto> qnalist = new ArrayList<QnaBoardDto>();
 		
 		try {
-			qnalist = sqlSession.selectList(NAMESPACE+"selectList");
+			qnalist = sqlSession.selectList(NAMESPACE+"selectList", STLP);
 		} catch (Exception e) {
-			System.out.println("[error] : select list");
+			System.out.println("error: select list failed");
 			e.printStackTrace();
 		}
 		
 		return qnalist;
 	}
+	
+	@Override
+	public int listCount(QnaSearch STLP) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"listCount", STLP);
+		} catch (Exception e) {
+			System.out.println("error: select listCount failed");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
 
 	@Override
 	public QnaBoardDto selectOne(int qna_no) {
@@ -86,5 +102,8 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 		
 		return res;
 	}
+
+
+
 	
 }

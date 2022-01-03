@@ -46,7 +46,7 @@
 								id="pointer" type="button" value="수정"
 								onclick="location.href='qnaupdateForm.do?qna_no=${dto.qna_no}'">
 							<input id="pointer" type="button" value="삭제"
-								onclick="location.href='qna_delete.do'">
+								onclick="location.href='qnadelete.do?qna_no=${dto.qna_no}'">
 						</div>
 				</form>
 			</div>

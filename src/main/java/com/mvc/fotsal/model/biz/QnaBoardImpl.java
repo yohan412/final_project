@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.mvc.fotsal.model.dao.QnaBoardDao;
 import com.mvc.fotsal.model.dto.QnaBoardDto;
+import com.mvc.fotsal.paging.QnaSearch;
+
 
 @Service
 public class QnaBoardImpl implements QnaBoardBiz{
@@ -15,8 +17,13 @@ public class QnaBoardImpl implements QnaBoardBiz{
 	private QnaBoardDao dao;
 	
 	@Override
-	public List<QnaBoardDto> selectList() {
-		return dao.selectList();
+	public List<QnaBoardDto> selectList(QnaSearch STLP) {
+		return dao.selectList(STLP);
+	}
+	
+	@Override
+	public int listCount(QnaSearch STLP) {
+		return dao.listCount(STLP);
 	}
 
 	@Override
@@ -38,5 +45,7 @@ public class QnaBoardImpl implements QnaBoardBiz{
 	public int delete(int qna_no) {
 		return dao.delete(qna_no);
 	}
+
+
 
 }
