@@ -189,7 +189,7 @@ function login(){
         	</div>
         	<div class="naver-login">
 	        	<div id="naver_id_login">
-	            	<a id="naverIdLogin_loginButton" href="javascript:void(0)"><img src="img/Naver.png" onclick=""></a>
+	            	<a id="naverIdLogin_loginButton" href="javascript:void(0)"><img src="img/Naver.png" onclick="location.href='naverLogin.do'"></a>
 	        	</div>
 	        </div>
         	<div class="caption">

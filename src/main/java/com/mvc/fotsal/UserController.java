@@ -272,10 +272,14 @@ public class UserController {
 		
 		if(naverConnectionCheck == null) { //일치하는 이메일 없으면 가입
 			
-			model.addAttribute("email",apiJson.get("email"));
-			model.addAttribute("password",apiJson.get("id"));
-			model.addAttribute("phone",apiJson.get("mobile"));
-			return "user/setNickname";
+			model.addAttribute("user_email",apiJson.get("email"));
+			model.addAttribute("user_id",apiJson.get("id"));
+			model.addAttribute("user_pw",apiJson.get("id"));
+			model.addAttribute("user_phone",apiJson.get("mobile"));
+			model.addAttribute("user_gender",apiJson.get("gender"));
+			model.addAttribute("user_name",apiJson.get("name"));
+			model.addAttribute("user_birthdate",apiJson.get("birthyear")+"-"+apiJson.get("birthday"));
+			return "user/setNaverRegister";
 		}else if(naverConnectionCheck.get("USER_CONCHK") == null && naverConnectionCheck.get("USER_EMAIL") != null) { //이메일 가입 되어있고 네이버 연동 안되어 있을시
 			biz.setNaverConnection(apiJson);
 			Map<String, Object> loginCheck = biz.userNaverLoginPro(apiJson);
