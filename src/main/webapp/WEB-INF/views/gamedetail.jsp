@@ -185,15 +185,24 @@
         <div id="hidden_form">
             <%--용병 리스트--%>
             <div id="mergency_list_form">
-                <c:forEach begin="1" end="10">
-                    <div id="mergency_list">
-                        <div id="mergency_id">${mDto.user_id }</div>
-                        <div id="mergency_foot">${mDto.mercenary_foot }</div>
-                        <div id="mergency_position">${mDto.mercenary_position }</div>
-                        <div id="mergency_rate">${mDto.mercenary_rate }</div>
-                        <div id="mergency_button_form"><input type="button" value="초대하기" id="mergency_button"></div>
-                    </div>
-                </c:forEach>
+            	<c:choose>
+	            	<c:when test = "${empty mDto }">
+	            		<div id="mergency_list" style="justify-content: center">
+	            			<p>--------- 지원자가 아직 없습니다 ------------</p>
+	            		</div>
+	                </c:when>
+	                <c:otherwise>
+		                <c:forEach items="#{mDto }" var="mDto">
+		                    <div id="mergency_list">
+		                        <div id="mergency_id"><a href="mercenaryDetail.do?user_no="${mDto.user_no }>${mDto.user_id }</a></div>
+		                        <div id="mergency_foot">${mDto.mercenary_foot }</div>
+		                        <div id="mergency_position">${mDto.mercenary_position }</div>
+		                        <div id="mergency_rate">${mDto.mercenary_rate }</div>
+		                        <div id="mergency_button_form"><input type="button" value="초대하기" id="mergency_button"></div>
+		                    </div>
+		                </c:forEach>
+	                </c:otherwise>
+                </c:choose>
                 <script type="text/javascript">
                     $(function (){
                         var author = '${gamedto.user_id}';        //글 작성자 아이디

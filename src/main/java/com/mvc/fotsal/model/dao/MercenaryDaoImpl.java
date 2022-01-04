@@ -1,5 +1,6 @@
 package com.mvc.fotsal.model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -56,9 +57,18 @@ public class MercenaryDaoImpl implements MercenaryDao{
 	}
 
 	@Override
-	public List<MercenaryDto> selectList() {
+	public List<MercenaryDto> selectList(MercenaryDto mDto) {
+		List<MercenaryDto> list = new ArrayList<MercenaryDto>();
 		
-		return null;
+		try {
+			list = sqlSession.selectList(NAMESPACE+"selectList", mDto);
+		} catch (Exception e) {
+			System.out.println("error: mercenary list failed");
+			e.printStackTrace();
+		}
+		
+		
+		return list;
 	}
 	
 }

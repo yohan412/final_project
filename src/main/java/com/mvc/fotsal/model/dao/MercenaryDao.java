@@ -11,5 +11,5 @@ public interface MercenaryDao {
 	public int insert(MercenaryDto dto); // 용병지원서 작성
 	public int update(MercenaryDto dto); // 용병지원서 수정
 	public int delete(int user_no); // 용병지원서 삭제
-	public List<MercenaryDto> selectList();
+	public List<MercenaryDto> selectList(MercenaryDto mDto);
 }
