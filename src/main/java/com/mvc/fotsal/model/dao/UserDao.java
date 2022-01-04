@@ -1,5 +1,7 @@
 package com.mvc.fotsal.model.dao;
 
+import java.util.Map;
+
 import com.mvc.fotsal.model.dto.UserDto;
 
 public interface UserDao {
@@ -15,4 +17,5 @@ public interface UserDao {
 	public UserDto selectOne(String user_id);
 	public int update(UserDto dto);
 	public int delete(String user_id);
+	public Map<String, Object> naverConnectionCheck(Map<String, Object> apiJson);
 }

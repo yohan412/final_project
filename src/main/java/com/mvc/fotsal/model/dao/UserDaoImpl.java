@@ -1,5 +1,7 @@
 package com.mvc.fotsal.model.dao;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -128,6 +130,11 @@ import com.mvc.fotsal.model.dto.UserDto;
 			}
 			
 			return res;
+		}
+
+		@Override
+		public Map<String, Object> naverConnectionCheck(Map<String, Object> apiJson) {
+			return null;
 		}
 
 		

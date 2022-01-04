@@ -1,10 +1,12 @@
 package com.mvc.fotsal;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.mvc.fotsal.NaverLogin.NaverLoginBO;
 import com.mvc.fotsal.message.messageApp;
 import com.mvc.fotsal.model.biz.UserBiz;
 import com.mvc.fotsal.model.dto.UserDto;
@@ -38,6 +42,9 @@ public class UserController {
 		
 		return "loginform";
 	}
+	
+	@Autowired
+	private NaverLoginBO naverloginbo;
 	
 	//로그인
 	@RequestMapping(value="/ajaxlogin.do", method=RequestMethod.POST)
@@ -239,10 +246,47 @@ public class UserController {
     	}
     }
     
+    //네이버 로그인api
+    @RequestMapping(value="naverLogin.do")
+	public String userLogin(Model model,HttpSession session) {
+		System.out.println("naverLogin");	
+		String naverAuthUrl = naverloginbo.getAuthorizationUrl(session);
+		model.addAttribute("naverUrl", naverAuthUrl);
+		return "user/naverLogin";
+	}
     
-    
-    
-    
+    @RequestMapping(value="/userNaverLoginPro.do",  method = {RequestMethod.GET,RequestMethod.POST})
+	public String userNaverLoginPro(Model model,@RequestParam Map<String,Object> paramMap, @RequestParam String code, @RequestParam String state,HttpSession session) throws SQLException, Exception {
+		System.out.println("paramMap:" + paramMap);
+		Map <String, Object> resultMap = new HashMap<String, Object>();
+
+		OAuth2AccessToken oauthToken;
+		oauthToken = naverloginbo.getAccessToken(session, code, state);
+		//로그인 사용자 정보를 읽어온다.
+		String apiResult = naverloginbo.getUserProfile(oauthToken);
+		System.out.println("apiResult =>"+apiResult);
+		ObjectMapper objectMapper =new ObjectMapper();
+		Map<String, Object> apiJson = (Map<String, Object>) objectMapper.readValue(apiResult, Map.class).get("response");
+		
+		Map<String, Object> naverConnectionCheck = biz.naverConnectionCheck(apiJson);
+		
+		if(naverConnectionCheck == null) { //일치하는 이메일 없으면 가입
+			
+			model.addAttribute("email",apiJson.get("email"));
+			model.addAttribute("password",apiJson.get("id"));
+			model.addAttribute("phone",apiJson.get("mobile"));
+			return "user/setNickname";
+		}else if(naverConnectionCheck.get("NAVERLOGIN") == null && naverConnectionCheck.get("EMAIL") != null) { //이메일 가입 되어있고 네이버 연동 안되어 있을시
+			userservice.setNaverConnection(apiJson);
+			Map<String, Object> loginCheck = userservice.userNaverLoginPro(apiJson);
+			session.setAttribute("userInfo", loginCheck);
+		}else { //모두 연동 되어있을시
+			Map<String, Object> loginCheck = userservice.userNaverLoginPro(apiJson);
+			session.setAttribute("userInfo", loginCheck);
+		}
+
+		return "redirect:usermain.do";
+	}
     
     
 	
