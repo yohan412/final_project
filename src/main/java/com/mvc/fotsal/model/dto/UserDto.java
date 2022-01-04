@@ -12,12 +12,13 @@ public class UserDto {
 	private String user_zip;
 	private String user_addr;
 	private String user_role;
+	private String user_conchk;
 	public UserDto() {
 		super();
 	}
 	public UserDto(int user_no, String user_id, String user_pw, String user_name, String user_gender,
 			String user_birthdate, String user_email, String user_phone, String user_zip, String user_addr,
-			String user_role) {
+			String user_role, String user_conchk) {
 		super();
 		this.user_no = user_no;
 		this.user_id = user_id;
@@ -30,6 +31,7 @@ public class UserDto {
 		this.user_zip = user_zip;
 		this.user_addr = user_addr;
 		this.user_role = user_role;
+		this.user_conchk = user_conchk;
 	}
 	public int getUser_no() {
 		return user_no;
@@ -97,8 +99,12 @@ public class UserDto {
 	public void setUser_role(String user_role) {
 		this.user_role = user_role;
 	}
-	
-	
+	public String getUser_conchk() {
+		return user_conchk;
+	}
+	public void setUser_conchk(String user_conchk) {
+		this.user_conchk = user_conchk;
+	}
 	
 	
 }

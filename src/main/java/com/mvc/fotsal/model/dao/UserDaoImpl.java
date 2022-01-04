@@ -134,7 +134,45 @@ import com.mvc.fotsal.model.dto.UserDto;
 
 		@Override
 		public Map<String, Object> naverConnectionCheck(Map<String, Object> apiJson) {
-			return null;
+			
+			Map<String, Object> res = null;
+			
+			try {
+				res=sqlSession.selectOne(NAMESPACE+"conchk", apiJson);
+			} catch (Exception e) {
+				System.out.println("[error]: conchk");
+				e.printStackTrace();
+			}
+			
+			return res;
+		}
+
+		@Override
+		public int setNaverConnection(Map<String, Object> apiJson) {
+			
+			int res =0;
+			
+			try {
+				res=sqlSession.update(NAMESPACE+"naverlogset",apiJson);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return res;
+		}
+
+		@Override
+		public Map<String, Object> userNaverLoginPro(Map<String, Object> apiJson) {
+			
+			Map<String, Object> res =null;
+			
+			try {
+				res=sqlSession.selectOne(NAMESPACE+"naverlogin",apiJson);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return res;
 		}
 
 		

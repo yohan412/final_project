@@ -276,12 +276,12 @@ public class UserController {
 			model.addAttribute("password",apiJson.get("id"));
 			model.addAttribute("phone",apiJson.get("mobile"));
 			return "user/setNickname";
-		}else if(naverConnectionCheck.get("NAVERLOGIN") == null && naverConnectionCheck.get("EMAIL") != null) { //이메일 가입 되어있고 네이버 연동 안되어 있을시
-			userservice.setNaverConnection(apiJson);
-			Map<String, Object> loginCheck = userservice.userNaverLoginPro(apiJson);
+		}else if(naverConnectionCheck.get("USER_CONCHK") == null && naverConnectionCheck.get("USER_EMAIL") != null) { //이메일 가입 되어있고 네이버 연동 안되어 있을시
+			biz.setNaverConnection(apiJson);
+			Map<String, Object> loginCheck = biz.userNaverLoginPro(apiJson);
 			session.setAttribute("userInfo", loginCheck);
 		}else { //모두 연동 되어있을시
-			Map<String, Object> loginCheck = userservice.userNaverLoginPro(apiJson);
+			Map<String, Object> loginCheck = biz.userNaverLoginPro(apiJson);
 			session.setAttribute("userInfo", loginCheck);
 		}
 

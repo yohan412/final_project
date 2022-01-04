@@ -65,6 +65,16 @@ public class UserBizImpl implements UserBiz {
 		return dao.naverConnectionCheck(apiJson);
 	}
 
+	@Override
+	public int setNaverConnection(Map<String, Object> apiJson) {
+		return dao.setNaverConnection(apiJson);
+	}
+
+	@Override
+	public Map<String, Object> userNaverLoginPro(Map<String, Object> apiJson) {
+		return dao.userNaverLoginPro(apiJson);
+	}
+
 
 	
 
