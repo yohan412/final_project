@@ -198,7 +198,8 @@
     height: 40px;
     display: flex;
     flex-wrap: wrap;
-    background-color: blue;
+    align-items: center;
+    justify-content: center;
 }
 
 #review_button_form{

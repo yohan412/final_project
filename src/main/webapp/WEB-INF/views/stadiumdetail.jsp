@@ -105,25 +105,25 @@
             <div id="bot_left_form">
                 <div id="review_form">
                     <div id="review_table">
-                        <%--<c:forEach items="${review}" var="review" varStatus="status">--%>
-                        <c:forEach begin="0" end="4" varStatus="status">
-                            <div class="review_list" onclick="view_review_detail_form(${status.index},'${userDto.user_id}', ${detail.stadium_no}, 'sd','dfdfd','2021-01-01')">
+                        <c:forEach items="${review}" var="review" varStatus="status">
+<%--                        <c:forEach begin="0" end="4" varStatus="status">--%>
+                            <div class="review_list" onclick="view_review_detail_form(${status.index},'${userDto.user_id}', ${detail.stadium_no}, '${review.review_title}','${review.review_content}','<fmt:formatDate value="${review.review_reg}" pattern="yyyy-MM-dd"/>','${review.user_id}', ${review.review_no})">
                                 <input type="hidden" value="${status.index}" class="idx">
-                                <div class="review_id"><%--${review.user_id}--%>sd</div>
-                                <div class="review_title"><span><%--${review.review_title}--%>dfd</span></div>
-                                <div class="review_regdate"><%--<fmt:formatDate value="${review.review_reg}" pattern="yyyy-MM-dd"/>--%>2022-01-01</div>
+                                <div class="review_id">${review.user_id}</div>
+                                <div class="review_title"><span>${review.review_title}</span></div>
+                                <div class="review_regdate"><fmt:formatDate value="${review.review_reg}" pattern="yyyy-MM-dd"/></div>
                             </div>
                         </c:forEach>
                     </div>
                     <div id="review_paging_form">
                         <c:if test="${reviewpagemaker.prev}">
-                            <input type="button" id="prevbutton" onclick="location.href='stadiumdetail.do${reviewpagemaker.makeQuery(reviewpagemaker.startPage - 1)}'" value="<">
+                            <input type="button" id="prevbutton" onclick="location.href='stadiumdetail.do${reviewpagemaker.makeQuery(reviewpagemaker.startPage - 1)}&stadium_no=${detail.stadium_no}'" value="<">
                         </c:if>
                         <c:forEach begin="${reviewpagemaker.startPage}" end="${reviewpagemaker.endPage}" var="idx">
-                            <input type="button" id="pagingnum" onclick="location.href='stadiumdetail.do${reviewpagemaker.makeQuery(idx)}'" value="${idx}">
+                            <input type="button" id="pagingnum" onclick="location.href='stadiumdetail.do${reviewpagemaker.makeQuery(idx)}&stadium_no=${detail.stadium_no}'" value="${idx}">
                         </c:forEach>
                         <c:if test="${reviewpagemaker.next && reviewpagemaker.endPage > 0}">
-                            <input type="button" id="nextbutton" onclick="location.href='stadiumdetail.do${reviewpagemaker.makeQuery(reviewpagemaker.endPage + 1)}'" value=">">
+                            <input type="button" id="nextbutton" onclick="location.href='stadiumdetail.do${reviewpagemaker.makeQuery(reviewpagemaker.endPage + 1)}&stadium_no=${detail.stadium_no}'" value=">">
                         </c:if>
                     </div>
                 </div>
@@ -155,30 +155,32 @@
         </div>
         <div id="bot_review_view_form" class="review_sd">
             <div id="review_view_form">
+                <input type="hidden" name="stadium_no" value="${detail.stadium_no}">
+                <input type="hidden" name="user_id" value="${userDto.user_id}">
                 <div id="review_view_title">
                     <div class="rv_title">제목</div>
-                    <div class="rv_input_form" id="review_v_title_input"><input type="text" id="review_v_title" readonly></div>
+                    <div class="rv_input_form" id="review_v_title_input"><input type="text" name="review_title" id="review_v_title" readonly></div>
                 </div>
                 <div id="review_content">
                     <div class="rv_title">내용</div>
-                    <div class="rv_input_form" id="review_v_content_input"><textarea id="review_v_content" readonly></textarea></div>
+                    <div class="rv_input_form" id="review_v_content_input"><textarea name="review_content" id="review_v_content" readonly></textarea></div>
                 </div>
                 <div id="review_view_button_form">
                     <div style="width: 600px; height: 100%"></div>
                     <div class="rv_buttons_form">
                         <input type="button" class="buttons" id="review_update" value="수정" onclick="review_update();" style="margin-right: 10px">
-                        <input type="button" class="buttons" id="review_delete" value="삭제" onclick="review_delete();" style="margin-left: 10px">
-                        <input type="button" class="buttons" id="review_update_ac" value="수정" onclick="review_update_ac();" style="margin-left: 10px">
+                        <input type="button" class="buttons" id="review_delete" value="삭제" onclick="review_delete('${userDto.user_id}');" style="margin-left: 10px">
+                        <input type="submit" class="buttons" id="review_update_ac" value="수정" style="margin-left: 10px" onclick="review_update_ac()">
                         <input type="button" class="buttons" id="review_update_cancel" value="취소" onclick="review_update_cancel();" style="margin-left: 10px">
                     </div>
-                    <script type="text/javascript">
-                        $(function (){
-                            $("#review_update_ac").hide();
-                            $("#review_update_cancel").hide();
-                        });
-                    </script>
                 </div>
             </div>
+            <script type="text/javascript">
+                $(function (){
+                    $("#review_update_ac").hide();
+                    $("#review_update_cancel").hide();
+                });
+            </script>
         </div>
         <script type="text/javascript">
             $(document).ready(function (){

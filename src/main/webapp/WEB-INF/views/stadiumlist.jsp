@@ -24,7 +24,7 @@
             <div id="searchform">
                 <div id="search_box_form">
                     <div id="search_box">
-                        <input type="text" name="search" id="search" onkeypress="if(event.keyCode===13){gamesearch()}" >
+                        <input type="text" name="search" id="search" value="${stadiumSearch.keyword}" onkeypress="if(event.keyCode===13){stadiumsearch('${pageMaker.makeQuery(1)}')}" >
                     </div>
                 </div>
                 <div id="select_box_form">
@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div id="search_button_form">
-                    <input type="button" id="search_button" value="검색">
+                    <input type="button" id="search_button" value="검색" onclick="stadiumsearch('${pageMaker.makeQuery(1)}')">
                 </div>
             </div>
             <div id="listform">
@@ -53,15 +53,15 @@
             </div>
             <div id="pagingform">
                 <div style="width: 200px; height: 100%"></div>
-                <div style="width: 500px; height: 100%; display: flex; align-items: center; justify-content: center; background-color: blue">
+                <div style="width: 500px; height: 100%; display: flex; align-items: center; justify-content: center;">
                     <c:if test="${pageMaker.prev}">
-                        <input type="button" id="prevbutton" onclick="location.href='stadiumlist.do${pageMaker.makeQuery(pageMaker.startPage - 1)}'" value="<">
+                        <input type="button" id="prevbutton" onclick="location.href='stadiumlist.do${pageMaker.makeSearch(pageMaker.startPage - 1)}'" value="<">
                     </c:if>
                     <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-                        <input type="button" id="pagingnum" onclick="location.href='stadiumlist.do${pageMaker.makeQuery(idx)}'" value="${idx}">
+                        <input type="button" id="pagingnum" onclick="location.href='stadiumlist.do${pageMaker.makeSearch(idx)}'" value="${idx}">
                     </c:forEach>
                     <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-                        <input type="button" id="nextbutton" onclick="location.href='stadiumlist.do${pageMaker.makeQuery(pageMaker.endPage + 1)}'" value=">">
+                        <input type="button" id="nextbutton" onclick="location.href='stadiumlist.do${pageMaker.makeSearch(pageMaker.endPage + 1)}'" value=">">
                     </c:if>
                 </div>
                 <div style="width: 200px; height: 100%; display: flex; align-items: center; justify-content: center">

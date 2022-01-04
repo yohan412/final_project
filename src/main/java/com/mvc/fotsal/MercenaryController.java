@@ -26,10 +26,10 @@ public class MercenaryController {
 	}
 	
 	@RequestMapping(value="/mercenaryList.do")
-	public String mList(Model model) {
+	public String mList(Model model,MercenaryDto mDto) {
 		logger.info("Select Mercenary List, move page gamedetail.jsp");
 		
-		model.addAttribute("mList",biz.selectList());
+		model.addAttribute("mList",biz.selectList(mDto));
 		
 		return "gamedetail";
 	}
