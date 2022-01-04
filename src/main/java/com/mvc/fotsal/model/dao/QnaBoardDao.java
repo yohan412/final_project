@@ -11,10 +11,10 @@ public interface QnaBoardDao {
 	String NAMESPACE = "qnainfo.";
 	
 
-	public QnaBoardDto selectOne(int qna_no);
-	public int insert(QnaBoardDto dto);
-	public int update(QnaBoardDto dto);
-	public int delete(int qna_no);
-	public List<QnaBoardDto> selectList(QnaSearch STLP);
-	public int listCount(QnaSearch STLP); 
+	public QnaBoardDto selectOne(int qna_no); // 자세히보기
+	public int insert(QnaBoardDto dto); // 등록
+	public int update(QnaBoardDto dto); // 수정
+	public int delete(int qna_no); // 삭제
+	public List<QnaBoardDto> selectList(QnaSearch STLP); // 리스트 및 페이징
+	public int listCount(QnaSearch STLP); // 총 갯수
 }

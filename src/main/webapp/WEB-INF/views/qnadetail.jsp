@@ -9,9 +9,9 @@
 <title>Q&A BOARD DETAIL</title>
 </head>
 <body>
-	<header> 
-	<%-- <%@ include file="/WEB-INF/views/header.jsp" %> --%>
-	</header>
+<header>
+	<%@ include file="header.jsp" %>
+</header>
 	<section>
 		<div class="main-all-box">
 			<div class="top-box-content">
