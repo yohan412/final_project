@@ -9,15 +9,17 @@ public class QnaBoardDto {
 	private String qna_title;
 	private String qna_content;
 	private String user_id;
+	private int user_no;
 	private Date qna_reg;
 	private String qna_type;
 	
 	public QnaBoardDto() {
 		super();
 	}
-	public QnaBoardDto(int qna_no, int qna_gpno, int qna_gpsq, String qna_title, String qna_content, String user_id,
+	public QnaBoardDto(int user_no, int qna_no, int qna_gpno, int qna_gpsq, String qna_title, String qna_content, String user_id,
 			Date qna_reg, String qna_type) {
 		super();
+		this.user_no = user_no;
 		this.qna_no = qna_no;
 		this.qna_gpno = qna_gpno;
 		this.qna_gpsq = qna_gpsq;
@@ -32,6 +34,13 @@ public class QnaBoardDto {
 	}
 	public void setQna_no(int qna_no) {
 		this.qna_no = qna_no;
+	}
+	
+	public int getUser_no() {
+		return user_no;
+	}
+	public void setUser_no(int user_no) {
+		this.user_no = user_no;
 	}
 	public int getQna_gpno() {
 		return qna_gpno;

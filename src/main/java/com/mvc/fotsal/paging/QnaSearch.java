@@ -25,6 +25,6 @@ public class QnaSearch extends QnaBoardPaging{
 	
 	@Override
 	public String toString() {
-		return "TeamSearch [searchType=" + searchType + ", keyword=" + keyword + "]";
+		return "QnaSearch [searchType=" + searchType + ", keyword=" + keyword + "]";
 	}
 }

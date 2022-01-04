@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<header>
+	<%@ include file="header.jsp" %>
+</header>
 <section>
 		<div class="main-all-box">
 			<div class="top-box-content">

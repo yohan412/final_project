@@ -47,7 +47,7 @@ public class QnaBoardController {
 	@RequestMapping("/qnadetail.do")
 	public String detail(Model model, int qna_no) {
 		logger.info("SELECT ONE");
-		model.addAttribute("dto", biz.selectOne(qna_no));
+		model.addAttribute("qna_dto", biz.selectOne(qna_no));
 		
 		return "qnadetail";
 	}
@@ -102,7 +102,6 @@ public class QnaBoardController {
 	@RequestMapping("/qnadelete.do")
 	public String delete(int qna_no) {
 		logger.info("DELETE");
-		System.out.println(qna_no);
 		
 		int res = biz.delete(qna_no);
 		if(res>0) {

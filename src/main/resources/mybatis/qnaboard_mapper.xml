@@ -3,42 +3,60 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="qnainfo">
-	
-	<select id="selectList" resultType="QnaBoardDto" parameterType="com.mvc.fotsal.paging.QnaSearch">
+
+	<select id="selectList" resultType="QnaBoardDto"
+		parameterType="com.mvc.fotsal.paging.QnaSearch">
 		SELECT QNA_NO, USER_ID, QNA_TITLE, QNA_CONTENT, QNA_REG
-		FROM (SELECT QNA_NO, USER_ID, QNA_TITLE, QNA_CONTENT, QNA_REG, 
-				ROW_NUMBER() OVER(ORDER BY QNA_NO DESC) AS RNUM FROM QNA) MP 
+		FROM (SELECT QNA_NO, USER_ID, QNA_TITLE, QNA_CONTENT, QNA_REG,
+		ROW_NUMBER() OVER(ORDER BY QNA_NO DESC) AS RNUM FROM QNA) MP
 		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
 		ORDER BY QNA_NO DESC
 	</select>
-	
-	<select id="listCount" resultType="int" parameterType="com.mvc.fotsal.paging.QnaSearch">
-			SELECT COUNT(QNA_NO)
-			FROM QNA
-			WHERE 1=1
 
-			AND QNA_NO > 0
+	<select id="listCount" resultType="int"
+		parameterType="com.mvc.fotsal.paging.QnaSearch">
+		SELECT COUNT(QNA_NO)
+		FROM QNA
+		WHERE 1=1
+		<include refid="search"></include>
+		AND QNA_NO > 0
 	</select>
-	
-	
-	<select id="selectOne" resultType="QnaBoardDto" parameterType="int">
-		SELECT QNA_NO, QNA_TYPE, USER_ID, QNA_TITLE, QNA_CONTENT FROM QNA WHERE QNA_NO = #{qna_no}			
+
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND QNA_TITLE LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'c'.toString()">AND QNA_CONTENT LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'w'.toString()">AND USER_ID LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'tc'.toString()">AND (QNA_TITLE LIKE '%' || #{keyword} || '%') or (QNA_CONTENT
+				LIKE '%' || #{keyword} || '%')</if>
+		</if>
+	</sql>
+
+	<select id="selectOne" resultType="QnaBoardDto"
+		parameterType="int">
+		SELECT u.USER_NO,q.QNA_NO, q.QNA_TYPE, q.USER_ID,
+		q.QNA_TITLE, q.QNA_CONTENT FROM QNA q
+		LEFT JOIN USER_INFO u ON q.USER_ID = u.USER_ID
+		WHERE q.QNA_NO = #{qna_no}
 	</select>
-	
+
 	<insert id="insert" parameterType="QnaBoardDto">
 		INSERT INTO QNA
-		VALUES(QNA_NOSQ.NEXTVAL, QNA_GPNOSQ.NEXTVAL, 1, #{qna_title}, #{qna_content}, #{user_id}, SYSDATE , #{qna_type})
+		VALUES(QNA_NOSQ.NEXTVAL, QNA_GPNOSQ.NEXTVAL, 1, #{qna_title},
+		#{qna_content}, #{user_id}, SYSDATE , #{qna_type})
 	</insert>
-	
+
 	<update id="update" parameterType="QnaBoardDto">
 		UPDATE QNA
-		SET QNA_TITLE = #{qna_title}, QNA_CONTENT = #{qna_content}, QNA_TYPE = #{qna_type}
+		SET QNA_TITLE =
+		#{qna_title}, QNA_CONTENT = #{qna_content}, QNA_TYPE = #{qna_type}
 		WHERE QNA_NO = #{qna_no}
 	</update>
-	
+
 	<delete id="delete" parameterType="int">
 		DELETE FROM QNA
-		WHERE QNA_NO=#{qna_no}
+		WHERE
+		QNA_NO=#{qna_no}
 	</delete>
-	
+
 </mapper>

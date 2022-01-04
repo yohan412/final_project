@@ -4,6 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="userinfo">
 	
+	<resultMap type="userDto" id="userMap">
+		<result property="user_no" column="USER_NO" />
+		<result property="user_id" column="USER_ID" />
+		<result property="user_pw" column="USER_PW" />
+		<result property="user_name" column="USER_NAME" />
+		<result property="user_gender" column="USER_GENDER" />
+		<result property="user_birthdate" column="USER_BIRTHDATE" />
+		<result property="user_email" column="USER_EMAIL" />
+		<result property="user_phone" column="USER_PHONE" />
+		<result property="user_zip" column="USER_ZIP" />
+		<result property="user_addr" column="USER_ADDR" />
+		<result property="user_role" column="USER_ROLE" />
+		<result property="user_conchk" column="USER_CONCHK" />
+	</resultMap>
+	
 	<select id="login" parameterType="userDto" resultType="userDto">
 		SELECT USER_NO, USER_ID, USER_PW, USER_NAME, USER_PHONE
 		FROM USER_INFO
@@ -12,7 +27,7 @@
 	
 	<insert id="insert" parameterType="userDto">
 		INSERT INTO USER_INFO
-		VALUES(USER_NOSQ.NEXTVAL,#{user_id},#{user_pw},#{user_name},#{user_gender},#{user_birthdate},#{user_email},#{user_phone},#{user_zip},#{user_addr},'USER')
+		VALUES(USER_NOSQ.NEXTVAL,#{user_id},#{user_pw},#{user_name},#{user_gender},#{user_birthdate},#{user_email},#{user_phone},#{user_zip},#{user_addr},'USER',NULL)
 	</insert>
 	
 	<select id="idchk" resultType="_int">
@@ -50,4 +65,16 @@
 		WHERE USER_ID=#{user_id}
 	</delete>
 	
+	<select id="conchk" resultMap="userMap">
+		SELECT USER_EMAIL,CONCHK FROM USER_INFO WHERE USER_EMAIL = #{email}
+	</select>
+	
+	<update id="naverlogset">
+		UPDATE USER_INFO SET USER_ID = #{id} WHERE USER_EMAIL = #{email}
+	</update>
+	
+	<select id="naverlogin" resultMap="userMap">
+		SELECT USER_EMAIL FROM USER_INFO WHERE USER_EMAIL = #{email} AND USER_ID = #{id}
+	</select>
+		
 </mapper>

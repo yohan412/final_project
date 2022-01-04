@@ -1,5 +1,7 @@
 package com.mvc.fotsal.model.biz;
 
+import java.util.Map;
+
 import com.mvc.fotsal.model.dto.UserDto;
 
 public interface UserBiz {
@@ -12,5 +14,7 @@ public interface UserBiz {
 	public UserDto selectOne(String user_id);
 	public int update(UserDto dto);
 	public int delete(String user_id);
-	
+	public Map<String, Object> naverConnectionCheck(Map<String, Object> apiJson);
+	public int setNaverConnection(Map<String, Object> apiJson);
+	public Map<String, Object> userNaverLoginPro(Map<String, Object> apiJson);
 }

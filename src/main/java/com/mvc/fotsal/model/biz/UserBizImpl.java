@@ -1,5 +1,7 @@
 package com.mvc.fotsal.model.biz;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,6 +58,21 @@ public class UserBizImpl implements UserBiz {
 	@Override
 	public int delete(String user_id) {
 		return dao.delete(user_id);
+	}
+
+	@Override
+	public Map<String, Object> naverConnectionCheck(Map<String, Object> apiJson) {
+		return dao.naverConnectionCheck(apiJson);
+	}
+
+	@Override
+	public int setNaverConnection(Map<String, Object> apiJson) {
+		return dao.setNaverConnection(apiJson);
+	}
+
+	@Override
+	public Map<String, Object> userNaverLoginPro(Map<String, Object> apiJson) {
+		return dao.userNaverLoginPro(apiJson);
 	}
 
 
