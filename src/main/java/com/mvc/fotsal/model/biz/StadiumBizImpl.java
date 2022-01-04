@@ -4,6 +4,7 @@ import com.mvc.fotsal.model.dao.StadiumDao;
 import com.mvc.fotsal.model.dto.StadiumDto;
 import com.mvc.fotsal.model.dto.UserDto;
 import com.mvc.fotsal.paging.StadiumPaging;
+import com.mvc.fotsal.paging.StadiumSearch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,13 +26,13 @@ public class StadiumBizImpl implements StadiumBiz{
     }
 
     @Override
-    public List<StadiumDto> list(StadiumPaging stadiumPaging) {
-        return stadiumDao.list(stadiumPaging);
+    public List<StadiumDto> list(StadiumSearch stadiumSearch) {
+        return stadiumDao.list(stadiumSearch);
     }
 
     @Override
-    public int listCount() {
-        return stadiumDao.listCount();
+    public int listCount(StadiumSearch stadiumSearch) {
+        return stadiumDao.listCount(stadiumSearch);
     }
 
     @Override
