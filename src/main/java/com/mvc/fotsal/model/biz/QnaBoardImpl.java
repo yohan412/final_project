@@ -48,4 +48,5 @@ public class QnaBoardImpl implements QnaBoardBiz{
 
 
 
+
 }

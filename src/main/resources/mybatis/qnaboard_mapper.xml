@@ -58,5 +58,6 @@
 		WHERE
 		QNA_NO=#{qna_no}
 	</delete>
+	
 
 </mapper>

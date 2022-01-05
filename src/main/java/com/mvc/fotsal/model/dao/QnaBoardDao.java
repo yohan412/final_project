@@ -3,9 +3,7 @@ package com.mvc.fotsal.model.dao;
 import java.util.List;
 
 import com.mvc.fotsal.model.dto.QnaBoardDto;
-import com.mvc.fotsal.model.dto.TeamDto;
 import com.mvc.fotsal.paging.QnaSearch;
-import com.mvc.fotsal.paging.TeamSearch;
 
 public interface QnaBoardDao {
 	String NAMESPACE = "qnainfo.";

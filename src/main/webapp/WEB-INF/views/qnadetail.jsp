@@ -48,6 +48,9 @@
 								onclick="location.href='qnaupdateForm.do?qna_no=${qna_dto.qna_no}'">
 							<input id="pointer" type="button" value="삭제"
 								onclick="qna_deleteChk(${login.user_no},${qna_dto.user_no },${qna_dto.qna_no })">
+							<input id="pointer" type="button" value="답글" 
+								onclick="location.href='qnaanswerinsert.do?qna_no=${qna_dto.qna_no}'">
+								<%-- /*adminChk(${login.login_id}, ${qna_dto.user_id }, ${qna_dto.qna_no })*/ 관리자 확인 주석 수정중--%> 
 						</div>
 				</form>
 			</div>
@@ -55,6 +58,20 @@
 	</section>
 </body>
 <script type="text/javascript">
+/* function adminChk(login_id, user_id, qna_no) {
+	if(login_id != "admin"){
+		alert('관리자만 작성할 수 있습니다.');
+	} else{
+		if(login_id === user_id){
+		var chk = confirm('답글을 작성하시겠습니까?')
+			if(chk){
+				location.href='qnaanswer.do?qna_no='+qna_no;
+			}else{
+				alert('취소되었습니다.');
+			}
+		}
+	}
+} */
 function qna_deleteChk(login_no, user_no, qna_no){
 	if(login_no != user_no){
 		alert('작성자만 삭제할 수 있습니다.');
