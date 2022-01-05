@@ -75,6 +75,22 @@ public class QnaBoardController {
 		}
 	}
 	
+	@RequestMapping("/rp_qnainsert.do")
+	public String rp_insert(QnaBoardDto dto, HttpServletRequest request) {
+		UserDto user = (UserDto) request.getSession().getAttribute("login");
+		logger.info("RP_INSERT QNA");
+		dto.setUser_id(user.getUser_id());
+		int res = biz.rp_insert(dto);
+		
+		if(res>0) {
+			logger.info("QNA RP_INSERT 성공");
+			return "redirect:qnalist.do";
+		}else {
+			logger.info("QNA RP_INSERT 실패");
+			return "redirect:qna.do";
+		}
+	}
+	
 	@RequestMapping("/qnaupdateForm.do")
 	public String updateForm(Model model, int qna_no) {
 		logger.info("UPDATE FORM");

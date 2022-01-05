@@ -53,6 +53,15 @@
 								<%-- /*adminChk(${login.login_id}, ${qna_dto.user_id }, ${qna_dto.qna_no })*/ 관리자 확인 주석 수정중--%> 
 						</div>
 				</form>
+				<div>
+				<div>
+					<!-- comment -->
+				</div>
+				<div class="comment-txt">
+					<label>아이디</label>
+					<label>${qna_dto.user_id }</label>
+				</div>
+				</div>
 			</div>
 		</div>
 	</section>
