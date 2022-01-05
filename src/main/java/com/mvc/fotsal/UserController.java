@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.mvc.fotsal.KakaoLogin.KakaoService;
 import com.mvc.fotsal.NaverLogin.NaverLoginBO;
 import com.mvc.fotsal.message.messageApp;
 import com.mvc.fotsal.model.biz.UserBiz;
@@ -32,6 +33,9 @@ public class UserController {
 
 	@Autowired
 	private UserBiz biz;
+	
+	@Autowired
+	private KakaoService ks;
 	
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
@@ -292,6 +296,28 @@ public class UserController {
 		return "redirect:usermain.do";
 	}
     
+    //카카오 로그인 API
+    @RequestMapping(value="kakaoLogin.do", method=RequestMethod.GET)
+	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
+		System.out.println("#########" + code);
+		
+		String access_Token = ks.getAccessToken(code);
+		System.out.println("###access_Token#### : " + access_Token);
+		
+		HashMap<String, Object> userInfo = ks.getUserInfo(access_Token);
+		
+		System.out.println("###nickname#### : " + userInfo.get("nickname"));
+		System.out.println("###email#### : " + userInfo.get("email"));
+		
+		return "member/testPage";
     
-	
+    }
+    
+    
+    
+    
+    
+    
+    
 }
+    

@@ -185,7 +185,8 @@ function login(){
             </div>
             <div id="loginChk"></div>
         	<div class="kakao-login">
-            	<a href="javascript:void(0)"><img src="img/Kakao.png" onclick="kakaoLogin();"></a>
+            	<a href="https://kauth.kakao.com/oauth/authorize?client_id=f4d035894dc919ed84747c27124adccc&redirect_uri=http://localhost:8787/kakaoLogin.do&response_type=code">
+            	<img src="img/Kakao.png"></a>
         	</div>
         	<div class="naver-login">
 	        	<div id="naver_id_login">
