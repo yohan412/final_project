@@ -51,6 +51,11 @@ public class QnaBoardImpl implements QnaBoardBiz{
 		return dao.delete(qna_no);
 	}
 
+	@Override
+	public int comment_delete(int qna_gpsq) {
+		return dao.comment_delete(qna_gpsq);
+	}
+
 
 
 

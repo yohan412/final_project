@@ -16,4 +16,5 @@ public interface QnaBoardBiz {
 	public int rp_insert(QnaBoardDto dto);
 	public int update(QnaBoardDto dto);
 	public int delete(int qna_no);
+	public int comment_delete(int qna_gpsq);
 }
