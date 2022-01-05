@@ -1,6 +1,6 @@
 package com.mvc.fotsal;
 
-import java.sql.SQLException;
+import java.sql.SQLException; 
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
-import com.mvc.fotsal.KakaoLogin.KakaoService;
+import com.mvc.fotsal.KakaoLogin.KakaoAPI;
 import com.mvc.fotsal.NaverLogin.NaverLoginBO;
 import com.mvc.fotsal.message.messageApp;
 import com.mvc.fotsal.model.biz.UserBiz;
@@ -35,17 +35,14 @@ public class UserController {
 	private UserBiz biz;
 	
 	@Autowired
-	private KakaoService ks;
+    private KakaoAPI kakao;
 	
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
 	
 	@RequestMapping("/loginform.do") // 로그인페이지 이동
-	public String loginForm(Model model,HttpSession session) {
+	public String loginForm() {
 		logger.info("LOGIN PAGE");
-		
-		String naverAuthUrl = naverloginbo.getAuthorizationUrl(session);
-		model.addAttribute("naverUrl", naverAuthUrl);
 		
 		return "loginform";
 	}
@@ -99,33 +96,17 @@ public class UserController {
 									@RequestParam("myaddr1") String addr1,
 									@RequestParam("myaddr2") String addr2) {
 		
+		System.out.println(dto.getUser_pw());
 		dto.setUser_pw(passwordEncoder.encode(dto.getUser_pw()));
 		dto.setUser_birthdate(yy+"-"+mm+"-"+dd);
 		dto.setUser_addr(addr1+" "+addr2);
-		String conchk = "";
-		dto.setUser_conchk(conchk);
+		
+		
 		
 		if(biz.insert(dto)>0) {
 			return "redirect:loginform.do";
 		}else {
 			return "redirect:registerform.do";
-		}
-	}
-	
-	//네이버 회원가입
-	@RequestMapping("/register2.do")
-	public String userInsert(UserDto dto,@RequestParam("myaddr1") String addr1,
-			@RequestParam("myaddr2") String addr2) {
-		
-		dto.setUser_pw(passwordEncoder.encode(dto.getUser_pw()));
-		dto.setUser_addr(addr1+" "+addr2);
-		String conchk="NAVER";
-		dto.setUser_conchk(conchk);
-		
-		if(biz.insert(dto)>0) {
-			return "redirect:loginform.do";
-		}else {
-			return "redirect:userNaverLoginPro.do";
 		}
 	}
 	
@@ -302,35 +283,37 @@ public class UserController {
 			model.addAttribute("user_gender",apiJson.get("gender"));
 			model.addAttribute("user_name",apiJson.get("name"));
 			model.addAttribute("user_birthdate",apiJson.get("birthyear")+"-"+apiJson.get("birthday"));
-			return "setNaverRegister";
+			return "user/setNaverRegister";
 		}else if(naverConnectionCheck.get("USER_CONCHK") == null && naverConnectionCheck.get("USER_EMAIL") != null) { //이메일 가입 되어있고 네이버 연동 안되어 있을시
 			biz.setNaverConnection(apiJson);
-			UserDto dto = biz.userNaverLoginPro(apiJson);
-			session.setAttribute("login", dto);
+			Map<String, Object> loginCheck = biz.userNaverLoginPro(apiJson);
+			session.setAttribute("userInfo", loginCheck);
 		}else { //모두 연동 되어있을시
-			UserDto dto = biz.userNaverLoginPro(apiJson);
-			session.setAttribute("login", dto);
+			Map<String, Object> loginCheck = biz.userNaverLoginPro(apiJson);
+			session.setAttribute("userInfo", loginCheck);
 		}
 
-		return "redirect:index.jsp";
+		return "redirect:usermain.do";
 	}
     
     //카카오 로그인 API
-    @RequestMapping(value="kakaoLogin.do", method=RequestMethod.GET)
-	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
-		System.out.println("#########" + code);
-		
-		String access_Token = ks.getAccessToken(code);
-		System.out.println("###access_Token#### : " + access_Token);
-		
-		HashMap<String, Object> userInfo = ks.getUserInfo(access_Token);
-		
-		System.out.println("###nickname#### : " + userInfo.get("nickname"));
-		System.out.println("###email#### : " + userInfo.get("email"));
-		
-		return "member/testPage";
-    
+    @RequestMapping(value="kakaoLogin.do")
+    public String login(@RequestParam("code") String code, HttpSession session) {
+    	System.out.println("kakaoLogin");	
+        String access_Token = kakao.getAccessToken(code);
+        HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
+        System.out.println("login Controller : " + userInfo);
+        
+        //클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
+        if (userInfo.get("email") != null) {
+            session.setAttribute("userId", userInfo.get("email"));
+            session.setAttribute("access_Token", access_Token);
+        }
+        return "index";
     }
+
+
+
     
     
     
