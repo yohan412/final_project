@@ -76,13 +76,13 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 	}
 	
 	@Override
-	public int rp_insert(QnaBoardDto dto) {
+	public int comment_insert(QnaBoardDto dto) {
 		int res = 0;
 		
 		try {
-			res = sqlSession.insert(NAMESPACE+"rp_insert", dto);
+			res = sqlSession.insert(NAMESPACE+"comment_insert", dto);
 		} catch (Exception e) {
-			System.out.println("[error] : rp_insert");
+			System.out.println("[error] : comment_insert");
 			e.printStackTrace();
 		}
 		
@@ -117,18 +117,6 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 		return res;
 	}
 
-	@Override
-	public int comment_delete(int qna_gpsq) {
-		int res = 0;
-		try {
-			res = sqlSession.delete(NAMESPACE+"comment_delete",qna_gpsq);
-		} catch (Exception e) {
-			System.out.println("[error] : comment delete");
-			e.printStackTrace();
-		}
-		
-		return res;
-	}
 
 
 

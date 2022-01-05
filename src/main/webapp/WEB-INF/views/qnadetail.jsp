@@ -51,31 +51,11 @@
 							onclick="location.href='qnaupdateForm.do?qna_no=${qna_dto.qna_no}'">
 						<input id="pointer" type="button" value="삭제"
 							onclick="qna_deleteChk(${login.user_no},${qna_dto.user_no },${qna_dto.qna_no })">
-						
+						<input id="pointer" type="button" value="답글"
+							onclick= "location.href='qnaCommentForm.do'">
 						<%-- /*adminChk(${login.login_id}, ${qna_dto.user_id }, ${qna_dto.qna_no })*/ 관리자 확인 주석 수정중--%>
 					</div>
 				</form>
-				<!-- comment 입력 폼-->
-				<div id="comment_form">
-
-					<%--댓글 입력 폼--%>
-					<div id="comment_insert_form">
-						<div>
-							<label>아이디</label>
-							<label id="user_id">${qna_dto.user_id }</label>
-						</div>
-						<div id="comment_insert">
-							<textarea id="search"></textarea>
-							<input type="button" id="button" value="등록"
-								onclick="comment_insert('${qna_dto.user_id}', ${qna_dto.user_no})">
-						</div>
-					</div>
-				</div>
-
-
-
-
-
 			</div>
 		</div>
 	</section>
