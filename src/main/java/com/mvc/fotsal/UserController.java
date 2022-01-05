@@ -41,8 +41,11 @@ public class UserController {
 	BCryptPasswordEncoder passwordEncoder;
 	
 	@RequestMapping("/loginform.do") // 로그인페이지 이동
-	public String loginForm() {
+	public String loginForm(Model model,HttpSession session) {
 		logger.info("LOGIN PAGE");
+		
+		String naverAuthUrl = naverloginbo.getAuthorizationUrl(session);
+		model.addAttribute("naverUrl", naverAuthUrl);
 		
 		return "loginform";
 	}
@@ -96,17 +99,33 @@ public class UserController {
 									@RequestParam("myaddr1") String addr1,
 									@RequestParam("myaddr2") String addr2) {
 		
-		System.out.println(dto.getUser_pw());
 		dto.setUser_pw(passwordEncoder.encode(dto.getUser_pw()));
 		dto.setUser_birthdate(yy+"-"+mm+"-"+dd);
 		dto.setUser_addr(addr1+" "+addr2);
-		
-		
+		String conchk = "";
+		dto.setUser_conchk(conchk);
 		
 		if(biz.insert(dto)>0) {
 			return "redirect:loginform.do";
 		}else {
 			return "redirect:registerform.do";
+		}
+	}
+	
+	//네이버 회원가입
+	@RequestMapping("/register2.do")
+	public String userInsert(UserDto dto,@RequestParam("myaddr1") String addr1,
+			@RequestParam("myaddr2") String addr2) {
+		
+		dto.setUser_pw(passwordEncoder.encode(dto.getUser_pw()));
+		dto.setUser_addr(addr1+" "+addr2);
+		String conchk="NAVER";
+		dto.setUser_conchk(conchk);
+		
+		if(biz.insert(dto)>0) {
+			return "redirect:loginform.do";
+		}else {
+			return "redirect:userNaverLoginPro.do";
 		}
 	}
 	
@@ -283,17 +302,17 @@ public class UserController {
 			model.addAttribute("user_gender",apiJson.get("gender"));
 			model.addAttribute("user_name",apiJson.get("name"));
 			model.addAttribute("user_birthdate",apiJson.get("birthyear")+"-"+apiJson.get("birthday"));
-			return "user/setNaverRegister";
+			return "setNaverRegister";
 		}else if(naverConnectionCheck.get("USER_CONCHK") == null && naverConnectionCheck.get("USER_EMAIL") != null) { //이메일 가입 되어있고 네이버 연동 안되어 있을시
 			biz.setNaverConnection(apiJson);
-			Map<String, Object> loginCheck = biz.userNaverLoginPro(apiJson);
-			session.setAttribute("userInfo", loginCheck);
+			UserDto dto = biz.userNaverLoginPro(apiJson);
+			session.setAttribute("login", dto);
 		}else { //모두 연동 되어있을시
-			Map<String, Object> loginCheck = biz.userNaverLoginPro(apiJson);
-			session.setAttribute("userInfo", loginCheck);
+			UserDto dto = biz.userNaverLoginPro(apiJson);
+			session.setAttribute("login", dto);
 		}
 
-		return "redirect:usermain.do";
+		return "redirect:index.jsp";
 	}
     
     //카카오 로그인 API

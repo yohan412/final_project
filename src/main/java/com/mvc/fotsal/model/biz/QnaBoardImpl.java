@@ -37,6 +37,11 @@ public class QnaBoardImpl implements QnaBoardBiz{
 	}
 
 	@Override
+	public int rp_insert(QnaBoardDto dto) {
+		return dao.rp_insert(dto);
+	}
+
+	@Override
 	public int update(QnaBoardDto dto) {
 		return dao.update(dto);
 	}
@@ -45,6 +50,8 @@ public class QnaBoardImpl implements QnaBoardBiz{
 	public int delete(int qna_no) {
 		return dao.delete(qna_no);
 	}
+
+
 
 
 

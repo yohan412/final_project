@@ -71,7 +71,7 @@ public class UserBizImpl implements UserBiz {
 	}
 
 	@Override
-	public Map<String, Object> userNaverLoginPro(Map<String, Object> apiJson) {
+	public UserDto userNaverLoginPro(Map<String, Object> apiJson) {
 		return dao.userNaverLoginPro(apiJson);
 	}
 

@@ -348,7 +348,6 @@
 						<input type="checkbox" id="chkbox" required><span><a href="javascript:void(0);" onclick="javascript:provision3();">위치정보 이용약관</a>에 동의합니다.</span><br>
 						<input type="checkbox" id="chkbox" required><span><a href="javascript:void(0);" onclick="javascript:provision4();">프로모션 정보 수신</a>에 동의합니다.</span>
 					</td>
-					<td></td><td></td>
 					<br><br><br><br>
 				</tr>
 				

@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="resources/css/qna.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<title>QNA 작성</title>
+<title>QNA댓글작성</title>
 
 </head>
 <body>
@@ -18,7 +18,7 @@
 <section>
 	<div class="main-all-box">
 		<div class="main-top-box">
-			<form action="qnainsert.do" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
+			<form action="qnaanswerinsert.do" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
             	<input type="hidden" name="user_id" value="${login.getUser_id()}" readonly>
 				
 				<div class="top-box-content">
@@ -27,22 +27,16 @@
 					</div>
 					<hr>
 					<div class="content-select-foot">
-						<input type="radio" name="qna_type" value="신고">신고
-						<input type="radio" name="qna_type" value="일반문의">일반문의
+						<input type="radio" name="qna_answer_type" value="답글">답글
 						
-						<input type="text" name="qna_title" placeholder="제목을 입력해주세요">
+						<input type="text" name="qna_answer_title" placeholder="제목을 입력해주세요">
 					</div>
 					<hr>
 					<div class="content-select-position">
-						<textarea row="10" cols="60" name="qna_content" placeholder="문의 내용을 입력해주세요."></textarea>
+						<textarea row="10" cols="60" name="qna_answer_content" placeholder="답글을 작성하세요."></textarea>
 					</div>
 					<hr>
-					<div class="content-teamlogo">
-						<input class="upload-name" name="" value="" placeholder="첨부파일" readonly>
-						<input class="upload-path" type="hidden" name="" value="">
-						<label for="team-logo">첨부파일</label>
-						<input type="file" id="team-logo">
-					</div>
+
 					<div class="content-submit" align="right">
 						<input id="pointer" type="button" value="이전" onclick="location.href='qnalist.do'">
 						<input id="pointer" type="submit" value="작성완료">
