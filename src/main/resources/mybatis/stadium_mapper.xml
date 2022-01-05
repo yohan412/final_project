@@ -16,15 +16,18 @@
     </insert>
 
     <select id="stadiumlist" resultType="stadiumDto" parameterType="com.mvc.fotsal.paging.StadiumSearch">
-        SELECT STADIUM_NO, STADIUM_NAME, STADIUM_ADDR, STADIUM_CONTENT, STADIUM_WEBADDR, STADIUM_PHONENUM
+        SELECT s.STADIUM_NO, s.STADIUM_NAME, s.STADIUM_ADDR, s.STADIUM_CONTENT, s.STADIUM_WEBADDR, s.STADIUM_PHONENUM,
+            max(p.PIC_PATH) AS PIC_PATH
         FROM (SELECT
                   STADIUM_NO, STADIUM_NAME, STADIUM_ADDR, STADIUM_CONTENT, STADIUM_WEBADDR, STADIUM_PHONENUM,
                      ROW_NUMBER() over (ORDER BY STADIUM_NO DESC) AS RNUM
             FROM STADIUM
             WHERE 1=1
             <include refid="search"></include>
-            )
+            ) s
+        LEFT JOIN STADIUM_PIC p ON s.STADIUM_NO = p.STADIUM_NO
         WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+        group by s.STADIUM_NO, s.STADIUM_NAME, s.STADIUM_ADDR, s.STADIUM_CONTENT, s.STADIUM_WEBADDR, s.STADIUM_PHONENUM
         ORDER BY STADIUM_NO DESC
     </select>
 
@@ -57,4 +60,11 @@
         DELETE STADIUM WHERE STADIUM_NO = #{stadium_no}
     </delete>
 
+    <select id="FindNo" parameterType="stadiumDto" resultType="int">
+        SELECT STADIUM_NO FROM STADIUM WHERE STADIUM_ADDR = #{stadium_addr}
+    </select>
+
+    <insert id="Insert_IMG" parameterType="picDto">
+        INSERT INTO STADIUM_PIC VALUES (#{boardno}, #{pic_name}, #{pic_path})
+    </insert>
 </mapper>
