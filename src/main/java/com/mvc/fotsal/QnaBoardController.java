@@ -74,22 +74,29 @@ public class QnaBoardController {
 			return "redirect:qna.do";
 		}
 	}
-	
-	@RequestMapping("/rp_qnainsert.do")
-	public String rp_insert(QnaBoardDto dto, HttpServletRequest request) {
-		UserDto user = (UserDto) request.getSession().getAttribute("login");
-		logger.info("RP_INSERT QNA");
-		dto.setUser_id(user.getUser_id());
-		int res = biz.rp_insert(dto);
+	@RequestMapping("/qnaCommentForm.do")
+	public String qnaCommentForm() {
+		logger.info("COMMENT FORM");
 		
+		return "qnaCommentForm";
+	}
+	
+	@RequestMapping("/qnaCommentres.do")
+	public String qnaCommentRes(Model model,int qna_no ,QnaBoardDto dto) {
+		logger.info("COMMENT RES");
+		
+		model.addAttribute("qna_dto", biz.selectOne(qna_no));
+		
+		int res = biz.comment_insert(dto);
 		if(res>0) {
-			logger.info("QNA RP_INSERT 성공");
-			return "redirect:qnalist.do";
+			logger.info("COMMENT INSERT 성공" );
+			return "redirect:qnadetail.do";
 		}else {
-			logger.info("QNA RP_INSERT 실패");
-			return "redirect:qna.do";
+			logger.info("COMMENT INSERT 실패");
+			return "redirect:qnaCommentForm.do";
 		}
 	}
+	
 	
 	@RequestMapping("/qnaupdateForm.do")
 	public String updateForm(Model model, int qna_no) {
@@ -127,20 +134,5 @@ public class QnaBoardController {
 		}
 		
 	}
-	
-	@RequestMapping("/comment_delete.do")
-	public String comment_delete(int qna_gpsq) {
-		logger.info("DELETE");
-		
-		int res = biz.delete(qna_gpsq);
-		if(res>0) {
-			return "redirect:qnalist.do";
-		}else {
-			return "redirect:comment_detail.do?qna_no"+qna_gpsq;
-		}
-		
-	}
-	
-	
 
 }

@@ -46,9 +46,9 @@
 		#{qna_content}, #{user_id}, SYSDATE , #{qna_type})
 	</insert>
 	
-	<insert id="rp_insert" parameterType="QnaBoardDto">
+	<insert id="comment_insert" parameterType="QnaBoardDto">
 		INSERT INTO QNA
-		VALUES(QNA_NOSQ.NEXTVAL, #{qna_qpno}, #{qna_gpsq}+1, 1, #{qna_title},
+		VALUES(QNA_NOSQ.NEXTVAL, QNA_GPNO = #{qna_qpno}, #{qna_gpsq}+1, 1, #{qna_title},
 		#{qna_content}, #{user_id}, SYSDATE , #{qna_type})
 	</insert>
 
