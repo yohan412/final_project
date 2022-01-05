@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>팀 등록서</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="resources/css/team.css">
 </head>
 <body>
@@ -33,12 +37,31 @@
 					<hr>
 					<div class="content-teamlogo">
 						<h5 class="head-text">3. 팀 로고</h5>
-						<img src=""><!-- DB값 -->
+						<img style="object-fit:cover; width:150px; height: 100px;" class="pic_path" src="/upload/${teamDto.pic_path }" alt="로고없음"><!-- DB값 -->
 					</div>
 					<div class="content-introduce">
 						<h5 class="head-text">4. 팀 소개 및 한마디</h5>
 						<textarea rows="10" cols="60" name="team_intro" readonly>${teamDto.team_intro }</textarea>
 						<input type="hidden" id="team_wirter" name="user_phone" value="${teamDto.user_phone }" readonly>
+					</div>
+					
+					<div id="hidden_form">
+						<div id="mercenary_list" style="justify-content: center">
+						<c:choose>
+								<c:when test = "${empty mercenaryDto }">
+									<p>-----------지원자가 아직 없습니다-----------</p>
+								</c:when>
+								<c:otherwise>
+									<c:forEach items="#{mercenaryDto }" var="mDto">
+			                        	<div id="m_id"><a href="mercenaryDetail.do?user_no="${mDto.user_no }>${mDto.user_id }</a></div>
+			                        	<div id="m_foot">${mDto.mercenary_foot }</div>
+			                        	<div id="m_position">${mDto.mercenary_position }</div>
+			                        	<div id="m_rate">${mDto.mercenary_rate }</div>
+			                        	<div id="m_button_form"><input type="button" value="수락하기" id="mergency_button" onclick="location.href='accept.do'"></div>
+		                        	</c:forEach>
+								</c:otherwise>
+							</c:choose>
+						</div>
 					</div>
 					
 					<div class="content-submit" align="right">
@@ -102,5 +125,19 @@
 			}
 			
 		}
+	//지원자 가리기
+	$(function(){
+		$("#hidden_form").hide();
+	})
+	
+	$(function(){
+		var writer = '${teamDto.user_no}'; // 팀장 번호
+		var user_no = '${login.user_no}'; // 로그인된 유저 번호
+		
+		if(writer === user_no){
+			$("#hidden_form").show();
+		}
+	});
+
 </script>
 </html>

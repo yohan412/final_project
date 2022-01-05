@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mvc.fotsal.message.messageApp;
+import com.mvc.fotsal.model.biz.MercenaryBiz;
 import com.mvc.fotsal.model.biz.TeamBiz;
 import com.mvc.fotsal.model.dto.MercenaryDto;
 import com.mvc.fotsal.model.dto.PicDto;
@@ -31,6 +32,9 @@ public class TeamController {
 
 	@Autowired
 	private TeamBiz biz;
+	
+	@Autowired
+	private MercenaryBiz mBiz;
 	
 	@RequestMapping(value="/team.do")
 	public String insertForm() { // 팀 등록 페이지
@@ -52,10 +56,7 @@ public class TeamController {
 	public String team_insert(MultipartHttpServletRequest mtf,TeamDto dto) {
 		logger.info("팀 등록서 작성중");
 		int res = biz.insert(dto);
-		System.out.println("team_name:"+dto.getTeam_name());
-		System.out.println("team_name:"+dto.getUser_no());
-		System.out.println("team_name:"+dto.getTeam_intro());
-		System.out.println("team_name:"+dto.getTeam_addchk());
+
 		
 		String uploadpath = mtf.getRealPath("resources\\upload"); //upload폴더에 실제 경로 설정
 		System.out.println(uploadpath);
@@ -119,11 +120,11 @@ public class TeamController {
 		return "teamboard";
 	}
 	
-	
 	@RequestMapping(value="/team_detail.do")
-	public String detail(Model model, int team_no) { // 팀 자세히보기
+	public String detail(Model model, int team_no, MercenaryDto mDto) { // 팀 자세히보기
 		logger.info("move page team_detail.jsp");
 		model.addAttribute("teamDto", biz.selectOne(team_no));
+		model.addAttribute("mercenaryDto", mBiz.selectListT(mDto));
 		
 
 		return "team_detail";
@@ -139,11 +140,47 @@ public class TeamController {
 	}
 	
 	@RequestMapping(value="/team_updateResult.do")
-	public String updateRes(TeamDto dto) { // 팀 수정하기
+	public String updateRes(TeamDto dto, MultipartHttpServletRequest mtf) { // 팀 수정하기
 		
 		int res = biz.update(dto);
-
+		
+		String uploadpath = mtf.getRealPath("resources\\upload"); //upload폴더에 실제 경로 설정
+		System.out.println(uploadpath);
+		
 		if(res>0) {
+			
+			//========================파일 업로드==============================
+			logger.info("파일 업로드 작업중");
+			
+			
+			List<MultipartFile> fileList = mtf.getFiles("upload_file");
+			
+			for (MultipartFile mf : fileList) {
+	            String originFileName = mf.getOriginalFilename(); // 원본 파일 명
+	            long fileSize = mf.getSize(); // 파일 사이즈
+
+	            System.out.println("originFileName : " + originFileName);
+	            System.out.println("fileSize : " + fileSize);
+	            
+	            String FileName = System.currentTimeMillis() + originFileName;
+	            String safeFile = uploadpath+"\\"+FileName;
+	            System.out.println(dto.getUser_no()+dto.getTeam_name());
+	            System.out.println(biz.findno(dto));
+	            try {
+	                mf.transferTo(new File(safeFile));
+	                
+	                PicDto pic = new PicDto(biz.findno(dto), originFileName, FileName);
+	                
+	                biz.teampic(pic);
+	                
+	            } catch (IllegalStateException e) {
+	                e.printStackTrace();
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
+			//===============================================================
+			
 			logger.info("팀 등록서 수정완료");
 			return "redirect:team_detail.do?team_no="+dto.getTeam_no();
 		}else {

@@ -16,4 +16,6 @@ public interface MercenaryDao {
 	public int delete(int user_no); // 용병지원서 삭제
 	
 	public List<MercenaryDto> selectList(MercenaryDto mDto);
+
+	public List<MercenaryDto> selectListT(MercenaryDto mDto);
 }
