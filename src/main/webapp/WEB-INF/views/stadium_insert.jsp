@@ -21,7 +21,7 @@
 <section>
     <div id="mainform">
         <div id="titleform">경기장 작성</div>
-        <form:form action="/stadiuminsert.do" method="post" onsubmit="return sd('${userDto.user_id}')">
+        <form:form action="/stadiuminsert.do" method="post" onsubmit="return sd('${userDto.user_id}')" enctype="multipart/form-data">
             <div id="top_form">
                 <div id="stadium_name_form">
                     <div style="width: 100px; height: 100%"></div>
@@ -85,7 +85,20 @@
                     <div>
                         <div class="font">경기장 사진 업로드</div>
                     </div>
-                    <div class="info">업로드 기능 공간</div>
+                    <div class="info">
+                        <input id="upload_file_name" name="pic_name" value="" placeholder="첨부파일" readonly>
+                        <input id="upload_file_path" name="pic_path" type="hidden" value="">
+                        <input id="upload_file" name="upload_file" type="file" multiple="multiple" value="사진 업로드" onclick="fileUpload();">
+                    </div>
+                    <script type="text/javascript">
+                        function fileUpload(){
+                            var file = $("#upload_file").val();
+                            var value = $("#upload_file").val();
+                            $("#upload_file_name").val(file);
+                            $("input[name=pic_name]").attr('value', value);
+                            $("input[name=pic_path]").attr('value', value);
+                        }
+                    </script>
                     <div style="width: 100px; height: 100%"></div>
                 </div>
                 <div id="button_form"><input type="submit" value="경기장 등록" id="button"></div>

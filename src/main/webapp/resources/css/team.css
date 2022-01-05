@@ -65,3 +65,12 @@ section.body{
     border: 1px solid #999999;
     color: black;
 }
+
+#hidden_form{
+    width: 900px;
+    min-height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 40px;
+}

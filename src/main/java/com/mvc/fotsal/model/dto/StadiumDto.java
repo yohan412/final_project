@@ -7,6 +7,7 @@ public class StadiumDto {
     private String stadium_content;
     private String stadium_webaddr;
     private String stadium_phonenum;
+    private String pic_path;
 
     public StadiumDto() {
     }
@@ -66,5 +67,13 @@ public class StadiumDto {
 
     public void setStadium_phonenum(String stadium_phonenum) {
         this.stadium_phonenum = stadium_phonenum;
+    }
+
+    public String getPic_path() {
+        return pic_path;
+    }
+
+    public void setPic_path(String pic_path) {
+        this.pic_path = pic_path;
     }
 }

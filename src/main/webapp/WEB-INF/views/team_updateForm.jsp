@@ -15,7 +15,7 @@
 <section class="body">
 	<div class="main-all-box">
 		<div class="main-top-box">
-			<form action="team_updateResult.do" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
+			<form action="team_updateResult.do" method="post" enctype="multipart/form-data"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
 				<div class="top-box-content">
 					<div class="title-text">	
 						<h2>Welcome ${teamDto.team_name }</h2>
@@ -36,11 +36,11 @@
 					<hr>
 					<div class="content-teamlogo">
 						<h5 class="head-text">3. 팀 로고</h5>
-						<input class="upload-name" name="pic_name" value="" placeholder="첨부파일" readonly>
+						<input class="upload-name" name="pic_path" value="${teamDto.pic_path }" placeholder="첨부파일" readonly>
 						<input class="upload-path" type="hidden" name="pic_path" value="">
 						
 						<label for="team-logo">팀 로고 선택</label>
-						<input type="file" id="team-logo">
+						<input type="file" multiple="multiple" id="team-logo" name="upload_file">
 					</div>
 					<hr>
 					<div class="content-introduce">
@@ -68,7 +68,6 @@ $("#team-logo").on('change',function(){
 	  var fileName = $("#team-logo").val();
 	  $(".upload-name").val(fileName);
 	  var value = $("#team-logo").val();
-    $('input[name=pic_name]').attr('value', value);
     $('input[name=pic_path]').attr('value', value);
     console.log(value);
 });
