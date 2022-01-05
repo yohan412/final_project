@@ -3,6 +3,9 @@ package com.mvc.fotsal.paging;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 public class StadiumPageMaker {
     private int totalCount;
     private int startPage;
@@ -72,5 +75,28 @@ public class StadiumPageMaker {
         return uriComponents.toUriString();
     }
 
+    public String makeSearch(int page){
+        UriComponents uriComponents =
+                UriComponentsBuilder.newInstance()
+                        .queryParam("page", page)
+                        .queryParam("perPageNum", stadiumPaging.getPerPageNum())
+                        .queryParam("searchType", ((StadiumSearch)stadiumPaging).getSearchType())
+                        .queryParam("keyword",  encoding( ( (StadiumSearch)stadiumPaging).getKeyword() ) )
+                        .queryParam("addr",     encoding( ( (StadiumSearch)stadiumPaging).getAddr() ) )
+                        .build();
+        return  uriComponents.toUriString();
+    }
+
+    private String encoding(String keyword){
+        if(keyword == null || keyword.trim().length() == 0){
+            return "";
+        }
+
+        try{
+            return URLEncoder.encode(keyword, "UTF-8");
+        }catch (UnsupportedEncodingException e){
+            return "";
+        }
+    }
 
 }

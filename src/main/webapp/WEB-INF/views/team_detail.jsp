@@ -66,8 +66,10 @@
 	});
 	
 	function team_deleteChk(login_no, user_no, team_no){
-		if(login_no != user_no){
-			alert('팀장만 삭제할 수 있습니다');
+		if(login_no === null || login_no === ""){
+			alert('로그인을 해주세요');
+		}else if(login_no != user_no){
+			alert('팀장만 삭제할 수 있습니다.')
 		}else{
 			if(user_no === login_no){
 				var chk = confirm('정말 삭제하시겠습니까?')

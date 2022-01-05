@@ -7,17 +7,14 @@ import com.mvc.fotsal.model.biz.UserBiz;
 import com.mvc.fotsal.model.dto.ReviewDto;
 import com.mvc.fotsal.model.dto.StadiumDto;
 import com.mvc.fotsal.model.dto.UserDto;
-import com.mvc.fotsal.paging.ReviewPageMaker;
-import com.mvc.fotsal.paging.ReviewPaging;
-import com.mvc.fotsal.paging.StadiumPageMaker;
-import com.mvc.fotsal.paging.StadiumPaging;
+import com.mvc.fotsal.paging.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -37,7 +34,7 @@ public class StadiumController {
     private ReviewBiz reviewBiz;
 
     @RequestMapping("/stadiumlist.do")
-    public String StadiumList(Model model, HttpServletRequest request, StadiumPaging stadiumPaging){
+    public String StadiumList(Model model, HttpServletRequest request, StadiumPaging stadiumPaging, @ModelAttribute("stadiumSearch") StadiumSearch stadiumSearch){
         logger.info("Move to Stadium List Page");
 
         model.addAttribute("gamedto", gameBiz.GameDetail(100));
@@ -49,12 +46,12 @@ public class StadiumController {
         model.addAttribute("userDto", userDto);
 
         //리스트 구현
-        model.addAttribute("list", stadiumBiz.list(stadiumPaging));
+        model.addAttribute("list", stadiumBiz.list(stadiumSearch));
 
         //페이징 구현
         StadiumPageMaker stadiumPageMaker = new StadiumPageMaker();
-        stadiumPageMaker.setStadiumPaging(stadiumPaging);
-        stadiumPageMaker.setTotalCount(stadiumBiz.listCount());
+        stadiumPageMaker.setStadiumPaging(stadiumSearch);
+        stadiumPageMaker.setTotalCount(stadiumBiz.listCount(stadiumSearch));
         model.addAttribute("pageMaker", stadiumPageMaker);
 
         return "stadiumlist";
@@ -171,10 +168,48 @@ public class StadiumController {
 
         if(res > 0){
             logger.info("Review Insert Success");
-            return "redirect:stadiumlist.do?stadium_no=" + reviewDto.getStadium_no();
+            return "redirect:stadiumdetail.do?stadium_no=" + reviewDto.getStadium_no();
         }else{
             logger.info("Review Insert Fail");
-            return "redirect:stadiumlist.do?stadium_no=" + reviewDto.getStadium_no();
+            return "redirect:stadiumdetail.do?stadium_no=" + reviewDto.getStadium_no();
         }
     }
+
+    @RequestMapping("review_delete.do")
+    public String Stadium_Review_Delete(Model model, int review_no, int stadium_no){
+        logger.info("Delete Review");
+
+        int res = reviewBiz.delete(review_no);
+
+        if(res > 0){
+            logger.info("Review Delete Success");
+            return "redirect:stadiumdetail.do?stadium_no=" + stadium_no;
+        }else{
+            logger.info("Review Delete Fail");
+            return "redirect:stadiumdetail.do?stadium_no=" + stadium_no;
+        }
+    }
+
+    @RequestMapping(value = "/review_update.do", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Boolean> Stadium_Review_Update(Model model, @RequestBody ReviewDto reviewDto){
+        logger.info("Update Review");
+
+        int res = reviewBiz.update(reviewDto);
+
+        boolean check = false;
+
+        if(res > 0){
+            logger.info("Review Update Success");
+            check = true;
+        }else{
+            logger.info("Review Update Fail");
+        }
+
+        Map<String, Boolean> map = new HashMap<String, Boolean>();
+        map.put("check", check);
+
+        return map;
+    }
+
 }

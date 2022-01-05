@@ -15,24 +15,32 @@
         </selectKey>
     </insert>
 
-    <select id="stadiumlist" resultType="stadiumDto" parameterType="com.mvc.fotsal.paging.StadiumPaging">
+    <select id="stadiumlist" resultType="stadiumDto" parameterType="com.mvc.fotsal.paging.StadiumSearch">
         SELECT STADIUM_NO, STADIUM_NAME, STADIUM_ADDR, STADIUM_CONTENT, STADIUM_WEBADDR, STADIUM_PHONENUM
         FROM (SELECT
                   STADIUM_NO, STADIUM_NAME, STADIUM_ADDR, STADIUM_CONTENT, STADIUM_WEBADDR, STADIUM_PHONENUM,
                      ROW_NUMBER() over (ORDER BY STADIUM_NO DESC) AS RNUM
             FROM STADIUM
+            WHERE 1=1
+            <include refid="search"></include>
             )
         WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
         ORDER BY STADIUM_NO DESC
     </select>
 
-    <select id="listCount" resultType="int">
-        <![CDATA[
-            SELECT COUNT(STADIUM_NO)
-            FROM STADIUM
-            WHERE STADIUM_NO > 0
-        ]]>
+    <select id="listCount" resultType="int" parameterType="com.mvc.fotsal.paging.StadiumSearch">
+        SELECT COUNT(STADIUM_NO)
+        FROM STADIUM
+        WHERE 1=1
+            <include refid="search"></include>
+        AND STADIUM_NO > 0
     </select>
+
+    <sql id="search">
+        <if test="searchType != null">
+            <if test="searchType == 't'.toString()">AND STADIUM_NAME LIKE '%' || #{keyword} || '%' AND STADIUM_ADDR LIKE '%' || #{addr} || '%'</if>
+        </if>
+    </sql>
 
     <select id="stadiumdetail" parameterType="stadiumDto" resultType="stadiumDto">
         SELECT * FROM STADIUM WHERE STADIUM_NO = #{stadium_no}

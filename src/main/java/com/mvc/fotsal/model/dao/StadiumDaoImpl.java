@@ -3,6 +3,7 @@ package com.mvc.fotsal.model.dao;
 import com.mvc.fotsal.model.dto.StadiumDto;
 import com.mvc.fotsal.model.dto.UserDto;
 import com.mvc.fotsal.paging.StadiumPaging;
+import com.mvc.fotsal.paging.StadiumSearch;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -42,11 +43,11 @@ public class StadiumDaoImpl implements StadiumDao{
     }
 
     @Override
-    public List<StadiumDto> list(StadiumPaging stadiumPaging) {
+    public List<StadiumDto> list(StadiumSearch stadiumSearch) {
         List<StadiumDto> res = new ArrayList<StadiumDto>();
 
         try{
-            res = sqlSessionTemplate.selectList(NAMESPACE + "stadiumlist", stadiumPaging);
+            res = sqlSessionTemplate.selectList(NAMESPACE + "stadiumlist", stadiumSearch);
         }catch (Exception e){
             System.out.println("[ERROR]: StadiumList");
             e.printStackTrace();
@@ -56,11 +57,11 @@ public class StadiumDaoImpl implements StadiumDao{
     }
 
     @Override
-    public int listCount() {
+    public int listCount(StadiumSearch stadiumSearch) {
         int res = 0;
 
         try{
-            res = sqlSessionTemplate.selectOne(NAMESPACE + "listCount");
+            res = sqlSessionTemplate.selectOne(NAMESPACE + "listCount", stadiumSearch);
         }catch (Exception e){
             System.out.println("[ERROR]: listCount");
             e.printStackTrace();

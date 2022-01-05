@@ -5,6 +5,7 @@ import com.mvc.fotsal.model.biz.MercenaryBiz;
 import com.mvc.fotsal.model.biz.UserBiz;
 import com.mvc.fotsal.model.dto.GameAskDto;
 import com.mvc.fotsal.model.dto.GameDto;
+import com.mvc.fotsal.model.dto.MercenaryDto;
 import com.mvc.fotsal.model.dto.UserDto;
 import com.mvc.fotsal.paging.*;
 import org.slf4j.Logger;
@@ -124,7 +125,7 @@ public class GameController {
     }
 
     @RequestMapping("/gamedetail.do")
-    public String GameDetailPage(Model model, int game_no, GameAskPaging gameAskPaging, HttpServletRequest request){
+    public String GameDetailPage(Model model, int game_no, GameAskPaging gameAskPaging, HttpServletRequest request, MercenaryDto mDto){
     	logger.info("Move to GameDetail Page");
         model.addAttribute("gamedto", gameBiz.GameDetail(game_no));
         
@@ -207,7 +208,7 @@ public class GameController {
         HttpSession session = request.getSession();
         UserDto userDto = (UserDto) session.getAttribute("login");
 
-        model.addAttribute("mDto", mBiz.selectOne(1) );
+        model.addAttribute("mDto", mBiz.selectList(mDto));
         model.addAttribute("userDto", userDto);
 
         return "gamedetail";
