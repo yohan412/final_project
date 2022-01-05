@@ -117,6 +117,19 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 		return res;
 	}
 
+	@Override
+	public int comment_delete(int qna_gpsq) {
+		int res = 0;
+		try {
+			res = sqlSession.delete(NAMESPACE+"comment_delete",qna_gpsq);
+		} catch (Exception e) {
+			System.out.println("[error] : comment delete");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
 
 
 

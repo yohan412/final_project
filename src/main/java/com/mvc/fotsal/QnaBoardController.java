@@ -128,5 +128,19 @@ public class QnaBoardController {
 		
 	}
 	
+	@RequestMapping("/comment_delete.do")
+	public String comment_delete(int qna_gpsq) {
+		logger.info("DELETE");
+		
+		int res = biz.delete(qna_gpsq);
+		if(res>0) {
+			return "redirect:qnalist.do";
+		}else {
+			return "redirect:comment_detail.do?qna_no"+qna_gpsq;
+		}
+		
+	}
+	
+	
 
 }

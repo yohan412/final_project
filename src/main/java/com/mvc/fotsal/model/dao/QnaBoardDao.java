@@ -14,6 +14,7 @@ public interface QnaBoardDao {
 	public int rp_insert(QnaBoardDto dto); // 댓글 등록
 	public int update(QnaBoardDto dto); // 수정
 	public int delete(int qna_no); // 삭제
+	public int comment_delete(int qna_gpsq);
 	public List<QnaBoardDto> selectList(QnaSearch STLP); // 리스트 및 페이징
 	public int listCount(QnaSearch STLP); // 총 갯수
 }

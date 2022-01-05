@@ -65,5 +65,11 @@
 		QNA_NO=#{qna_no}
 	</delete>
 	
+	<delete id="comment_delete" parameterType="int">
+		DELETE FROM QNA
+		WHERE
+		QAN_GPSQ=#{qna_gpsq}
+	</delete>
+	
 
 </mapper>
