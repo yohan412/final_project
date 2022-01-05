@@ -74,6 +74,20 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 		
 		return res;
 	}
+	
+	@Override
+	public int rp_insert(QnaBoardDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE+"rp_insert", dto);
+		} catch (Exception e) {
+			System.out.println("[error] : rp_insert");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
 
 	@Override
 	public int update(QnaBoardDto dto) {
@@ -102,6 +116,7 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 		
 		return res;
 	}
+
 
 
 

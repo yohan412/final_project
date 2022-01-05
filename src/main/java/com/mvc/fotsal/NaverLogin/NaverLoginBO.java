@@ -33,7 +33,7 @@ public class NaverLoginBO {
 	private static String CLIENT_SECRET ="XWo3xZw_wO";
 	
 	
-	private final static String REDIRECT_URI = "http://localhost:8110/user/userNaverLoginPro.do";
+	private final static String REDIRECT_URI = "http://localhost:8787/userNaverLoginPro.do";
 	private final static String SESSION_STATE = "oauth_state";
 	/* 프로필 조회 API URL */
 	private final static String PROFILE_API_URL = "https://openapi.naver.com/v1/nid/me";

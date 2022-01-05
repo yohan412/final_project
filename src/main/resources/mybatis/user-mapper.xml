@@ -27,7 +27,7 @@
 	
 	<insert id="insert" parameterType="userDto">
 		INSERT INTO USER_INFO
-		VALUES(USER_NOSQ.NEXTVAL,#{user_id},#{user_pw},#{user_name},#{user_gender},#{user_birthdate},#{user_email},#{user_phone},#{user_zip},#{user_addr},'USER',NULL)
+		VALUES(USER_NOSQ.NEXTVAL,#{user_id},#{user_pw},#{user_name},#{user_gender},#{user_birthdate},#{user_email},#{user_phone},#{user_zip},#{user_addr},'USER',#{user_conchk})
 	</insert>
 	
 	<select id="idchk" resultType="_int">
@@ -65,16 +65,16 @@
 		WHERE USER_ID=#{user_id}
 	</delete>
 	
-	<select id="conchk" resultMap="userMap">
-		SELECT USER_EMAIL,CONCHK FROM USER_INFO WHERE USER_EMAIL = #{email}
+	<select id="conchk" resultType="Map" parameterType="Map">
+		SELECT USER_EMAIL,USER_CONCHK FROM USER_INFO WHERE USER_EMAIL = #{email}
 	</select>
 	
-	<update id="naverlogset">
+	<update id="naverlogset" parameterType="Map">
 		UPDATE USER_INFO SET USER_ID = #{id} WHERE USER_EMAIL = #{email}
 	</update>
 	
-	<select id="naverlogin" resultMap="userMap">
-		SELECT USER_EMAIL FROM USER_INFO WHERE USER_EMAIL = #{email} AND USER_ID = #{id}
+	<select id="naverlogin" resultType="userDto" parameterType="Map">
+		SELECT * FROM USER_INFO WHERE USER_EMAIL = #{email} AND USER_ID = #{id}
 	</select>
 		
 </mapper>

@@ -45,6 +45,12 @@
 		VALUES(QNA_NOSQ.NEXTVAL, QNA_GPNOSQ.NEXTVAL, 1, #{qna_title},
 		#{qna_content}, #{user_id}, SYSDATE , #{qna_type})
 	</insert>
+	
+	<insert id="rp_insert" parameterType="QnaBoardDto">
+		INSERT INTO QNA
+		VALUES(QNA_NOSQ.NEXTVAL, #{qna_qpno}, #{qna_gpsq}+1, 1, #{qna_title},
+		#{qna_content}, #{user_id}, SYSDATE , #{qna_type})
+	</insert>
 
 	<update id="update" parameterType="QnaBoardDto">
 		UPDATE QNA

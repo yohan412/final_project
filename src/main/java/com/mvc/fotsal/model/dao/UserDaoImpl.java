@@ -162,16 +162,16 @@ import com.mvc.fotsal.model.dto.UserDto;
 		}
 
 		@Override
-		public Map<String, Object> userNaverLoginPro(Map<String, Object> apiJson) {
+		public UserDto userNaverLoginPro(Map<String, Object> apiJson) {
 			
-			Map<String, Object> res =null;
+			UserDto res =null;
 			
 			try {
 				res=sqlSession.selectOne(NAMESPACE+"naverlogin",apiJson);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+			System.out.println(res.getUser_id());
 			return res;
 		}
 

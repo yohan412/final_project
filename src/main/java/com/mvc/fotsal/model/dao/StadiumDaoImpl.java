@@ -1,5 +1,6 @@
 package com.mvc.fotsal.model.dao;
 
+import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.StadiumDto;
 import com.mvc.fotsal.model.dto.UserDto;
 import com.mvc.fotsal.paging.StadiumPaging;
@@ -109,6 +110,47 @@ public class StadiumDaoImpl implements StadiumDao{
             e.printStackTrace();
         }
         return res;
+    }
+
+    @Override
+    public int FindNo(StadiumDto stadiumDto) {
+        int res = 0;
+
+        try{
+            res = sqlSessionTemplate.selectOne(NAMESPACE + "FindNo", stadiumDto);
+        }catch (Exception e){
+            System.out.println("[ERROR]: FineNo");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    @Override
+    public int insert_img(PicDto picDto) {
+        int res = 0;
+
+        try {
+            res = sqlSessionTemplate.insert(NAMESPACE + "Insert_IMG", picDto);
+        }catch (Exception e){
+            System.out.println("[ERROR]: Insert_IMG");
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    @Override
+    public List<PicDto> IMG_list() {
+        List<PicDto> list = new ArrayList<PicDto>();
+
+        try{
+            list = sqlSessionTemplate.selectList(NAMESPACE + "IMG_List");
+        }catch (Exception e){
+            System.out.println("[ERROR]: IMG_List");
+            e.printStackTrace();
+        }
+
+        return list;
     }
 
 }
