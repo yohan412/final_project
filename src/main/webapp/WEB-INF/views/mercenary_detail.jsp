@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="resources/css/mercenary.css">
 
 <title>용병지원서</title>
@@ -64,7 +65,7 @@
 					<div class="content-submit" align="right">
 						<input id="pointer" type="button" value="초대하기" onclick=""><!-- 문자api 적용 -->
 						<input id="pointer" type="button" value="목록" onclick="location.href='gamedetail.do?game_no=${gamedto.getGame_no()}'">
-						<input id="pointer" type="button" value="수정" onclick="location.href='mercenaryUpdate.do?user_no=${mDto.getUser_no()}'">
+						<input id="pointer" type="button" value="수정" onclick="location.href='mercenaryUpdateForm.do?user_no=${mDto.getUser_no()}'">
 					</div>
 				</div>
 			</form>
