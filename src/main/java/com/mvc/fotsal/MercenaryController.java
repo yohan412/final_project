@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mvc.fotsal.model.biz.MercenaryBiz;
 import com.mvc.fotsal.model.dto.MercenaryDto;
+import com.mvc.fotsal.model.dto.TeamDto;
 
 @Controller
 public class MercenaryController {
@@ -60,13 +61,28 @@ public class MercenaryController {
 		return "mercenary_detail";
 	}
 	
-	@RequestMapping(value="/mercenaryUpdate.do") // 용병지원서 수정
+	@RequestMapping(value="/mercenaryUpdateForm.do") // 용병지원서 수정
 	public String mercenaryUpdate(Model model, int user_no) {
-		logger.info("move page mercenary_update.jsp");
+		logger.info("move page mercenary_updateForm.jsp");
 		
 		model.addAttribute("mDto", biz.selectOne(user_no));
 		
 		return "mercenary_updateForm";
+	}
+	
+	@RequestMapping(value="/mercenary_updateResult.do")
+	public String updateRes(MercenaryDto dto) { // 팀 수정하기
+		
+		int res = biz.update(dto);
+
+		if(res>0) {
+			logger.info("팀 등록서 수정완료");
+			return "redirect:team_detail.do?user_no="+dto.getUser_no();
+		}else {
+			logger.info("팀 등록서 수정실패");
+			return "redirect:team_updateForm.do?user_no"+dto.getUser_no();
+		}
+		
 	}
 	
 	@RequestMapping(value="/index.do") // 메인페이지로 이동하기
