@@ -15,7 +15,7 @@
     <script type="text/javascript" src="${path}/resources/js/gameinsert.js"></script>
 </head>
 <body>
-<header>
+<header style="height: 200px">
     <%@ include file="/WEB-INF/views/header.jsp" %>
 </header>
 <section>
@@ -175,8 +175,6 @@
                     </div>
                     <div class="info">
                         <textarea id="textarea" name="game_content"></textarea>
-                    </div class="upload">
-                    	<!-- 업로드파일 -->
                 	</div>
                 <div id="button_form"><input type="submit" value="경기 등록" id="button"></div>
             </div>

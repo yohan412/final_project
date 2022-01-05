@@ -1,6 +1,7 @@
 package com.mvc.fotsal.model.biz;
 
 import com.mvc.fotsal.model.dao.StadiumDao;
+import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.StadiumDto;
 import com.mvc.fotsal.model.dto.UserDto;
 import com.mvc.fotsal.paging.StadiumPaging;
@@ -48,6 +49,21 @@ public class StadiumBizImpl implements StadiumBiz{
     @Override
     public int delete(int stadium_no) {
         return stadiumDao.delete(stadium_no);
+    }
+
+    @Override
+    public int FindNo(StadiumDto stadiumDto) {
+        return stadiumDao.FindNo(stadiumDto);
+    }
+
+    @Override
+    public int insert_img(PicDto picDto) {
+        return stadiumDao.insert_img(picDto);
+    }
+
+    @Override
+    public List<PicDto> IMG_list() {
+        return stadiumDao.IMG_list();
     }
 
 
