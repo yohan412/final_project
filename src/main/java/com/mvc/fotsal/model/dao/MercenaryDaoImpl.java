@@ -48,7 +48,18 @@ public class MercenaryDaoImpl implements MercenaryDao{
 
 	@Override
 	public int update(MercenaryDto dto) {
-		return 0;
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE+"update", dto);
+		} catch (Exception e) {
+			System.out.println("error: mercenary update failed");
+			e.printStackTrace();
+		}
+		
+		
+		return res;
 	}
 
 	@Override

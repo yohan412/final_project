@@ -8,7 +8,7 @@ public class QnaBoardPaging {
 	
 	public QnaBoardPaging() {
 		this.page = 1;
-		this.perPageNum = 5;
+		this.perPageNum = 2;
 	}
 	
 	public void setPage(int page) {

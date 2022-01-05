@@ -85,7 +85,7 @@ table {
 							</c:choose>
 							<tr>
 								<td colspan="5" align="right"><input type="button"
-									value="글 작성" onclick="loginChk(${login.user_no})"></td>
+									value="글 작성" onclick="location.href='qna.do'"></td>
 							</tr>
 						</tbody>
 					</table>
@@ -128,14 +128,6 @@ table {
 
 	<footer> footer </footer>
 	<script type="text/javascript">
-	function loginChk(user_no){
-		if(user_no == null){
-			alert('로그인 하셔야 작성이 가능합니다');
-		}else{
-			location.href='qna.do';
-		}
-	}
-	
 		$(function() {
 			$('#searchBtn').click(
 					function() {
