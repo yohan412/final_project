@@ -16,6 +16,7 @@ public interface MercenaryBiz {
 
 	public List<MercenaryDto> selectList(MercenaryDto mDto);
 	
+	public List<MercenaryDto> selectListT(MercenaryDto mDto);
 	
 	
 }

@@ -4,6 +4,7 @@ import com.mvc.fotsal.model.biz.GameBiz;
 import com.mvc.fotsal.model.biz.ReviewBiz;
 import com.mvc.fotsal.model.biz.StadiumBiz;
 import com.mvc.fotsal.model.biz.UserBiz;
+import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.ReviewDto;
 import com.mvc.fotsal.model.dto.StadiumDto;
 import com.mvc.fotsal.model.dto.UserDto;
@@ -15,10 +16,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -36,8 +42,6 @@ public class StadiumController {
     @RequestMapping("/stadiumlist.do")
     public String StadiumList(Model model, HttpServletRequest request, StadiumPaging stadiumPaging, @ModelAttribute("stadiumSearch") StadiumSearch stadiumSearch){
         logger.info("Move to Stadium List Page");
-
-        model.addAttribute("gamedto", gameBiz.GameDetail(100));
 
         //세션
         HttpSession session = request.getSession();
@@ -71,12 +75,37 @@ public class StadiumController {
     }
 
     @RequestMapping("/stadiuminsert.do")
-    public String StadiumInsert(Model model, StadiumDto stadiumDto){
+    public String StadiumInsert(Model model, MultipartHttpServletRequest mtf, StadiumDto stadiumDto){
         logger.info("Insert Stadium");
 
         int res = stadiumBiz.insert(stadiumDto);
 
         if(res > 0){
+            String uploadPath = mtf.getRealPath("resources\\upload");
+
+            List<MultipartFile> fileList = mtf.getFiles("upload_file");
+
+            for(MultipartFile mf : fileList){
+                String originFileName   = mf.getOriginalFilename();     //원본 파일 명
+                long fileSize           = mf.getSize();                 //파일 크기
+
+                String FileName = System.currentTimeMillis() + originFileName;
+
+                String safeFile = uploadPath + "\\" + FileName;
+                try{
+                    mf.transferTo(new File(safeFile));
+
+                    PicDto picDto = new PicDto(stadiumBiz.FindNo(stadiumDto), originFileName, FileName);
+
+                    stadiumBiz.insert_img(picDto);
+
+                }catch (IllegalStateException e){
+                    e.printStackTrace();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+
             logger.info("insert Success");
             return "redirect:stadiumlist.do";
         }else{
@@ -110,6 +139,7 @@ public class StadiumController {
         reviewPageMaker.setReviewPaging(reviewPaging);
         reviewPageMaker.setTotalCount(reviewBiz.listcount());
         model.addAttribute("reviewpagemaker", reviewPageMaker);
+
 
         return "stadiumdetail";
     }

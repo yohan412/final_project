@@ -1,5 +1,6 @@
 package com.mvc.fotsal.model.dao;
 
+import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.StadiumDto;
 import com.mvc.fotsal.model.dto.UserDto;
 import com.mvc.fotsal.paging.StadiumPaging;
@@ -17,5 +18,7 @@ public interface StadiumDao {
     public StadiumDto detail(int stadium_no);
     public int update(StadiumDto stadiumDto);
     public int delete(int stadium_no);
-
+    public int FindNo(StadiumDto stadiumDto);
+    public int insert_img(PicDto picDto);
+    public List<PicDto> IMG_list();
 }

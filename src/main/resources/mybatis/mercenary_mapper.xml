@@ -18,8 +18,17 @@
 		FROM MERCENARY_INFO m
 		LEFT JOIN USER_INFO u ON m.USER_NO = u.USER_NO 
 		LEFT JOIN GAME g ON u.USER_ID = g.USER_ID
-		WHERE g.GAME_NO = #{game_no}
+		WHERE g.GAME_NO = #{game_no} AND m.USER_NO =#{user_no}
 		ORDER BY USER_NO DESC
+	</select>
+	
+	<select id="selectListT" resultMap="mercenaryMap">
+		SELECT u.USER_NO, m.USER_NO, m.MERCENARY_FOOT, m.MERCENARY_INTRO, m.MERCENARY_RATE, m.MERCENARY_POSITION
+		FROM MERCENARY_INFO m
+		LEFT JOIN USER_INFO u ON m.USER_NO = u.USER_NO
+		LEFT JOIN TEAM_INFO t ON t.TEAM_NO = t.USER_NO 
+		WHERE m.USER_NO = #{user_no}
+		ORDER BY m.USER_NO DESC
 	</select>
 	
 	
