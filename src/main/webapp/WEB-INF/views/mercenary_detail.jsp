@@ -19,24 +19,28 @@
 <section class="body">
 	<div class="main-all-box">
 		<div class="main-top-box">
-			<form action="mercenary.do" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
+			<form action="mercenary_updateForm.do" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
 			<input type="hidden" name="user_no" value="${mDto.getUser_no()}">
 				<div class="top-box-content">
 					<div class="title-text">	
 						<h2>용병지원서</h2>
 					</div>
-					<hr style="border: 1px solid green;">
+					<hr>
 					<div class=writer-name>
 						<h3 style="text-align: center;">${mDto.getUser_id() }</h3> <!-- 작성자 id -->
+						<div class="team-logo">
+							<img src="">
+						</div>
 					</div>
 					<div class="content-select-foot">
 						<h5 class="head-text">1. 주 사용 발</h5>
-						<label class="chk-foot"><input type="radio" name="chk-position" value="${mDto.getMecenary_Foot() }" checked></label>
+						<label class="chk-foot"><input type="radio" name="mercenary_foot" value="${mDto.getMercenary_foot() }" checked></label>
 					</div>
-					<hr style="border: 1px solid green;">
-					<div class="content-select-position">
+					<hr>
+					<div class="content-select-position" align="center">
 						<h5 class="head-text">2. 포지션</h5>
-						<label class="chk-position"><input type="text" name=""></label>
+						<input style="outline: none; text-align:center; border: 0px solid black" readonly id="position-text" type="text" value="">
+						<input type="hidden" id="db-position" value="${mDto.getMercenary_position() }">
 					</div>
 					<div class="select-position-detail">
 					<c:choose>
@@ -57,15 +61,16 @@
 						</c:when>
 					</c:choose>
 					</div>
-					<hr style="border: 1px solid green;">
+					<hr>
 					<div class="content-introduce">
 						<h5 class="head-text">3. 자기소개 및 한마디</h5>
 						<textarea rows="10" cols="60" placeholder="자기소개와 한마디를 적어주세요" readonly>${mDto.getMercenary_intro() }</textarea>
 					</div>
 					<div class="content-submit" align="right">
-						<input id="pointer" type="button" value="초대하기" onclick=""><!-- 문자api 적용 -->
-						<input id="pointer" type="button" value="목록" onclick="location.href='gamedetail.do?game_no=${gamedto.getGame_no()}'">
-						<input id="pointer" type="button" value="수정" onclick="location.href='mercenaryUpdateForm.do?user_no=${mDto.getUser_no()}'">
+						<input id="pointer" type="button" value="이전" onclick="location.href='referer.do'">
+						<input id="pointer" type="button" value="수정" onclick="location.href='mercenary_updateForm.do?user_no=${mDto.getUser_no()}'">
+						<input id="pointer" type="button" value="삭제" onclick="location.href='mercenary_delete.do?user_no=${mDto.getUser_no()}'">
+						
 					</div>
 				</div>
 			</form>
@@ -86,5 +91,20 @@
 			location.href='mercenaryUpdate.do?user_no='+user_no;
 		}
 	}
+	
+	$(function(){
+		var position = document.getElementById("db-position").value;
+		if(position == '공격수'){
+			$('input[id=position-text]').attr('value', '공격수');
+		}else if(position == '수비수'){
+			$('input[id=position-text]').attr('value', '수비수');
+		}else if(position == '좌측윙어'){
+			$('input[id=position-text]').attr('value', '좌측윙어');
+		}else if(position == '우측윙어'){
+			$('input[id=position-text]').attr('value', '우측윙어');
+		}else{
+			$('input[id=position-text]').attr('value', '골키퍼');
+		}
+	})
 </script>
 </html>

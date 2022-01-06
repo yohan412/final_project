@@ -11,7 +11,7 @@ public interface QnaBoardDao {
 
 	public QnaBoardDto selectOne(int qna_no); // 자세히보기
 	public int insert(QnaBoardDto dto); // 등록
-	public int rp_insert(QnaBoardDto dto); // 댓글 등록
+	public int comment_insert(QnaBoardDto dto); // 댓글 등록
 	public int update(QnaBoardDto dto); // 수정
 	public int delete(int qna_no); // 삭제
 	public List<QnaBoardDto> selectList(QnaSearch STLP); // 리스트 및 페이징

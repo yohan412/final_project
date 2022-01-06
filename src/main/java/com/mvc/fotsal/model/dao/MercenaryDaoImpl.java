@@ -64,6 +64,7 @@ public class MercenaryDaoImpl implements MercenaryDao{
 
 	@Override
 	public int delete(int user_no) {
+		
 		return 0;
 	}
 
@@ -78,6 +79,20 @@ public class MercenaryDaoImpl implements MercenaryDao{
 			e.printStackTrace();
 		}
 		
+		
+		return list;
+	}
+
+	@Override
+	public List<MercenaryDto> selectListT(MercenaryDto mDto) {
+		List<MercenaryDto> list = new ArrayList<MercenaryDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"selectListT", mDto);
+		} catch (Exception e) {
+			System.out.println("error: mercenary T list failed");
+			e.printStackTrace();
+		}
 		
 		return list;
 	}

@@ -43,7 +43,7 @@
                 <c:forEach items="${list}" var="stadiumlist" varStatus="status">
                     <div class="list" onclick="location.href='stadiumdetail.do?stadium_no=${stadiumlist.stadium_no}'">
                         <div class="stadium_picture_form">
-                            <img src="" class="stadium_img" title="width=200px, height=150px">
+                            <img src="/upload/${stadiumlist.pic_path}" class="stadium_img" title="width=200px, height=150px">
                         </div>
                         <div class="stadium_introduce_form">
                             <textarea id="stadium_introduce">${stadiumlist.stadium_content}</textarea>

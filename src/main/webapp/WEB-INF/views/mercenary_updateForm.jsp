@@ -45,7 +45,7 @@
 					<div class="title-text">	
 						<h2>용병지원서</h2>
 					</div>
-					<hr style="border: 1px solid green;">
+					<hr>
 					<div class=writer-name>
 						<h3 style="text-align: center;">${mDto.getUser_id() }</h3> <!-- 작성자 id -->
 					</div>
@@ -55,9 +55,11 @@
 						<label class="chk-foot"><input type="radio" name="mercenary_foot" value="R" checked>오른발</label>
 						<label class="chk-foot"><input type="radio" name="mercenary_foot" value="A">양발</label>
 					</div>
-					<hr style="border: 1px solid green;">
-					<div class="content-select-position">
+					<hr>
+					<div class="content-select-position" align="center">
 						<h5 class="head-text">2. 포지션</h5>
+						<input style="outline: none; text-align:center; border: 0px solid black" readonly id="position-text" type="text" value="">
+						<input type="hidden" id="db-position" value="${mDto.getMercenary_position() }">
 					</div>
 					<div class="select-position-detail">
 					<c:choose>
@@ -118,13 +120,13 @@
 						</c:when>
 					</c:choose>
 					</div>
-					<hr style="border: 1px solid green;">
+					<hr>
 					<div class="content-introduce">
 						<h5 class="head-text">3. 자기소개 및 한마디</h5>
 						<textarea rows="10" cols="60" placeholder="자기소개와 한마디를 적어주세요">${mDto.getMercenary_intro() }</textarea>
 					</div>
 					<div class="content-submit" align="right">
-						<input id="pointer" type="button" value="목록" onclick="location.href='gamedetail.do?game_no=${gamedto.getGame_no()}'">
+						<input id="pointer" type="button" value="이전" onclick="location.href='referer.do'">
 						<input id="pointer" type="submit" value="수정완료" >
 				</div>
 			</form>
@@ -144,6 +146,21 @@
 		}else{
 			location.href='mercenaryUpdate.do?user_no='+user_no;
 		}
+	}
+	
+	function imgSrc_position(value) { // 클릭 시 포지션 이미지 변경 및 공격수~골키퍼 문자열 리턴
+		if(value == '공격수'){
+			document.getElementById("position").src = "img/footsalField01.png";
+		} else if(value == '수비수'){
+			document.getElementById("position").src = "img/footsalField02.png";
+		} else if(value == '좌측윙어'){
+			document.getElementById("position").src = "img/footsalField03.png";
+		} else if(value == '우측윙어'){
+			document.getElementById("position").src = "img/footsalField04.png";
+		} else {
+			document.getElementById("position").src = "img/footsalField05.png";
+		}
+		  $('input[id=position-text]').attr('value', value);
 	}
 </script>
 </html>
