@@ -18,7 +18,7 @@
 		FROM MERCENARY_INFO m
 		LEFT JOIN USER_INFO u ON m.USER_NO = u.USER_NO 
 		LEFT JOIN GAME g ON u.USER_ID = g.USER_ID
-		WHERE g.GAME_NO = #{game_no} AND m.USER_NO =#{user_no}
+		WHERE g.GAME_NO = #{game_no} AND m.USER_NO = #{user_no}
 		ORDER BY USER_NO DESC
 	</select>
 	
@@ -53,6 +53,11 @@
 		MERCENARY_RATE=#{mercenary_rate}, MERCENARY_POSITION=#{mercenary_position}
 		WHERE USER_NO = #{user_no}
 	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE MERCENARY_INFO
+		WHERE USER_NO=#{user_no}
+	</delete>
 	
 
 

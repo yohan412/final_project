@@ -26,12 +26,14 @@ public class MercenaryBizImpl implements MercenaryBiz{
 
 	@Override
 	public int update(MercenaryDto dto) {
-		return 0;
+		
+		return dao.update(dto);
 	}
 
 	@Override
 	public int delete(int user_no) {
-		return 0;
+		
+		return dao.delete(user_no);
 	}
 
 	@Override
