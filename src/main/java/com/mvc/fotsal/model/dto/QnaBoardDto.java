@@ -49,7 +49,7 @@ public class QnaBoardDto {
 		this.qna_gpno = qna_gpno;
 	}
 	public int getQna_gpsq() {
-		return qna_gpsq;
+		return qna_gpsq; 
 	}
 	public void setQna_gpsq(int qna_gpsq) {
 		this.qna_gpsq = qna_gpsq;
