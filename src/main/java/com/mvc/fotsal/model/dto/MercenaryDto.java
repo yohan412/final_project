@@ -8,13 +8,14 @@ public class MercenaryDto {
 	private double mercenary_rate; //승률
 	private String mercenary_position; //포지션
 	private int game_no; // 경기 번호
+	private int team_no; // 팀 번호
 	
 	public MercenaryDto() {
 		super();
 	}
 
 	public MercenaryDto(int user_no, String mercenary_intro, String mercenary_foot, double mercenary_rate,
-			String mercenary_position, String user_id, int game_no) {
+			String mercenary_position, String user_id, int game_no, int team_no) {
 		super();
 		this.user_no = user_no;
 		this.mercenary_intro = mercenary_intro;
@@ -23,6 +24,15 @@ public class MercenaryDto {
 		this.mercenary_position = mercenary_position;
 		this.user_id = user_id;
 		this.game_no = game_no;
+		this.team_no = team_no;
+	}
+
+	public int getTeam_no() {
+		return team_no;
+	}
+
+	public void setTeam_no(int team_no) {
+		this.team_no = team_no;
 	}
 
 	public int getGame_no() {
