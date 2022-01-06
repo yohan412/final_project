@@ -126,7 +126,7 @@ public class GameController {
     }
 
     @RequestMapping("/gamedetail.do")
-    public String GameDetailPage(Model model, int game_no, int user_no, GameAskPaging gameAskPaging, HttpServletRequest request){
+    public String GameDetailPage(Model model, int game_no, GameAskPaging gameAskPaging, HttpServletRequest request){
     	logger.info("Move to GameDetail Page");
         model.addAttribute("gamedto", gameBiz.GameDetail(game_no));
         
@@ -209,9 +209,9 @@ public class GameController {
         HttpSession session = request.getSession();
         UserDto userDto = (UserDto) session.getAttribute("login");
 
-        model.addAttribute("mDto", gameBiz.ApplyInsert(user_no, game_no));
+        model.addAttribute("mDto", gameBiz.mDto(game_no));
         model.addAttribute("userDto", userDto);
-        System.out.println(user_no+", "+game_no);
+        System.out.println(game_no);
 
         return "gamedetail";
     }
