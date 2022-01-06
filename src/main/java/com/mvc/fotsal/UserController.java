@@ -41,11 +41,11 @@ public class UserController {
 	BCryptPasswordEncoder passwordEncoder;
 	
 	@RequestMapping("/loginform.do") // 로그인페이지 이동
-	public String loginForm(Model model,HttpSession session) {
+    public String loginForm(Model model,HttpSession session) {
 		logger.info("LOGIN PAGE");
 		
-		String naverAuthUrl = naverloginbo.getAuthorizationUrl(session);
-		model.addAttribute("naverUrl", naverAuthUrl);
+        String naverAuthUrl = naverloginbo.getAuthorizationUrl(session);
+        model.addAttribute("naverUrl", naverAuthUrl);
 		
 		return "loginform";
 	}
@@ -288,8 +288,8 @@ public class UserController {
 			session.setAttribute("login", dto);
 		}
 
-		return "redirect:index.jsp";
-	}
+        return "redirect:index.jsp";
+    }
     
     //카카오 로그인 API
     @RequestMapping(value="kakaoLogin.do")
@@ -310,6 +310,7 @@ public class UserController {
     //카카오 로그아웃
     @RequestMapping(value="/logout")
     public String kakaoLogout(HttpSession session) {
+    	System.out.println("kakao Logout");
         kakao.kakaoLogout((String)session.getAttribute("access_Token"));
         session.removeAttribute("access_Token");
         session.removeAttribute("userId");
