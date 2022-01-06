@@ -210,6 +210,13 @@ public class GameController {
 
         model.addAttribute("mDto", mBiz.selectList(mDto));
         model.addAttribute("userDto", userDto);
+        System.out.println(mDto.getGame_no());
+        System.out.println(mDto.getMercenary_foot());
+        System.out.println(mDto.getMercenary_intro());
+        System.out.println(mDto.getMercenary_position());
+        System.out.println(mDto.getMercenary_rate());
+        System.out.println(mDto.getUser_id());
+        System.out.println(mDto.getUser_no());
 
         return "gamedetail";
     }
