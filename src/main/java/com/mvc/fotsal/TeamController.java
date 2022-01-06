@@ -128,6 +128,14 @@ public class TeamController {
 		model.addAttribute("teamDto", biz.selectOne(team_no));
 		model.addAttribute("mercenaryDto", mBiz.selectListT(mDto));
 		
+		System.out.println(mDto.getGame_no());
+		System.out.println(mDto.getMercenary_foot());
+		System.out.println(mDto.getMercenary_intro());
+		System.out.println(mDto.getMercenary_position());
+		System.out.println(mDto.getMercenary_rate());
+		System.out.println(mDto.getUser_id());
+		System.out.println(mDto.getUser_no());
+		
 
 		return "team_detail";
 	}
