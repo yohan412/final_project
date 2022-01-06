@@ -191,7 +191,7 @@ public class TeamController {
 		}
 		
 	}
-	@RequestMapping(value="referer.do") // 이전페이지로 이동
+	@RequestMapping(value="Team_referer.do") // 이전페이지로 이동
 	public String referer(HttpServletRequest request) {
 		String referer = request.getHeader("Referer");
 		
