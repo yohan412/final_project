@@ -65,7 +65,16 @@ public class MercenaryDaoImpl implements MercenaryDao{
 	@Override
 	public int delete(int user_no) {
 		
-		return 0;
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE+"delete",user_no);
+		} catch (Exception e) {
+			System.out.println("error: mercenary delete failed");
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 	@Override

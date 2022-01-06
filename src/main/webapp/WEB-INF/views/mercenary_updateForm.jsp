@@ -58,7 +58,7 @@
 					<hr>
 					<div class="content-select-position" align="center">
 						<h5 class="head-text">2. 포지션</h5>
-						<input style="outline: none; text-align:center; border: 0px solid black" readonly id="position-text" type="text" value="">
+						<input style="outline: none; text-align:center; border: 0px solid black" readonly id="position-text" type="text" value="${mDto.getMercenary_position() }">
 						<input type="hidden" id="db-position" value="${mDto.getMercenary_position() }">
 					</div>
 					<div class="select-position-detail">
@@ -123,7 +123,7 @@
 					<hr>
 					<div class="content-introduce">
 						<h5 class="head-text">3. 자기소개 및 한마디</h5>
-						<textarea rows="10" cols="60" placeholder="자기소개와 한마디를 적어주세요">${mDto.getMercenary_intro() }</textarea>
+						<textarea rows="10" cols="60" name="mercenary_intro" placeholder="자기소개와 한마디를 적어주세요">${mDto.getMercenary_intro() }</textarea>
 					</div>
 					<div class="content-submit" align="right">
 						<input id="pointer" type="button" value="이전" onclick="location.href='referer.do'">
@@ -161,6 +161,7 @@
 			document.getElementById("position").src = "img/footsalField05.png";
 		}
 		  $('input[id=position-text]').attr('value', value);
+		  $('input[name=mercenary_position]').attr('value', value);
 	}
 </script>
 </html>
