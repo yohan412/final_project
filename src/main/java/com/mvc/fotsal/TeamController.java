@@ -106,7 +106,7 @@ public class TeamController {
 	}
 	
 	@RequestMapping(value="/teamlist.do", method = RequestMethod.GET)
-	public String teamList(Model model, @ModelAttribute("STLP") TeamSearch STLP) { // 팀 게시판(리스트)
+	public String teamList(Model model, @ModelAttribute("STLP") TeamSearch STLP, MercenaryDto mDto) { // 팀 게시판(리스트)
 		logger.info("Select Team List, move page teamboard.jsp");
 		
 		model.addAttribute("list",biz.selectList(STLP));
@@ -116,6 +116,7 @@ public class TeamController {
 		pageMaker.setTotalCount(biz.listCount(STLP)); // 최대 리스트 갯수 카운트
 		
 		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("mDto", mBiz.selectListT(mDto));
 		
 		System.out.println(STLP.toString());
 		
