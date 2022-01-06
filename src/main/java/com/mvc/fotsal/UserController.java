@@ -296,7 +296,7 @@ public class UserController {
 			model.addAttribute("user_gender",apiJson.get("gender"));
 			model.addAttribute("user_name",apiJson.get("name"));
 			model.addAttribute("user_birthdate",apiJson.get("birthyear")+"-"+apiJson.get("birthday"));
-			return "user/setNaverRegister";
+			return "setNaverRegister";
 		}else if(naverConnectionCheck.get("USER_CONCHK") == null && naverConnectionCheck.get("USER_EMAIL") != null) { //이메일 가입 되어있고 네이버 연동 안되어 있을시
 			biz.setNaverConnection(apiJson);
 			UserDto dto = biz.userNaverLoginPro(apiJson);
