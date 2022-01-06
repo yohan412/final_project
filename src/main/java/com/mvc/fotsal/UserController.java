@@ -41,8 +41,11 @@ public class UserController {
 	BCryptPasswordEncoder passwordEncoder;
 	
 	@RequestMapping("/loginform.do") // 로그인페이지 이동
-	public String loginForm() {
+	public String loginForm(Model model,HttpSession session) {
 		logger.info("LOGIN PAGE");
+		
+		String naverAuthUrl = naverloginbo.getAuthorizationUrl(session);
+		model.addAttribute("naverUrl", naverAuthUrl);
 		
 		return "loginform";
 	}
@@ -285,7 +288,7 @@ public class UserController {
 			session.setAttribute("login", dto);
 		}
 
-		return "redirect:usermain.do";
+		return "index";
 	}
     
     //카카오 로그인 API
