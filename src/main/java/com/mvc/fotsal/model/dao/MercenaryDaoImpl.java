@@ -78,21 +78,6 @@ public class MercenaryDaoImpl implements MercenaryDao{
 	}
 
 	@Override
-	public List<MercenaryDto> selectList(MercenaryDto mDto) {
-		List<MercenaryDto> list = new ArrayList<MercenaryDto>();
-		
-		try {
-			list = sqlSession.selectList(NAMESPACE+"selectList", mDto);
-		} catch (Exception e) {
-			System.out.println("error: mercenary list failed");
-			e.printStackTrace();
-		}
-		
-		
-		return list;
-	}
-
-	@Override
 	public List<MercenaryDto> selectListT(MercenaryDto mDto) {
 		List<MercenaryDto> list = new ArrayList<MercenaryDto>();
 		

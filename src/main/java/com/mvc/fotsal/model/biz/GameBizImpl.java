@@ -3,6 +3,7 @@ package com.mvc.fotsal.model.biz;
 import com.mvc.fotsal.model.dao.GameDao;
 import com.mvc.fotsal.model.dto.GameAskDto;
 import com.mvc.fotsal.model.dto.GameDto;
+import com.mvc.fotsal.model.dto.MercenaryDto;
 import com.mvc.fotsal.paging.GameAskPaging;
 import com.mvc.fotsal.paging.GamePaging;
 import com.mvc.fotsal.paging.GameSearch;
@@ -136,4 +137,15 @@ public class GameBizImpl implements GameBiz{
     public String FindPhone(String user_id){
         return gameDao.FindPhone(user_id);
     }
+
+	@Override
+	public int ApplyInsert(int user_no, int game_no) {
+		
+		return gameDao.ApplyInsert(user_no, game_no);
+	}
+
+	@Override
+	public List<MercenaryDto> mDto(int game_no) {
+		return gameDao.ApplyList(game_no);
+	}
 }

@@ -37,12 +37,6 @@ public class MercenaryBizImpl implements MercenaryBiz{
 	}
 
 	@Override
-	public List<MercenaryDto> selectList(MercenaryDto mDto) {
-		
-		return dao.selectList(mDto);
-	}
-
-	@Override
 	public List<MercenaryDto> selectListT(MercenaryDto mDto) {
 		return dao.selectListT(mDto);
 	}
