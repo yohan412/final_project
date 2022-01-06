@@ -140,6 +140,9 @@ public class StadiumController {
         reviewPageMaker.setTotalCount(reviewBiz.listcount());
         model.addAttribute("reviewpagemaker", reviewPageMaker);
 
+        //이미지 리스트
+        model.addAttribute("imglist", stadiumBiz.IMG_list(stadium_no));
+
 
         return "stadiumdetail";
     }

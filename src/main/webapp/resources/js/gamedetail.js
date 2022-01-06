@@ -44,13 +44,30 @@ function delete_game(author, user_id, game_no){
 
 }
 
-function support_game(author_info, user_name){
-    if(user_name === "" || user_name == null){
-        alert('로그인 후 지원하세요');
+function support_game(status, userid, username, userphone){
+    if(status === '종료' || status === '모집안함'){
+        alert('용병 지원을 할 수 없습니다');
     }else{
-        // location.href='/gamesupport.do?author=' + author_info + '&user_name=' + user_name;
-        alert('전송');
+        if(userid === "" || userid == null){
+            alert('로그인 후 지원하세요');
+        }else{
+            $.ajax({
+                type:"post",
+                url:"gamesupport.do",
+                data:{
+                    "username" : username,
+                    "userphone" : '01092035921'
+                },
+                success:function (){
+                    alert("지원 성공");
+                },
+                error:function (){
+                    alert("통신 실패");
+                }
+            });
+        }
     }
+
 }
 
 function rp_comment_insert(idx, game_no, s_author, s_user_id){

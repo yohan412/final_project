@@ -113,6 +113,24 @@ public class UserController {
 		}
 	}
 	
+	//네이버 회원가입
+		@RequestMapping("/register2.do")
+		public String userInsert(UserDto dto,@RequestParam("myaddr1") String addr1,
+				@RequestParam("myaddr2") String addr2) {
+			
+			dto.setUser_phone(dto.getUser_phone().replace("-", ""));
+			dto.setUser_pw(passwordEncoder.encode(dto.getUser_pw()));
+			dto.setUser_addr(addr1+" "+addr2);
+			String conchk="NAVER";
+			dto.setUser_conchk(conchk);
+			
+			if(biz.insert(dto)>0) {
+				return "redirect:loginform.do";
+			}else {
+				return "redirect:userNaverLoginPro.do";
+			}
+		}
+	
 
 	@RequestMapping("/idChk.do")
 	public String idChk(Model model,String user_id) {
@@ -278,7 +296,7 @@ public class UserController {
 			model.addAttribute("user_gender",apiJson.get("gender"));
 			model.addAttribute("user_name",apiJson.get("name"));
 			model.addAttribute("user_birthdate",apiJson.get("birthyear")+"-"+apiJson.get("birthday"));
-			return "user/setNaverRegister";
+			return "setNaverRegister";
 		}else if(naverConnectionCheck.get("USER_CONCHK") == null && naverConnectionCheck.get("USER_EMAIL") != null) { //이메일 가입 되어있고 네이버 연동 안되어 있을시
 			biz.setNaverConnection(apiJson);
 			UserDto dto = biz.userNaverLoginPro(apiJson);
