@@ -51,6 +51,11 @@ public class QnaBoardImpl implements QnaBoardBiz{
 		return dao.delete(qna_no);
 	}
 
+	@Override
+	public QnaBoardDto selectOne2(int qna_gpno) {
+		return dao.selectOne2(qna_gpno);
+	}
+
 
 
 
