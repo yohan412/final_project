@@ -13,7 +13,7 @@
 <title>경기 일정 목록</title>
 </head>
 <body>
-<header>
+<header style="height: 220px">
     <%@ include file="/WEB-INF/views/header.jsp" %>
 </header>
 <section>

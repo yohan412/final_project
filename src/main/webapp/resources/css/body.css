@@ -4,14 +4,6 @@ body{
     min-width: 1190px;
     min-height: 950px;
 }
-header{
-    min-width: 1190px;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
-}
 section{
     min-width: 1190px;
     display: flex;

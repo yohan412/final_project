@@ -62,8 +62,8 @@ public class StadiumBizImpl implements StadiumBiz{
     }
 
     @Override
-    public List<PicDto> IMG_list() {
-        return stadiumDao.IMG_list();
+    public List<PicDto> IMG_list(int stadium_no) {
+        return stadiumDao.IMG_list(stadium_no);
     }
 
 
