@@ -24,6 +24,7 @@ public class MercenaryController {
 	@RequestMapping(value="/mercenary.do") //용병 지원 페이지
 	public String mercenary() {
 		logger.info("move page mercenary.jsp");
+		
 		return "mercenary";
 	}
 	

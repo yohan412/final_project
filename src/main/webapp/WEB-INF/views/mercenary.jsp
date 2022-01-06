@@ -72,8 +72,8 @@
 					</div>
 					<div class="content-submit" align="right">
 						<input id="pointer" type="button" value="이전" onclick="location.href='index.do'">
-						<input id="pointer" type="button" value="작성완료" onclick="mercenary_chk()">
-						<input id="mercenary_chk" type="hidden" value="${mDto. }">
+						<input id="pointer" type="submit" value="작성완료">
+						<input id="mercenary_chk" type="hidden" value="">
 					</div>
 				</div>
 			</form>
