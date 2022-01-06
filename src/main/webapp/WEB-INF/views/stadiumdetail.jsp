@@ -13,6 +13,35 @@
 <link href='<c:url value="${path}/resources/css/stadium_detail.css"/>' rel="stylesheet">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${path}/resources/js/stadiumdetail.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        var $bx = jQuery.noConflict();
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+    <script type="text/javascript">
+        $(function (){
+            $bx('.bxslider').bxSlider({
+                pager : true,
+                controls : true,
+                infiniteLoop: true
+            });
+        });
+    </script>
+    <style>
+        .bx-wrapper img {
+            max-width: 500px;
+            height: 300px;
+            display: block;
+        }
+        .bxslider li{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -24,7 +53,11 @@
         <div id="top_form">
             <div id="top_left_form">
                 <div id="img_form">
-
+                    <ul class="bxslider">
+                        <c:forEach items="${imglist}" var="imglist">
+                            <li><img src="/upload/${imglist.pic_path}"></li>
+                        </c:forEach>
+                    </ul>
                 </div>
                 <div id="content_form">
                     <textarea id="content" readonly>${detail.stadium_content}</textarea>

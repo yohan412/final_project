@@ -67,4 +67,8 @@
     <insert id="Insert_IMG" parameterType="picDto">
         INSERT INTO STADIUM_PIC VALUES (#{boardno}, #{pic_name}, #{pic_path})
     </insert>
+
+    <select id="IMG_List" parameterType="stadiumDto" resultType="picDto">
+        SELECT * FROM STADIUM_PIC WHERE STADIUM_NO = #{stadium_no}
+    </select>
 </mapper>

@@ -140,11 +140,11 @@ public class StadiumDaoImpl implements StadiumDao{
     }
 
     @Override
-    public List<PicDto> IMG_list() {
+    public List<PicDto> IMG_list(int stadium_no) {
         List<PicDto> list = new ArrayList<PicDto>();
 
         try{
-            list = sqlSessionTemplate.selectList(NAMESPACE + "IMG_List");
+            list = sqlSessionTemplate.selectList(NAMESPACE + "IMG_List", stadium_no);
         }catch (Exception e){
             System.out.println("[ERROR]: IMG_List");
             e.printStackTrace();

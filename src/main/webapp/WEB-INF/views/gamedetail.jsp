@@ -72,7 +72,7 @@
 
                 </script>
                 <%--모집 여부--%>
-                <div id="mergency_state" onclick="support_game('${gamedto.user_id}', '${userDto.user_name}')">
+                <div id="mergency_state" onclick="support_game('${status}', '${userDto.user_id}', '${userDto.user_name}' ,'${userDto.user_phone}');">
                     <h2 style="width: 150px; display: flex; justify-content: center">${status}</h2>
                     <h2 style="width: 150px; display: flex; justify-content: center">
                         <c:choose>
