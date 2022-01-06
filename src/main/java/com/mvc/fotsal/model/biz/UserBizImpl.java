@@ -74,9 +74,8 @@ public class UserBizImpl implements UserBiz {
 	public UserDto userNaverLoginPro(Map<String, Object> apiJson) {
 		return dao.userNaverLoginPro(apiJson);
 	}
-
-
 	
-
-
+	
+	
+	
 }
