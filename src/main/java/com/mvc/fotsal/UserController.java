@@ -298,7 +298,7 @@ public class UserController {
     
     //카카오 로그인 API
     @RequestMapping(value="kakaoLogin.do")
-    public String login(@RequestParam("code") String code, HttpSession session) {
+    public String kakaoLogin(@RequestParam("code") String code, HttpSession session) {
     	System.out.println("kakaoLogin");	
         String access_Token = kakao.getAccessToken(code);
         HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
@@ -311,8 +311,15 @@ public class UserController {
         }
         return "index";
     }
-
-
+    
+    //카카오 로그아웃
+    @RequestMapping(value="/logout")
+    public String kakaoLogout(HttpSession session) {
+        kakao.kakaoLogout((String)session.getAttribute("access_Token"));
+        session.removeAttribute("access_Token");
+        session.removeAttribute("userId");
+        return "redirect:loginform.do";
+    }
 
     
     
