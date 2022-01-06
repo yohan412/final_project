@@ -118,14 +118,15 @@ public class GameController {
         //세션
         HttpSession session = request.getSession();
         UserDto userDto = (UserDto) session.getAttribute("login");
-
+        
+        
         model.addAttribute("userDto", userDto);
 
         return "gamelist";
     }
 
     @RequestMapping("/gamedetail.do")
-    public String GameDetailPage(Model model, int game_no, GameAskPaging gameAskPaging, HttpServletRequest request, MercenaryDto mDto){
+    public String GameDetailPage(Model model, int game_no, int user_no, GameAskPaging gameAskPaging, HttpServletRequest request){
     	logger.info("Move to GameDetail Page");
         model.addAttribute("gamedto", gameBiz.GameDetail(game_no));
         
@@ -208,15 +209,9 @@ public class GameController {
         HttpSession session = request.getSession();
         UserDto userDto = (UserDto) session.getAttribute("login");
 
-        model.addAttribute("mDto", mBiz.selectList(mDto));
+        model.addAttribute("mDto", gameBiz.ApplyInsert(user_no, game_no));
         model.addAttribute("userDto", userDto);
-        System.out.println(mDto.getGame_no());
-        System.out.println(mDto.getMercenary_foot());
-        System.out.println(mDto.getMercenary_intro());
-        System.out.println(mDto.getMercenary_position());
-        System.out.println(mDto.getMercenary_rate());
-        System.out.println(mDto.getUser_id());
-        System.out.println(mDto.getUser_no());
+        System.out.println(user_no+", "+game_no);
 
         return "gamedetail";
     }
@@ -413,9 +408,10 @@ public class GameController {
 
     @RequestMapping("/gamesupport.do")
     @ResponseBody
-    public void GameSupport(HttpServletRequest request, @RequestParam("username")String username, @RequestParam("userphone")String userphone){
+    public void GameSupport(Model model,int user_no, int game_no, HttpServletRequest request, @RequestParam("username")String username, @RequestParam("userphone")String userphone){
         logger.info("Game Support SMS");
-
+        
+        
         System.out.println(username);
         System.out.println(userphone);
 

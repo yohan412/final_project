@@ -1,7 +1,9 @@
 package com.mvc.fotsal.model.dao;
 
+import com.mvc.fotsal.model.dto.GameApplyDto;
 import com.mvc.fotsal.model.dto.GameAskDto;
 import com.mvc.fotsal.model.dto.GameDto;
+import com.mvc.fotsal.model.dto.MercenaryDto;
 import com.mvc.fotsal.paging.GameAskPaging;
 import com.mvc.fotsal.paging.GamePaging;
 import com.mvc.fotsal.paging.GameSearch;
@@ -351,4 +353,24 @@ public class GameDaoImpl implements GameDao{
 
         return res;
     }
+
+	@Override
+	public int ApplyInsert(int user_no, int game_no) {
+		GameApplyDto dto = new GameApplyDto(user_no, game_no);
+		int res = 0;
+		
+		res = sqlSessionTemplate.insert(NAMESPACE + "applyChk", dto);
+		
+		return res;
+	}
+
+	@Override
+	public List<MercenaryDto> ApplyList(int game_no) {
+		
+		List<MercenaryDto> res = new ArrayList<MercenaryDto>();
+		
+		res = sqlSessionTemplate.selectList(NAMESPACE+"applyList", game_no);
+		
+		return res;
+	}
 }

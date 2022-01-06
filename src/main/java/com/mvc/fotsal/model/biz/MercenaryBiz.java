@@ -14,8 +14,6 @@ public interface MercenaryBiz {
 	
 	public int delete(int user_no);
 
-	public List<MercenaryDto> selectList(MercenaryDto mDto);
-	
 	public List<MercenaryDto> selectListT(MercenaryDto mDto);
 	
 	

@@ -167,5 +167,29 @@
     <select id="findphone" parameterType="String">
         SELECT USER_PHONE FROM USER_INFO WHERE USER_ID = #{user_id}
     </select>
-
+	
+	<insert id="applyChk" parameterType="int">
+		INSERT GAME_APPLY
+		VALUES(#{game_no}, #{user_no})
+	</insert>
+	
+	<resultMap type="mercenaryDto" id="mercenaryMap">
+		<result property="game_no" column="GAME_NO" />
+		<result property="user_no" column="USER_NO" />
+		<result property="mercenary_foot" column="MERCENARY_FOOT" />
+		<result property="mercenary_intro" column="MERCENARY_INTRO" />
+		<result property="mercenary_rate" column="MERCENARY_RATE" />
+		<result property="mercenary_position" column="MERCENARY_POSITION" />
+	</resultMap>
+	
+	<select id="applyList" resultMap="mercenaryMap">
+		SELECT ap.GAME_NO, u.USER_NO, u.USER_ID, m.MERCENARY_INTRO, m.MERCENARY_FOOT, m.MERCENARY_RATE, m.MERCENARY_POSITION 
+		FROM GAME_APPLY ap
+		LEFT JOIN USER_INFO u ON ap.USER_NO = u.USER_NO
+		LEFT JOIN MERCENARY_INFO m ON ap.USER_NO = m.USER_NO 
+		WHERE ap.GAME_NO = #{game_no}
+	</select>
+	
+	
+	
 </mapper>

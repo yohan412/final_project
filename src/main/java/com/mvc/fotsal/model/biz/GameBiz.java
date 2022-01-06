@@ -2,6 +2,7 @@ package com.mvc.fotsal.model.biz;
 
 import com.mvc.fotsal.model.dto.GameAskDto;
 import com.mvc.fotsal.model.dto.GameDto;
+import com.mvc.fotsal.model.dto.MercenaryDto;
 import com.mvc.fotsal.paging.GameAskPaging;
 import com.mvc.fotsal.paging.GamePaging;
 import com.mvc.fotsal.paging.GameSearch;
@@ -34,4 +35,6 @@ public interface GameBiz {
     public int GameUpdate(GameDto gameDto);
     public int GameDelete(int game_no);
     public String FindPhone(String user_id);
+    public int ApplyInsert(int user_no, int game_no);
+    public List<MercenaryDto> mDto(int game_no);
 }
