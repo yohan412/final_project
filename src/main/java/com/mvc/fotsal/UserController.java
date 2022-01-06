@@ -250,14 +250,6 @@ public class UserController {
     	}
     }
     
-    //네이버 로그인api
-    @RequestMapping(value="naverLogin.do")
-	public String userLogin(Model model,HttpSession session) {
-		System.out.println("naverLogin");	
-		String naverAuthUrl = naverloginbo.getAuthorizationUrl(session);
-		model.addAttribute("naverUrl", naverAuthUrl);
-		return "user/naverLogin";
-	}
     
     @RequestMapping(value="/userNaverLoginPro.do",  method = {RequestMethod.GET,RequestMethod.POST})
 	public String userNaverLoginPro(Model model,@RequestParam Map<String,Object> paramMap, @RequestParam String code, @RequestParam String state,HttpSession session) throws SQLException, Exception {

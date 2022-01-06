@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -189,6 +191,13 @@ public class TeamController {
 		}
 		
 	}
+	@RequestMapping(value="Team_referer.do") // 이전페이지로 이동
+	public String referer(HttpServletRequest request) {
+		String referer = request.getHeader("Referer");
+		
+		return "redirect:"+referer;
+	}
+	
 	
 	@RequestMapping(value="/team_delete.do")
 	public String delete(int team_no) {
