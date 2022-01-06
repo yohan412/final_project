@@ -52,11 +52,33 @@
 						<input id="pointer" type="button" value="삭제"
 							onclick="qna_deleteChk(${login.user_no},${qna_dto.user_no },${qna_dto.qna_no })">
 						<input id="pointer" type="button" value="답글"
-							onclick= "location.href='qnaCommentForm.do'">
+							onclick= "location.href='qnaCommentForm.do?qna_gpno=${qna_dto.qna_gpno}'">
 						<%-- /*adminChk(${login.login_id}, ${qna_dto.user_id }, ${qna_dto.qna_no })*/ 관리자 확인 주석 수정중--%>
 					</div>
+					
+					<%--답글 리스트 라인 --%>
+					<div class="box-body"></div>
+					<div class="form-group">
+						<label>카테고리</label> <label class="detail-qna-cartagory"
+							style="font-weight: bold;">${qna_dto2.qna_type }</label>
+					</div>
+					<div class="form-group">
+						<label>작성자</label> <label class="detail-qna-writer"
+							style="font-weight: bold;">${qna_dto2.user_id }</label>
+					</div>
+					<div class="form-group">
+						<label>제목</label> <label class="detail-qna-title"
+							style="font-weight: bold;">${qna_dto2.qna_title }</label>
+
+					</div>
+					
+					
+					
 				</form>
 			</div>
+			
+			
+			
 		</div>
 	</section>
 

@@ -6,8 +6,8 @@
 
 	<select id="selectList" resultType="QnaBoardDto"
 		parameterType="com.mvc.fotsal.paging.QnaSearch">
-		SELECT QNA_NO, USER_ID, QNA_TITLE, QNA_CONTENT, QNA_REG
-		FROM (SELECT QNA_NO, USER_ID, QNA_TITLE, QNA_CONTENT, QNA_REG,
+		SELECT QNA_NO, QNA_GPNO, USER_ID, QNA_TITLE, QNA_CONTENT, QNA_REG
+		FROM (SELECT QNA_NO, QNA_GPNO, USER_ID, QNA_TITLE, QNA_CONTENT, QNA_REG,
 		ROW_NUMBER() OVER(ORDER BY QNA_NO DESC) AS RNUM FROM QNA) MP
 		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
 		ORDER BY QNA_NO DESC
@@ -33,11 +33,19 @@
 	</sql>
 
 	<select id="selectOne" resultType="QnaBoardDto"
-		parameterType="int">
-		SELECT u.USER_NO,q.QNA_NO, q.QNA_TYPE, q.USER_ID,
+		parameterType="_int">
+		SELECT q.QNA_GPNO, q.QNA_GPSQ, u.USER_NO, q.QNA_NO, q.QNA_TYPE, q.USER_ID,
 		q.QNA_TITLE, q.QNA_CONTENT FROM QNA q
 		LEFT JOIN USER_INFO u ON q.USER_ID = u.USER_ID
-		WHERE q.QNA_NO = #{qna_no}
+		WHERE q.QNA_GPNO = #{qna_gpno} AND q.QNA_GPSQ = 1
+	</select>
+	
+	<select id="selectOne2" resultType="QnaBoardDto"
+		parameterType="_int">
+		SELECT q.QNA_GPNO, q.QNA_GPSQ, u.USER_NO, q.QNA_NO, q.QNA_TYPE, q.USER_ID,
+		q.QNA_TITLE, q.QNA_CONTENT FROM QNA q
+		LEFT JOIN USER_INFO u ON q.USER_ID = u.USER_ID
+		WHERE q.QNA_GPNO = #{qna_gpno} AND q.QNA_GPSQ = 2
 	</select>
 
 	<insert id="insert" parameterType="QnaBoardDto">
@@ -48,8 +56,7 @@
 	
 	<insert id="comment_insert" parameterType="QnaBoardDto">
 		INSERT INTO QNA
-		VALUES(QNA_NOSQ.NEXTVAL, QNA_GPNO = #{qna_qpno}, #{qna_gpsq}+1, 1, #{qna_title},
-		#{qna_content}, #{user_id}, SYSDATE , #{qna_type})
+		VALUES(QNA_NOSQ.NEXTVAL, #{qna_gpno}, #{qna_gpsq}+1, #{qna_title}, #{qna_content}, #{user_id}, SYSDATE , #{qna_type})
 	</insert>
 
 	<update id="update" parameterType="QnaBoardDto">

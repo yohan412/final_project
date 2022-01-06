@@ -6,7 +6,7 @@ import com.mvc.fotsal.model.dto.MercenaryDto;
 
 public interface MercenaryBiz {
 	
-	public MercenaryDto selectOne(int user_no);
+	public MercenaryDto selectOne(int user_gpno);
 	
 	public int insert(MercenaryDto dto);
 	
