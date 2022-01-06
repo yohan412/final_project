@@ -18,5 +18,5 @@ public interface StadiumBiz {
     public int delete(int stadium_no);
     public int FindNo(StadiumDto stadiumDto);
     public int insert_img(PicDto picDto);
-    public List<PicDto> IMG_list();
+    public List<PicDto> IMG_list(int stadium_no);
 }

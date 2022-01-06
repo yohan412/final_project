@@ -412,18 +412,14 @@ public class GameController {
     }
 
     @RequestMapping("/gamesupport.do")
-    public String GameSupport(HttpServletRequest request){
+    @ResponseBody
+    public void GameSupport(HttpServletRequest request, @RequestParam("username")String username, @RequestParam("userphone")String userphone){
         logger.info("Game Support SMS");
 
-        //프론트에서 게시글 작성자의 아이디를 받아온 뒤 백에서 게시글 작성자의 전화번호를 얻는다
-        String author_id = request.getParameter("author");           //작성자 아이디
-        String user_name = request.getParameter("user_name");        //지원자 이름
+        System.out.println(username);
+        System.out.println(userphone);
 
-        String phone = gameBiz.FindPhone(author_id);                       //작성자 전화번호
-
-        gamemessageApp.sendsms(phone, user_name);                          //문자 보내기 기능
-
-        return phone;
+        gamemessageApp.sendsms(username, userphone);                          //문자 보내기 기능
     }
 
 }
