@@ -98,7 +98,7 @@ public class MercenaryController {
 		}
 	}
 	
-	@RequestMapping(value="/referer.do") // 이전페이지 이동하기
+	@RequestMapping(value="/M_referer.do") // 이전페이지 이동하기
 	public String referer(HttpServletRequest request) {
 		String referer = request.getHeader("Referer");
 		
