@@ -288,7 +288,7 @@ public class UserController {
 			session.setAttribute("login", dto);
 		}
 
-		return "index";
+		return "redirect:index.jsp";
 	}
     
     //카카오 로그인 API
