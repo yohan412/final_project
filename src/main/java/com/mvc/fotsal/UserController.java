@@ -103,7 +103,8 @@ public class UserController {
 		dto.setUser_pw(passwordEncoder.encode(dto.getUser_pw()));
 		dto.setUser_birthdate(yy+"-"+mm+"-"+dd);
 		dto.setUser_addr(addr1+" "+addr2);
-		
+		String conchk="";
+		dto.setUser_conchk(conchk);
 		
 		
 		if(biz.insert(dto)>0) {
