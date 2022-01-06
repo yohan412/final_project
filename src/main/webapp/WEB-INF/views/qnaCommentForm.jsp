@@ -20,6 +20,9 @@
 			<div class="main-top-box">
 				<form action="qnaCommentres.do" method="post">
 					<!-- 답글 작성 보내는 폼 -->
+					<input type="hidden" name="qna_gpno" value="${qna_dto.qna_gpno }">
+					<input type="hidden" name="qna_type" value="${qna_dto.qna_type }">
+					<input type="hidden" name="qna_gpsq" value="${qna_dto.qna_gpsq }">
 					<input type="hidden" name="user_id" value="${login.getUser_id()}" readonly>
 
 					<div class="top-box-content">
@@ -42,7 +45,7 @@
 							</div>
 							<div class="form-group">
 								<label>내용</label>
-								<textarea class="detail-qna-content" style="font-weight: bold;">${dto.qna_content }</textarea>
+								<textarea class="detail-qna-content" style="font-weight: bold;">${qna_dto.qna_content }</textarea>
 
 							</div>
 						</div>
@@ -54,11 +57,11 @@
 						</div>
 						<hr>
 						<div class="comment-title">
-						<input type="text" name="comment_title" placeholder="제목을 입력해주세요.">
+						<input type="text" name="qna_title" placeholder="제목을 입력해주세요.">
 						</div>
 						<hr>
 						<div class="content-select-position">
-							<textarea row="10" cols="60" name="qna_comment" placeholder="답변 내용을 입력해주세요.."></textarea>
+							<textarea row="10" cols="60" name="qna_content" placeholder="답변 내용을 입력해주세요.."></textarea>
 						</div>
 						<hr>
 						<div class="content-submit" align="right">

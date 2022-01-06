@@ -9,7 +9,8 @@ public interface QnaBoardDao {
 	String NAMESPACE = "qnainfo.";
 	
 
-	public QnaBoardDto selectOne(int qna_no); // 자세히보기
+	public QnaBoardDto selectOne(int qna_gpno); // 자세히보기
+	public QnaBoardDto selectOne2(int qna_gpno); // 자세히보기
 	public int insert(QnaBoardDto dto); // 등록
 	public int comment_insert(QnaBoardDto dto); // 댓글 등록
 	public int update(QnaBoardDto dto); // 수정

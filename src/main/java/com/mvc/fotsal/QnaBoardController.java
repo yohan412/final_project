@@ -45,9 +45,12 @@ public class QnaBoardController {
 	}
 
 	@RequestMapping("/qnadetail.do")
-	public String detail(Model model, int qna_no) {
+	public String detail(Model model, int qna_gpno) {
 		logger.info("SELECT ONE");
-		model.addAttribute("qna_dto", biz.selectOne(qna_no));
+		
+		model.addAttribute("qna_dto", biz.selectOne(qna_gpno));
+		
+		model.addAttribute("qna_dto2", biz.selectOne2(qna_gpno));
 		
 		return "qnadetail";
 	}
@@ -75,25 +78,26 @@ public class QnaBoardController {
 		}
 	}
 	@RequestMapping("/qnaCommentForm.do")
-	public String qnaCommentForm() {
+	public String qnaCommentForm(Model model, int qna_gpno) {
 		logger.info("COMMENT FORM");
+		model.addAttribute("qna_dto", biz.selectOne(qna_gpno));
+		
 		
 		return "qnaCommentForm";
 	}
 	
 	@RequestMapping("/qnaCommentres.do")
-	public String qnaCommentRes(Model model,int qna_no ,QnaBoardDto dto) {
+	public String qnaCommentRes(Model model, QnaBoardDto dto) {
 		logger.info("COMMENT RES");
 		
-		model.addAttribute("qna_dto", biz.selectOne(qna_no));
 		
 		int res = biz.comment_insert(dto);
 		if(res>0) {
 			logger.info("COMMENT INSERT 성공" );
-			return "redirect:qnadetail.do";
+			return "redirect:qnadetail.do?qna_gpno="+dto.getQna_gpno();
 		}else {
 			logger.info("COMMENT INSERT 실패");
-			return "redirect:qnaCommentForm.do";
+			return "redirect:qnaCommentForm.do?qna_gpno="+dto.getQna_gpno();
 		}
 	}
 	

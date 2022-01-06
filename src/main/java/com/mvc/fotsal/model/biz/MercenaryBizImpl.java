@@ -44,4 +44,6 @@ public class MercenaryBizImpl implements MercenaryBiz{
 	public List<MercenaryDto> selectListT(MercenaryDto mDto) {
 		return dao.selectListT(mDto);
 	}
+
+
 }
