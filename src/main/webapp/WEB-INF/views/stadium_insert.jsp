@@ -15,7 +15,7 @@
 <script type="text/javascript" src="${path}/resources/js/stadiuminsert.js"></script>
 </head>
 <body>
-<header>
+<header style="height: 220px">
     <%@ include file="/WEB-INF/views/header.jsp" %>
 </header>
 <section>
@@ -86,18 +86,39 @@
                         <div class="font">경기장 사진 업로드</div>
                     </div>
                     <div class="info">
-                        <input id="upload_file_name" name="pic_name" value="" placeholder="첨부파일" readonly>
+<%--                        <input id="upload_file_name" name="pic_name" value="" placeholder="첨부파일" readonly>--%>
                         <input id="upload_file_path" name="pic_path" type="hidden" value="">
-                        <input id="upload_file" name="upload_file" type="file" multiple="multiple" value="사진 업로드" onclick="fileUpload();">
+                        <textarea name="pic_name" placeholder="첨부파일" readonly style="width: 340px; height: 70px; resize: none"></textarea>
+                        <input id="upload_file" name="upload_file" type="file" multiple="multiple" value="사진 업로드">
                     </div>
                     <script type="text/javascript">
-                        function fileUpload(){
+/*                        function fileUpload(){
                             var file = $("#upload_file").val();
-                            var value = $("#upload_file").val();
                             $("#upload_file_name").val(file);
-                            $("input[name=pic_name]").attr('value', value);
-                            $("input[name=pic_path]").attr('value', value);
-                        }
+                            var value = $("#upload_file").val();
+                            $('input[name=pic_name]').attr('value', value);
+                            $('input[name=pic_path]').attr('value', value);
+                        }*/
+                        $("#upload_file").on('change',function (){
+                            var file = $("#upload_file").val();
+                            $("#upload_file_name").val(file);
+                            var value = $("#upload_file").val();
+                            $('input[name=pic_path]').attr('value', value);
+
+                            var fileInput = document.getElementById("upload_file");
+                            var textarea = $("textarea[name=pic_name]");
+                            var FileArr = new Array();
+
+                            for(var a = 0; a < fileInput.files.length; ++a){
+                                FileArr.push(fileInput.files.item(a).name);
+                            }
+
+                            console.log(FileArr);
+
+                            for(var a = 0; a < FileArr.length; a++){
+                                textarea.append(FileArr[a] + '\n');
+                            }
+                        });
                     </script>
                     <div style="width: 100px; height: 100%"></div>
                 </div>

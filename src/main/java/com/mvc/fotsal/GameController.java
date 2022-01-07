@@ -2,6 +2,7 @@ package com.mvc.fotsal;
 
 import com.mvc.fotsal.model.biz.GameBiz;
 import com.mvc.fotsal.model.biz.MercenaryBiz;
+import com.mvc.fotsal.model.biz.StadiumBiz;
 import com.mvc.fotsal.model.biz.UserBiz;
 import com.mvc.fotsal.model.dto.GameAskDto;
 import com.mvc.fotsal.model.dto.GameDto;
@@ -419,6 +420,15 @@ public class GameController {
         System.out.println(userphone);
 
         gamemessageApp.sendsms(username, userphone);                          //문자 보내기 기능
+    }
+
+    @RequestMapping("/sendtomer.do")
+    @ResponseBody
+    public void SendToMer(Model model, @RequestParam("mer_user_id")String mergency_user_id, @RequestParam("author_id")String author_id){
+        UserDto mergency = gameBiz.selectinfo(mergency_user_id);    //용병 지원자
+        UserDto author = gameBiz.selectinfo(author_id);             //글 작성자
+
+        gamemessageApp.sendmer(mergency.getUser_phone(), author.getUser_phone());
     }
 
 }
