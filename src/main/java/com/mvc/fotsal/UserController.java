@@ -324,11 +324,11 @@ public class UserController {
         
         if(kakaoConnectionCheck == null) { //일치하는 이메일 없으면 가입
         	
-        	model.addAttribute("user_eamil",loginApi.get("eamil"));
-        	model.addAttribute("user_id",loginApi.get("id"));
-        	model.addAttribute("user_pw",loginApi.get("id"));
+        	model.addAttribute("user_id",loginApi.get("nickname"));
+        	model.addAttribute("user_pw",loginApi.get("nickname"));
+        	model.addAttribute("user_email",loginApi.get("email"));
+        	model.addAttribute("user_nickname",loginApi.get("nickname"));
         	model.addAttribute("user_gender",loginApi.get("gender"));
-        	model.addAttribute("user_nikname",loginApi.get("nikname"));
         	return "setKakaoRegister";
         } else if(kakaoConnectionCheck.get("USER_CONCHK") == null && kakaoConnectionCheck.get("USER_EMAIL") != null) { //이메일 가입 되어있고 네이버 연동 안되어 있을시
         	biz.setKakaoConnection(loginApi);
