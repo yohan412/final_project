@@ -30,7 +30,30 @@ public class FaqBoardDaoImpl implements FaqBoardDao{
 
 	@Override
 	public FaqBoardDto selectOne(int faq_no) {
-		return null;
+		FaqBoardDto dto = null;
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE+"selectOne", faq_no);
+		} catch (Exception e) {
+			System.out.println("[error] : select one");
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+
+	@Override
+	public int insert(FaqBoardDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE+"insert", dto);
+		} catch (Exception e) {
+			System.out.println("[error] : insert");
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 	
 
