@@ -106,9 +106,13 @@ public class KakaoAPI {
 	        
 	        String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 	        String email = kakao_account.getAsJsonObject().get("email").getAsString();
+	        String gender = kakao_account.getAsJsonObject().get("gender").getAsString();
 	        
 	        userInfo.put("nickname", nickname);
 	        userInfo.put("email", email);
+	        userInfo.put("gender", gender);
+	        userInfo.put("id", nickname);
+	        userInfo.put("pw", nickname);
 	        
 	    } catch (IOException e) {
 	        e.printStackTrace();
