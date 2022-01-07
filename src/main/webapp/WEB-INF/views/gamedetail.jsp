@@ -195,9 +195,9 @@
 		                <c:forEach items="${mDto }" var="mDto">
 		                    <div id="mergency_list">
 		                        <div id="mergency_id"><a href="mercenary_detail.do?user_no=${mDto.user_no }">${mDto.user_id }</a></div>
-		                        <div id="mergency_foot">${mDto.mercenary_foot }</div>
+		                        <div id="mergency_foot">${mDto.mercenary_foot==null?"일반회원":mDto.mercenary_foot }</div>
 		                        <div id="mergency_position">${mDto.mercenary_position }</div>
-		                        <div id="mergency_rate">${mDto.mercenary_rate }</div>
+		                        <div id="mergency_rate">${mDto.mercenary_foot==null?"":mDto.mercenary_rate }</div>
 		                        <div id="mergency_button_form"><input type="button" value="초대하기" id="mergency_button"></div>
 		                    </div>
 		                </c:forEach>
