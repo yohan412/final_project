@@ -37,7 +37,7 @@
 <section class="body">
 	<div class="main-all-box">
 		<div class="main-top-box">
-			<form action="mercenaryInsert.do" method="post" id="submitForm"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
+			<form action="mercenaryInsert.do" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
 				<input type="hidden" name="user_no" value="${login.getUser_no()}" readonly>
 				<div class="top-box-content">
 					<div class="title-text">	
@@ -71,9 +71,8 @@
 						<textarea rows="10" cols="60" name="mercenary_intro" placeholder="자기소개와 한마디를 적어주세요"></textarea>
 					</div>
 					<div class="content-submit" align="right">
-						<input id="pointer" type="button" value="이전" onclick="location.href='index.do'">
-						<input id="pointer" type="submit" value="작성완료">
-						<input id="mercenary_chk" type="hidden" value="">
+						<input id="pointer" type="button" value="이전" onclick="mainPage()">
+						<input id="pointer" type="submit" value="작성하기">
 					</div>
 				</div>
 			</form>
@@ -83,19 +82,6 @@
 	<%@ include file="footer.jsp" %>
 </body>
 <script type="text/javascript">
-	function mercenary_chk(){
-		
-		
-	}
 	
-	$(function(){
-		var loginChk = '${login.user_no}';
-		var referer = 
-		if(loginChk == null || loginChk == ""){
-			alert('로그인 후 용병지원서를 등록해주세요.');
-			
-			return "M_referer.do";
-		}
-	})
 </script>
 </html>

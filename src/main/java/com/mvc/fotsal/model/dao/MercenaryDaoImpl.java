@@ -35,7 +35,7 @@ public class MercenaryDaoImpl implements MercenaryDao{
 	public int insert(MercenaryDto dto) {
 		
 		int res = 0;
-		
+
 		try {
 			res = sqlSession.insert(NAMESPACE+"insert",dto);
 		} catch (Exception e) {

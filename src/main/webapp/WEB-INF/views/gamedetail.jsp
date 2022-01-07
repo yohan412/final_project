@@ -198,7 +198,7 @@
 		                        <div id="mergency_foot">${mDto.mercenary_foot==null?"일반회원":mDto.mercenary_foot }</div>
 		                        <div id="mergency_position">${mDto.mercenary_position }</div>
 		                        <div id="mergency_rate">${mDto.mercenary_foot==null?"":mDto.mercenary_rate }</div>
-		                        <div id="mergency_button_form"><input type="button" value="초대하기" id="mergency_button"></div>
+		                        <div id="mergency_button_form"><input type="button" value="초대하기" id="mergency_button" onclick="send_to_mer('${mDto.user_id}','${gamedto.user_id}')"></div>
 		                    </div>
 		                </c:forEach>
 	                </c:otherwise>
