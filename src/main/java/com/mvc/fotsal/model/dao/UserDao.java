@@ -20,4 +20,7 @@ public interface UserDao {
 	public Map<String, Object> naverConnectionCheck(Map<String, Object> apiJson);
 	public int setNaverConnection(Map<String, Object> apiJson);
 	public UserDto userNaverLoginPro(Map<String, Object> apiJson);
+	public Map<String, Object> kakaoConnectionCheck(Map<String, Object> loginApi);
+	public int setKakaoConnection(Map<String, Object> loginApi);
+	public UserDto userKakaoLoginPro(Map<String, Object> loginApin);
 }

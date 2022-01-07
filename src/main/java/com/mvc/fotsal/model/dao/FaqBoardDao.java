@@ -9,4 +9,5 @@ public interface FaqBoardDao {
 	
 	public List<FaqBoardDto> selectList();
 	public FaqBoardDto selectOne(int faq_no);
+	public int insert(FaqBoardDto dto);
 }
