@@ -44,7 +44,7 @@ function delete_game(author, user_id, game_no){
 
 }
 
-function support_game(status, userid, username, userphone, userno){
+function support_game(status, userid, username, userphone, userno, gameno){
     if(status === '종료' || status === '모집안함'){
         alert('용병 지원을 할 수 없습니다');
     }else{
@@ -56,8 +56,9 @@ function support_game(status, userid, username, userphone, userno){
                 url:"gamesupport.do",
                 data:{
                     "username" : username,
-                    "userphone" : '01092035921',
-                    "userno" : 1
+                    "userphone" : '01046829426',
+                    "userno" : userno,
+                    "gameno" : gameno
                 },
                 success:function (){
                     alert("지원 성공");

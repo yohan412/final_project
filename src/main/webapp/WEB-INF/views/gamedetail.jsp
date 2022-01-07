@@ -72,7 +72,7 @@
 
                 </script>
                 <%--모집 여부--%>
-                <div id="mergency_state" onclick="support_game('${status}', '${userDto.user_id}', '${userDto.user_name}' ,'${userDto.user_phone}');">
+                <div id="mergency_state" onclick="support_game('${status}', '${userDto.user_id}', '${userDto.user_name}' ,'${userDto.user_phone}',${login.user_no },${gamedto.game_no });">
                     <h2 style="width: 150px; display: flex; justify-content: center">${status}</h2>
                     <h2 style="width: 150px; display: flex; justify-content: center">
                         <c:choose>
@@ -194,7 +194,7 @@
 	                <c:otherwise>
 		                <c:forEach items="${mDto }" var="mDto">
 		                    <div id="mergency_list">
-		                        <div id="mergency_id"><a href="mercenary_detail.do?user_no="${mDto.user_no }>${mDto.user_id }</a></div>
+		                        <div id="mergency_id"><a href="mercenary_detail.do?user_no="></a></div>
 		                        <div id="mergency_foot">${mDto.mercenary_foot }</div>
 		                        <div id="mergency_position">${mDto.mercenary_position }</div>
 		                        <div id="mergency_rate">${mDto.mercenary_rate }</div>
