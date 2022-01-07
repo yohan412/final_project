@@ -82,7 +82,7 @@
 						</c:choose>
 							<tr>
 								<td colspan="5" align="right"><input type="button"
-									value="글 작성" onclick=""></td>
+									value="글 작성" onclick="adminChk(${logint.user_id},${faq_dto.user_id },${faq_dto_faq_no })"></td>
 							</tr>
 						</tbody>
 					</table>
