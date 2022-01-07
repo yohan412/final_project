@@ -1,6 +1,9 @@
 package com.mvc.fotsal;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mvc.fotsal.model.biz.MercenaryBiz;
 import com.mvc.fotsal.model.dto.MercenaryDto;
+import com.mvc.fotsal.paging.ShowMsg;
 
 @Controller
 public class MercenaryController {
@@ -25,23 +29,26 @@ public class MercenaryController {
 	public String mercenary() {
 		logger.info("move page mercenary.jsp");
 		
+		
 		return "mercenary";
 	}
 	
 	
 	@RequestMapping(value="/mercenaryInsert.do")
-	public String mercenary_insert(MercenaryDto dto) {
+	public String mercenary_insert(MercenaryDto dto, HttpServletResponse response) throws IOException {
 		logger.info("용병지원서 작성중");
 		int res = biz.insert(dto);
 		
+		
 		if(res>0) {
 			logger.info("용병 지원서 작성완료");
-			return "redirect:index.do";
+			ShowMsg.alert(response, "용병지원서 작성 완료");
+			return "redirect:index.jsp";
 		} else {
 			logger.info("용병 지원서 작성실패");
-			return "redirect:mercenary.do";
+			ShowMsg.alert(response, "이미 작성된 용병 지원서가 있습니다");
+			return "redirect:index.jsp";
 		}
-		
 	}
 	
 	@RequestMapping(value="/mercenary_detail.do") // 용병 지원 자세히보기

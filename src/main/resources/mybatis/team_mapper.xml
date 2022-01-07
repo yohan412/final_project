@@ -48,7 +48,7 @@
 		FROM TEAM_INFO t
 		LEFT JOIN TEAM_PIC p ON t.TEAM_NO = p.TEAM_NO
 		LEFT JOIN USER_INFO u ON t.USER_NO = u.USER_NO
-		WHERE t.TEAM_NO = ${team_no}
+		WHERE t.TEAM_NO = #{team_no}
 		ORDER BY TEAM_NO DESC
 	</select>
 

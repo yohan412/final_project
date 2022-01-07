@@ -14,7 +14,7 @@
 	}
 	
 	header{
-		height: 150px;
+		height: 220px;
 	}
 	
 	.menu {
@@ -67,7 +67,7 @@
 		<nav class="menu">
 		  	<ul id="menu_bar">
 		  		  <li>
-		  	 		   <a href="#">Home</a>
+		  	 		   <a href="index.jsp">Home</a>
 		  	 	 </li>
 		 	 	 <li>
 		    	 	  <a href="gamelist.do">Game</a>
@@ -76,10 +76,20 @@
 			    	  <a href="stadiumlist.do">Stadium</a>
 			  	 </li>
 			 	 <li>
+		    	  	<c:if test = "${login == null }">
+		    	  		<a href="redirect:index.jsp" onclick="loginPlz()">Team</a>
+		    	  	</c:if>
+			 	 	<c:if test = "${login != null }">
 			    	  <a href="teamlist.do">Team</a>
+		    	  	</c:if>
 			 	 </li>
 			 	 <li>
+		    	  	<c:if test = "${login == null }">
+		    	  		<a href="redirect:index.jsp" onclick="loginPlz()">Mercenary</a>
+		    	  	</c:if>
+			 	 	<c:if test = "${login != null }">
 			    	  <a href="mercenary.do">Mercenary</a>
+		    	  	</c:if>
 			 	 </li>
 			 	 <li>
 			    	  <a href="qnalist.do">QnA</a>
@@ -119,4 +129,9 @@
 	</div>
 </header>
 </body>
+<script type="text/javascript">
+	function loginPlz(){
+		alert('로그인해주세요');
+	}
+</script>
 </html>

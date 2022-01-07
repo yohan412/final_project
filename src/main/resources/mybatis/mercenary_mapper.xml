@@ -25,17 +25,21 @@
 	
 	
 	<select id="selectOne" resultType="mercenaryDto" parameterType="int">
-		SELECT g.GAME_NO, m.USER_NO, m.MERCENARY_INTRO, m.MERCENARY_FOOT, m.MERCENARY_RATE, m.MERCENARY_POSITION, 
-		u.USER_ID
+		SELECT m.USER_NO, m.MERCENARY_FOOT, m.MERCENARY_INTRO, m.MERCENARY_RATE, m.MERCENARY_POSITION
 		FROM MERCENARY_INFO m
-		LEFT JOIN USER_INFO u ON m.USER_NO = u.USER_NO
-		LEFT JOIN GAME g ON g.USER_ID = u.USER_ID
-		WHERE m.USER_NO = #{user_no} AND g.GAME_NO = #{game_no}
+		LEFT JOIN USER_INFO u ON m.USER_NO = u.USER_NO 
+		WHERE m.USER_NO = #{user_no}
+		ORDER BY USER_NO DESC
 	</select>
 	
 	<insert id="insert" parameterType="mercenaryDto">
-		INSERT INTO MERCENARY_INFO
-		VALUES(#{user_no}, #{mercenary_intro}, #{mercenary_foot}, 0, #{mercenary_position})
+		MERGE INTO MERCENARY_INFO m
+		     USING dual
+		        ON (m.USER_NO = #{user_no})
+		
+		WHEN NOT MATCHED THEN
+		    INSERT(m.USER_NO, m.MERCENARY_INTRO, m.MERCENARY_FOOT, m.MERCENARY_RATE, m.MERCENARY_POSITION)
+		    VALUES(#{user_no}, #{mercenary_intro}, #{mercenary_foot}, 0, #{mercenary_position})
 	</insert>
 	
 	
