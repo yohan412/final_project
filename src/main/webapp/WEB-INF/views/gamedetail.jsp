@@ -194,7 +194,7 @@
 	                <c:otherwise>
 		                <c:forEach items="${mDto }" var="mDto">
 		                    <div id="mergency_list">
-		                        <div id="mergency_id"><a href="mercenary_detail.do?user_no="></a></div>
+		                        <div id="mergency_id"><a href="mercenary_detail.do?user_no=${mDto.user_no }">${mDto.user_id }</a></div>
 		                        <div id="mergency_foot">${mDto.mercenary_foot }</div>
 		                        <div id="mergency_position">${mDto.mercenary_position }</div>
 		                        <div id="mergency_rate">${mDto.mercenary_rate }</div>

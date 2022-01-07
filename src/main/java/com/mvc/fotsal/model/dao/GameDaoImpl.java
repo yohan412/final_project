@@ -356,10 +356,20 @@ public class GameDaoImpl implements GameDao{
 
 	@Override
 	public int ApplyInsert(int user_no, int game_no) {
-		GameApplyDto dto = new GameApplyDto(user_no, game_no);
+		GameApplyDto dto = new GameApplyDto(game_no, user_no);
+		System.out.println("다오임플 유저값: "+user_no);
+		System.out.println("다오임플 게임값: "+game_no);
+		System.out.println("dto 게임값: "+dto.getGame_no());
+		System.out.println("dto 유저값: "+dto.getUser_no());
+		
 		int res = 0;
 		
-		res = sqlSessionTemplate.insert(NAMESPACE + "applyInsert", dto);
+		try {
+			res = sqlSessionTemplate.insert(NAMESPACE + "applyInsert", dto);
+		} catch (Exception e) {
+			System.out.println("error: applyInsert failed");
+			e.printStackTrace();
+		}
 		
 		return res;
 	}
