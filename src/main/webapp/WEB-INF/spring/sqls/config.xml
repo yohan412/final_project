@@ -16,6 +16,7 @@
 		<typeAlias type="com.mvc.fotsal.model.dto.PicDto" alias="picDto"/>
 		<typeAlias type="com.mvc.fotsal.model.dto.StadiumDto" alias="stadiumDto"/>
 		<typeAlias type="com.mvc.fotsal.model.dto.ReviewDto" alias="reviewDto"/>
+		<typeAlias type="com.mvc.fotsal.model.dto.GameApplyDto" alias="GameApplyDto"/>
   	</typeAliases>
   	
   	<mappers>

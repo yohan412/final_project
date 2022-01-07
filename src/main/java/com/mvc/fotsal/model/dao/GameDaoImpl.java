@@ -359,7 +359,7 @@ public class GameDaoImpl implements GameDao{
 		GameApplyDto dto = new GameApplyDto(user_no, game_no);
 		int res = 0;
 		
-		res = sqlSessionTemplate.insert(NAMESPACE + "applyChk", dto);
+		res = sqlSessionTemplate.insert(NAMESPACE + "applyInsert", dto);
 		
 		return res;
 	}

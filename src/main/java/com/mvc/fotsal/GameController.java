@@ -212,6 +212,7 @@ public class GameController {
         model.addAttribute("mDto", gameBiz.mDto(game_no));
         model.addAttribute("userDto", userDto);
         System.out.println(game_no);
+        
 
         return "gamedetail";
     }
@@ -408,10 +409,10 @@ public class GameController {
 
     @RequestMapping("/gamesupport.do")
     @ResponseBody
-    public void GameSupport(Model model,int user_no, int game_no, HttpServletRequest request, @RequestParam("username")String username, @RequestParam("userphone")String userphone){
+    public void GameSupport(Model model,@RequestParam("userno")int user_no, @RequestParam("gameno")int game_no, HttpServletRequest request, @RequestParam("username")String username, @RequestParam("userphone")String userphone){
         logger.info("Game Support SMS");
         
-        
+        model.addAttribute("mDto", gameBiz.ApplyInsert(user_no, game_no));
         System.out.println(username);
         System.out.println(userphone);
 
