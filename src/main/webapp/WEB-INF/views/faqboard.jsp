@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>FAQ BOARD</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <style>
 	table{
@@ -54,8 +55,8 @@
 							<tr>
 								<th style="width: 10%;">번호</th>
 								<th style="width: 10%;">작성자</th>
-								<th style="width: 20%;">제목</th>
-								<th style="width: 50%;">내용</th>
+								<th style="width: 20%;">문의 내용</th>
+								<th style="width: 50%;">답변</th>
 								<th style="width: 10%;">작성일</th>
 							<tr>
 						</thead>
@@ -68,21 +69,22 @@
 								</tr>
 							</c:when>
 							<c:otherwise>
-								<c:forEach items="${list }" var="FaqBoardDto">
+								<c:forEach items="${list }" var="faq_dto">
 									<tr>
-										<td>${dto.faq_no }</td>
-										<td>${dto.user_id}</td>
-										<td><a href="detail.do?faq_no=${dto.faq_no }">${dto.faq_title }</a></td>
-										<td>${dto.faq_content }</td>
-										<td>${dto.faq_reg }</td>
+										<td>${faq_dto.faq_no }</td>
+										<td>${faq_dto.user_id}</td>
+										<td><a href="detail.do?faq_no=${faq_dto.faq_no }">${faq_dto.faq_title }</a></td>
+										<td>${faq_dto.faq_content }</td>
+										<td>${faq_dto.faq_reg }</td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
+							<tr>
+								<td colspan="5" align="right"><input type="button"
+									value="글 작성" onclick=""></td>
+							</tr>
 						</tbody>
-
-
-
 					</table>
 				</div>
 
@@ -113,6 +115,9 @@
 		<!-- footer -->
 
 		<footer> footer </footer>
+	<script type="text/javascript">
+			
+	</script>
 </body>
 
 </html>

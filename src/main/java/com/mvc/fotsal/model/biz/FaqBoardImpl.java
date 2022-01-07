@@ -21,7 +21,24 @@ public class FaqBoardImpl implements FaqBoardBiz{
 
 	@Override
 	public FaqBoardDto selectOne(int faq_no) {
-		return null;
+		return dao.selectOne(faq_no);
+	}
+
+	@Override
+	public int insert(FaqBoardDto dto) {
+		return dao.insert(dto);
+	}
+
+	@Override
+	public int update(FaqBoardDto dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int delete(int faq_no) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
