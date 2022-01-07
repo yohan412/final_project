@@ -76,5 +76,17 @@
 	<select id="naverlogin" resultType="userDto" parameterType="Map">
 		SELECT * FROM USER_INFO WHERE USER_EMAIL = #{email} AND USER_ID = #{id}
 	</select>
+	
+	<select id="kconchk" resultType="HashMap" parameterType="HashMap">
+		SELECT USER_EMAIL,USER_CONCHK FROM USER_INFO WHERE USER_EMAIL = #{email}
+	</select>
+	
+	<update id="kakaologset" parameterType="HashMap">
+		UPDATE USER_INFO SET USER_ID = #{id} WHERE USER_EMAIL = #{email}
+	</update>
+	
+	<select id="kakaologin" resultType="userDto" parameterType="HashMap">
+		SELECT * FROM USER_INFO WHERE USER_EMAIL = #{email} AND USER_ID = #{id}
+	</select>
 		
 </mapper>

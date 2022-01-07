@@ -1,9 +1,6 @@
 package com.mvc.fotsal.model.dao;
 
-import com.mvc.fotsal.model.dto.GameApplyDto;
-import com.mvc.fotsal.model.dto.GameAskDto;
-import com.mvc.fotsal.model.dto.GameDto;
-import com.mvc.fotsal.model.dto.MercenaryDto;
+import com.mvc.fotsal.model.dto.*;
 import com.mvc.fotsal.paging.GameAskPaging;
 import com.mvc.fotsal.paging.GamePaging;
 import com.mvc.fotsal.paging.GameSearch;
@@ -383,4 +380,18 @@ public class GameDaoImpl implements GameDao{
 		
 		return res;
 	}
+
+    @Override
+    public UserDto selectinfo(String user_id) {
+        UserDto res = null;
+
+        try{
+            res = sqlSessionTemplate.selectOne(NAMESPACE + "selectinfo", user_id);
+        }catch (Exception e){
+            System.out.println("[ERROR]: SelectInfo");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
 }

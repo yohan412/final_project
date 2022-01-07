@@ -15,7 +15,7 @@
     <script type="text/javascript" src="${path}/resources/js/stadiuminsert.js"></script>
 </head>
 <body>
-<header>
+<header style="height: 220px">
     <%@ include file="/WEB-INF/views/header.jsp" %>
 </header>
 <section>

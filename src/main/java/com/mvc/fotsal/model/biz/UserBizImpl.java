@@ -1,5 +1,6 @@
 package com.mvc.fotsal.model.biz;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +74,21 @@ public class UserBizImpl implements UserBiz {
 	@Override
 	public UserDto userNaverLoginPro(Map<String, Object> apiJson) {
 		return dao.userNaverLoginPro(apiJson);
+	}
+
+	@Override
+	public HashMap<String, Object> kakaoConnectionCheck(HashMap<String, Object> loginApi) {
+		return dao.kakaoConnectionCheck(loginApi);
+	}
+
+	@Override
+	public int setKakaoConnection(HashMap<String, Object> loginApi) {
+		return dao.setKakaoConnection(loginApi);
+	}
+
+	@Override
+	public UserDto userKakaoLoginPro(HashMap<String, Object> loginApin) {
+		return dao.userKakaoLoginPro(loginApin);
 	}
 	
 	

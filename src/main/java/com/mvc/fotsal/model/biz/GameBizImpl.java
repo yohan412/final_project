@@ -4,6 +4,7 @@ import com.mvc.fotsal.model.dao.GameDao;
 import com.mvc.fotsal.model.dto.GameAskDto;
 import com.mvc.fotsal.model.dto.GameDto;
 import com.mvc.fotsal.model.dto.MercenaryDto;
+import com.mvc.fotsal.model.dto.UserDto;
 import com.mvc.fotsal.paging.GameAskPaging;
 import com.mvc.fotsal.paging.GamePaging;
 import com.mvc.fotsal.paging.GameSearch;
@@ -148,4 +149,9 @@ public class GameBizImpl implements GameBiz{
 	public List<MercenaryDto> mDto(int game_no) {
 		return gameDao.ApplyList(game_no);
 	}
+
+    @Override
+    public UserDto selectinfo(String user_id) {
+        return gameDao.selectinfo(user_id);
+    }
 }
