@@ -46,7 +46,7 @@ public class UserController {
 		
         String naverAuthUrl = naverloginbo.getAuthorizationUrl(session);
         model.addAttribute("naverUrl", naverAuthUrl);
-		
+        
 		return "loginform";
 	}
 	
@@ -312,18 +312,34 @@ public class UserController {
     
     //카카오 로그인 API
     @RequestMapping(value="kakaoLogin.do")
-    public String kakaoLogin(@RequestParam("code") String code, HttpSession session) {
+    public String kakaoLogin(Model model, @RequestParam("code") String code, HttpSession session) {
     	System.out.println("kakaoLogin");	
         String access_Token = kakao.getAccessToken(code);
         HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
         System.out.println("login Controller : " + userInfo);
         
-        //클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
-        if (userInfo.get("email") != null) {
-            session.setAttribute("userId", userInfo.get("email"));
-            session.setAttribute("access_Token", access_Token);
+        HashMap<String, Object> loginApi = (HashMap<String, Object>) userInfo;
+        
+        HashMap<String, Object> kakaoConnectionCheck = biz.kakaoConnectionCheck(loginApi);
+        
+        if(kakaoConnectionCheck == null) { //일치하는 이메일 없으면 가입
+        	
+        	model.addAttribute("user_eamil",loginApi.get("eamil"));
+        	model.addAttribute("user_id",loginApi.get("id"));
+        	model.addAttribute("user_pw",loginApi.get("id"));
+        	model.addAttribute("user_gender",loginApi.get("gender"));
+        	model.addAttribute("user_nikname",loginApi.get("nikname"));
+        	return "setKakaoRegister";
+        } else if(kakaoConnectionCheck.get("USER_CONCHK") == null && kakaoConnectionCheck.get("USER_EMAIL") != null) { //이메일 가입 되어있고 네이버 연동 안되어 있을시
+        	biz.setKakaoConnection(loginApi);
+        	UserDto dto = biz.userKakaoLoginPro(loginApi);
+        	session.setAttribute("login", dto);
+        } else { //모두 연동 되어있을시
+        	UserDto dto = biz.userKakaoLoginPro(loginApi);
+        	session.setAttribute("login", dto);
         }
-        return "index";
+        
+        return "redirect:index.jsp";
     }
     
     //카카오 로그아웃

@@ -1,5 +1,6 @@
 package com.mvc.fotsal.model.dao;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -168,6 +169,50 @@ import com.mvc.fotsal.model.dto.UserDto;
 			
 			try {
 				res=sqlSession.selectOne(NAMESPACE+"naverlogin",apiJson);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println(res.getUser_id());
+			return res;
+		}
+
+		@Override
+		public HashMap<String, Object> kakaoConnectionCheck(HashMap<String, Object> loginApi) {
+			
+			HashMap<String, Object> res = null;
+			
+			try {
+				res=sqlSession.selectOne(NAMESPACE+"kconchk", loginApi);
+			} catch (Exception e) {
+				System.out.println("[error]: kconchk");
+				e.printStackTrace();
+			}
+			
+			return res;
+		}
+
+		@Override
+		public int setKakaoConnection(HashMap<String, Object> loginApi) {
+			
+			int res =0;
+			
+			try {
+				res=sqlSession.update(NAMESPACE+"kakaologset", loginApi);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return res;
+			
+		}
+
+		@Override
+		public UserDto userKakaoLoginPro(HashMap<String, Object> loginApi) {
+
+			UserDto res =null;	
+			
+			try {
+				res=sqlSession.selectOne(NAMESPACE+"kakaologin", loginApi);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
