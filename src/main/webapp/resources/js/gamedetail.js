@@ -56,7 +56,7 @@ function support_game(status, userid, username, userphone, userno, gameno){
                 url:"gamesupport.do",
                 data:{
                     "username" : username,
-                    "userphone" : '01046829426',
+                    "userphone" : userphone,
                     "userno" : userno,
                     "gameno" : gameno
                 },
@@ -71,6 +71,23 @@ function support_game(status, userid, username, userphone, userno, gameno){
         }
     }
 
+}
+
+function send_to_mer(mer_user_id, author_id){
+    $.ajax({
+        type:"post",
+        url:"sendtomer.do",
+        data:{
+            "mer_user_id" : mer_user_id,
+            "author_id" : author_id
+        },
+        success:function (){
+            alert("초대 성공");
+        },
+        error:function (){
+            alert('통신 실패');
+        }
+    });
 }
 
 function rp_comment_insert(idx, game_no, s_author, s_user_id){
