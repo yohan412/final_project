@@ -3,6 +3,7 @@ package com.mvc.fotsal.model.dao;
 import com.mvc.fotsal.model.dto.GameAskDto;
 import com.mvc.fotsal.model.dto.GameDto;
 import com.mvc.fotsal.model.dto.MercenaryDto;
+import com.mvc.fotsal.model.dto.UserDto;
 import com.mvc.fotsal.paging.GameAskPaging;
 import com.mvc.fotsal.paging.GamePaging;
 import com.mvc.fotsal.paging.GameSearch;
@@ -39,4 +40,5 @@ public interface GameDao {
     public String FindPhone(String user_id);
 	public int ApplyInsert(int user_no, int game_no);
 	public List<MercenaryDto> ApplyList(int game_no);
+    public UserDto selectinfo(String user_id);
 }
