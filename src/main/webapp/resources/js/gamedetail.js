@@ -44,7 +44,7 @@ function delete_game(author, user_id, game_no){
 
 }
 
-function support_game(status, userid, username, userphone, userno){
+function support_game(status, userid, username, userphone, userno, gameno){
     if(status === '종료' || status === '모집안함'){
         alert('용병 지원을 할 수 없습니다');
     }else{
@@ -56,8 +56,9 @@ function support_game(status, userid, username, userphone, userno){
                 url:"gamesupport.do",
                 data:{
                     "username" : username,
-                    "userphone" : '01092035921',
-                    "userno" : 1
+                    "userphone" : userphone,
+                    "userno" : userno,
+                    "gameno" : gameno
                 },
                 success:function (){
                     alert("지원 성공");
@@ -70,6 +71,23 @@ function support_game(status, userid, username, userphone, userno){
         }
     }
 
+}
+
+function send_to_mer(mer_user_id, author_id){
+    $.ajax({
+        type:"post",
+        url:"sendtomer.do",
+        data:{
+            "mer_user_id" : mer_user_id,
+            "author_id" : author_id
+        },
+        success:function (){
+            alert("초대 성공");
+        },
+        error:function (){
+            alert('통신 실패');
+        }
+    });
 }
 
 function rp_comment_insert(idx, game_no, s_author, s_user_id){

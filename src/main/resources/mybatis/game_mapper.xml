@@ -168,8 +168,8 @@
         SELECT USER_PHONE FROM USER_INFO WHERE USER_ID = #{user_id}
     </select>
 	
-	<insert id="applyChk" parameterType="int">
-		INSERT GAME_APPLY
+	<insert id="applyInsert" parameterType="GameApplyDto">
+		INSERT INTO GAME_APPLY
 		VALUES(#{game_no}, #{user_no})
 	</insert>
 	
@@ -190,6 +190,8 @@
 		WHERE ap.GAME_NO = #{game_no}
 	</select>
 	
-	
+	<select id="selectinfo" parameterType="String" resultType="userDto">
+        SELECT USER_PHONE, USER_NAME FROM USER_INFO WHERE USER_ID = #{user_id}
+    </select>
 	
 </mapper>

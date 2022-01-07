@@ -1,9 +1,6 @@
 package com.mvc.fotsal.model.dao;
 
-import com.mvc.fotsal.model.dto.GameApplyDto;
-import com.mvc.fotsal.model.dto.GameAskDto;
-import com.mvc.fotsal.model.dto.GameDto;
-import com.mvc.fotsal.model.dto.MercenaryDto;
+import com.mvc.fotsal.model.dto.*;
 import com.mvc.fotsal.paging.GameAskPaging;
 import com.mvc.fotsal.paging.GamePaging;
 import com.mvc.fotsal.paging.GameSearch;
@@ -356,10 +353,20 @@ public class GameDaoImpl implements GameDao{
 
 	@Override
 	public int ApplyInsert(int user_no, int game_no) {
-		GameApplyDto dto = new GameApplyDto(user_no, game_no);
+		GameApplyDto dto = new GameApplyDto(game_no, user_no);
+		System.out.println("다오임플 유저값: "+user_no);
+		System.out.println("다오임플 게임값: "+game_no);
+		System.out.println("dto 게임값: "+dto.getGame_no());
+		System.out.println("dto 유저값: "+dto.getUser_no());
+		
 		int res = 0;
 		
-		res = sqlSessionTemplate.insert(NAMESPACE + "applyChk", dto);
+		try {
+			res = sqlSessionTemplate.insert(NAMESPACE + "applyInsert", dto);
+		} catch (Exception e) {
+			System.out.println("error: applyInsert failed");
+			e.printStackTrace();
+		}
 		
 		return res;
 	}
@@ -373,4 +380,18 @@ public class GameDaoImpl implements GameDao{
 		
 		return res;
 	}
+
+    @Override
+    public UserDto selectinfo(String user_id) {
+        UserDto res = null;
+
+        try{
+            res = sqlSessionTemplate.selectOne(NAMESPACE + "selectinfo", user_id);
+        }catch (Exception e){
+            System.out.println("[ERROR]: SelectInfo");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
 }

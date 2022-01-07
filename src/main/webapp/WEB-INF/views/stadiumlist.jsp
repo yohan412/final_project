@@ -14,7 +14,7 @@
 <script type="text/javascript" src="/resources/js/stadiumlist.js"></script>
 </head>
 <body>
-<header>
+<header style="height: 220px">
     <%@ include file="/WEB-INF/views/header.jsp" %>
 </header>
 <section>
