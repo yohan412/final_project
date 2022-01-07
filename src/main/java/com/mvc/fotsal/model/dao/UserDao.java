@@ -1,6 +1,5 @@
 package com.mvc.fotsal.model.dao;
 
-import java.util.HashMap; 
 import java.util.Map;
 
 import com.mvc.fotsal.model.dto.UserDto;
@@ -21,7 +20,7 @@ public interface UserDao {
 	public Map<String, Object> naverConnectionCheck(Map<String, Object> apiJson);
 	public int setNaverConnection(Map<String, Object> apiJson);
 	public UserDto userNaverLoginPro(Map<String, Object> apiJson);
-	public HashMap<String, Object> kakaoConnectionCheck(HashMap<String, Object> loginApi);
-	public int setKakaoConnection(HashMap<String, Object> loginApi);
-	public UserDto userKakaoLoginPro(HashMap<String, Object> loginApin);
+	public Map<String, Object> kakaoConnectionCheck(Map<String, Object> loginApi);
+	public int setKakaoConnection(Map<String, Object> loginApi);
+	public UserDto userKakaoLoginPro(Map<String, Object> loginApin);
 }
