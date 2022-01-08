@@ -322,9 +322,18 @@ public class UserController {
         
         Map<String, Object> loginApi = (Map<String, Object>) userInfo;
         
-        Map<String, Object> kakaoConnectionCheck = biz.kakaoConnectionCheck(loginApi);
+        
+        if(loginApi.get("gender").equals("male")) {
+        	loginApi.replace("gender", "M");
+        }else {
+            loginApi.replace("gender", "F");
+        }
         
         System.out.println(loginApi);
+        
+        Map<String, Object> kakaoConnectionCheck = biz.kakaoConnectionCheck(loginApi);
+        
+        
         
         if(kakaoConnectionCheck == null) { //일치하는 이메일 없으면 가입
         	
