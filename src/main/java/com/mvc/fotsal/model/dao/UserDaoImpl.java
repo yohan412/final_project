@@ -177,7 +177,7 @@ import com.mvc.fotsal.model.dto.UserDto;
 		}
 
 		@Override
-		public HashMap<String, Object> kakaoConnectionCheck(HashMap<String, Object> loginApi) {
+		public HashMap<String, Object> kakaoConnectionCheck(Map<String, Object> loginApi) {
 			
 			HashMap<String, Object> res = null;
 			
@@ -192,7 +192,7 @@ import com.mvc.fotsal.model.dto.UserDto;
 		}
 
 		@Override
-		public int setKakaoConnection(HashMap<String, Object> loginApi) {
+		public int setKakaoConnection(Map<String, Object> loginApi) {
 			
 			int res =0;
 			
@@ -207,7 +207,7 @@ import com.mvc.fotsal.model.dto.UserDto;
 		}
 
 		@Override
-		public UserDto userKakaoLoginPro(HashMap<String, Object> loginApi) {
+		public UserDto userKakaoLoginPro(Map<String, Object> loginApi) {
 
 			UserDto res =null;	
 			

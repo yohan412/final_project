@@ -45,7 +45,7 @@
 						<input type="hidden" id="team_wirter" name="user_phone" value="${teamDto.user_phone }" readonly>
 					</div>
 					
-					<div id="hidden_form">
+					<!-- <div id="hidden_form"> 삭제예정
 						<div id="mercenary_list" style="justify-content: center">
 						<c:choose>
 								<c:when test = "${empty mercenaryDto }">
@@ -62,7 +62,7 @@
 								</c:otherwise>
 							</c:choose>
 						</div>
-					</div>
+					</div>-->
 					
 					<div class="content-submit" align="right">
 						<input id="pointer" type="button" value="목록" onclick="location.href='teamlist.do'">

@@ -320,9 +320,9 @@ public class UserController {
         HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
         System.out.println("login Controller : " + userInfo);
         
-        HashMap<String, Object> loginApi = (HashMap<String, Object>) userInfo;
+        Map<String, Object> loginApi = (Map<String, Object>) userInfo;
         
-        HashMap<String, Object> kakaoConnectionCheck = biz.kakaoConnectionCheck(loginApi);
+        Map<String, Object> kakaoConnectionCheck = biz.kakaoConnectionCheck(loginApi);
         
         System.out.println(loginApi);
         

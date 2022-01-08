@@ -77,17 +77,17 @@ public class UserBizImpl implements UserBiz {
 	}
 
 	@Override
-	public HashMap<String, Object> kakaoConnectionCheck(HashMap<String, Object> loginApi) {
+	public Map<String, Object> kakaoConnectionCheck(Map<String, Object> loginApi) {
 		return dao.kakaoConnectionCheck(loginApi);
 	}
 
 	@Override
-	public int setKakaoConnection(HashMap<String, Object> loginApi) {
+	public int setKakaoConnection(Map<String, Object> loginApi) {
 		return dao.setKakaoConnection(loginApi);
 	}
 
 	@Override
-	public UserDto userKakaoLoginPro(HashMap<String, Object> loginApin) {
+	public UserDto userKakaoLoginPro(Map<String, Object> loginApin) {
 		return dao.userKakaoLoginPro(loginApin);
 	}
 	
