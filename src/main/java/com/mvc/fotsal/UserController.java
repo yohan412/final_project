@@ -286,12 +286,14 @@ public class UserController {
 		ObjectMapper objectMapper =new ObjectMapper();
 		Map<String, Object> apiJson = (Map<String, Object>) objectMapper.readValue(apiResult, Map.class).get("response");
 		
+		System.out.println(apiJson);
+		
 		Map<String, Object> naverConnectionCheck = biz.naverConnectionCheck(apiJson);
 		
 		if(naverConnectionCheck == null) { //일치하는 이메일 없으면 가입
 			
 			model.addAttribute("user_email",apiJson.get("email"));
-			model.addAttribute("user_id",apiJson.get("id"));
+			model.addAttribute("user_id",apiJson.get("nickname"));
 			model.addAttribute("user_pw",apiJson.get("id"));
 			model.addAttribute("user_phone",apiJson.get("mobile"));
 			model.addAttribute("user_gender",apiJson.get("gender"));
@@ -321,6 +323,8 @@ public class UserController {
         HashMap<String, Object> loginApi = (HashMap<String, Object>) userInfo;
         
         HashMap<String, Object> kakaoConnectionCheck = biz.kakaoConnectionCheck(loginApi);
+        
+        System.out.println(loginApi);
         
         if(kakaoConnectionCheck == null) { //일치하는 이메일 없으면 가입
         	
