@@ -7,11 +7,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mvc.fotsal.model.biz.FaqBoardBiz;
 import com.mvc.fotsal.model.dto.FaqBoardDto;
 import com.mvc.fotsal.model.dto.UserDto;
+import com.mvc.fotsal.paging.FaqSearch;
+import com.mvc.fotsal.paging.FaqpageMaker;
 
 
 @Controller
@@ -22,10 +26,19 @@ public class FaqBoardController {
 	@Autowired
 	private FaqBoardBiz biz;
 	
-	@RequestMapping("/faqlist.do")
-	public String list(Model model) {	
+	@RequestMapping(value="/faqlist.do", method = RequestMethod.GET)
+	public String list(Model model, @ModelAttribute("STLP") FaqSearch STLP) {	
 		logger.info("Select FaqBoard List, move page faqboard.jsp");
-		model.addAttribute("list",biz.selectList());
+		model.addAttribute("list",biz.selectList(STLP));
+		
+		FaqpageMaker pageMaker = new FaqpageMaker();
+		pageMaker.setTLP(STLP);
+		pageMaker.setTotalCount(biz.listCount(STLP));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		System.out.println(STLP.toString());
+		
 		return "faqboard";
 	}
 	

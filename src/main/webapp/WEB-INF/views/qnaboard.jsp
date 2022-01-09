@@ -91,7 +91,7 @@ table {
 					</table>
 					<div class="serch">
 						<select name="searchType">
-							<option value="n"><c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
+							<option value="n"><c:out value="${scri.searchType == null ? '검색' : ''}"/></option>
 							<option value="t"><c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
 							<option value="c"><c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
 							<option value="w"><c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
