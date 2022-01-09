@@ -1,12 +1,12 @@
 package com.mvc.fotsal.paging;
 
-public class QnaBoardPaging {
+public class FaqBoardPaging {
 	private int page;
 	private int perPageNum;
 	private int rowStart;
 	private int rowEnd;
 	
-	public QnaBoardPaging() {
+	public FaqBoardPaging() {
 		this.page = 1;
 		this.perPageNum = 5;
 	}
@@ -51,15 +51,7 @@ public class QnaBoardPaging {
 
 	@Override
 	public String toString() {
-		return "QnaBoardPaging [page=" + page + ", perPageNum=" + perPageNum + ", rowStart=" + rowStart + ", rowEnd=" + rowEnd
+		return "FaqBoardPaging [page=" + page + ", perPageNum=" + perPageNum + ", rowStart=" + rowStart + ", rowEnd=" + rowEnd
 				+ "]";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 }
