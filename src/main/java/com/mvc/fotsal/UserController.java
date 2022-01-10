@@ -257,7 +257,7 @@ public class UserController {
     	int res = biz.update(dto);
     	if(res>0) {
 			logger.info("사용자정보 수정완료");
-    		return "redirect:user_info.do?user_id="+dto.getUser_id();
+    		return "redirect:index.jsp?user_id="+dto.getUser_id();
     	} else {
 			logger.info("사용자정보 수정실패");
     		return "redirect:updateform.do?user_id="+dto.getUser_id();
@@ -354,12 +354,12 @@ public class UserController {
         	model.addAttribute("user_nickname",loginApi.get("nickname"));
         	model.addAttribute("user_gender",loginApi.get("gender"));
         	return "setKakaoRegister";
-        } else if(kakaoConnectionCheck.get("USER_CONCHK") == null && kakaoConnectionCheck.get("USER_EMAIL") != null) { //이메일 가입 되어있고 네이버 연동 안되어 있을시
+        } else if(kakaoConnectionCheck.get("USER_CONCHK") == null && kakaoConnectionCheck.get("USER_EMAIL") != null) { //이메일 가입 되어있고 카카오 연동 안되어 있을시
         	biz.setKakaoConnection(loginApi);
         	UserDto dto = biz.userKakaoLoginPro(loginApi);
         	session.setAttribute("login", dto);
         }else if(kakaoConnectionCheck.get("USER_CONCHK") == "NAVER" && kakaoConnectionCheck.get("USER_EMAIL") != null) {
-			JOptionPane.showMessageDialog(null, "이미 네이버 아이디로 가입되어있습니다");
+			JOptionPane.showMessageDialog(null, "이미 카카오 아이디로 가입되어있습니다");
 			return "redirect:loginform.do";
 		} else { //모두 연동 되어있을시
         	UserDto dto = biz.userKakaoLoginPro(loginApi);

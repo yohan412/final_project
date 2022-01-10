@@ -98,14 +98,20 @@
 					<td><input type="text" name="user_phone" value="${login.user_phone }"></td>
 				</tr>
 				<tr>
-					<th>우편번호</th>
-					<td><input type="text" id="zipcode" name="user_zip" value="${login.user_zip }">
-					<input type="button" id="zip_chk" value="주소 검색" onclick="zipChk()">
-					</td>
-				</tr>
-				<tr>
 					<th>주소</th>
-					<td><input type="text" id="address1" name="myaddr1" value="${login.user_addr }"></td>
+					<td>
+						<input type="text" id="zipcode" name="user_zip" style="width: 250px;" value="${login.user_zip }" readonly>&nbsp;&nbsp;
+						<input type="button" id="zip_chk" value="주소 검색" onclick="zipChk()">
+					</td>
+				<tr>
+					<th></th>
+					<td>
+						<input type="text" id="address1" name="myaddr1" value="${login.user_addr }" readonly><br><br>
+						<span id="guide" style="color:#999;display:none"></span>
+						<input type="text" id="address2" name="myaddr2" size="50" placeholder="상세 주소를 입력하세요">
+						<input type="hidden" id="sample4_roadAddress" placeholder="도로명주소">
+						<input type="hidden" id="sample4_extraAddress" placeholder="참고항목">
+					</td>
 				</tr>
 				<tr>
 					<td colspan="10" style="text-align: right;">
