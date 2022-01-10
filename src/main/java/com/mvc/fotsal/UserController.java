@@ -51,6 +51,26 @@ public class UserController {
 		return "loginform";
 	}
 	
+	@RequestMapping("/provision1.do")
+	public String provision1() {
+		return "provision1";
+	}
+	
+	@RequestMapping("/provision2.do")
+	public String provision2() {
+		return "provision2";
+	}
+	
+	@RequestMapping("/provision3.do")
+	public String provision3() {
+		return "provision3";
+	}
+	
+	@RequestMapping("/provision4.do")
+	public String provision4() {
+		return "provision4";
+	}
+	
 	@Autowired
 	private NaverLoginBO naverloginbo;
 	

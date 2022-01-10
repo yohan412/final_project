@@ -52,7 +52,11 @@
 	  	width: 18px; 
   		height: 18px; 
 	}
-	
+	select{
+		width: 50px;
+		margin-left: 20px;
+		margin-right: 20px;
+	}
 	
 	body {
   background-image: url("/img/soccerwallpaper.jpg");
@@ -149,19 +153,19 @@
 		}
 	}
 	function provision1(){
-		var target = "";
+		var target = "provision1.do";
 		open(target,"","width=900,height=500");
 	}
 	function provision2(){
-		var target = "";
+		var target = "provision2.do";
 		open(target,"","width=900,height=500");
 	}
 	function provision3(){
-		var target = "";
+		var target = "provision3.do";
 		open(target,"","width=900,height=500");
 	}
 	function provision4(){
-		var target = "";
+		var target = "provision4.do";
 		open(target,"","width=900,height=500");
 	}
 	
