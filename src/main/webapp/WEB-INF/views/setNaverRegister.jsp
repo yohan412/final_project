@@ -52,6 +52,17 @@
 	  	width: 18px; 
   		height: 18px; 
 	}
+	body {
+  background-image: url("/img/soccerwallpaper.jpg");
+  background-attachment: fixed;
+	background-repeat: no-repeat
+
+  color: #000;
+  font: 14px Arial;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+}
 	
 </style>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
