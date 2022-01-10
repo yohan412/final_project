@@ -138,7 +138,6 @@
 .stadium_img{
     width: 200px;
     height: 150px;
-    background-color: firebrick;
 }
 
 .stadium_introduce_form{
@@ -178,4 +177,41 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+}
+#prevbutton{
+    margin-right:3px;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    background-color: #676FA3;
+    color: #CDDEFF;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+}
+#nextbutton{
+    margin-left:3px;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    background-color: #676FA3;
+    color: #CDDEFF;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+}
+#pagingnum{
+    margin-left:5px;
+    margin-right:5px;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    background-color: #676FA3;
+    color: #CDDEFF;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bold;
 }

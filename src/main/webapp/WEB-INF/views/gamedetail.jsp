@@ -123,9 +123,6 @@
                 <%--기타 내용 구역--%>
                	<textarea id="textarea_form" readonly>${gamedto.game_content}</textarea>
             </div>
-            <div id="picture_form" style="width: 900px; min-height: 150px; background-color: #166cea">
-
-            </div>
             <%--버튼 구역--%>
             <div id="button_form">
                 <input type="button" value="수정하기" class="button" onclick="move_to_update_form('${gamedto.user_id}','${userDto.user_id}', ${gamedto.game_no})">
