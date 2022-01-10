@@ -123,7 +123,8 @@ public class UserController {
 		System.out.println(dto.getUser_pw());
 		dto.setUser_pw(passwordEncoder.encode(dto.getUser_pw()));
 		dto.setUser_birthdate(yy+"-"+mm+"-"+dd);
-		dto.setUser_addr(addr1+" "+addr2);
+		dto.setUser_addr(addr1+","+addr2);
+		
 		if(dto.getUser_conchk()==null) {
 			String conchk="";
 			dto.setUser_conchk(conchk);
@@ -265,7 +266,13 @@ public class UserController {
     public String user_update(Model model, String user_id) {
     	logger.info("UPDATE FORM");
     	
-    	model.addAttribute("login", biz.selectOne(user_id));
+    	UserDto dto = biz.selectOne(user_id);
+    	String[] addr = dto.getUser_addr().split(",");
+    	model.addAttribute("myaddr1", addr[0]);
+    	model.addAttribute("myaddr2", addr[1]);
+    	
+    	model.addAttribute("login", dto);
+    	
     	return "user_update";
     }
     
