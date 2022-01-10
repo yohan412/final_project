@@ -8,6 +8,7 @@ public class PicDto {
 	public PicDto() {
 		super();
 	}
+	
 	public PicDto(int boardno, String pic_name, String pic_path) {
 		super();
 		this.boardno = boardno;
