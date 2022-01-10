@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="resources/css/mercenary.css">
 
 <title>용병지원서</title>
@@ -25,16 +25,13 @@
 					<div class="title-text">	
 						<h2>용병지원서</h2>
 					</div>
-					<hr>
 					<div class=writer-name>
 						<h3 style="text-align: center;">${mDto.getUser_id() }</h3> <!-- 작성자 id -->
-						<div class="team-logo">
-							<img src="">
-						</div>
 					</div>
 					<div class="content-select-foot">
 						<h5 class="head-text">1. 주 사용 발</h5>
-						<label class="chk-foot"><input type="radio" name="mercenary_foot" value="${mDto.getMercenary_foot() }" checked></label>
+						<p id="explain-text">(A: 올라운더 / L: 왼발 / R: 오른발)</p>
+						<label class="chk-foot"><input type="radio" name="mercenary_foot" checked>${mDto.getMercenary_foot() }</label>
 					</div>
 					<hr>
 					<div class="content-select-position" align="center">
@@ -68,9 +65,12 @@
 					</div>
 					<div class="content-submit" align="right">
 						<input id="pointer" type="button" value="이전" onclick="location.href='referer.do'">
-						<input id="pointer" type="button" value="수정" onclick="location.href='mercenary_updateForm.do?user_no=${mDto.getUser_no()}'">
+						<input id="pointer" name="update-hidden" type="button" value="수정" onclick="location.href='mercenary_updateForm.do?user_no=${mDto.getUser_no()}'">
 						<input id="pointer" type="button" value="삭제" onclick="location.href='mercenary_delete.do?user_no=${mDto.getUser_no()}'">
 						
+					</div>
+					<div class="blank-space" style="height: 150px;">
+					
 					</div>
 				</div>
 			</form>
@@ -90,7 +90,7 @@
 		}else{
 			location.href='mercenaryUpdate.do?user_no='+user_no;
 		}
-	}
+	};
 	
 	$(function(){
 		var position = document.getElementById("db-position").value;
@@ -105,6 +105,19 @@
 		}else{
 			$('input[id=position-text]').attr('value', '골키퍼');
 		}
-	})
+	});
+	
+	$(function(){
+		var writer = '${mDto.user_id}'; // 작성자
+		var user_id = '${login.user_id}';  // 세션에 저장된 로그인 아이디
+		
+		$("input[name=update-hidden]").hide();
+		
+		if(writer === user_id){
+			$("input[name=update-hidden]").show();
+		}
+	});
+	
+	
 </script>
 </html>

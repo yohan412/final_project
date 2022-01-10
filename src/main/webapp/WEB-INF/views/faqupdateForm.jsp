@@ -22,6 +22,7 @@
 						</div>
 					</div>
 						<div class="box-body"></div>
+
 						<div class="form-group">
 							<label>작성자</label>
 							<label  class="detail-faq-writer" style="font-weight:bold;">
