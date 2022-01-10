@@ -58,6 +58,11 @@ public class TeamBizImpl implements TeamBiz{
 		return dao.findno(dto);
 	}
 
+	@Override
+	public int updatePic(PicDto dto) {
+		return dao.updatePic(dto);
+	}
+
 
 	
 	

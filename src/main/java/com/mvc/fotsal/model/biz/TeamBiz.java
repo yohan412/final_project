@@ -20,6 +20,8 @@ public interface TeamBiz {
 	
 	public int delete(int team_no); // 팀 삭제
 	
+	public int updatePic(PicDto dto); // 파일 업로드 수정
+	
 	public int teampic(PicDto dto); // 팀 등록 시 이미지 업로드 및 path 경로
 	
 	public int findno(TeamDto dto); // 팀 등록 시 team_no 번호 판단여부

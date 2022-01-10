@@ -30,6 +30,7 @@
 				<thead>
 					<tr>
 						<th style="background-color: #eeeeee; text-align: center;">팀 번호</th>
+						<th style="background-color: #eeeeee; text-align: center;">팀장</th>
 						<th style="background-color: #eeeeee; text-align: center;">팀 로고</th>
 						<th style="background-color: #eeeeee; text-align: center;">팀명</th>
 						<th style="background-color: #eeeeee; text-align: center;">모집여부(Y/N)</th>
@@ -46,6 +47,7 @@
 						<c:forEach items="${list }" var="Teamdto">
 							<tr>
 								<td>${Teamdto.team_no }</td> <!-- 팀 번호 -->
+								<td>${Teamdto.user_id }</td>
 								<td class="team-logo-pic"><img class="pic_path" src="/upload/${Teamdto.pic_path }" alt="로고없음"></td> <!-- 팀 로고 사진 -->
 								<td><a href="team_detail.do?team_no=${Teamdto.team_no }">${Teamdto.team_name }</a></td>
 								<!-- 팀 번호가 일치하는 팀이름 -->

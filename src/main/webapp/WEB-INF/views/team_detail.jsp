@@ -45,28 +45,9 @@
 						<input type="hidden" id="team_wirter" name="user_phone" value="${teamDto.user_phone }" readonly>
 					</div>
 					
-					<!-- <div id="hidden_form"> 삭제예정
-						<div id="mercenary_list" style="justify-content: center">
-						<c:choose>
-								<c:when test = "${empty mercenaryDto }">
-									<p>-----------지원자가 아직 없습니다-----------</p>
-								</c:when>
-								<c:otherwise>
-									<c:forEach items="#{mercenaryDto }" var="mDto">
-			                        	<div id="m_id"><a href="mercenaryDetail.do?user_no="${mDto.user_no }>${mDto.user_id }</a></div>
-			                        	<div id="m_foot">${mDto.mercenary_foot }</div>
-			                        	<div id="m_position">${mDto.mercenary_position }</div>
-			                        	<div id="m_rate">${mDto.mercenary_rate }</div>
-			                        	<div id="m_button_form"><input type="button" value="수락하기" id="mergency_button" onclick="location.href='accept.do'"></div>
-		                        	</c:forEach>
-								</c:otherwise>
-							</c:choose>
-						</div>
-					</div>-->
 					
 					<div class="content-submit" align="right">
 						<input id="pointer" type="button" value="목록" onclick="location.href='teamlist.do'">
-						<input id="pointer" type="button" value="지원" onclick="sign_up(${login.user_no})">
 						<input id="pointer" type="button" value="수정" onclick="location.href='team_updateForm.do?team_no=${teamDto.team_no}'">
 						<input id="pointer" type="button" value="삭제" onclick="team_deleteChk(${login.user_no},${teamDto.user_no},${teamDto.team_no})">
 					</div>
@@ -125,19 +106,7 @@
 			}
 			
 		}
-	//지원자 가리기
-	$(function(){
-		$("#hidden_form").hide();
-	})
-	
-	$(function(){
-		var writer = '${teamDto.user_no}'; // 팀장 번호
-		var user_no = '${login.user_no}'; // 로그인된 유저 번호
-		
-		if(writer === user_no){
-			$("#hidden_form").show();
-		}
-	});
+
 
 </script>
 </html>
