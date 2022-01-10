@@ -43,10 +43,6 @@ table {
 			</div>
 		</div>
 
-		<div id="board_middle_form">
-			<div class="middle">
-				<p id="newone" class="newone">최신순</p>
-			</div>
 		</div>
 
 		<!-- list start -->

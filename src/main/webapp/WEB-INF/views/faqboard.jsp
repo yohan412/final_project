@@ -42,11 +42,6 @@ table {
 					</div>
 				</div>
 			</div>
-			<div id="board_middle_form">
-				<div class="middle">
-					<p id="newone" class="newone">최신순</p>
-				</div>
-			</div>
 
 			<!-- list start -->
 			<div class="board_list_wrap">
@@ -87,16 +82,14 @@ table {
 							</tr>
 						</tbody>
 					</table>
-										<div class="serch">
+						<div class="serch">
 						<select name="searchType">
 							<option value="n"><c:out value="${scri.searchType == null ? '검색' : ''}"/></option>
 							<option value="t"><c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
 							<option value="c"><c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
 							<option value="w"><c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
 							<option value="tc"><c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
-						</select> <input type="text" name="keyword" id="keywordInput"
-							value="${scri.keyword}" />
-
+						</select> <input type="text" name="keyword" id="keywordInput"value="${scri.keyword}" />
 						<button id="searchBtn" type="button">검색</button>
 
 					</div>
