@@ -106,9 +106,9 @@
 				<tr>
 					<th></th>
 					<td>
-						<input type="text" id="address1" name="myaddr1" value="${login.user_addr }" readonly><br><br>
+						<input type="text" id="address1" name="myaddr1" value="${myaddr1 }" readonly><br><br>
 						<span id="guide" style="color:#999;display:none"></span>
-						<input type="text" id="address2" name="myaddr2" size="50" placeholder="상세 주소를 입력하세요">
+						<input type="text" id="address2" name="myaddr2" size="50" value="${myaddr2 }">
 						<input type="hidden" id="sample4_roadAddress" placeholder="도로명주소">
 						<input type="hidden" id="sample4_extraAddress" placeholder="참고항목">
 					</td>

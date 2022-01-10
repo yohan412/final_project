@@ -150,7 +150,7 @@ public class UserController {
 			
 			dto.setUser_phone(dto.getUser_phone().replace("-", ""));
 			dto.setUser_pw(passwordEncoder.encode(dto.getUser_pw()));
-			dto.setUser_addr(addr1+" "+addr2);
+			dto.setUser_addr(addr1+","+addr2);
 			String conchk="NAVER";
 			dto.setUser_conchk(conchk);
 			
@@ -268,6 +268,7 @@ public class UserController {
     	logger.info("UPDATE FORM");
     	
     	UserDto dto = biz.selectOne(user_id);
+    	System.out.println(dto.getUser_addr());
     	String[] addr = dto.getUser_addr().split(",");
     	model.addAttribute("myaddr1", addr[0]);
     	model.addAttribute("myaddr2", addr[1]);
