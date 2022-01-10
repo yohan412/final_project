@@ -123,7 +123,12 @@ public class UserController {
 		System.out.println(dto.getUser_pw());
 		dto.setUser_pw(passwordEncoder.encode(dto.getUser_pw()));
 		dto.setUser_birthdate(yy+"-"+mm+"-"+dd);
-		dto.setUser_addr(addr1+" "+addr2);
+		dto.setUser_addr(addr1+","+addr2);
+		
+		String[] addr = dto.getUser_addr().split(",");
+		System.out.println(addr[0]);
+		System.out.println(addr[1]);
+		
 		if(dto.getUser_conchk()==null) {
 			String conchk="";
 			dto.setUser_conchk(conchk);
