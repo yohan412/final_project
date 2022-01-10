@@ -43,11 +43,16 @@
 		#{faq_content}, #{user_id}, SYSDATE , #{faq_type})
 	</insert>
 
-	<update id="update" parameterType="FaqBoardDto">
+	<update id="update" parameterType="FaqBoardDDto">
 		UPDATE FAQ
-		SET FAQ TITLE =
-		#{faq_title}, FAQ_CONTENT = #{faq_content}, FAQ_TYPE = #{faq_type}
+		SET FAQ TITLE = #{faq_title}, FAQ_CONTENT = #{faq_content}
 		WHERE FAQ_NO = #{faq_no}
 	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM FAQ
+		WHERE
+		FAQ_NO=#{faq_no}
+	</delete>
 
 </mapper>

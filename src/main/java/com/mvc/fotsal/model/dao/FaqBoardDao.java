@@ -12,5 +12,7 @@ public interface FaqBoardDao {
 	public FaqBoardDto selectOne(int faq_no);
 	public int insert(FaqBoardDto dto);
 	public int listCount(FaqSearch STLP);
+	public int delete(int faq_no);
+	public int update(FaqBoardDto dto);
 	
 }

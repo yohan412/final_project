@@ -48,9 +48,9 @@
 						<input id="pointer" type="button" value="목록"
 							onclick="location.href='faqlist.do'"> <input id="pointer"
 							type="button" value="수정"
-							onclick="location.href='faqupdateForm.do?qna_no=${faq_dto.faq_no}'">
+							onclick="location.href='faqupdateForm.do?faq_no=${faq_dto.faq_no}'">
 						<input id="pointer" type="button" value="삭제"
-							onclick="">
+							onclick="location.href='faqdelete.do?faq_no${faq_dto.faq_no}'">
 						<%-- /*adminChk(${login.login_id}, ${qna_dto.user_id }, ${qna_dto.qna_no })*/ 관리자 확인 주석 수정중--%>
 					</div>
 				</form>
