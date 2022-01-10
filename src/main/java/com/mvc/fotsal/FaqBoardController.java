@@ -73,7 +73,41 @@ public class FaqBoardController {
 		}
 	}
 	
+	@RequestMapping(value="/faqupdateForm.do")
+	public String updateForm(Model model, int faq_no) {
+		logger.info("UPDATE FORM");
+		System.out.println(faq_no);
+		model.addAttribute("dto", biz.selectOne(faq_no));
+		
+		return "faqupdateForm";
+	}
 	
+	@RequestMapping(value="/faqupdateResult.do")
+	public String updateRes(FaqBoardDto dto) {
+		int res = biz.update(dto);
+		
+		if(res>0) {
+			logger.info("faq 수정");
+			return "redirect:faqdetail.do?faq_no="+dto.getFaq_no();
+		}else {
+			logger.info("faq 수정실패");
+			return "redirect:faqupdateForm.do?faq_no="+dto.getFaq_no();
+		}
+	}
+	
+	@RequestMapping("/faqdelete.do")
+	public String delete(int faq_no) {
+		logger.info("DELETE");
+		
+		int res = biz.delete(faq_no);
+		System.out.println(faq_no);
+		if(res>0) {
+			return "redirect:faqlist.do";
+		}else {
+			return "redirect:faqdetail.do?faq_no"+faq_no;
+		}
+		
+	}
 	
 	
 	

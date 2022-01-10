@@ -115,10 +115,10 @@ public class QnaBoardController {
 	@RequestMapping(value="/qnaupdateResult.do")
 	public String updateRes(QnaBoardDto dto) { // 팀 수정하기
 		int res = biz.update(dto);
-
+		System.out.println("gpno값: "+dto.getQna_gpno());
 		if(res>0) {
 			logger.info("qna 수정완료");
-			return "redirect:qnadetail.do?qna_no="+dto.getQna_no();
+			return "redirect:qnadetail.do?qna_gpno="+dto.getQna_gpno();
 		}else {
 			logger.info("qna 수정실패");
 			return "redirect:qnaupdateForm.do?qna_no="+dto.getQna_no();

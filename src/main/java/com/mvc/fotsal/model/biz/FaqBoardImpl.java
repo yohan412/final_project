@@ -32,14 +32,12 @@ public class FaqBoardImpl implements FaqBoardBiz{
 
 	@Override
 	public int update(FaqBoardDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.update(dto);
 	}
 
 	@Override
 	public int delete(int faq_no) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.delete(faq_no);
 	}
 
 	@Override

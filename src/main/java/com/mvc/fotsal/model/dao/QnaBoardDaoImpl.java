@@ -20,8 +20,11 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 	public List<QnaBoardDto> selectList(QnaSearch STLP) {
 		List<QnaBoardDto> qnalist = new ArrayList<QnaBoardDto>();
 		
+		System.out.println(STLP);
+		
 		try {
 			qnalist = sqlSession.selectList(NAMESPACE+"selectList", STLP);
+			
 		} catch (Exception e) {
 			System.out.println("error: select list failed");
 			e.printStackTrace();
@@ -46,11 +49,11 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 
 
 	@Override
-	public QnaBoardDto selectOne(int qna_gpno) {
+	public QnaBoardDto selectOne(int qna_no) {
 		QnaBoardDto dto = null;
 		
 		try {
-			dto = sqlSession.selectOne(NAMESPACE+"selectOne", qna_gpno);
+			dto = sqlSession.selectOne(NAMESPACE+"selectOne", qna_no);
 		} catch (Exception e) {
 			System.out.println("[error] : select one");
 			e.printStackTrace();

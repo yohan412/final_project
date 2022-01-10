@@ -57,11 +57,18 @@
 		VALUES(#{user_no},#{team_name},#{team_intro},TEAM_NOSQ.NEXTVAL,#{team_addchk})
 	</insert>
 
+	<update id="updatePic" parameterType="picDto">
+		UPDATE TEAM_PIC
+		SET PIC_PATH=#{pic_path}, PIC_NAME=#{pic_name}
+		WHERE TEAM_NO=#{boardno}
+	</update>
+	
 	<update id="update" parameterType="teamDto">
 		UPDATE TEAM_INFO
 		SET TEAM_NAME=#{team_name}, TEAM_INTRO=#{team_intro}, TEAM_ADDCHK=#{team_addchk}
 		WHERE TEAM_NO=#{team_no}
 	</update>
+	
 	
 	<delete id="delete" parameterType="int">
 		DELETE TEAM_INFO

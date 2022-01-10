@@ -119,23 +119,7 @@ table {
 		<!-- footer -->
 
 		<footer> footer </footer>
-		<script type="text/javascript">
-			function adminChk(login_id, user_id) {
-				if (login_id != "user77") {
 
-					alert('관리자만 작성할 수 있습니다.');
-				} else {
-					if (login_id === "user77") {
-						var chk = confirm('글을 작성하시겠습니까?')
-						if (chk) {
-							location.href = 'faqinsert.do';
-						} else {
-							alert('취소되었습니다.');
-						}
-					}
-				}
-			}
-		</script>
 </body>
 
 </html>

@@ -70,6 +70,34 @@ public class FaqBoardDaoImpl implements FaqBoardDao{
 		
 		return res;
 	}
+
+	@Override
+	public int delete(int faq_no) {
+		int res = 0;
+		System.out.println(faq_no);
+		try {
+			res = sqlSession.delete(NAMESPACE+"delete",faq_no);
+		} catch (Exception e) {
+			System.out.println("[error] : delete");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+	@Override
+	public int update(FaqBoardDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE+"update", dto);
+		} catch (Exception e) {
+			System.out.println("[error] : update");
+			e.printStackTrace();
+		}
+				
+		return res;
+	}
 	
 
 }

@@ -143,6 +143,21 @@ public class TeamDaoImpl implements TeamDao{
 		return teamdto.getTeam_no();
 	}
 
+	@Override
+	public int updatePic(PicDto dto) {
+
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE+"updatePic", dto);
+		} catch (Exception e) {
+			System.out.println("error: updatePic failed");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
 
 
 }

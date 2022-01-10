@@ -45,9 +45,15 @@
 
 	<update id="update" parameterType="FaqBoardDto">
 		UPDATE FAQ
-		SET FAQ TITLE =
-		#{faq_title}, FAQ_CONTENT = #{faq_content}, FAQ_TYPE = #{faq_type}
+		SET FAQ_TITLE =
+		#{faq_title}, FAQ_CONTENT = #{faq_content}
 		WHERE FAQ_NO = #{faq_no}
 	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM FAQ
+		WHERE
+		FAQ_NO=#{faq_no}
+	</delete>
 
 </mapper>

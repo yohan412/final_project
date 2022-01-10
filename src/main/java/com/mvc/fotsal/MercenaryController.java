@@ -35,19 +35,18 @@ public class MercenaryController {
 	
 	
 	@RequestMapping(value="/mercenaryInsert.do")
-	public String mercenary_insert(MercenaryDto dto, HttpServletResponse response) throws IOException {
+	public void mercenary_insert(MercenaryDto dto, HttpServletResponse response) throws IOException {
 		logger.info("용병지원서 작성중");
 		int res = biz.insert(dto);
+
 		
 		
 		if(res>0) {
 			logger.info("용병 지원서 작성완료");
-			ShowMsg.alert(response, "용병지원서 작성 완료");
-			return "redirect:index.jsp";
+			ShowMsg.alert(response, "용병 지원서 작성완료!", "index.jsp");
 		} else {
 			logger.info("용병 지원서 작성실패");
-			ShowMsg.alert(response, "이미 작성된 용병 지원서가 있습니다");
-			return "redirect:index.jsp";
+			ShowMsg.alert(response, "이미 작성된 용병 지원서가 있습니다.", "index.jsp");
 		}
 	}
 	
