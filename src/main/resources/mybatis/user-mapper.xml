@@ -70,11 +70,11 @@
 	</select>
 	
 	<update id="naverlogset" parameterType="Map">
-		UPDATE USER_INFO SET USER_ID = #{id} WHERE USER_EMAIL = #{email}
+		UPDATE USER_INFO SET USER_ID = #{nickname} WHERE USER_EMAIL = #{email}
 	</update>
 	
 	<select id="naverlogin" resultType="userDto" parameterType="Map">
-		SELECT * FROM USER_INFO WHERE USER_EMAIL = #{email} AND USER_ID = #{id}
+		SELECT * FROM USER_INFO WHERE USER_EMAIL = #{email} AND USER_ID = #{nickname}
 	</select>
 	
 	<select id="kconchk" resultType="Map" parameterType="Map">
