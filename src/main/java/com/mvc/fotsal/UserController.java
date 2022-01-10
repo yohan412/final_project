@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
@@ -279,7 +280,7 @@ public class UserController {
     	}
     }
     
-    
+    //네이버 로그인api
     @RequestMapping(value="/userNaverLoginPro.do",  method = {RequestMethod.GET,RequestMethod.POST})
 	public String userNaverLoginPro(Model model,@RequestParam Map<String,Object> paramMap, @RequestParam String code, @RequestParam String state,HttpSession session) throws SQLException, Exception {
 		System.out.println("paramMap:" + paramMap);
@@ -311,6 +312,9 @@ public class UserController {
 			biz.setNaverConnection(apiJson);
 			UserDto dto = biz.userNaverLoginPro(apiJson);
 			session.setAttribute("login", dto);
+		}else if(naverConnectionCheck.get("USER_CONCHK")=="KAKAO" && naverConnectionCheck.get("USER_EMAIL") != null) {
+			JOptionPane.showMessageDialog(null, "이미 카카오 아이디로 가입되어있습니다");
+			return "redirect:loginform.do";
 		}else { //모두 연동 되어있을시
 			UserDto dto = biz.userNaverLoginPro(apiJson);
 			session.setAttribute("login", dto);
@@ -354,7 +358,10 @@ public class UserController {
         	biz.setKakaoConnection(loginApi);
         	UserDto dto = biz.userKakaoLoginPro(loginApi);
         	session.setAttribute("login", dto);
-        } else { //모두 연동 되어있을시
+        }else if(kakaoConnectionCheck.get("USER_CONCHK") == "NAVER" && kakaoConnectionCheck.get("USER_EMAIL") != null) {
+			JOptionPane.showMessageDialog(null, "이미 네이버 아이디로 가입되어있습니다");
+			return "redirect:loginform.do";
+		} else { //모두 연동 되어있을시
         	UserDto dto = biz.userKakaoLoginPro(loginApi);
         	session.setAttribute("login", dto);
         }
