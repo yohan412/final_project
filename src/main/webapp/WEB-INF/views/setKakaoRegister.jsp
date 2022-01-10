@@ -143,11 +143,12 @@
 	<div id="wrap" align="center">
 		<form action="register.do" method="post" >
 			<table align="center" method="post" cellpadding="3">
-				<input type="text" id="id" name="user_id" value="${user_id }">
-				<input type="text" id="pw" name="user_pw" value="${user_pw }" >
-				<input type="text" id="nickname" name="user_nickname" value="${user_nickname }">
-				<input type="text" id="usergender" name="user_gender" value="${user_gender }">
-				<input type="text" id="email" name="user_email" value="${user_email }">
+				<input type="hidden" id="id" name="user_id" value="${user_id }">
+				<input type="hidden" id="pw" name="user_pw" value="${user_pw }" >
+				<input type="hidden" id="nickname" name="user_name" value="${user_nickname }">
+				<input type="hidden" id="usergender" name="user_gender" value="${user_gender }">
+				<input type="hidden" id="email" name="user_email" value="${user_email }">
+				<input type="hidden" id="conchk" name="user_conchk" value="KAKAO">
 				<tr class="phone">
 					<th>Phone</th>
 					

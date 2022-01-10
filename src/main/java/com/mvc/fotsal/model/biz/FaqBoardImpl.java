@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.mvc.fotsal.model.dao.FaqBoardDao;
 import com.mvc.fotsal.model.dto.FaqBoardDto;
+import com.mvc.fotsal.paging.FaqSearch;
 
 @Service
 public class FaqBoardImpl implements FaqBoardBiz{
@@ -15,8 +16,8 @@ public class FaqBoardImpl implements FaqBoardBiz{
 	private FaqBoardDao dao;
 	
 	@Override
-	public List<FaqBoardDto> selectList() {
-		return dao.selectList();
+	public List<FaqBoardDto> selectList(FaqSearch STLP) {
+		return dao.selectList(STLP);
 	}
 
 	@Override
@@ -31,14 +32,19 @@ public class FaqBoardImpl implements FaqBoardBiz{
 
 	@Override
 	public int update(FaqBoardDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.update(dto);
 	}
 
 	@Override
 	public int delete(int faq_no) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.delete(faq_no);
 	}
+
+	@Override
+	public int listCount(FaqSearch STLP) {
+		return dao.listCount(STLP);
+	}
+
+
 
 }

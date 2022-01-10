@@ -3,27 +3,56 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="faqinfo">
-	
-	<select id="selectList" resultType="FaqBoardDto">
-		SELECT *
-		FROM FAQ
+
+	<select id="selectList" resultType="FaqBoardDto"
+		parameterType="com.mvc.fotsal.paging.FaqSearch">
+		SELECT FAQ_NO, FAQ_GPNO, FAQ_GPSQ, USER_ID, FAQ_TITLE, FAQ_CONTENT, FAQ_REG, FAQ_TYPE
+		FROM (SELECT FAQ_NO, FAQ_GPNO, FAQ_GPSQ, USER_ID, FAQ_TITLE, FAQ_CONTENT, FAQ_REG, FAQ_TYPE,
+		ROW_NUMBER() OVER(ORDER BY FAQ_NO DESC) AS RNUM FROM FAQ) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
 		ORDER BY FAQ_NO DESC
 	</select>
 	
-	<select id="selectOne" resultType="FaqBoardDto" parameterType="int">
-		SELECT * FROM WHERE FAQ_NO = #{faq_no}			
+	<select id="listCount" resultType="int"
+		parameterType="com.mvc.fotsal.paging.FaqSearch">
+		SELECT COUNT(FAQ_NO)
+		FROM FAQ
+		WHERE 1=1
+		<include refid="search"></include>
+		AND FAQ_NO > 0
 	</select>
-	
+
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND FAQ_TITLE LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'c'.toString()">AND FAQ_CONTENT LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'w'.toString()">AND USER_ID LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'tc'.toString()">AND (FAQ_TITLE LIKE '%' || #{keyword} || '%') or
+				(FAQ_CONTENT LIKE '%' || #{keyword} || '%')</if>
+		</if>
+	</sql>
+
+	<select id="selectOne" resultType="FaqBoardDto"
+		parameterType="_int">
+		SELECT * FROM FAQ WHERE FAQ_NO = #{faq_no}
+	</select>
+
 	<insert id="insert" parameterType="FaqBoardDto">
 		INSERT INTO FAQ
 		VALUES(FAQ_NOSQ.NEXTVAL, FAQ_GPNOSQ.NEXTVAL, 1, #{faq_title},
 		#{faq_content}, #{user_id}, SYSDATE , #{faq_type})
 	</insert>
-	
-	<update id="update" parameterType="FaqBoardDto">
+
+	<update id="update" parameterType="FaqBoardDDto">
 		UPDATE FAQ
-		SET FAQ TITLE = #{faq_title}, FAQ_CONTENT = #{faq_content}, FAQ_TYPE = #{faq_type}
+		SET FAQ TITLE = #{faq_title}, FAQ_CONTENT = #{faq_content}
 		WHERE FAQ_NO = #{faq_no}
 	</update>
 	
+	<delete id="delete" parameterType="int">
+		DELETE FROM FAQ
+		WHERE
+		FAQ_NO=#{faq_no}
+	</delete>
+
 </mapper>
