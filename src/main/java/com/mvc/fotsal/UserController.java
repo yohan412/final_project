@@ -111,7 +111,11 @@ public class UserController {
 		
 		if(biz.insert(dto)>0) {
 			return "redirect:loginform.do";
-		}else {
+		}else{
+			if(dto.getUser_conchk()!=null) {
+				return "redirect:kakaoLogin.do";
+			}
+			
 			return "redirect:registerform.do";
 		}
 	}

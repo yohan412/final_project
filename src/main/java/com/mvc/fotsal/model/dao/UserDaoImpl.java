@@ -216,7 +216,6 @@ import com.mvc.fotsal.model.dto.UserDto;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			System.out.println(res.getUser_id());
 			return res;
 		}
 
