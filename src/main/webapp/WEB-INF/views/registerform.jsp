@@ -67,7 +67,7 @@
 }
 #content{
 	background: white;
-	width: 30%;
+	width: 400px;
 }
 
 </style>
@@ -129,7 +129,7 @@
         }).open();
     }
 </script>
-<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	function idChk() {
 		var doc = document.getElementsByName("user_id")[0];
@@ -183,6 +183,7 @@
 		<section id="content">
 		<form action="register.do" method="post" onsubmit="return pwchk()">
 			<table align="center" method="post" cellpadding="3">
+				<img src="/img/bg1.jpg" style="width: 200px; height: 200px;">
 				<tr>
 					<th>I D</th>
 					<td width="100%">
@@ -213,7 +214,7 @@
 				</tr>
 				<tr>
 				
-				<div id="birth">
+				<tr>
 					<th>Year / Month / Day</th>
 					<td>
 						<select id="birth_yy" name="mybirthyy">
@@ -332,7 +333,6 @@
 						</select>
 					</td>
 				</tr>
-				</div>
 				<tr>
 					<th>Address</th>
 					<td>
@@ -361,17 +361,14 @@
 						<input type="checkbox" id="chkbox" required><span><a href="javascript:void(0);" onclick="javascript:provision3();">위치정보 이용약관</a>에 동의합니다.</span><br>
 						<input type="checkbox" id="chkbox" required><span><a href="javascript:void(0);" onclick="javascript:provision4();">프로모션 정보 수신</a>에 동의합니다.</span>
 					</td>
-					<br><br><br><br>
 				</tr>
 				
-				<div>
 				<tr>
 					<td colspan="10" style="text-align: center;">
 						<input type="submit" id="join" value="가 입 하 기"  style="width:300px;height:40px;" onclick="idChkConfirm();"><br><br>
 						<input type="button" id="reset" value="취 소" onclick="'" style="width:300px;height:40px;">
 					</td>
 				</tr>
-				</div>
 			</table>
 			</section>
 		</form>
