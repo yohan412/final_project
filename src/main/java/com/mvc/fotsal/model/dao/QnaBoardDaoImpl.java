@@ -20,8 +20,11 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 	public List<QnaBoardDto> selectList(QnaSearch STLP) {
 		List<QnaBoardDto> qnalist = new ArrayList<QnaBoardDto>();
 		
+		System.out.println(STLP);
+		
 		try {
 			qnalist = sqlSession.selectList(NAMESPACE+"selectList", STLP);
+			
 		} catch (Exception e) {
 			System.out.println("error: select list failed");
 			e.printStackTrace();
