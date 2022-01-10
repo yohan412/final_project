@@ -115,6 +115,12 @@
         <div id="mid_form">
             <div id="info_form">
                 <div class="info">
+                    <div class="mid_title">경기장 주소</div>
+                    <div class="mid_info">
+                        ${detail.stadium_addr}
+                    </div>
+                </div>
+                <div class="info">
                     <div class="mid_title">홈페이지 주소</div>
                     <div class="mid_info">
                         <c:choose>
