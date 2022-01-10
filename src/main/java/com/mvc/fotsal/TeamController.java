@@ -86,7 +86,7 @@ public class TeamController {
 	            try {
 	                mf.transferTo(new File(safeFile));
 	                
-	                PicDto pic = new PicDto(dto.getTeam_no(), originFileName, FileName);
+	                PicDto pic = new PicDto(biz.findno(dto), originFileName, FileName);
 	                
 	                biz.teampic(pic);
 	                
