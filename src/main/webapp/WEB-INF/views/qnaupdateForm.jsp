@@ -15,6 +15,7 @@
 			<div class="top-box-content">
 			<form action="qnaupdateResult.do" method="post">
 			<input type="hidden" name="qna_no" value="${dto.qna_no }">
+			<input type="hidden" name="qna_gpno" value="${dto.qna_gpno }">
 			<%-- <input type="hidden" name="user_id" value="${login.getUser_id()}" readonly> --%>
 					<div class="top-box-content">
 						<div class="title-text">

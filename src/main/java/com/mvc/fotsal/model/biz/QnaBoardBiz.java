@@ -11,7 +11,7 @@ public interface QnaBoardBiz {
 	public List<QnaBoardDto> selectList(QnaSearch STLP);
 	public int listCount(QnaSearch STLP);
 	
-	public QnaBoardDto selectOne(int qna_gpno);
+	public QnaBoardDto selectOne(int qna_no);
 	public QnaBoardDto selectOne2(int qna_gpno);
 	public int insert(QnaBoardDto dto);
 	public int comment_insert(QnaBoardDto dto);
