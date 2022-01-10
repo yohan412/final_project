@@ -14,6 +14,9 @@ public class PicDto {
 		this.pic_name = pic_name;
 		this.pic_path = pic_path;
 	}
+
+	
+
 	public int getBoardno() {
 		return boardno;
 	}

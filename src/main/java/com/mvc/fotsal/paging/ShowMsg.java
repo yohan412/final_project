@@ -11,9 +11,9 @@ public class ShowMsg {
 		response.setCharacterEncoding("UTF-8");
 	}
 	
-	public static void alert(HttpServletResponse response, String alertText) throws IOException {
+	public static void alert(HttpServletResponse response, String alertText, String moveUrl) throws IOException {
 		init(response);
 		PrintWriter out = response.getWriter();
-		out.println("<script>alert('"+ alertText +"'); </script> ");
+		out.println("<script>alert('"+ alertText +"'); location.href='"+moveUrl+"'; </script> ");
 	}
 }

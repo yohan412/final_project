@@ -86,7 +86,7 @@ public class TeamController {
 	            try {
 	                mf.transferTo(new File(safeFile));
 	                
-	                PicDto pic = new PicDto(biz.findno(dto), originFileName, FileName);
+	                PicDto pic = new PicDto(dto.getTeam_no(), originFileName, FileName);
 	                
 	                biz.teampic(pic);
 	                
@@ -106,7 +106,7 @@ public class TeamController {
 	}
 	
 	@RequestMapping(value="/teamlist.do", method = RequestMethod.GET)
-	public String teamList(Model model, @ModelAttribute("STLP") TeamSearch STLP, MercenaryDto mDto) { // 팀 게시판(리스트)
+	public String teamList(Model model, @ModelAttribute("STLP") TeamSearch STLP) { // 팀 게시판(리스트)
 		logger.info("Select Team List, move page teamboard.jsp");
 		
 		model.addAttribute("list",biz.selectList(STLP));
@@ -116,27 +116,18 @@ public class TeamController {
 		pageMaker.setTotalCount(biz.listCount(STLP)); // 최대 리스트 갯수 카운트
 		
 		model.addAttribute("pageMaker", pageMaker);
-		model.addAttribute("mDto", mBiz.selectListT(mDto));
 		
 		System.out.println(STLP.toString());
+		
 		
 		return "teamboard";
 	}
 	
 	@RequestMapping(value="/team_detail.do")
-	public String detail(Model model, int team_no, MercenaryDto mDto) { // 팀 자세히보기
+	public String detail(Model model, int team_no) { // 팀 자세히보기
 		logger.info("move page team_detail.jsp");
 		model.addAttribute("teamDto", biz.selectOne(team_no));
-		model.addAttribute("mercenaryDto", mBiz.selectListT(mDto));
-		
-		System.out.println(mDto.getGame_no());
-		System.out.println(mDto.getMercenary_foot());
-		System.out.println(mDto.getMercenary_intro());
-		System.out.println(mDto.getMercenary_position());
-		System.out.println(mDto.getMercenary_rate());
-		System.out.println(mDto.getUser_id());
-		System.out.println(mDto.getUser_no());
-		
+				
 
 		return "team_detail";
 	}
@@ -150,56 +141,59 @@ public class TeamController {
 		return "team_updateForm";
 	}
 	
+	
+	
 	@RequestMapping(value="/team_updateResult.do")
-	public String updateRes(TeamDto dto, MultipartHttpServletRequest mtf) { // 팀 수정하기
-		
-		int res = biz.update(dto);
-		
-		String uploadpath = mtf.getRealPath("resources\\upload"); //upload폴더에 실제 경로 설정
-		System.out.println(uploadpath);
-		
-		if(res>0) {
-			
-			//========================파일 업로드==============================
-			logger.info("파일 업로드 작업중");
-			
-			
-			List<MultipartFile> fileList = mtf.getFiles("upload_file");
-			
-			for (MultipartFile mf : fileList) {
-	            String originFileName = mf.getOriginalFilename(); // 원본 파일 명
-	            long fileSize = mf.getSize(); // 파일 사이즈
+	   public String updateRes(TeamDto dto, MultipartHttpServletRequest mtf) { // 팀 수정하기
+	      
+	      int res = biz.update(dto);
+	      
+	      String uploadpath = mtf.getRealPath("resources\\upload"); //upload폴더에 실제 경로 설정
+	      System.out.println(uploadpath);
+	      
+	      if(res>0) {
+	         
+	         //========================파일 업로드==============================
+	         logger.info("파일 업로드 작업중");
+	         
+	         
+	         List<MultipartFile> fileList = mtf.getFiles("upload_file");
+	         
+	         for (MultipartFile mf : fileList) {
+	               String originFileName = mf.getOriginalFilename(); // 원본 파일 명
+	               long fileSize = mf.getSize(); // 파일 사이즈
 
-	            System.out.println("originFileName : " + originFileName);
-	            System.out.println("fileSize : " + fileSize);
-	            
-	            String FileName = System.currentTimeMillis() + originFileName;
-	            String safeFile = uploadpath+"\\"+FileName;
-	            System.out.println(dto.getUser_no()+dto.getTeam_name());
-	            System.out.println(biz.findno(dto));
-	            try {
-	                mf.transferTo(new File(safeFile));
-	                
-	                PicDto pic = new PicDto(biz.findno(dto), originFileName, FileName);
-	                
-	                biz.teampic(pic);
-	                
-	            } catch (IllegalStateException e) {
-	                e.printStackTrace();
-	            } catch (IOException e) {
-	                e.printStackTrace();
-	            }
-	        }
-			//===============================================================
-			
-			logger.info("팀 등록서 수정완료");
-			return "redirect:team_detail.do?team_no="+dto.getTeam_no();
-		}else {
-			logger.info("팀 등록서 수정실패");
-			return "redirect:team_updateForm.do?team_no="+dto.getTeam_no();
-		}
+	               System.out.println("originFileName : " + originFileName);
+	               System.out.println("fileSize : " + fileSize);
+	               
+	               String FileName = System.currentTimeMillis() + originFileName;
+	               String safeFile = uploadpath+"\\"+FileName;
+	               System.out.println(dto.getUser_no()+dto.getTeam_name());
+	               System.out.println(biz.findno(dto));
+	               try {
+	                   mf.transferTo(new File(safeFile));
+	                   
+	                   PicDto pic = new PicDto(dto.getTeam_no() ,originFileName, FileName);
+	                   
+	                   biz.updatePic(pic);
+	                   
+	               } catch (IllegalStateException e) {
+	                   e.printStackTrace();
+	               } catch (IOException e) {
+	                   e.printStackTrace();
+	               }
+	           }
+	         //===============================================================
+	         
+	         logger.info("팀 등록서 수정완료");
+	         return "redirect:team_detail.do?team_no="+dto.getTeam_no();
+	      }else {
+	         logger.info("팀 등록서 수정실패");
+	         return "redirect:team_updateForm.do?team_no="+dto.getTeam_no();
+	      }
+	      
+	   }
 		
-	}
 	@RequestMapping(value="Team_referer.do") // 이전페이지로 이동
 	public String referer(HttpServletRequest request) {
 		String referer = request.getHeader("Referer");
