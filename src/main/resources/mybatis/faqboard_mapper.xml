@@ -43,7 +43,7 @@
 		#{faq_content}, #{user_id}, SYSDATE , #{faq_type})
 	</insert>
 
-	<update id="update" parameterType="FaqBoardDDto">
+	<update id="update" parameterType="FaqBoardDto">
 		UPDATE FAQ
 		SET FAQ TITLE = #{faq_title}, FAQ_CONTENT = #{faq_content}
 		WHERE FAQ_NO = #{faq_no}
