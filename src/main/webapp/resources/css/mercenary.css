@@ -2,8 +2,13 @@ section.body{
 	display: flex;
 	justify-content: center;
 }
+textarea{
+    width: 100%;
+    height: 6.25em;
+    resize: none;
+}
 .top-box-content{
-	width: 500px;
+	width: 700px;
 	flex-wrap: wrap;
 	}
 .chk-position{
@@ -11,6 +16,19 @@ section.body{
 }
 .title-text{
 	display: flex;
+	justify-content: center;
+	background-color: #f8f8f8;
+	border-bottom: 1px solid #ccc;
+}
+.writer-name{
+	background-color: #ffffff;
+	border-bottom: 1px solid #ccc;
+}
+#explain-text{
+	font-size: 11px;
+}
+#position-text{
+	font-size: 16px;
 }
 .content-rate{
 	display: flex;
@@ -58,12 +76,7 @@ section.body{
 .head-text{
 	display: flex;
 }
-.content-select-foot{
-
-}
-.head-text{
-
-}
-.main-top-box{
-
+.content-submit{
+	margin-top: 20px;
+	width: 100%;
 }

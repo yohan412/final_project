@@ -72,7 +72,7 @@
 	
 	<delete id="delete" parameterType="int">
 		DELETE TEAM_INFO
-		WHERE TEAM_NO=#{team_no} AND TEAM_NAME=#{team_name}
+		WHERE TEAM_NO=#{team_no}
 	</delete>
 
 	<insert id="insert_pic" parameterType="picDto">

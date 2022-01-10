@@ -74,6 +74,9 @@
 						<input id="pointer" type="button" value="이전" onclick="mainPage()">
 						<input id="pointer" type="submit" value="작성하기">
 					</div>
+					<div class="blank-space" style="height: 150px;">
+					
+					</div>
 				</div>
 			</form>
 		</div>

@@ -208,8 +208,10 @@ public class TeamController {
 		int res = biz.delete(team_no);
 		
 		if(res>0) {
+			logger.info("팀 삭제 완료");
 			return "redirect:teamlist.do";
 		}else {
+			logger.info("팀 삭제 실패");
 			return "redirect:team_detail.do?team_no="+team_no;
 		}
 		
