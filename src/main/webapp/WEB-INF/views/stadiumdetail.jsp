@@ -53,11 +53,18 @@
         <div id="top_form">
             <div id="top_left_form">
                 <div id="img_form">
-                    <ul class="bxslider">
-                        <c:forEach items="${imglist}" var="imglist">
-                            <li><img src="/upload/${imglist.pic_path}"></li>
-                        </c:forEach>
-                    </ul>
+                    <c:choose>
+                        <c:when test="${empty imglist}">
+                            이미지가 없습니다.
+                        </c:when>
+                        <c:otherwise>
+                            <ul class="bxslider">
+                                <c:forEach items="${imglist}" var="imglist">
+                                    <li><img src="/upload/${imglist.pic_path}"></li>
+                                </c:forEach>
+                            </ul>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div id="content_form">
                     <textarea id="content" readonly>${detail.stadium_content}</textarea>
