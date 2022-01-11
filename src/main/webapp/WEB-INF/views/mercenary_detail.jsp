@@ -66,7 +66,7 @@
 					<div class="content-submit" align="right">
 						<input id="pointer" type="button" value="이전" onclick="location.href='referer.do'">
 						<input id="pointer" name="update-hidden" type="button" value="수정" onclick="location.href='mercenary_updateForm.do?user_no=${mDto.getUser_no()}'">
-						<input id="pointer" type="button" value="삭제" onclick="location.href='mercenary_delete.do?user_no=${mDto.getUser_no()}'">
+						<input id="pointer" name="delete-hidden" type="button" value="삭제" onclick="location.href='mercenary_delete.do?user_no=${mDto.getUser_no()}'">
 						
 					</div>
 					<div class="blank-space" style="height: 150px;">
@@ -107,14 +107,15 @@
 		}
 	});
 	
-	$(function(){
+	$(function(){ // 용병지원서 작성자가 아니면 삭제 및 수정버튼 숨기기
 		var writer = '${mDto.user_id}'; // 작성자
 		var user_id = '${login.user_id}';  // 세션에 저장된 로그인 아이디
 		
 		$("input[name=update-hidden]").hide();
-		
+		$("input[name=delete-hidden]").hide();
 		if(writer === user_id){
 			$("input[name=update-hidden]").show();
+			$("input[name=delete-hidden]").show();
 		}
 	});
 	
