@@ -14,6 +14,7 @@
 	}
 	
 	header{
+		top:0;
 		height: 220px;
 	}
 	

@@ -370,7 +370,7 @@
 				<tr>
 					<td colspan="10" style="text-align: center;">
 						<input type="submit" id="join" value="가 입 하 기"  style="width:300px;height:40px;" onclick="idChkConfirm();"><br><br>
-						<input type="button" id="reset" value="취 소" onclick="'" style="width:300px;height:40px;">
+						<input type="button" id="reset" value="취 소" onclick="location.href='index.jsp'" style="width:300px;height:40px;">
 					</td>
 				</tr>
 			</table>
