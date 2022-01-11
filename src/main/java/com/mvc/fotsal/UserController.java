@@ -280,8 +280,9 @@ public class UserController {
     
     //사용자 정보 업데이트
     @RequestMapping("/updateres.do")
-    public String updateRes(UserDto dto) {
+    public String updateRes(UserDto dto, @RequestParam("myaddr1") String addr1, @RequestParam("myaddr2") String addr2) {
     	logger.info("UPDATE RES");
+    	dto.setUser_addr(addr1+","+addr2);
     	
     	int res = biz.update(dto);
     	if(res>0) {
