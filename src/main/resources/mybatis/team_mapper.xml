@@ -44,7 +44,7 @@
 
 	
 	<select id="selectOne" resultType="teamDto" parameterType="int">
-		SELECT t.TEAM_NO, t.USER_NO, p.PIC_PATH, t.TEAM_NAME, t.TEAM_INTRO, t.TEAM_ADDCHK, u.USER_PHONE 
+		SELECT t.TEAM_NO, t.USER_NO, p.PIC_PATH, t.TEAM_NAME, t.TEAM_INTRO, t.TEAM_ADDCHK, u.USER_PHONE, u.USER_ID 
 		FROM TEAM_INFO t
 		LEFT JOIN TEAM_PIC p ON t.TEAM_NO = p.TEAM_NO
 		LEFT JOIN USER_INFO u ON t.USER_NO = u.USER_NO
