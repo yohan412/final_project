@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+h1{
+
+	display: flex;
+	flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+#boardselect_form{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.boardselect{
+    width: 200px;      /*해당 width 설정해 둘 사이 간격 설정*/
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+#faq:hover , #qna:hover{
+	background: #ccc;
+	color: white;
+}
+
+.list-all-box{
+	margin-top: 20px;
+	display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
