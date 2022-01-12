@@ -49,7 +49,6 @@
 						<label class="chk-foot"><input type="radio" name="mercenary_foot" value="R" checked>오른발</label>
 						<label class="chk-foot"><input type="radio" name="mercenary_foot" value="A">양발</label>
 					</div>
-					<hr>
 					<div class="content-select-position">
 						<h5 class="head-text">2. *포지션</h5>
 					</div>
@@ -67,8 +66,7 @@
 						</map>
 						<input type="hidden" name="mercenary_position" id="hiddenInput" value="">
 					</div>
-					<hr>
-					<div class="content-introduce">
+					<div class="content-introduce" style="border-bottom: none;">
 						<h5 class="head-text">3. 자기소개 및 한마디</h5>
 						<textarea rows="10" cols="60" name="mercenary_intro" placeholder="자기소개와 한마디를 적어주세요"></textarea>
 					</div>
