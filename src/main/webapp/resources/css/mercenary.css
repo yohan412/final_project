@@ -8,7 +8,7 @@ textarea{
     resize: none;
 }
 .top-box-content{
-	width: 700px;
+	width: 900px;
 	flex-wrap: wrap;
 	}
 .chk-position{
@@ -43,7 +43,7 @@ textarea{
 	justify-content: center;
 }
 .content-submit{
-	margin-right: 60px;
+	margin-left: 10px;
 }
 #pointer{
 	cursor: pointer;
