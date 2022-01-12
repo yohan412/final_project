@@ -122,28 +122,46 @@
         <div id="mid_form">
             <div id="info_form">
                 <div class="info">
-                    <div class="mid_title">경기장 주소</div>
+                    <div class="mid_title">
+                        <div style="height: 100%; width: 109px;"></div>
+                        <div style="height: 100%; width: 120px; display: flex; align-items: center; border-right: 1px solid lightgray;">
+                            경기장 주소
+                        </div>
+                    </div>
                     <div class="mid_info">
                         ${detail.stadium_addr}
                     </div>
+                    <div style="height: 100%; width: 345px;"></div>
                 </div>
                 <div class="info">
-                    <div class="mid_title">홈페이지 주소</div>
+                    <div class="mid_title">
+                        <div style="height: 100%; width: 109px;"></div>
+                        <div style="height: 100%; width: 120px; display: flex; align-items: center; border-right: 1px solid lightgray;">
+                            홈페이지 주소
+                        </div>
+                    </div>
                     <div class="mid_info">
                         <c:choose>
                             <c:when test="${empty detail.stadium_webaddr}">없음</c:when>
                             <c:otherwise>${detail.stadium_webaddr}</c:otherwise>
                         </c:choose>
                     </div>
+                    <div style="height: 100%; width: 345px;"></div>
                 </div>
                 <div class="info">
-                    <div class="mid_title">전화번호</div>
+                    <div class="mid_title">
+                        <div style="height: 100%; width: 109px;"></div>
+                        <div style="height: 100%; width: 120px; display: flex; align-items: center; border-right: 1px solid lightgray;">
+                            전화번호
+                        </div>
+                    </div>
                     <div class="mid_info">
                         <c:choose>
                             <c:when test="${empty detail.stadium_phonenum}">없음</c:when>
                             <c:otherwise>${detail.stadium_phonenum}</c:otherwise>
                         </c:choose>
                     </div>
+                    <div style="height: 100%; width: 345px;"></div>
                 </div>
             </div>
         </div>
@@ -241,6 +259,9 @@
                         $("#bot_review_view_form")
                             .css('display', 'none')
                             .css('bottom', "0px");
+
+                        $("#content").css("background-color", 'white');
+                        $(".bxslider li").css("background-color", "white");
 
                         $("#review_v_title").empty();
                         $("#review_v_content").empty();

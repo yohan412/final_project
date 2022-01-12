@@ -37,6 +37,7 @@
     user-select: none;
     cursor: pointer;
     background-color: lightgray;
+    border-radius: 5px;
 }
 #right_form{
     width: 550px;
@@ -53,23 +54,23 @@
     display: flex;
     flex-wrap: wrap;
     user-select: none;
-    background-color: lightgray;
+    border-bottom: 1px solid rgba(140,140,140,0.71);
 }
 #stadium_form{
     width: 100%;
-    height: 120px;
+    height: 100px;
     display: flex;
     flex-wrap: wrap;
     font-size: 45px;
     font-weight: bold;
-    align-items: center;
+    align-items: flex-end;
 }
 #stadium_addr_form{
     width: 100%;
-    height: 60px;
+    height: 40px;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
 }
 #date_form{
     width: 500px;
@@ -78,7 +79,7 @@
     display: flex;
     flex-wrap: wrap;
     user-select: none;
-    background-color: lightgray;
+    border-bottom: 1px solid rgba(140,140,140,0.71);
 }
 #dday_form{
     width: 30%;
@@ -101,15 +102,16 @@
     display: flex;
     flex-wrap: wrap;
     user-select: none;
+    border-bottom: 1px solid rgba(140,140,140,0.71);
 }
 #time_form{
     width: 40%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     font-size: 25px;
     font-weight: bold;
-    background-color: lightgray;
 }
 #person_div{
     width: 60%;
@@ -117,13 +119,13 @@
     justify-content: center;
 }
 #person_form{
-    width: 30%;
+    width: 100px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     font-size: 25px;
     font-weight: bold;
-    background-color: lightgray;
 }
 #textarea_form{
     width: 500px;
@@ -132,7 +134,7 @@
     margin-bottom: 20px;
     resize:none;
     user-select: none;
-    border: 0;
+    border: 1px solid rgba(140,140,140,0.71);
     outline: 0;
     font-family: "Open Sans", Arial, Verdana;
     font-weight: bold;
@@ -149,15 +151,15 @@
 #button_form .button{
     width: 120px;
     height: 50px;
-    background-color: aqua;
     border: 0;
     outline: 0;
-    color: white;
     font-size: 17px;
     font-weight: bold;
     border-radius: 5px;
     margin-left: 10px;
-    cursor: pointer;
+    background-color: #bfb5d7;
+    color: #ffffff;
+    cursor: pointer ;
 }
 #bottom_form{
     width: 900px;
@@ -175,7 +177,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    background-color: lightgray;
+    border: 1px solid lightgray;
 }
 .comment{
     width: 700px;
@@ -184,7 +186,7 @@
     flex-wrap: wrap;
     margin-top: 20px;
     user-select: none;
-    background-color: gray;
+    border-bottom: 1px solid lightgray;
     cursor: pointer;
 }
 .comment #comment_info{
@@ -234,8 +236,8 @@
 	height: 20px;
     border: 0;
     outline: 0;
-    color:white;
-    background-color: darkblue;
+    background-color: #bfb5d7;
+    color: #ffffff;
     border-radius: 2px;
     cursor: pointer;
 }
@@ -254,7 +256,6 @@
     font-weight: bold;
     border: 0;
     outline: 0;
-    color: lightgray;
 }
 a{
 	color: black;
@@ -265,8 +266,8 @@ a{
     cursor: pointer;
     border: 0;
     outline: 0;
-    background-color: #676FA3;
-    color: #CDDEFF;
+    background-color: #bfb5d7;
+    color: #ffffff;
     width: 30px;
     height: 30px;
     font-size: 16px;
@@ -277,8 +278,8 @@ a{
     cursor: pointer;
     border: 0;
     outline: 0;
-    background-color: #676FA3;
-    color: #CDDEFF;
+    background-color: #bfb5d7;
+    color: #ffffff;
     width: 30px;
     height: 30px;
     font-size: 16px;
@@ -290,8 +291,8 @@ a{
     cursor: pointer;
     border: 0;
     outline: 0;
-    background-color: #676FA3;
-    color: #CDDEFF;
+    background-color: #bfb5d7;
+    color: #ffffff;
     width: 30px;
     height: 30px;
     font-size: 16px;
@@ -327,10 +328,10 @@ a{
     outline: none;
     float: right;
     cursor:pointer;
-    background-color: aqua;
     font-weight: bold;
     font-size: 15px;
-    color: white;
+    background-color: #bfb5d7;
+    color: #ffffff;
 }
 <!---->
 .reply_comment_form{
@@ -364,10 +365,10 @@ a{
     outline: none;
     float: right;
     cursor:pointer;
-    background-color: aqua;
     font-weight: bold;
     font-size: 15px;
-    color: white;
+    background-color: #bfb5d7;
+    color: #ffffff;
 }
 #hidden_form{
     width: 900px;

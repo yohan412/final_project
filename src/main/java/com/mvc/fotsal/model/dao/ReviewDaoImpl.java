@@ -30,11 +30,11 @@ public class ReviewDaoImpl implements ReviewDao{
     }
 
     @Override
-    public int listcount() {
+    public int listcount(int stadium_no) {
         int res = 0;
 
         try{
-            res = sqlSessionTemplate.selectOne(NAMESPACE + "listcount");
+            res = sqlSessionTemplate.selectOne(NAMESPACE + "listcount", stadium_no);
         }catch (Exception e){
             System.out.println("[ERROR]: listcount");
             e.printStackTrace();

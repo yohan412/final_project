@@ -20,6 +20,7 @@
             SELECT COUNT(REVIEW_NO)
             FROM REVIEW
             WHERE REVIEW_NO > 0
+            AND STADIUM_NO = #{stadium_no}
         ]]>
     </select>
 

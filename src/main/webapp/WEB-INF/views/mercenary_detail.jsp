@@ -26,14 +26,13 @@
 						<h2>용병지원서</h2>
 					</div>
 					<div class=writer-name>
-						<h3 style="text-align: center;">${mDto.getUser_id() }</h3> <!-- 작성자 id -->
+						<h3 style="text-align: center;">${mDto.getUser_id() } 님</h3> <!-- 작성자 id -->
 					</div>
 					<div class="content-select-foot">
 						<h5 class="head-text">1. 주 사용 발</h5>
 						<p id="explain-text">(A: 올라운더 / L: 왼발 / R: 오른발)</p>
-						<label class="chk-foot"><input type="radio" name="mercenary_foot" checked>${mDto.getMercenary_foot() }</label>
+						<label class="chk-foot">${mDto.getMercenary_foot() }</label>
 					</div>
-					<hr>
 					<div class="content-select-position" align="center">
 						<h5 class="head-text">2. 포지션</h5>
 						<input style="outline: none; text-align:center; border: 0px solid black" readonly id="position-text" type="text" value="">
@@ -58,10 +57,9 @@
 						</c:when>
 					</c:choose>
 					</div>
-					<hr>
 					<div class="content-introduce">
 						<h5 class="head-text">3. 자기소개 및 한마디</h5>
-						<textarea rows="10" cols="60" placeholder="자기소개와 한마디를 적어주세요" readonly>${mDto.getMercenary_intro() }</textarea>
+						<textarea rows="10" cols="60" style="border: 0; outline: none;" readonly>${mDto.getMercenary_intro() }</textarea>
 					</div>
 					<div class="content-submit" align="right">
 						<input id="pointer" type="button" value="이전" onclick="location.href='referer.do'">

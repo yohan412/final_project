@@ -72,7 +72,7 @@
                     </c:if>
                 </div>
                 <div style="width: 200px; height: 100%; display: flex; align-items: center; justify-content: center">
-                    <input type="button" value="경기 등록" onclick="game_insert('${userDto.user_id}')">
+                    <input type="button" value="경기 등록" onclick="game_insert('${userDto.user_id}')" id="sta_but">
                     <script type="text/javascript">
                         function game_insert(user_id){
                             if(user_id === "" || user_id == null){
@@ -119,7 +119,7 @@
     </div>
 </section>
 <footer>
-	푸터
+    <%@ include file="/WEB-INF/views/footer.jsp" %>
 </footer>
 </body>
 </html>

@@ -125,6 +125,13 @@ public class GameController {
 
         return "gamelist";
     }
+    @RequestMapping("/getgamelist.do")
+    public String getgamelist(HttpServletRequest request,Model model) {
+    	
+    	
+    	
+    	return "ajaxgamelist";
+    }
 
     @RequestMapping("/gamedetail.do")
     public String GameDetailPage(Model model, int game_no, GameAskPaging gameAskPaging, HttpServletRequest request){

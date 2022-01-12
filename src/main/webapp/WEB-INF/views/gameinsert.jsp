@@ -15,7 +15,7 @@
     <script type="text/javascript" src="${path}/resources/js/gameinsert.js"></script>
 </head>
 <body>
-<header style="height: 230px">
+<header style="height: 250px">
     <%@ include file="/WEB-INF/views/header.jsp" %>
 </header>
 <section>
@@ -25,6 +25,7 @@
             <input type="hidden" name="user_id" value="${userDto.user_id}">
             <div id="top_form">
                 <div id="region_form">
+                    <div style="width: 100px; height: 100%"></div>
                     <div class="font">지역이름</div>
                     <div class="info">
                         <select name="game_region" style="width: 258px; height: 35px">
@@ -42,14 +43,18 @@
                             <option value="제주">제주</option>
                         </select>
                     </div>
+                    <div style="width: 100px; height: 100%"></div>
                 </div>
                 <div id="stadium_name_form">
+                    <div style="width: 100px; height: 100%"></div>
                     <div class="font">경기장 이름</div>
                     <div class="info">
                         <input type="text" placeholder="경기장 이름" name="game_stadium" id="stadium_name" class="inputform">
                     </div>
+                    <div style="width: 100px; height: 100%"></div>
                 </div>
                 <div id="stadium_addr_form">
+                    <div style="width: 100px; height: 100%"></div>
                     <div class="addr_title">
                         <div style="width:100%; height: 100%; display: flex; align-items: center">경기장 주소</div>
                     </div>
@@ -63,6 +68,7 @@
                             <input type="button" value="주소 찾기" id="addr_button" onclick="Addr_api();">
                         </div>
                     </div>
+                    <div style="width: 100px; height: 100%"></div>
                 </div>
                 <div id="game_date_form">
                     <div class="font">경기 날짜</div>
@@ -167,22 +173,25 @@
                     </div>
                 </div>
                 <div id="game_content_form">
+                    <div style="width: 100px; height: 100%"></div>
                     <div class="content_title_form">
                         <div id="content_title">
                             기타 내용
                         </div>
                         <div style="width: 180px; height: 70%"></div>
                     </div>
-                    <div class="info">
+                    <div class="info" style="width: 520px">
                         <textarea id="textarea" name="game_content"></textarea>
                 	</div>
-                <div id="button_form"><input type="submit" value="경기 등록" id="button"></div>
             </div>
-        </form:form>
+            <div id="button_form">
+                <input type="submit" value="경기 등록" id="button">
+            </div>
+            </form:form>
     </div>
 </section>
 <footer>
-    푸터
+    <%@ include file="/WEB-INF/views/footer.jsp" %>
 </footer>
 </body>
 </html>

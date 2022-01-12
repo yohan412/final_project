@@ -63,15 +63,22 @@
 		<div class="page-list" align="center">
 			
 				<c:if test="${pageMaker.prev }">
-					<a href="teamlist.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a>
+					<input type="button" id="prev-btn" onclick="location.href='teamlist.do${pageMaker.makeSearch(pageMaker.startPage - 1)}'" value="<<">
 				</c:if>
 				
 				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage }" var="idx">
-					<a href="teamlist.do${pageMaker.makeSearch(idx) }">${idx}</a>
+					<c:choose>
+						<c:when test="${idx eq page }">
+							<input type="button" id="pagingnumClick" value="${idx }">
+						</c:when>
+						<c:otherwise>
+							<input type="button" id="pagingnum" onclick="location.href='teamlist.do${pageMaker.makeSearch(idx) }'" value="${idx}">
+						</c:otherwise>
+					</c:choose>
 				</c:forEach>
 				
 				<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
-					<a href="teamlist.do${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a>
+					<input type="button" id="next-btn" onclick="location.href='teamlist.do${pageMaker.makeSearch(pageMaker.endPage + 1)}'" value=">>">
 				</c:if>
 				
 		</div>
@@ -84,7 +91,7 @@
 			</select>
 			
 			<input type="text" id="keywordInput" name="keyword"  value="${STLP.keyword }"/>
-			<input type="button" id="searchBtn" value="검색">
+			<input type="image" id="searchBtn" src="img/icon_magnifier.png">
 			
 		</div>
 		<div class="content-submit-list" align="right">
@@ -121,5 +128,7 @@
 
 		})
 	});
+	
+
 </script>
 </html>
