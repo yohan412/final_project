@@ -47,7 +47,8 @@ textarea{
 }
 #pointer{
 	cursor: pointer;
-	color: rgba(30, 22, 54, 0.6);
+	background-color: #ccc;
+	color: black;
 	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
 	-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
 	-ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
@@ -62,32 +63,6 @@ textarea{
 #pointer:hover{
 	color: rgba(255, 255, 255, 0.85);
 	box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
-
-}
-.chk-rate{
-	width: 60px;
-	height: 50px;
-	margin: 5px;
-	color: black;
-	background-color: rgb(185, 185, 185);
-	cursor: pointer;
-	text-align: center;
-	border: 1px solid black;
-	border-radius: 2;
-	display: table-cell;
-	vertical-align: middle;
-}
-.chk-position{
-	width: 60px;
-	height: 50px;
-	margin: 5px;
-	color: black;
-	background-color: rgb(185, 185, 185);
-	cursor: pointer;
-	text-align: center;
-	border: 1px solid black;
-	display: table-cell;
-	vertical-align: middle;
 }
 .head-text{
 	display: flex;

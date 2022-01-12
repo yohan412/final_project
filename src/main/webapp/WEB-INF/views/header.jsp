@@ -77,12 +77,7 @@
 			    	  <a href="stadiumlist.do">Stadium</a>
 			  	 </li>
 			 	 <li>
-		    	  	<c:if test = "${login == null }">
-		    	  		<a href="redirect:index.jsp" onclick="loginPlz()">Team</a>
-		    	  	</c:if>
-			 	 	<c:if test = "${login != null }">
-			    	  <a href="teamlist.do">Team</a>
-		    	  	</c:if>
+		    	  		<a href="teamlist.do">Team</a>
 			 	 </li>
 			 	 <li>
 		    	  	<c:if test = "${login == null }">

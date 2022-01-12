@@ -44,7 +44,7 @@
                     <div class="list" onclick="location.href='stadiumdetail.do?stadium_no=${stadiumlist.stadium_no}'">
                         <div class="stadium_picture_form">
                             <c:choose>
-                                <c:when test="${stadiumlist.pic_path eq null}"> </c:when>
+                                <c:when test="${stadiumlist.pic_path eq null}">이미지가 없습니다.</c:when>
                                 <c:otherwise><img src="/upload/${stadiumlist.pic_path}" class="stadium_img"></c:otherwise>
                             </c:choose>
                         </div>

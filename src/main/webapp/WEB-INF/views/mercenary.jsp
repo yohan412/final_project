@@ -25,8 +25,8 @@
 			document.getElementById("position").src = "img/footsalField05.png";
 		}
         console.log(value);
-        $('input[name=mercenary_position]').attr('value', value);
-	    console.log($('input:hidden'));
+		  $('input[id=position-text]').attr('value', value);
+		  $('input[name=mercenary_position]').attr('value', value);
 	}
 
 </script>
@@ -43,7 +43,6 @@
 					<div class="title-text">	
 						<h2>용병지원서</h2>
 					</div>
-					<hr>
 					<div class="content-select-foot">
 						<h5 class="head-text">1. *주 사용 발</h5>
 						<label class="chk-foot"><input type="radio" name="mercenary_foot" value="L" required>왼발</label>
@@ -53,6 +52,9 @@
 					<hr>
 					<div class="content-select-position">
 						<h5 class="head-text">2. *포지션</h5>
+					</div>
+					<div id="position-text" align="center">
+						<input style="outline: none; text-align:center; border: 0px solid black" readonly id="position-text" type="text" value="${mDto.getMercenary_position() }">
 					</div>
 					<div class="select-position-detail">
 						<img src="img/footsalFieldBasic.png" id="position" usemap="#image-map">
@@ -75,14 +77,13 @@
 						<input id="pointer" type="submit" value="작성하기">
 					</div>
 					<div class="blank-space" style="height: 150px;">
-					
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
 </section>
-	<%@ include file="footer.jsp" %>
+						<%@ include file="footer.jsp" %>
 </body>
 <script type="text/javascript">
 	
