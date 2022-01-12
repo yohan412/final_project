@@ -24,7 +24,7 @@
             <div id="searchform">
                 <div id="search_box_form">
                     <div id="search_box">
-                        <input type="text" name="search" id="search" value="${stadiumSearch.keyword}" onkeypress="if(event.keyCode===13){stadiumsearch('${pageMaker.makeQuery(1)}')}" >
+                        <input type="text" name="search" id="search" style="border-bottom: 1px solid lightgrey;" placeholder="경기장 검색" value="${stadiumSearch.keyword}" onkeypress="if(event.keyCode===13){stadiumsearch('${pageMaker.makeQuery(1)}')}" >
                     </div>
                 </div>
                 <div id="select_box_form">

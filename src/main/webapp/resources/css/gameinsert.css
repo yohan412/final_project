@@ -1,5 +1,5 @@
 #mainform{
-    width: 900px;
+    width: 800px;
     min-height: 800px;
     display: flex;
     flex-wrap: wrap;
@@ -7,8 +7,11 @@
     justify-content: center;
 }
 #titleform{
-    width: 900px;
+    width: 800px;
     user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #top_form{
     width: 800px;
@@ -28,7 +31,7 @@
     align-items: center;
 }
 .info{
-    width: 620px;
+    width: 420px;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -79,7 +82,7 @@
     align-items: center;
 }
 .button_form{
-    width: 340px;
+    width: 140px;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -89,11 +92,12 @@
     height: 40px;
     border: 0;
     outline: 0;
-    color: white;
     font-weight: bold;
     font-size: 15px;
     cursor: pointer;
-    background-color: #166cea;
+    background-color: #bfb5d7;
+    color: #ffffff;
+    border-radius: 5px;
 }
 #game_date_form{
     width: 100%;
@@ -249,9 +253,14 @@
     align-items: center;
 }
 #textarea{
-    width: 66%;
+    width: 500px;
     height: 160px;
     resize: none;
+    border: 1px solid rgba(140,140,140,0.71);
+    outline: 0;
+    font-family: "Open Sans", Arial, Verdana;
+    font-weight: bold;
+    font-size: 15px;
 }
 #button_form{
     width: 100%;
@@ -269,8 +278,12 @@
     font-size: 25px;
     font-weight: bold;
     user-select: none;
-    color: white;
+    background-color: #bfb5d7;
+    color: #ffffff;
+    border-radius: 5px;
     cursor: pointer;
-    background-color: #166cea;
 }
-
+input{
+    border: 0;
+    border-bottom:1px solid lightgray;
+}
