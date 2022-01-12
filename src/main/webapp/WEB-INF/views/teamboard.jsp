@@ -91,7 +91,7 @@
 			</select>
 			
 			<input type="text" id="keywordInput" name="keyword"  value="${STLP.keyword }"/>
-			<input type="button" id="searchBtn" value="검색">
+			<input type="image" id="searchBtn" src="img/icon_magnifier.png">
 			
 		</div>
 		<div class="content-submit-list" align="right">
