@@ -128,7 +128,7 @@ public class GameController {
     @RequestMapping("/getgamelist.do")
     public String getgamelist(HttpServletRequest request,Model model) {
     	
-    	
+    	model.addAttribute("gamelist", gameBiz.getGameList());
     	
     	return "ajaxgamelist";
     }

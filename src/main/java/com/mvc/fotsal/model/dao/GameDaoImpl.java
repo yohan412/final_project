@@ -394,4 +394,18 @@ public class GameDaoImpl implements GameDao{
 
         return res;
     }
+
+	@Override
+	public List<GameDto> getGameList() {
+		List<GameDto> list = new ArrayList<GameDto>();
+
+        try{
+            list = sqlSessionTemplate.selectList(NAMESPACE + "getGameList");
+        }catch (Exception e){
+            System.out.println("[ERROR] : getGameList");
+            e.printStackTrace();
+        }
+
+        return list;
+	}
 }

@@ -154,4 +154,9 @@ public class GameBizImpl implements GameBiz{
     public UserDto selectinfo(String user_id) {
         return gameDao.selectinfo(user_id);
     }
+
+	@Override
+	public List<GameDto> getGameList() {
+		return gameDao.getGameList();
+	}
 }

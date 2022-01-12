@@ -50,7 +50,7 @@ table {
 		<form role="form" method="get">
 			<div class="board_list_wrap">
 				<div>
-					<table style="width: 800px;" border="1">
+					<table style="width: 800px;">
 						<thead>
 							<tr>
 								<th style="width: 10%;">번호</th>
@@ -137,5 +137,7 @@ table {
 		});
 	</script>
 </body>
-
+<footer>
+	<%@ include file="footer.jsp" %>
+</footer>
 </html>

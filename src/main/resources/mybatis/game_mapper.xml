@@ -16,6 +16,12 @@
         WHERE rNum BETWEEN #{rowStart} AND #{rowEnd}
         ORDER BY GAME_NO DESC
     </select>
+    <select id="getGameList" resultType="gameDto">
+    	SELECT
+               GAME_NO, USER_ID, GAME_REGION, GAME_STADIUM, GAME_ADDR, GAME_DATE, GAME_TIME, GAME_PEOPLE, GAME_MERCENARY, GAME_CONTENT, GAME_TYPE
+        FROM GAME
+        ORDER BY GAME_NO DESC
+    </select>
 
     <select id="ddaychk" resultType="int" parameterType="com.mvc.fotsal.paging.GamePaging">
         SELECT to_date(GAME_DATE,'YYYY-MM-DD') - to_date(sysdate, 'YYYY-MM-DD') FROM
