@@ -6,6 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+
+	footer{
+		width: 100%;
+		text-align:center;
+		bottom:0;
+		margin-bottom: -100px;
+		position: absolute;
+	}
 	
 	.banner_box{
 		display: flex;
@@ -20,7 +28,6 @@
 	 }
 	
 	.banner_list {
-		width: 200px;
 		position: absolute;
 	}
 	
@@ -234,6 +241,103 @@
     top: 10px;
 }
 /*====================================배너 디자인===================================*/
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+html,
+body {
+  height: 100%;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+h3 {
+  color: #262626;
+  font-size: 17px;
+  line-height: 20px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+p {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #666666;
+}
+p.small{
+	font-size: 14px;
+}
+
+.go-corner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  background-color: #00838d;
+  border-radius: 0 4px 0 32px;
+}
+
+.go-arrow {
+  margin-top: -4px;
+  margin-right: -4px;
+  color: white;
+  font-family: courier, sans;
+}
+
+.card1 {
+  display: block;
+  position: relative;
+  width: 200px;
+  height: 120px;
+  background-color: #f2f8f9;
+  border-radius: 4px;
+  padding: 32px 24px;
+  margin: 12px;
+  text-decoration: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.card1:before{
+	content: "";
+    position: absolute;
+    z-index: -1;
+    top: -16px;
+    right: -16px;
+    background: #00838d;
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+    transition: transform 0.25s ease-out;
+}
+
+.card1:hover:before{
+	transform: scale(21);
+}
+
+.card1:hover p{
+	transition: all 0.3s ease-out;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.card1:hover h3{
+	transition: all 0.3s ease-out;
+    color: #ffffff;
+}
 
 </style>
 <script type="text/javascript"	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -244,6 +348,25 @@ $(document).ready(function () {
 	$(".mySlideDiv").not(".active").hide(); //화면 로딩 후 첫번째 div를 제외한 나머지 숨김
 	
 	setInterval(nextSlide, 5000); //5초(5000)마다 다음 슬라이드로 넘어감
+});
+
+$(document).ready(function(){
+	var formData = new FormData();
+	formData.append("tab",tab);
+	$.ajax({
+		url:"/getgamelist.do",
+		type:"post",
+		dateType:"text",
+		data:formData,
+		contentType: false,
+		processData: false,
+		cache:false,
+		success: function(result){
+			$(.banner_wraper).html(result);
+		},error: function(jqXHR,textStatus,errorThrown){
+			alert("ajax에러");
+		}
+	})
 });
 
 //이전 슬라이드
@@ -402,16 +525,140 @@ function nextSlide() {
 		<div class="banner_box">
 			<div class="banner_wraper">
 				<div class="banner_list">
-					
+					<div class="container">
+					  <a class="card1" href="#">
+					    <h3>2022-01-18</h3>
+					    <p>12:00~14:00   &nbsp&nbsp&nbsp&nbsp&nbsp     5:5</p>
+					    <p class="small"> ~주소~</p>
+					    <div class="go-corner" href="#">
+					      <div class="go-arrow">
+					        →
+					      </div>
+					    </div>
+					  </a>
+					</div>
 				</div>
+				<div class="banner_list">
+					<div class="container">
+					  <a class="card1" href="#">
+					    <h3>2022-01-18</h3>
+					    <p>12:00~14:00   &nbsp&nbsp&nbsp&nbsp&nbsp     5:5</p>
+					    <p class="small"> ~주소~</p>
+					    <div class="go-corner" href="#">
+					      <div class="go-arrow">
+					        →
+					      </div>
+					    </div>
+					  </a>
+					</div>
+				</div>
+				<div class="banner_list">
+					<div class="container">
+					  <a class="card1" href="#">
+					    <h3>2022-01-18</h3>
+					    <p>12:00~14:00   &nbsp&nbsp&nbsp&nbsp&nbsp     5:5</p>
+					    <p class="small"> ~주소~</p>
+					    <div class="go-corner" href="#">
+					      <div class="go-arrow">
+					        →
+					      </div>
+					    </div>
+					  </a>
+					</div>
+				</div>
+				<div class="banner_list">
+					<div class="container">
+					  <a class="card1" href="#">
+					    <h3>2022-01-18</h3>
+					    <p>12:00~14:00   &nbsp&nbsp&nbsp&nbsp&nbsp     5:5</p>
+					    <p class="small"> ~주소~</p>
+					    <div class="go-corner" href="#">
+					      <div class="go-arrow">
+					        →
+					      </div>
+					    </div>
+					  </a>
+					</div>
+				</div>
+				<div class="banner_list">
+					<div class="container">
+					  <a class="card1" href="#">
+					    <h3>2022-01-18</h3>
+					    <p>12:00~14:00   &nbsp&nbsp&nbsp&nbsp&nbsp     5:5</p>
+					    <p class="small"> ~주소~</p>
+					    <div class="go-corner" href="#">
+					      <div class="go-arrow">
+					        →
+					      </div>
+					    </div>
+					  </a>
+					</div>
+				</div>
+				<div class="banner_list">
+					<div class="container">
+					  <a class="card1" href="#">
+					    <h3>2022-01-18</h3>
+					    <p>12:00~14:00   &nbsp&nbsp&nbsp&nbsp&nbsp     5:5</p>
+					    <p class="small"> ~주소~</p>
+					    <div class="go-corner" href="#">
+					      <div class="go-arrow">
+					        →
+					      </div>
+					    </div>
+					  </a>
+					</div>
+				</div>
+				<div class="banner_list">
+					<div class="container">
+					  <a class="card1" href="#">
+					    <h3>2022-01-18</h3>
+					    <p>12:00~14:00   &nbsp&nbsp&nbsp&nbsp&nbsp     5:5</p>
+					    <p class="small"> ~주소~</p>
+					    <div class="go-corner" href="#">
+					      <div class="go-arrow">
+					        →
+					      </div>
+					    </div>
+					  </a>
+					</div>
+				</div>
+				<div class="banner_list">
+					<div class="container">
+					  <a class="card1" href="#">
+					    <h3>2022-01-18</h3>
+					    <p>12:00~14:00   &nbsp&nbsp&nbsp&nbsp&nbsp     5:5</p>
+					    <p class="small"> ~주소~</p>
+					    <div class="go-corner" href="#">
+					      <div class="go-arrow">
+					        →
+					      </div>
+					    </div>
+					  </a>
+					</div>
+				</div>
+				<div class="banner_list">
+					<div class="container">
+					  <a class="card1" href="#">
+					    <h3>2022-01-18</h3>
+					    <p>12:00~14:00   &nbsp&nbsp&nbsp&nbsp&nbsp     5:5</p>
+					    <p class="small"> ~주소~</p>
+					    <div class="go-corner" href="#">
+					      <div class="go-arrow">
+					        →
+					      </div>
+					    </div>
+					  </a>
+					</div>
+				</div>
+				
+				
+				</div>
+				
 			
 			</div>
 		</div>
 		
-	<div>
-		
-	</div>
+	<footer><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
 	
-	<%@ include file="/WEB-INF/views/footer.jsp" %>
 </body>
 </html>

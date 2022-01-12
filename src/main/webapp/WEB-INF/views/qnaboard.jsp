@@ -3,7 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link href='<c:url value="/resources/css/body.css"/>' rel="stylesheet">
-<link href='<c:url value="/resources/css/board.css"/>' rel="stylesheet">
+<link href='<c:url value="/resources/css/boardTest.css"/>' rel="stylesheet">
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -44,8 +44,9 @@ table {
 		</div>
 
 		</div>
-
+		<section>
 		<!-- list start -->
+		<div class="list-all-box">
 		<form role="form" method="get">
 			<div class="board_list_wrap">
 				<div>
@@ -100,7 +101,7 @@ table {
 					</div>
 				</div>
 			</div>
-		</form>
+		
 		<!-- 페이지 리스트 -->
 		<div class="page-list" align="center">
 
@@ -118,7 +119,9 @@ table {
 			</c:if>
 
 		</div>
+		</form>
 	</div>
+	</section>
 
 	<!-- footer -->
 

@@ -5,12 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-	
-	
-</style>
 </head>
 <body>
-		<h6>copyright</h6>
+
 </body>
 </html>
