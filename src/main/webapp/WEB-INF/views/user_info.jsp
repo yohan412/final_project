@@ -26,16 +26,37 @@ td input[type="button"]{
     cursor: pointer;
     width: 100px; height: 30px;
 }
+table.type04 {
+  border-collapse: separate;
+  border-spacing: 1px;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  margin : 20px 10px;
+}
+table.type04 th {
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+}
+table.type04 td {
+  width: 350px;
+  padding: 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+}
 </style>
 </head>
 <body>
 <section>
 	<%@ include file="/WEB-INF/views/header.jsp" %>
 	<div style="text-align: center; margin-top: 30px;">	
-		<h1>내 정보 관리</h1>
+		<h1>회원 정보</h1>
 	</div>
-	<div class="user_info">
-			<table align="center" method="post" cellpadding="5">
+	<div class="user_info" align="center">
+			<table class="type04" align="center" method="post" cellpadding="5">
 				<tr>
 					<th>아이디</th>
 					<td>${login.user_id }</td>
@@ -76,7 +97,9 @@ td input[type="button"]{
 				</tr>
 			</table>
 	</div>
+	<footer>
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
+	</footer>
 </section>
 </body>
 </html>

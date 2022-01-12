@@ -137,7 +137,7 @@ public class StadiumController {
         //리뷰 페이징 구현
         ReviewPageMaker reviewPageMaker = new ReviewPageMaker();
         reviewPageMaker.setReviewPaging(reviewPaging);
-        reviewPageMaker.setTotalCount(reviewBiz.listcount());
+        reviewPageMaker.setTotalCount(reviewBiz.listcount(stadium_no));
         model.addAttribute("reviewpagemaker", reviewPageMaker);
 
         //이미지 리스트

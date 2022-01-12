@@ -36,7 +36,6 @@
 #search_box{
     width: 300px;
     height: 30px;
-    border: 1px solid black;
 }
 
 #search_box #search{
@@ -100,10 +99,11 @@
     height: 30px;
     border: 0;
     outline: 0;
-    background-color: #166cea;
+    background-color: #bfb5d7;
+    color: #ffffff;
+    border-radius: 5px;
     font-size: 15px;
     font-weight: bold;
-    color: white;
     cursor: pointer;
 }
 
@@ -115,7 +115,7 @@
 }
 
 .list{
-    background-color: lightgray;
+    border-bottom: 1px solid lightgray;
     width: 900px;
     height: 180px;
     display: flex;
@@ -163,7 +163,19 @@
     display: -webkit-box;
     -webkit-line-clamp: 8;
     -webkit-box-orient: vertical;
-    background-color: lightgray;
+}
+
+#stadium_insert_button{
+    width: 150px;
+    height: 50px;
+    font-size: 15px;
+    font-weight: bold;
+    border: 0;
+    outline: 0;
+    background-color: #bfb5d7;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 *.unselectable {
@@ -183,8 +195,8 @@
     cursor: pointer;
     border: 0;
     outline: 0;
-    background-color: #676FA3;
-    color: #CDDEFF;
+    background-color: #bfb5d7;
+    color: #ffffff;
     width: 30px;
     height: 30px;
     font-size: 16px;
@@ -195,8 +207,8 @@
     cursor: pointer;
     border: 0;
     outline: 0;
-    background-color: #676FA3;
-    color: #CDDEFF;
+    background-color: #bfb5d7;
+    color: #ffffff;
     width: 30px;
     height: 30px;
     font-size: 16px;
@@ -208,8 +220,8 @@
     cursor: pointer;
     border: 0;
     outline: 0;
-    background-color: #676FA3;
-    color: #CDDEFF;
+    background-color: #bfb5d7;
+    color: #ffffff;
     width: 30px;
     height: 30px;
     font-size: 16px;

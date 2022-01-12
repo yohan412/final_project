@@ -77,7 +77,7 @@
 			    	  <a href="stadiumlist.do">Stadium</a>
 			  	 </li>
 			 	 <li>
-		    	  		<a href="teamlist.do">Team</a>
+		    	  		<a href="teamlist.do?page=1&perPageNum=10&searchType=&keyword=">Team</a>
 			 	 </li>
 			 	 <li>
 		    	  	<c:if test = "${login == null }">
