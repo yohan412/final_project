@@ -132,6 +132,11 @@
     margin-bottom: 20px;
     resize:none;
     user-select: none;
+    border: 0;
+    outline: 0;
+    font-family: "Open Sans", Arial, Verdana;
+    font-weight: bold;
+    font-size: 15px;
 }
 #button_form{
     width: 900px;

@@ -3,7 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link href='<c:url value="/resources/css/body.css"/>' rel="stylesheet">
-<link href='<c:url value="/resources/css/board.css"/>' rel="stylesheet">
+<link href='<c:url value="/resources/css/boardTest.css"/>' rel="stylesheet">
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -44,6 +44,7 @@ table {
 			</div>
 
 			<!-- list start -->
+			<section>
 			<div class="board_list_wrap">
 				<div>
 					<table style="width: 800px;" border="1">
@@ -98,8 +99,7 @@ table {
 			</div>
 		</div>
 
-		<div>
-			<ul>
+		<div class= page-list align="center">
 				<c:if test="${pageMaker.prev}">
 					<li><a
 						href="faqlist.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
@@ -114,8 +114,8 @@ table {
 					<li><a
 						href="faqlist.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
 				</c:if>
-			</ul>
 		</div>
+		</section>
 		<!-- footer -->
 
 		<footer> footer </footer>
