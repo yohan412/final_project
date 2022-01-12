@@ -5,6 +5,49 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+th, td{
+	dispaly: inline-block;
+	font-size: 0.8rem;
+}
+td input[type="text"]{
+	width: 200px; height:30px;
+	border: 1px solid #d1d1d1;
+}
+th{
+    margin: 10px 0 8px;
+   	font-size: 1.0rem;
+   	font-weight: 400;
+    text-align: left;
+}	
+td input[type="button"],[type="submit"]{ 
+   	background-color:rgb(75, 161, 231);
+   	border: 1px solid gray;
+    cursor: pointer;
+    width: 80px; height: 30px;
+}
+table.type04 {
+  border-collapse: separate;
+  border-spacing: 1px;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  margin : 20px 10px;
+}
+table.type04 th {
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+}
+table.type04 td {
+  width: 350px;
+  padding: 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+}
+</style>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
@@ -66,13 +109,13 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header.jsp" %>
-	<div style="text-align: center; margin-top: 30px;">	
-		<h1>내 정보 관리</h1>
+	<div style="text-align: center;">	
+		<h2>회원 정보 수정</h2>
 	</div>
-	<div class="user_update">
+	<div class="user_update" align="center">
 		<form action="updateres.do" method="post">
 			<input type="hidden" name="user_id" value="${login.user_id }">
-			<table align="center" method="post" cellpadding="5">
+			<table class="type04" align="center" method="post">
 				<tr>
 					<th>아이디</th>
 					<td>${login.user_id }</td>
@@ -100,7 +143,7 @@
 				<tr>
 					<th>주소</th>
 					<td>
-						<input type="text" id="zipcode" name="user_zip" style="width: 250px;" value="${login.user_zip }" readonly>&nbsp;&nbsp;
+						<input type="text" id="zipcode" name="user_zip" value="${login.user_zip }" readonly>&nbsp;&nbsp;
 						<input type="button" id="zip_chk" value="주소 검색" onclick="zipChk()">
 					</td>
 				<tr>
@@ -122,6 +165,8 @@
 			</table>
 		</form>
 	</div>
+	<footer>
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
+	</footer>
 </body>
 </html>

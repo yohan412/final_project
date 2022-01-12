@@ -120,8 +120,4 @@ function sd(user_id){
             }
         });*/
     }
-    
-   
-
-
 };

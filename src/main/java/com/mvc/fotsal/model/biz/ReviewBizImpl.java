@@ -20,8 +20,8 @@ public class ReviewBizImpl implements ReviewBiz{
     }
 
     @Override
-    public int listcount() {
-        return reviewDao.listcount();
+    public int listcount(int stadium_no) {
+        return reviewDao.listcount(stadium_no);
     }
 
     @Override

@@ -8,7 +8,8 @@
     user-select: none;
 }
 .list{
-    background-color: lightgray;
+    border-bottom: 1px solid lightgray;
+    font-weight: bold;
     width: 900px;
     height: 70px;
     display: flex;
@@ -94,8 +95,8 @@ a{
     cursor: pointer;
     border: 0;
     outline: 0;
-    background-color: #676FA3;
-    color: #CDDEFF;
+    background-color: #bfb5d7;
+    color: #ffffff;
     width: 30px;
     height: 30px;
     font-size: 16px;
@@ -106,8 +107,8 @@ a{
     cursor: pointer;
     border: 0;
     outline: 0;
-    background-color: #676FA3;
-    color: #CDDEFF;
+    background-color: #bfb5d7;
+    color: #ffffff;
     width: 30px;
     height: 30px;
     font-size: 16px;
@@ -119,8 +120,8 @@ a{
     cursor: pointer;
     border: 0;
     outline: 0;
-    background-color: #676FA3;
-    color: #CDDEFF;
+    background-color: #bfb5d7;
+    color: #ffffff;
     width: 30px;
     height: 30px;
     font-size: 16px;
@@ -137,7 +138,7 @@ a{
 #serchform div{
 	width: 400px;
     height: 40px;
-    border: 1px solid black;
+    border: 1px solid lightgray;
 }
 #serchform div #search{
     font-size: 16px;
@@ -155,4 +156,19 @@ a{
     outline: none;
     float: right;
     cursor:pointer;
+    background-color: #bfb5d7;
+    color: #ffffff;
+}
+
+#sta_but{
+    border: 0;
+    outline: 0;
+    width: 150px;
+    height: 50px;
+    border-radius: 3px;
+    background-color: #bfb5d7;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
 }

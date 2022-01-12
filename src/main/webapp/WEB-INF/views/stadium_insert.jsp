@@ -82,14 +82,23 @@
                 </div>
                 <div id="stadium_upload_form">
                     <div style="width: 100px; height: 100%"></div>
-                    <div>
-                        <div class="font">경기장 사진 업로드</div>
+                    <div style="width: 180px; height: 100%; display: flex; flex-wrap: wrap">
+                        <div class="font" style="width: 100%; height: 30%; align-items: flex-end">경기장 사진 업로드</div>
+                        <div style="width: 100%; height: 70%"></div>
                     </div>
                     <div class="info">
 <%--                        <input id="upload_file_name" name="pic_name" value="" placeholder="첨부파일" readonly>--%>
                         <input id="upload_file_path" name="pic_path" type="hidden" value="">
-                        <textarea name="pic_name" placeholder="첨부파일" readonly style="width: 340px; height: 70px; resize: none"></textarea>
-                        <input id="upload_file" name="upload_file" type="file" multiple="multiple" value="사진 업로드">
+                        <div style="width: 100%; height: 150px; display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start">
+                            <textarea name="pic_name" placeholder="첨부파일" readonly style="width: 340px; height: 120px; resize: none; border: 1px solid rgba(140,140,140,0.71); outline: 0;"></textarea>
+                        </div>
+                        <div style="width: 100%; height: 100px; display: flex; align-items: flex-start; justify-content: flex-start">
+                            <label class="input-file-button" for="upload_file">
+                                업로드
+                            </label>
+                            <input id="upload_file" name="upload_file" type="file" multiple="multiple" value="사진 업로드" style="display: none">
+                        </div>
+
                     </div>
                     <script type="text/javascript">
 /*                        function fileUpload(){
@@ -127,8 +136,8 @@
         </form:form>
     </div>
 </section>
-<footer>
-
+<footer style="height: 300px">
+    <%@ include file="/WEB-INF/views/footer.jsp" %>
 </footer>
 </body>
 </html>

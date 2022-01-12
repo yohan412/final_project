@@ -41,6 +41,10 @@ function view_review_detail_form(idx, user_id, stadium_no, title, content, date,
     // document.body.style.backgroundColor = 'gray';
     // document.body.style.cursor = 'pointer';
 
+    $("#content").css("background-color", 'gray');
+
+    $(".bxslider li").css("background-color", "gray");
+
     $("#bot_review_view_form")
     .css('display', 'block')
     .css('bottom', "550px")
