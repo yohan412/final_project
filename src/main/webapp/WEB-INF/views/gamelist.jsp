@@ -11,7 +11,7 @@
 <link href='<c:url value="/resources/css/gamelist.css"/>' rel="stylesheet">
 <style type="text/css">
 	#map {
-	width: 700px;
+	width: 900px;
 	height: 400px;
 	display: inline-block;
 	border: 1px solid black;
@@ -60,13 +60,18 @@ window.onload = function() {
 	            var iwcontent ='<div style="width:150px;text-align:center;padding:6px 0;">'+stadium+'</div>'
 	            
 	            // 결과값으로 받은 위치를 마커로 표시합니다
-	            var marker = new kakao.maps.InfoWindow({
+	            var marker = new kakao.maps.Marker({
 	                map: map,
-	                content: iwcontent,
-	                position: coords,
-	                removable : false
+	                position: coords
 	            });
 	            
+	       	  // 인포윈도우로 장소에 대한 설명을 표시합니다
+                var infowindow = new kakao.maps.InfoWindow({
+                    content: '<div style="width:150px;text-align:center;padding:6px 0;">'+stadium+'</div>'
+                });
+                infowindow.open(map, marker);
+
+	            map.setCenter(coords);
 	        }
 	        else {
 	            alert("도로 찾기 실패");
