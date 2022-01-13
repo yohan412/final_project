@@ -472,7 +472,7 @@ function nextSlide() {
 	
 	//===============================================================================
 
-	//client rolling banner
+	//client rolling banner\
 		
 	
 	//======================================================================================
@@ -489,12 +489,24 @@ function nextSlide() {
             container.find('.search-input').val('');
         }
 }
+
+//검색 기능
+function gamesearch(){
+	if($(".search-input").val() === "" || $(".search-input").val() == null){
+		alert('검색 내용을 입력하세요');
+	}else{
+		self.location =
+				"gamelist.do" + '?page=1&perPageNum=5' +
+				"&searchType=t" +
+				"&keyword=" + encodeURIComponent($('.search-input').val());
+	}
+}
 	
 </script>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/header.jsp" %>
-	
+
 	<div class="slideshow-container">
 		<div class="mySlideDiv fade active">
 			<img src="/img/futsalimg03.jpg"> 
@@ -507,14 +519,16 @@ function nextSlide() {
 	    <div class="mySlideDiv fade">
 	        <img src="/img/futsalimg05.jpg"> 
 	    </div>
-		
+
+		<form role="form" method="get" onsubmit="return false">
 		<div class="search-wrapper">
 		    <div class="input-holder">
-		        <input type="text" class="search-input" placeholder="Type to search" />
+		        <input type="text" class="search-input" placeholder="Type to search" onkeypress="if(event.keyCode===13){gamesearch()}"  />
 		        <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
 		    </div>
 		    <span class="close" onclick="searchToggle(this, event);"></span>
 		</div>
+		</form>
 			
 		<a class="prev" onclick="prevSlide()">&#10094;</a>
 		<a class="next" onclick="nextSlide()">&#10095;</a>
