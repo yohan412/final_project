@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link href='<c:url value="/resources/css/body.css"/>' rel="stylesheet">
-<link href='<c:url value="/resources/css/boardTest.css"/>'
-	rel="stylesheet">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -13,126 +12,135 @@
 <title>FAQ BOARD</title>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="resources/css/boardTest.css">
 </head>
-<style>
-table {
-	
-}
-</style>
-<body>
-	<!-- header -->
-	<%@ include file="/WEB-INF/views/header.jsp"%>
 
+<body>
+	<header>
+		<%@ include file="/WEB-INF/views/header.jsp"%>
+	</header>
+	<div class="a-blank-space" style="height: 50px;"></div>
 	<div>
-		<h1>FAQ 게시판</h1>
+		<h1 style="display: flex; justify-content: center;">FAQ 게시판</h1>
 	</div>
 	<br>
-	<div id="boardselect_form">
-		<div id="board_list">
-			<div id="boardselect_form">
-				<div class="boardselect">
-					<p id="faqboard" class="faqboard"
-						onclick="location.href='/faqlist.do'">FAQ</p>
-				</div>
-				<div class="boardselect">
-					<p id="qnaboard" class="qnaboard"
-						onclick="location.href='/qnalist.do'">Q&A</p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- list start -->
 	<section>
-		<div class="board_list_wrap">
-			<form role="form" method="get">
-				<div>
-					<table style="width: 800px;" border="1">
-						<thead>
-							<tr>
-								<th style="width: 5%;">번호</th>
-								<th style="width: 10%;">작성자</th>
-								<th style="width: 30%;">문의 내용</th>
-								<th style="width: 40%;">답변</th>
-								<th style="width: 25%;">작성일</th>
-							<tr>
-						</thead>
-						<tbody>
-							<c:choose>
-								<c:when test="${empty list }">
-									<tr>
-										<td colspan="5" align="center">-------- 작성된 글이 없습니다--------</td>
-									</tr>
-								</c:when>
-								<c:otherwise>
-									<c:forEach items="${list }" var="faq_dto">
-										<tr>
-											<td>${faq_dto.faq_no }</td>
-											<td>${faq_dto.user_id}</td>
-											<td><a href="faqdetail.do?faq_no=${faq_dto.faq_no }">${faq_dto.faq_title }</a></td>
-											<td>${faq_dto.faq_content }</td>
-											<td>${faq_dto.faq_reg }</td>
-										</tr>
-									</c:forEach>
-								</c:otherwise>
-							</c:choose>
-							<tr>
-								<td colspan="5" align="right"><input type="button"
-									value="글 작성" onclick="location.href='faq.do'"></td>
-							</tr>
-						</tbody>
-
-					</table>
-					<div class="serch">
-						<select name="searchType">
-							<option value="n"><c:out
-									value="${scri.searchType == null ? '검색' : ''}" /></option>
-							<option value="t"><c:out
-									value="${scri.searchType eq 't' ? 'selected' : ''}" />>제목
-							</option>
-							<option value="c"><c:out
-									value="${scri.searchType eq 'c' ? 'selected' : ''}" />>내용
-							</option>
-							<option value="w"><c:out
-									value="${scri.searchType eq 'w' ? 'selected' : ''}" />>작성자
-							</option>
-							<option value="tc"><c:out
-									value="${scri.searchType eq 'tc' ? 'selected' : ''}" />>제목+내용
-							</option>
-						</select> <input type="text" name="keyword" id="keywordInput"
-							value="${scri.keyword}" />
-						<button id="searchBtn" type="button">검색</button>
-
+	<input type="hidden" name="user_id" value="${login.getUser_id()}">
+		<div class="main-all-box">
+			<div class="list-all-box">
+				<div id="boardselect_form">
+					<div id="board_list">
+						<div id="boardselect_form">
+							<div class="boardselect" id="faq">
+								<button id="pointer" onclick="location.href='faqlist.do'">FAQ</button>
+							</div>
+							<div class="boardselect" id="qna">
+								<button id="pointer" onclick="location.href='qnalist.do'">Q&A</button>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class=page-list align="center">
-					<c:if test="${pageMaker.prev}">
-						<li><a
-							href="faqlist.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
+			</div>
+				<!-- list start -->
+				<div class="board_list">
+					<table class="qna-table"
+						style="text-align: center; inline-block; border: 1px solid #dddddd; width: 900px;"
+						align="center">
+						<colgroup>
+							<col class="faq_no">
+							<col class="faq_writer">
+							<col class="faq_title">
+							<col class="faq_content">
+							<col class="faq_date">
+						</colgroup>
+					<thead>
+						<tr>
+							<th style="background-color: #eeeeee; text-align: center width: 10%;">번호</th>
+							<th style="background-color: #eeeeee; text-align: center width: 30%;">문의 내용</th>
+							<th style="background-color: #eeeeee; text-align: center width: 50%;">답변 내용</th>
+							<th style="background-color: #eeeeee; text-align: center width: 10%;">작성일</th>
+						<tr>
+					</thead>
+					<tbody>
+						<c:choose>
+							<c:when test="${empty list }">
+								<tr>
+									<td colspan="5" align="center">-------- 작성된 글이 없습니다--------</td>
+								</tr>
+							</c:when>
+								<c:otherwise>
+											<c:forEach items="${list }" var="faq_dto">
+												<tr>
+													<td>${faq_dto.faq_no }</td>
+													<td>${faq_dto.user_id}</td>
+													<td><a href="faqdetail.do?faq_no=${faq_dto.faq_no }">${faq_dto.faq_title }</a></td>
+													<td>${faq_dto.faq_content }</td>
+													<td>${faq_dto.faq_reg }</td>
+												</tr>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
+							</tbody>
+
+							</table>
+							
+							
+					<!-- 페이지 리스트 -->
+					<div class="page-list" align="center">
+					<c:if test="${pageMaker.prev }">
+						<input type="button" id="prev-btn" onclick="location.href='faqlist.do${pageMaker.makeSearch(pageMaker.startPage - 1)}'" value="<<">
 					</c:if>
 
-					<c:forEach begin="${pageMaker.startPage}"
-						end="${pageMaker.endPage}" var="idx">
-						<li><a href="faqlist.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
+					<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage }" var="idx">
+					<c:choose>
+						<c:when test="${idx eq page }">
+							<input type="button" id="pagingnumClick" value="${idx }">
+						</c:when>
+						<c:otherwise>
+							<input type="button" id="pagingnum" onclick="location.href='faqlist.do${pageMaker.makeSearch(idx) }'" value="${idx}">
+						</c:otherwise>
+					</c:choose>
 					</c:forEach>
 
-					<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-						<li><a
-							href="faqlist.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
-					</c:if>
+						<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
+						<input type="button" id="next-btn" onclick="location.href='faqlist.do${pageMaker.makeSearch(pageMaker.endPage + 1)}'" value=">>">
+						</c:if>
+					</div>
+				<!-- 서치 폼 -->
+				<div class="serch">
+					<select name="searchType">
+						<option value="n"><c:out value="${STLP.searchType == null ? 'selected' : ''}" />분류없음</option>
+						<option value="t"><c:out value="${STLP.searchType eq 't' ? 'selected' : ''}" />>문의내용</option>
+						<option value="c"><c:out value="${STLP.searchType eq 'c' ? 'selected' : ''}" />>답변내용</option>
+					</select>
+					<input type="text" name="keyword" id="keywordInput" value="${STLP.keyword}" required=""/>
+					<input type="image" id="searchBtn" src="img/icon_magnifier.png">
 				</div>
-			</form>
+			<!-- faq글작성 -->
+			<div class="content-submit-list">
+				<button id="pointer" name="write-hidden" onclick="location.href='faq.do'">작성하기</button>
+			</div>
+		</div>
 		</div>
 	</section>
-
-
-
-
-
-	<!-- footer -->
-
-	<footer> footer </footer>
-
+<footer style="align-content: center;">
+	<%@ include file="footer.jsp"%>
+</footer>
 </body>
 
+<script type="text/javascript">
+
+	$(function(){
+	var user_id = '${login.user_id}';  // 세션에 저장된 로그인 아이디
+	var adminChk = '${login.user_role}'; // 어드민 여부
+	
+		$("button[name=write-hidden]").hide();
+	}if(adminChk === 'ADMIN'){
+		$("button[name=write-hidden]").show();
+	}else{
+		$("button[name=write-hidden]").hide();
+	}
+});
+
+</script>
 </html>

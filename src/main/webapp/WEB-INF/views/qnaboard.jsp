@@ -124,12 +124,6 @@
 	</div>
 </section>
 
-
-	<!-- footer -->
-
-	<footer> footer </footer>
-	
-
 </body>
 <footer style="align-content: center;">
 	<%@ include file="footer.jsp"%>
