@@ -31,7 +31,7 @@ td, th{
 }
 #pointer:hover{
 	color: rgba(255, 255, 255, 0.85);
-	box-shadow: rgba(0, 186, 250, 0.7) 0 0px 0px 40px inset;
+	box-shadow: rgba(92,134, 255, 0.7) 0 0px 0px 40px inset;
 }
 .table-board-list{
 	margin-bottom: 10px;

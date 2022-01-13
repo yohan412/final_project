@@ -71,7 +71,7 @@
 		</div>
 		<nav class="menu">
 		  	<ul id="menu_bar">
-		  		  <li>
+		  		  <li style="padding-left: 170px;">
 		  	 		   <a href="index.jsp">Home</a>
 		  	 	 </li>
 		 	 	 <li>
@@ -116,7 +116,7 @@
 			 	 	  	<a href="user_info.do?user_id=${login.user_id }">My page</a>
 			 	 	  </c:if>
 			 	 </li>
-			 	 <li style="float: right; padding-right: 30px;">
+			 	 <li style="float: right; padding-right: 120px;">
 					  <c:if test="${login != null }">
 					  	<a>${login.user_name } 님</a>
 					  </c:if>
