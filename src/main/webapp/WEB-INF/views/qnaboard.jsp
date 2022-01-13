@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link href='<c:url value="/resources/css/boardTest.css"/>'
-	rel="stylesheet">
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -11,18 +9,19 @@
 <title>Q&A BOARD</title>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="resources/css/boardTest.css">
 </head>
 
-</style>
 <body>
-	<!-- header -->
+<header>
 	<%@ include file="/WEB-INF/views/header.jsp"%>
-
+</header>
+<div class="a-blank-space" style="height: 100px;"></div>
 	<div>
 		<h1>Q&A 게시판</h1>
 	</div>
 	<br>
-	<section>
+	<section>	
 	<div id="mainform">
 		<div id="board_list">
 			<div id="boardselect_form">
@@ -40,9 +39,8 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
-
+	<div class="main-all-box">
 		<div class="list-all-box">
 		<!-- list start -->
 			<div class="board_list">
@@ -92,18 +90,22 @@
 					<input type="button" id="prev-btn" onclick="location.href='qnalist.do${pageMaker.makeSearch(pageMaker.startPage - 1)}'" value="<<">
 				</c:if>
 
-				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage }" var="idx">
-					<input type="button" id="pagingnum" onclick="location.href='qnalist.do${pageMaker.makeSearch(idx) }'" value="${idx}">
+			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage }" var="idx">
+					<c:choose>
+						<c:when test="${idx eq page }">
+							<input type="button" id="pagingnumClick" value="${idx }">
+						</c:when>
+						<c:otherwise>
+							<input type="button" id="pagingnum" onclick="location.href='qnalist.do${pageMaker.makeSearch(idx) }'" value="${idx}">
+						</c:otherwise>
+					</c:choose>
 				</c:forEach>
 
 				<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
 					<input type="button" id="next-btn" onclick="location.href='qnalist.do${pageMaker.makeSearch(pageMaker.endPage + 1)}'" value=">>">
 				</c:if>
 			</div>
-			<!-- 글작성 -->
-			<div class="content-submit-list">
-				<input id="pointer" type="button" value="작성하기" style="margin-top: 15px;" onclick="loginChk(${login.user_no})">
-			</div>
+
 			<!-- 서치 폼 -->
 			<div class="serch" align="center">
 				<select name="searchType" id="searchOption">
@@ -115,29 +117,23 @@
 				<input type="text" name="keyword" id="keywordInput" value="${STLP.keyword}" required=""/>
 				<input type="image" id="searchBtn" src="img/icon_magnifier.png">
 			</div>
-
+			<!-- 글작성 -->
+			<div class="content-submit-list">
+				<input id="pointer" type="button" value="작성하기" style="margin-top: 15px;" onclick="loginChk(${login.user_no})">
+			</div>
 
 			<div class="a-blank-space" style="height: 150px;"></div>
 
 		</div>
-	</section>
+	</div>
+</section>
 
 
 	<!-- footer -->
 
 	<footer> footer </footer>
-	<script type="text/javascript">
-		$(function() {
-			$('#searchBtn').click(
-					function() {
-						self.location = "qnalist.do"
-								+ '${pageMaker.makeQuery(1)}' + "&searchType="
-								+ $("select option:selected").val()
-								+ "&keyword="
-								+ encodeURIComponent($('#keywordInput').val());
-					});
-		});
-	</script>
+	
+
 </body>
 <footer style="align-content: center;">
 	<%@ include file="footer.jsp"%>
@@ -150,6 +146,19 @@ function loginChk(user_no){
 		location.href='qna.do';
 	}
 }
+
+
+$(function() {
+	$('#searchBtn').click(
+			function() {
+				self.location = "qnalist.do"
+						+ '${pageMaker.makeQuery(1)}' + "&searchType="
+						+ $("select option:selected").val()
+						+ "&keyword="
+						+ encodeURIComponent($('#keywordInput').val());
+			});
+});
+
 </script>
 
 </html>

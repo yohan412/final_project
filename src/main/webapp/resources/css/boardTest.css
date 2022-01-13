@@ -14,13 +14,27 @@ section.body{
 td, th{
 	border: 1px solid #eeeeee;
 }
-.team-logo-pic, .pic_path{
-	width: 150px;
-	height: 100px;
-	object-fit: cover;
+
+
+#pointer{
+	cursor: pointer;
+	background-color: #222;
+	color: #fff;
+	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	margin: 4px;
+	max-width: 180px;
+	text-decoration: none;
+	border-radius: 4px;
+	padding: 12px 25px;
+	cursor: pointer;
 }
-.main-all-box{
-	width: 1140px;
+#pointer:hover{
+	color: rgba(255, 255, 255, 0.85);
+	box-shadow: rgba(92,134, 255, 0.7) 0 0px 0px 40px inset;
 }
 #boardselect_form{
     display: flex;
@@ -161,3 +175,13 @@ input[type="text"][required] + label[placeholder]:before {
     outline: none;
     border: 1px solid;
 }
+
+
+
+
+
+
+
+
+
+
