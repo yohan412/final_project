@@ -9,7 +9,78 @@
 <meta charset="UTF-8">
 <link href='<c:url value="/resources/css/body.css"/>' rel="stylesheet">
 <link href='<c:url value="/resources/css/gamelist.css"/>' rel="stylesheet">
+<style type="text/css">
+	#map {
+	width: 700px;
+	height: 400px;
+	display: inline-block;
+	border: 1px solid black;
+	border-radius: 20px;
+}
+</style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript"	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49af48b1cf77792390c26841571e0b1c&libraries=services"></script>
+<script type="text/javascript">
+
+//map, gamelist,piclist 는 다른 함수에도 필요하여 전역변수로 선언
+var map;
+var locmarker;
+//실제로 CenterBoard에 표현되는 리스트들
+var boardlist;
+
+//지도 생성하는 과정
+window.onload = function() {
+	var mapContainer = document.getElementById('map'); //지도를 표시할 div
+	var mapOption = {
+		center : new kakao.maps.LatLng(37.498095, 127.027610), //지도의 중심 좌표
+		level : 9
+	//지도 확대 레벨
+	};
+	
+	// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+
+    // 주소-좌표 변환 객체를 생성합니다
+    var geocoder = new kakao.maps.services.Geocoder();
+
+	
+	for(var i=0;i<5;i++){
+		
+		var addr=document.getElementsByClassName("addr")[i].value;
+		var stadium=document.getElementsByClassName("stadium")[i].value;
+		
+		// 주소로 좌표를 검색합니다
+		geocoder.addressSearch(addr, function(result, status) {
+
+	        // 정상적으로 검색이 완료됐으면
+	        if (status === kakao.maps.services.Status.OK) {
+
+	            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+				
+	            // 결과값으로 받은 위치를 마커로 표시합니다
+	            var marker = new kakao.maps.Marker({
+	                map: map,
+	                position: coords
+	            });
+	            
+	       	  // 인포윈도우로 장소에 대한 설명을 표시합니다
+                var infowindow = new kakao.maps.InfoWindow({
+                    content: '<div style="width:150px;text-align:center;padding:6px 0;">'+stadium+'</div>'
+                });
+                infowindow.open(map, marker);
+
+	            map.setCenter(coords);
+	        }
+	        else {
+	            alert("도로 찾기 실패");
+	        }
+	    });
+	}
+	
+}
+
+	
+</script>
 <title>경기 일정 목록</title>
 </head>
 <body>
@@ -18,12 +89,16 @@
 </header>
 <section>
     <div id="mainform">
+        <div id="map">
+        
+        </div>
         <div id="titleform">
             <h2>경기 일정 목록</h2>
         </div>
         <form role="form" method="get" onsubmit="return false">
             <div id="listform">
                 <c:forEach items="${gamelist}" var="gamelist" varStatus="status">
+                	<input type="hidden" class="addr" value="${gamelist.game_addr }">
                     <div class="list" onclick="location.href='gamedetail.do?game_no=${gamelist.game_no}'">
                         <div id="region">${gamelist.game_region}</div>
                         <div id="date">
@@ -42,7 +117,7 @@
                             ~&nbsp;
                                 ${endtime[status.index]}
                         </div>
-                        <div id="stadium">${gamelist.game_stadium}</div>
+                        <div id="stadium" class="stadium" value="${gamelist.game_stadium}">${gamelist.game_stadium}</div>
                         <div id="person">
                             <c:choose>
                                 <c:when test="${gamelist.game_people eq 3}">3 vs 3</c:when>
