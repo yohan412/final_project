@@ -29,7 +29,7 @@ footer{
   border-radius: 0.5em;
   box-shadow: 0 0 0 2px rgba(211, 211, 211, 0.5) inset;
   margin: auto;
-  padding: 1.5rem 5rem;
+  padding: 1.5rem 3.5rem;
   position: relative;
   cursor: pointer;
   margin: -100px;
@@ -252,8 +252,9 @@ input[type="text"][required] + label[placeholder]:before {
 	border-radius: 1.5em;
 }
 #searchBtn{
-	padding: 10px;
-	margin: 160px;
+	padding: 0px;
+	margin: -10px;
+	margin-right: -310px;
 	margin-top: 9px;
 	position: absolute;
 	width: 40px;
