@@ -417,8 +417,14 @@ public class UserController {
 		return "adminmain";
 	}
     
-    
-    
+    //관리자 회원정보 상세보기
+    @RequestMapping("/admindetail.do")
+    public String detail(Model model, String user_id) {
+    	logger.info("ASELECT ONE");
+    	model.addAttribute("aDto", biz.aselectOne(user_id));
+    	
+    	return "admindetail";
+    }
     
     
     

@@ -25,4 +25,5 @@ public interface UserDao {
 	public int setKakaoConnection(Map<String, Object> loginApi);
 	public UserDto userKakaoLoginPro(Map<String, Object> loginApin);
 	public List<UserDto> selectList();
+	public UserDto aselectOne(String user_id);
 }

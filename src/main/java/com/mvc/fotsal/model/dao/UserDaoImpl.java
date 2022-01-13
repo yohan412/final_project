@@ -232,6 +232,19 @@ import com.mvc.fotsal.model.dto.UserDto;
 			}
 			return list;
 		}
+
+		@Override
+		public UserDto aselectOne(String user_id) {
+			UserDto dto = null;
+			
+			try {
+				dto = sqlSession.selectOne(NAMESPACE+"selectOne", user_id);
+			} catch (Exception e) {
+				System.out.println("[error]: aselect one");
+				e.printStackTrace();
+			}
+			return dto;
+		}
 		
 
 		
