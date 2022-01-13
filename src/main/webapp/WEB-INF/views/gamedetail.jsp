@@ -14,7 +14,7 @@
     <script type="text/javascript" src="${path}/resources/js/gamedetail.js"></script>
 </head>
 <body>
-<header>
+<header style="height: 184px">
     <%@ include file="/WEB-INF/views/header.jsp" %>
 </header>
 <section>
@@ -82,13 +82,26 @@
                         </c:choose>
                     </h2>
                 </div>
+                <script type="text/javascript">
+                    window.onload = function (){
+                        var status = '${status}';
+                        if(status === '종료' || status === '모집안함'){
+                            $("#mergency_state").css("background-color", 'lightgray');
+                        }else{
+                            $("#mergency_state").css("background-color", '#ff8b8b');
+                            $("#mergency_state").css("color", '#f9f8e6');
+                        }
+                    }
+                </script>
             </div>
             <%--오른쪽(경기장 이름, 주소, 날짜 등) 구역--%>
             <div id="right_form">
                 <%--경기장 이름 주소 구역--%>
                 <div id="addr_form">
+                    <div style="width: 100%; height: 10px"></div>
 					<div id="stadium_form">${gamedto.game_stadium}</div>
                     <div id="stadium_addr_form"><h3>${gamedto.game_addr}</h3></div>
+                    <div style="width: 100%; height: 10px"></div>
                 </div>
                 <%--날짜 구역--%>
                 <div id="date_form">
@@ -107,21 +120,30 @@
                 </div>
                 <%--시간, 인원 구역--%>
                 <div id="time_person_form">
-                    <div id="time_form">${gamedto.game_time} ~ ${endtime}</div>
+                    <div id="time_form">
+                        <div style="width: 200px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 15px ">경기 시간</div>
+                        <div style="width: 200px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                            ${gamedto.game_time} ~ ${endtime}
+                        </div>
+                    </div>
                     <div id="person_div">
                         <div id="person_form">
-                            <c:choose>
-                                <c:when test="${gamedto.game_people eq 3}">3 vs 3</c:when>
-                                <c:when test="${gamedto.game_people eq 4}">4 vs 4</c:when>
-                                <c:when test="${gamedto.game_people eq 5}">5 vs 5</c:when>
-                                <c:when test="${gamedto.game_people eq 6}">6 vs 6</c:when>
-                                <c:when test="${gamedto.game_people eq 7}">7 vs 7</c:when>
-                            </c:choose>
+                            <div style="width: 200px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 15px ">경기 시간</div>
+                            <div style="width: 200px; height: 40px; display: flex; align-items: center; justify-content: center; ">
+                                <c:choose>
+                                    <c:when test="${gamedto.game_people eq 3}">3 vs 3</c:when>
+                                    <c:when test="${gamedto.game_people eq 4}">4 vs 4</c:when>
+                                    <c:when test="${gamedto.game_people eq 5}">5 vs 5</c:when>
+                                    <c:when test="${gamedto.game_people eq 6}">6 vs 6</c:when>
+                                    <c:when test="${gamedto.game_people eq 7}">7 vs 7</c:when>
+                                </c:choose>
+                            </div>
+
                         </div>
                     </div>
                 </div>
                 <%--기타 내용 구역--%>
-               	<textarea id="textarea_form" readonly>${gamedto.game_content}</textarea>
+               	<textarea id="textarea_form" readonly style="min-height: 200px">${gamedto.game_content}</textarea>
             </div>
             <%--버튼 구역--%>
             <div id="button_form">
@@ -208,6 +230,7 @@
                         if (author === user_id){
                             $("#hidden_form").show();
                         }
+
                     });
                 </script>
                 <div style="width: 700px; height: 40px">
@@ -216,8 +239,6 @@
         </div>
     </div>
 </section>
-<footer>
-    푸터
-</footer>
+<footer><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
 </body>
 </html>

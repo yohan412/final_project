@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-
+	
 	footer{
 		width: 100%;
 		text-align:center;
@@ -348,26 +350,61 @@ $(document).ready(function () {
 	$(".mySlideDiv").not(".active").hide(); //화면 로딩 후 첫번째 div를 제외한 나머지 숨김
 	
 	setInterval(nextSlide, 5000); //5초(5000)마다 다음 슬라이드로 넘어감
-});
-
-$(document).ready(function(){
-	var formData = new FormData();
-	formData.append("tab",tab);
+	
 	$.ajax({
 		url:"/getgamelist.do",
 		type:"post",
 		dateType:"text",
-		data:formData,
-		contentType: false,
-		processData: false,
-		cache:false,
+		data:{},
+		traditional : true,
 		success: function(result){
-			$(.banner_wraper).html(result);
+			$(".banner_wraper").html(result);
+			
+			var bannerLeft=0;
+			var first=1;
+			var last;
+			var listCnt=0;
+			var $list = $(".banner_list");
+			var $first;
+			var $last;
+			
+			$list.each(function(){   // 5px 간격으로 배너 처음 위치 시킴
+			    $(this).css("left",bannerLeft);
+			    bannerLeft += $(this).width()+5;
+			    $(this).attr("id", "banner"+(++listCnt));  // img에 id 속성 추가
+			});
+			
+			
+			if( listCnt > 5){                //배너 5개 이상이면 이동시킴
+			
+			    last = listCnt;
+			
+			    setInterval(function() {
+			        $list.each(function(){
+			            $(this).css("left", $(this).position().left-1); // 1px씩 왼쪽으로 이동
+			        });
+			        $first = $("#banner"+first);
+			        $last = $("#banner"+last);
+			        if($first.position().left < -200) {    // 제일 앞에 배너 제일 뒤로 옮김
+			            $first.css("left", $last.position().left + $last.width()+5 );
+			            first++;
+			            last++;
+			            if(last > listCnt) { last=1; }   
+			            if(first > listCnt) { first=1; }
+			        }
+			    }, 50);   //여기 값을 조정하면 속도를 조정할 수 있다.(또는 1px 이동하는 부분도 조정) 
+			
+			
+			}
+			
 		},error: function(jqXHR,textStatus,errorThrown){
 			alert("ajax에러");
 		}
 	})
 });
+
+
+
 
 //이전 슬라이드
 function prevSlide() {
@@ -435,6 +472,7 @@ function nextSlide() {
 	
 	//===============================================================================
 
+<<<<<<< HEAD
 	//client rolling banner\
 	window.onload = function() {
 		var bannerLeft=0;
@@ -444,37 +482,10 @@ function nextSlide() {
 		var $list = $(".banner_list");
 		var $first;
 		var $last;
+=======
+	//client rolling banner
+>>>>>>> e1e8a0f21a5d6739a33e0ffc1bed0fb3bc688980
 		
-		$list.each(function(){   // 5px 간격으로 배너 처음 위치 시킴
-		    $(this).css("left",bannerLeft);
-		    bannerLeft += $(this).width()+5;
-		    $(this).attr("id", "banner"+(++listCnt));  // img에 id 속성 추가
-		});
-		
-		
-		if( listCnt > 5){                //배너 5개 이상이면 이동시킴
-		
-		    last = listCnt;
-		
-		    setInterval(function() {
-		        $list.each(function(){
-		            $(this).css("left", $(this).position().left-1); // 1px씩 왼쪽으로 이동
-		        });
-		        $first = $("#banner"+first);
-		        $last = $("#banner"+last);
-		        if($first.position().left < -200) {    // 제일 앞에 배너 제일 뒤로 옮김
-		            $first.css("left", $last.position().left + $last.width()+5 );
-		            first++;
-		            last++;
-		            if(last > listCnt) { last=1; }   
-		            if(first > listCnt) { first=1; }
-		        }
-		    }, 50);   //여기 값을 조정하면 속도를 조정할 수 있다.(또는 1px 이동하는 부분도 조정) 
-		
-		
-		}
-	
-	};
 	
 	//======================================================================================
 	
@@ -524,140 +535,12 @@ function nextSlide() {
 	<br><br>
 		<div class="banner_box">
 			<div class="banner_wraper">
-				<div class="banner_list">
-					<div class="container">
-					  <a class="card1" href="#">
-					    <h3>2022-01-18</h3>
-					    <p>12:00~14:00   &nbsp&nbsp&nbsp&nbsp&nbsp     5:5</p>
-					    <p class="small"> ~주소~</p>
-					    <div class="go-corner" href="#">
-					      <div class="go-arrow">
-					        →
-					      </div>
-					    </div>
-					  </a>
-					</div>
-				</div>
-				<div class="banner_list">
-					<div class="container">
-					  <a class="card1" href="#">
-					    <h3>2022-01-18</h3>
-					    <p>12:00~14:00   &nbsp&nbsp&nbsp&nbsp&nbsp     5:5</p>
-					    <p class="small"> ~주소~</p>
-					    <div class="go-corner" href="#">
-					      <div class="go-arrow">
-					        →
-					      </div>
-					    </div>
-					  </a>
-					</div>
-				</div>
-				<div class="banner_list">
-					<div class="container">
-					  <a class="card1" href="#">
-					    <h3>2022-01-18</h3>
-					    <p>12:00~14:00   &nbsp&nbsp&nbsp&nbsp&nbsp     5:5</p>
-					    <p class="small"> ~주소~</p>
-					    <div class="go-corner" href="#">
-					      <div class="go-arrow">
-					        →
-					      </div>
-					    </div>
-					  </a>
-					</div>
-				</div>
-				<div class="banner_list">
-					<div class="container">
-					  <a class="card1" href="#">
-					    <h3>2022-01-18</h3>
-					    <p>12:00~14:00   &nbsp&nbsp&nbsp&nbsp&nbsp     5:5</p>
-					    <p class="small"> ~주소~</p>
-					    <div class="go-corner" href="#">
-					      <div class="go-arrow">
-					        →
-					      </div>
-					    </div>
-					  </a>
-					</div>
-				</div>
-				<div class="banner_list">
-					<div class="container">
-					  <a class="card1" href="#">
-					    <h3>2022-01-18</h3>
-					    <p>12:00~14:00   &nbsp&nbsp&nbsp&nbsp&nbsp     5:5</p>
-					    <p class="small"> ~주소~</p>
-					    <div class="go-corner" href="#">
-					      <div class="go-arrow">
-					        →
-					      </div>
-					    </div>
-					  </a>
-					</div>
-				</div>
-				<div class="banner_list">
-					<div class="container">
-					  <a class="card1" href="#">
-					    <h3>2022-01-18</h3>
-					    <p>12:00~14:00   &nbsp&nbsp&nbsp&nbsp&nbsp     5:5</p>
-					    <p class="small"> ~주소~</p>
-					    <div class="go-corner" href="#">
-					      <div class="go-arrow">
-					        →
-					      </div>
-					    </div>
-					  </a>
-					</div>
-				</div>
-				<div class="banner_list">
-					<div class="container">
-					  <a class="card1" href="#">
-					    <h3>2022-01-18</h3>
-					    <p>12:00~14:00   &nbsp&nbsp&nbsp&nbsp&nbsp     5:5</p>
-					    <p class="small"> ~주소~</p>
-					    <div class="go-corner" href="#">
-					      <div class="go-arrow">
-					        →
-					      </div>
-					    </div>
-					  </a>
-					</div>
-				</div>
-				<div class="banner_list">
-					<div class="container">
-					  <a class="card1" href="#">
-					    <h3>2022-01-18</h3>
-					    <p>12:00~14:00   &nbsp&nbsp&nbsp&nbsp&nbsp     5:5</p>
-					    <p class="small"> ~주소~</p>
-					    <div class="go-corner" href="#">
-					      <div class="go-arrow">
-					        →
-					      </div>
-					    </div>
-					  </a>
-					</div>
-				</div>
-				<div class="banner_list">
-					<div class="container">
-					  <a class="card1" href="#">
-					    <h3>2022-01-18</h3>
-					    <p>12:00~14:00   &nbsp&nbsp&nbsp&nbsp&nbsp     5:5</p>
-					    <p class="small"> ~주소~</p>
-					    <div class="go-corner" href="#">
-					      <div class="go-arrow">
-					        →
-					      </div>
-					    </div>
-					  </a>
-					</div>
-				</div>
 				
 				
-				</div>
 				
-			
+				
 			</div>
 		</div>
-		
 	<footer><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
 	
 </body>

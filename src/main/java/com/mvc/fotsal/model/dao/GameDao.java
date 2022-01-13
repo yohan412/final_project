@@ -15,6 +15,7 @@ public interface GameDao {
     String NAMESPACE = "GameBoard.";
 
     public List<GameDto> GameList(GameSearch gameSearch);
+    public List<GameDto> getGameList();
     public int listCount(GameSearch gameSearch);
     public List<String> GameTime();
     public List<Integer> Ddaychk(GamePaging gamePaging);

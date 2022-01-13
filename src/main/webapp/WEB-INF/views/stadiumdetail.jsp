@@ -44,7 +44,7 @@
     </style>
 </head>
 <body>
-<header style="height: 220px">
+<header style="height: 184px">
     <%@ include file="/WEB-INF/views/header.jsp" %>
 </header>
 <section>
@@ -121,14 +121,24 @@
         </div>
         <div id="mid_form">
             <div id="info_form">
-                <div class="info">
-                    <div class="mid_title">경기장 주소</div>
+                <div class="info" style="border-bottom: 1px solid lightgrey; box-sizing: border-box;">
+                    <div class="mid_title">
+                        <div style="height: 100%; width: 109px;"></div>
+                        <div style="height: 100%; width: 120px; display: flex; align-items: center; border-right: 1px solid lightgray; box-sizing: border-box">
+                            경기장 주소
+                        </div>
+                    </div>
                     <div class="mid_info">
                         ${detail.stadium_addr}
                     </div>
                 </div>
-                <div class="info">
-                    <div class="mid_title">홈페이지 주소</div>
+                <div class="info" style="border-bottom: 1px solid lightgrey; box-sizing: border-box;">
+                    <div class="mid_title">
+                        <div style="height: 100%; width: 109px;"></div>
+                        <div style="height: 100%; width: 120px; display: flex; align-items: center; border-right: 1px solid lightgray; box-sizing: border-box">
+                            홈페이지 주소
+                        </div>
+                    </div>
                     <div class="mid_info">
                         <c:choose>
                             <c:when test="${empty detail.stadium_webaddr}">없음</c:when>
@@ -136,8 +146,13 @@
                         </c:choose>
                     </div>
                 </div>
-                <div class="info">
-                    <div class="mid_title">전화번호</div>
+                <div class="info" style="margin-bottom: 0px;">
+                    <div class="mid_title">
+                        <div style="height: 100%; width: 109px;"></div>
+                        <div style="height: 100%; width: 120px; display: flex; align-items: center; border-right: 1px solid lightgray; box-sizing: border-box">
+                            전화번호
+                        </div>
+                    </div>
                     <div class="mid_info">
                         <c:choose>
                             <c:when test="${empty detail.stadium_phonenum}">없음</c:when>
@@ -242,6 +257,9 @@
                             .css('display', 'none')
                             .css('bottom', "0px");
 
+                        $("#content").css("background-color", 'white');
+                        $(".bxslider li").css("background-color", "white");
+
                         $("#review_v_title").empty();
                         $("#review_v_content").empty();
 
@@ -289,8 +307,6 @@
     </div>
     <div id="overlay" style="position: fixed; width: 100vw; height: 100vh; display: none; z-index: 998"></div>
 </section>
-<footer>
-
-</footer>
+<footer><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
 </body>
 </html>

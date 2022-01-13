@@ -10,7 +10,7 @@ public interface ReviewDao {
     String NAMESPACE = "ReviewBoard.";
 
     public List<ReviewDto> reviewlist(Map<String, Object> reviewmap);
-    public int listcount();
+    public int listcount(int stadium_no);
     public ReviewDto detail(int review_no);
     public int insert(ReviewDto reviewDto);
     public int update(ReviewDto reviewDto);

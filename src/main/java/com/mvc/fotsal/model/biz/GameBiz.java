@@ -13,6 +13,7 @@ import java.util.Map;
 
 public interface GameBiz {
     public List<GameDto> GameList(GameSearch gameSearch);
+    public List<GameDto> getGameList();
     public int listCount(GameSearch gameSearch);
     public List<String> GameTime();
     public List<Integer> DdayChk(GamePaging gamePaging);

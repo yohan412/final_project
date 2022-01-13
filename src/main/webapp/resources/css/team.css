@@ -9,8 +9,8 @@ textarea{
 }
 #pointer{
 	cursor: pointer;
-	background-color: #ccc;
-	color: black;
+	background-color: #222;
+	color: #fff;
 	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
 	-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
 	-ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
@@ -25,7 +25,7 @@ textarea{
 }
 #pointer:hover{
 	color: rgba(255, 255, 255, 0.85);
-	box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
+	box-shadow: rgba(92,134, 255, 0.7) 0 0px 0px 40px inset;
 }
 .top-box-content{
 	width: 800px;

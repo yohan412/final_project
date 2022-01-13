@@ -94,11 +94,12 @@
     height: 40px;
     border: 0;
     outline: 0;
-    color: white;
     font-weight: bold;
     font-size: 15px;
     cursor: pointer;
-    background-color: #166cea;
+    background-color: #bfb5d7;
+    color: #ffffff;
+    border-radius: 5px;
 }
 
 #stadium_webaddr_form{
@@ -165,7 +166,11 @@
     width: 590px;
     height: 100%;
     resize: none;
+    border: 1px solid rgba(140,140,140,0.71);
+    outline: 0;
     font-family: "Open Sans", Arial, Verdana;
+    font-weight: bold;
+    font-size: 15px;
 }
 
 #textarea:focus{
@@ -174,9 +179,26 @@
 
 #stadium_upload_form{
     width: 100%;
-    height: 150px;
+    height: 250px;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.input-file-button{
+    width: 80px;
+    height: 40px;
+    border: 0;
+    outline: 0;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #bfb5d7;
+    color: #ffffff;
+    border-radius: 5px;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -189,7 +211,13 @@
     font-size: 25px;
     font-weight: bold;
     user-select: none;
-    color: white;
     cursor: pointer;
-    background-color: #166cea;
+    background-color: #bfb5d7;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+input{
+    border: 0;
+    border-bottom:1px solid lightgray;
 }

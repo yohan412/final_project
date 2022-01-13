@@ -20,7 +20,7 @@
 	<div class="main-all-box">
 		<h1 style="text-align: center;">팀 명단</h1>
 		<div class="table-board-list">
-			<table class="team-table-striped" style="text-align: center; inline-block; border: 1px solid #dddddd" align="center">
+			<table class="team-table-striped" style="text-align: center; inline-block; border: 1px solid #dddddd; width: 900px;" align="center">
 				<colgroup>
 					<col class="team-no">
 					<col class="team-logo">
@@ -29,11 +29,11 @@
 				</colgroup>
 				<thead>
 					<tr>
-						<th style="background-color: #eeeeee; text-align: center;">팀 번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">팀장</th>
-						<th style="background-color: #eeeeee; text-align: center;">팀 로고</th>
-						<th style="background-color: #eeeeee; text-align: center;">팀명</th>
-						<th style="background-color: #eeeeee; text-align: center;">모집여부(Y/N)</th>
+						<th style="background-color: #eeeeee; text-align: center; width: 10%;">팀 번호</th>
+						<th style="background-color: #eeeeee; text-align: center; width: 10%;">팀 로고</th>
+						<th style="background-color: #eeeeee; text-align: center; width: 30%;">팀명</th>
+						<th style="background-color: #eeeeee; text-align: center; width: 13%;">팀장</th>
+						<th style="background-color: #eeeeee; text-align: center; width: 10%;">모집여부(Y/N)</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -47,10 +47,10 @@
 						<c:forEach items="${list }" var="Teamdto">
 							<tr>
 								<td>${Teamdto.team_no }</td> <!-- 팀 번호 -->
-								<td>${Teamdto.user_id }</td>
 								<td class="team-logo-pic"><img class="pic_path" src="/upload/${Teamdto.pic_path }" alt="로고없음"></td> <!-- 팀 로고 사진 -->
 								<td><a href="team_detail.do?team_no=${Teamdto.team_no }">${Teamdto.team_name }</a></td>
 								<!-- 팀 번호가 일치하는 팀이름 -->
+								<td>${Teamdto.user_id }</td> <!-- 팀장 -->
 								<td>${Teamdto.team_addchk }</td> <!-- 팀 모집여부 -->
 							</tr>
 						</c:forEach>
@@ -90,14 +90,15 @@
 				<option value="c"<c:out value="${STLP.searchType == 'c' ? 'selected' : '' }"/>>모집여부</option>
 			</select>
 			
-			<input type="text" id="keywordInput" name="keyword"  value="${STLP.keyword }"/>
-			<input type="button" id="searchBtn" value="검색">
+			<input type="text" id="keywordInput" name="keyword"  value="${STLP.keyword }" required=""/>
+			<label alt='검색어를 입력하세요' placeholder=''></label>
+			<input type="image" id="searchBtn" src="img/icon_magnifier.png">
 			
 		</div>
 		<div class="content-submit-list" align="right">
 			<input id="pointer" type="button" value="작성하기" style="margin-top:15px;" onclick="loginChk(${login.user_no})">
 		</div>
-		<div class="a-blank-space" style="height: 150px;">
+		<div class="a-blank-space" style="height: 50px;">
 			
 		</div>
 	</div>

@@ -36,3 +36,32 @@ h1{
     justify-content: center;
     cursor: pointer;
 }
+.qna_no{
+	width: 10%;
+	text-align: center;
+}
+.qna_writer{
+	width: 15%;
+	text-align: center;
+}
+.qna_title{
+	width: 25%;
+	text-align: center;
+}
+.qna_content{
+	width: 40%;
+	text-align: center;
+}
+.qna_date{
+	width: 10%;
+	text-align: center;
+}
+div.search{
+	margin-left: 32px;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}

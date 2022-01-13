@@ -37,6 +37,7 @@
     user-select: none;
     cursor: pointer;
     background-color: lightgray;
+    border-radius: 5px;
 }
 #right_form{
     width: 550px;
@@ -53,23 +54,23 @@
     display: flex;
     flex-wrap: wrap;
     user-select: none;
-    background-color: lightgray;
+    border-bottom: 1px solid rgba(140,140,140,0.71);
 }
 #stadium_form{
     width: 100%;
-    height: 120px;
+    height: 100px;
     display: flex;
     flex-wrap: wrap;
     font-size: 45px;
     font-weight: bold;
-    align-items: center;
+    align-items: flex-end;
 }
 #stadium_addr_form{
     width: 100%;
-    height: 60px;
+    height: 40px;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
 }
 #date_form{
     width: 500px;
@@ -78,7 +79,7 @@
     display: flex;
     flex-wrap: wrap;
     user-select: none;
-    background-color: lightgray;
+    border-bottom: 1px solid rgba(140,140,140,0.71);
 }
 #dday_form{
     width: 30%;
@@ -101,15 +102,16 @@
     display: flex;
     flex-wrap: wrap;
     user-select: none;
+    border-bottom: 1px solid rgba(140,140,140,0.71);
 }
 #time_form{
     width: 40%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     font-size: 25px;
     font-weight: bold;
-    background-color: lightgray;
 }
 #person_div{
     width: 60%;
@@ -117,13 +119,13 @@
     justify-content: center;
 }
 #person_form{
-    width: 30%;
+    width: 100px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     font-size: 25px;
     font-weight: bold;
-    background-color: lightgray;
 }
 #textarea_form{
     width: 500px;
@@ -132,7 +134,7 @@
     margin-bottom: 20px;
     resize:none;
     user-select: none;
-    border: 0;
+    border: 1px solid rgba(140,140,140,0.71);
     outline: 0;
     font-family: "Open Sans", Arial, Verdana;
     font-weight: bold;
@@ -149,15 +151,15 @@
 #button_form .button{
     width: 120px;
     height: 50px;
-    background-color: aqua;
     border: 0;
     outline: 0;
-    color: white;
     font-size: 17px;
     font-weight: bold;
     border-radius: 5px;
     margin-left: 10px;
-    cursor: pointer;
+    background-color: #bfb5d7;
+    color: #ffffff;
+    cursor: pointer ;
 }
 #bottom_form{
     width: 900px;
@@ -175,7 +177,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    background-color: lightgray;
+    border: 1px solid lightgray;
 }
 .comment{
     width: 700px;
@@ -184,7 +186,7 @@
     flex-wrap: wrap;
     margin-top: 20px;
     user-select: none;
-    background-color: gray;
+    border-bottom: 1px solid lightgray;
     cursor: pointer;
 }
 .comment #comment_info{
@@ -234,8 +236,8 @@
 	height: 20px;
     border: 0;
     outline: 0;
-    color:white;
-    background-color: darkblue;
+    background-color: #bfb5d7;
+    color: #ffffff;
     border-radius: 2px;
     cursor: pointer;
 }
@@ -254,7 +256,6 @@
     font-weight: bold;
     border: 0;
     outline: 0;
-    color: lightgray;
 }
 a{
 	color: black;
@@ -263,39 +264,78 @@ a{
 #prevbutton{
     margin-right:3px;
     cursor: pointer;
-    border: 0;
     outline: 0;
-    background-color: #676FA3;
-    color: #CDDEFF;
+    background-color: #ffffff;
+    border: 1px solid #eee;
     width: 30px;
     height: 30px;
     font-size: 16px;
     font-weight: bold;
 }
+#prevbutton:hover{
+    color: #CDDEFF;
+    background-color: #676FA3;
+    -webkit-transform:scale(1);
+    -moz-transform:scale(1);
+    -ms-transform:scale(1);
+    -o-transform:scale(1);
+    transform:scale(1);
+    -webkit-transition:.3s;
+    -moz-transition:.3s;
+    -ms-transition:.3s;
+    -o-transition:.3s;
+    transition:.3s;
+}
 #nextbutton{
     margin-left:3px;
     cursor: pointer;
-    border: 0;
     outline: 0;
-    background-color: #676FA3;
-    color: #CDDEFF;
+    background-color: #ffffff;
+    border: 1px solid #eee;
     width: 30px;
     height: 30px;
     font-size: 16px;
     font-weight: bold;
+}
+#nextbutton:hover{
+    color: #CDDEFF;
+    background-color: #676FA3;
+    -webkit-transform:scale(1);
+    -moz-transform:scale(1);
+    -ms-transform:scale(1);
+    -o-transform:scale(1);
+    transform:scale(1);
+    -webkit-transition:.3s;
+    -moz-transition:.3s;
+    -ms-transition:.3s;
+    -o-transition:.3s;
+    transition:.3s;
 }
 #pagingnum{
     margin-left:5px;
     margin-right:5px;
     cursor: pointer;
-    border: 0;
     outline: 0;
-    background-color: #676FA3;
-    color: #CDDEFF;
+    background-color: #ffffff;
+    border: 1px solid #eee;
     width: 30px;
     height: 30px;
     font-size: 16px;
     font-weight: bold;
+}
+#pagingnum:hover{
+    color: #CDDEFF;
+    background-color: #676FA3;
+    -webkit-transform:scale(1);
+    -moz-transform:scale(1);
+    -ms-transform:scale(1);
+    -o-transform:scale(1);
+    transform:scale(1);
+    -webkit-transition:.3s;
+    -moz-transition:.3s;
+    -ms-transition:.3s;
+    -o-transition:.3s;
+    transition:.3s;
 }
 #comment_insert_form{
     width: 900px;
@@ -309,7 +349,7 @@ a{
 #comment_insert{
     width: 700px;
     height: 120px;
-    border: 1px solid black;
+    border: 1px solid lightgray;
 }
 #comment_insert #search{
     font-size: 16px;
@@ -327,10 +367,10 @@ a{
     outline: none;
     float: right;
     cursor:pointer;
-    background-color: aqua;
     font-weight: bold;
     font-size: 15px;
-    color: white;
+    background-color: #bfb5d7;
+    color: #ffffff;
 }
 <!---->
 .reply_comment_form{
@@ -364,10 +404,10 @@ a{
     outline: none;
     float: right;
     cursor:pointer;
-    background-color: aqua;
     font-weight: bold;
     font-size: 15px;
-    color: white;
+    background-color: #bfb5d7;
+    color: #ffffff;
 }
 #hidden_form{
     width: 900px;
@@ -381,22 +421,23 @@ a{
 #mergency_list_form{
     width: 800px;
     min-height: 500px;
-    display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    background-color: lightgray;
+    border: 1px solid lightgray;
 }
 #mergency_list{
     width: 700px;
     height: 80px;
     margin-top:40px;
+    margin-left: 50px;
+    padding-bottom: 15px;
     display: flex;
     flex-wrap: wrap;
     font-size: 15px;
     font-weight: bold;
     user-select: none;
-    background-color: gray;
+    border-bottom: 1px solid lightgray;
+    box-sizing: border-box;
 }
 #mergency_id{
     width: 150px;
@@ -404,6 +445,8 @@ a{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    border-right: 1px solid lightgray;
+    box-sizing: border-box;
 }
 #mergency_foot{
     width: 100px;
@@ -411,6 +454,8 @@ a{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    border-right: 1px solid lightgray;
+    box-sizing: border-box;
 }
 #mergency_position{
     width: 100px;
@@ -418,6 +463,8 @@ a{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    border-right: 1px solid lightgray;
+    box-sizing: border-box;
 }
 #mergency_rate{
     width: 100px;
@@ -425,6 +472,8 @@ a{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    border-right: 1px solid lightgray;
+    box-sizing: border-box;
 }
 #mergency_button_form{
     width: 250px;

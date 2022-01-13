@@ -3,14 +3,16 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link href='<c:url value="/resources/css/body.css"/>' rel="stylesheet">
-<link href='<c:url value="/resources/css/boardTest.css"/>' rel="stylesheet">
+<link href='<c:url value="/resources/css/boardTest.css"/>'
+	rel="stylesheet">
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Q&A BOARD</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <style>
 table {
@@ -43,84 +45,92 @@ table {
 			</div>
 		</div>
 
-		</div>
-		<section>
+	</div>
+	<section>
 		<!-- list start -->
 		<div class="list-all-box">
-		<form role="form" method="get">
-			<div class="board_list_wrap">
-				<div>
-					<table style="width: 800px;" border="1">
-						<thead>
-							<tr>
-								<th style="width: 10%;">번호</th>
-								<th style="width: 10%;">작성자</th>
-								<th style="width: 20%;">제목</th>
-								<th style="width: 50%;">내용</th>
-								<th style="width: 10%;">작성일</th>
-							<tr>
-						</thead>
-						<tbody>
-							<c:choose>
-								<c:when test="${empty list }">
-									<tr>
-										<td colspan="5" align="center">-------- 작성된 글이 없습니다
-											--------</td>
-									</tr>
-								</c:when>
-								<c:otherwise>
-									<c:forEach items="${list }" var="dto">
+
+				<div class="board_list_wrap">
+					<div>
+						<table class="qna-table"
+							style="text-align: center; inline-block; border: 1px solid #dddddd; width: 900px;"
+							align="center">
+							<colgroup>
+								<col class="qna_no">
+								<col class="qna_writer">
+								<col class="qna_title">
+								<col class="qna_content">
+								<col class="qna_date">
+							<thead>
+								<tr>
+									<th
+										style="background-color: #eeeeee; text-align: center width: 10%;">번호</th>
+									<th
+										style="background-color: #eeeeee; text-align: center width: 10%;">작성자</th>
+									<th
+										style="background-color: #eeeeee; text-align: center width: 20%;">제목</th>
+									<th
+										style="background-color: #eeeeee; text-align: center width: 50%;">내용</th>
+								<tr>
+							</thead>
+							<tbody>
+								<c:choose>
+									<c:when test="${empty list }">
 										<tr>
-											<td>${dto.qna_no }</td>
-											<td>${dto.user_id}</td>
-											<td><a href="qnadetail.do?qna_gpno=${dto.qna_gpno }">${dto.qna_title }</a></td>
-											<td>${dto.qna_content }</td>
-											<td>${dto.qna_reg }</td>
+											<td colspan="5" align="center">-------- 작성된 글이 없습니다
+												--------</td>
 										</tr>
-									</c:forEach>
-								</c:otherwise>
-							</c:choose>
-							<tr>
-								<td colspan="5" align="right"><input type="button"
-									value="글 작성" onclick="location.href='qna.do'"></td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="serch">
-						<select name="searchType">
-							<option value="n"><c:out value="${scri.searchType == null ? '검색' : ''}"/></option>
-							<option value="t"><c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
-							<option value="c"><c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
-							<option value="w"><c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
-							<option value="tc"><c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
-						</select> <input type="text" name="keyword" id="keywordInput"
-							value="${scri.keyword}" />
+									</c:when>
+									<c:otherwise>
+										<c:forEach items="${list }" var="dto">
+											<tr>
+												<td>${dto.qna_no }</td>
+												<td>${dto.user_id}</td>
+												<td><a href="qnadetail.do?qna_gpno=${dto.qna_gpno }">${dto.qna_title }</a></td>
+												<td>${dto.qna_content }</td>
+												<td>${dto.qna_reg }</td>
+											</tr>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
+							</tbody>
+						</table>
+						<!-- 페이지 리스트 -->
+						<div class="page-list" align="center">
 
-						<button id="searchBtn" type="button">검색</button>
+							<c:if test="${pageMaker.prev }">
+								<input type="button" id="prev-btn" onclick="location.href='qnalist.do${pageMaker.makeSearch(pageMaker.startPage - 1)}'" value="<<">
+							</c:if>
 
+							<c:forEach begin="${pageMaker.startPage}"
+								end="${pageMaker.endPage }" var="idx">
+								<a href="qnalist.do${pageMaker.makeSearch(idx) }">${idx}</a>
+							</c:forEach>
+
+							<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
+								<input type="button" id="next-btn" onclick="location.href='qnalist.do${pageMaker.makeSearch(pageMaker.endPage + 1)}'" value=">>">
+							</c:if>
+
+						</div>
+						<div class="serch" align="center">
+							<select name="searchType">
+								<option value="n"><c:out value="${scri.searchType == null ? '검색' : ''}" /></option>
+								<option value="t"><c:out value="${scri.searchType == 't' ? 'selected' : ''}" />>제목</option>
+								<option value="c"><c:out value="${scri.searchType == 'c' ? 'selected' : ''}" />>내용</option>
+								<option value="w"><c:out value="${scri.searchType == 'w' ? 'selected' : ''}" />>작성자</option>
+								<option value="tc"><c:out value="${scri.searchType == 'tc' ? 'selected' : ''}" />>제목+내용</option>
+							</select> 
+							<input type="text" name="keyword" id="keywordInput" value="${STLP.keyword}" required=""/>
+							<button id="searchBtn" type="button">검색</button>
+
+						</div>
 					</div>
 				</div>
+
+			<div class="content-submit-list" align="right">
+				<input id="pointer" type="button" value="작성하기" style="margin-top: 15px;" onclick="loginChk(${login.user_no})">
 			</div>
-		
-		<!-- 페이지 리스트 -->
-		<div class="page-list" align="center">
-
-			<c:if test="${pageMaker.prev }">
-				<a href="qnalist.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a>
-			</c:if>
-
-			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage }"
-				var="idx">
-				<a href="qnalist.do${pageMaker.makeSearch(idx) }">${idx}</a>
-			</c:forEach>
-
-			<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
-				<a href="qnalist.do${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a>
-			</c:if>
-
 		</div>
-		</form>
-	</div>
 	</section>
 
 	<!-- footer -->
@@ -130,12 +140,26 @@ table {
 		$(function() {
 			$('#searchBtn').click(
 					function() {
-						self.location = "qnalist.do" + '${pageMaker.makeQuery(1)}' + 
-						"&searchType=" + $("select option:selected").val() + 
-						"&keyword=" + encodeURIComponent($('#keywordInput').val());
+						self.location = "qnalist.do"
+								+ '${pageMaker.makeQuery(1)}' + "&searchType="
+								+ $("select option:selected").val()
+								+ "&keyword="
+								+ encodeURIComponent($('#keywordInput').val());
 					});
 		});
 	</script>
 </body>
+<footer>
+	<%@ include file="footer.jsp"%>
+</footer>
+<script type="text/javascript">
+function loginChk(user_no){
+	if(user_no == null){
+		alert('로그인 하셔야 작성이 가능합니다');
+	}else{
+		location.href='qna.do';
+	}
+}
+</script>
 
 </html>

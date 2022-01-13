@@ -13,7 +13,7 @@
 <title>경기 일정 목록</title>
 </head>
 <body>
-<header style="height: 220px">
+<header style="height: 184px">
     <%@ include file="/WEB-INF/views/header.jsp" %>
 </header>
 <section>
@@ -72,7 +72,7 @@
                     </c:if>
                 </div>
                 <div style="width: 200px; height: 100%; display: flex; align-items: center; justify-content: center">
-                    <input type="button" value="경기 등록" onclick="game_insert('${userDto.user_id}')">
+                    <input type="button" value="경기 등록" onclick="game_insert('${userDto.user_id}')" id="sta_but">
                     <script type="text/javascript">
                         function game_insert(user_id){
                             if(user_id === "" || user_id == null){
@@ -86,30 +86,33 @@
             </div>
             <div id="serchform">
                 <div>
-                    <input type="text" name="search" id="search" value="${gameSearch.keyword}" onkeypress="if(event.keyCode===13){gamesearch()}" >
-                    <input type="button" id="button" value="검색">
+<%--                    <input type="text" name="search" id="search" value="${gameSearch.keyword}" onkeypress="if(event.keyCode===13){gamesearch()}" >
+                    <input type="button" id="button" src="/">--%>
+                    <input type="text" id="keywordInput" name="keyword"  value="${gameSearch.keyword}" onkeypress="if(event.keyCode===13){gamesearch()}" required=""/>
+                    <label alt='검색어를 입력하세요' placeholder=''></label>
+                    <input type="image" id="searchBtn" src="img/icon_magnifier.png" onclick="gamesearch();">
                     <script type="text/javascript">
                         $(function (){
                            $('#button').click(function (){
-                               if($("#search").val() === "" || $("#search").val() == null){
+                               if($("#keywordInput").val() === "" || $("#keywordInput").val() == null){
                                     alert('검색 내용을 입력하세요');
                                }else{
                                    self.location =
                                        "gamelist.do" + '${gamepagemaker.makeQuery(1)}' +
                                        "&searchType=t" +
-                                       "&keyword=" + encodeURIComponent($('#search').val());
+                                       "&keyword=" + encodeURIComponent($('#keywordInput').val());
                                }
                            });
                         });
 
                         function gamesearch(){
-                            if($("#search").val() === "" || $("#search").val() == null){
+                            if($("#keywordInput").val() === "" || $("#keywordInput").val() == null){
                                 alert('검색 내용을 입력하세요');
                             }else{
                                 self.location =
                                     "gamelist.do" + '${gamepagemaker.makeQuery(1)}' +
                                     "&searchType=t" +
-                                    "&keyword=" + encodeURIComponent($('#search').val());
+                                    "&keyword=" + encodeURIComponent($('#keywordInput').val());
                             }
                         }
                     </script>
@@ -118,8 +121,6 @@
         </form>
     </div>
 </section>
-<footer>
-	푸터
-</footer>
+<footer><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
 </body>
 </html>

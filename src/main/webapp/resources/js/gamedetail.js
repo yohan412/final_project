@@ -90,6 +90,13 @@ function send_to_mer(mer_user_id, author_id){
     });
 }
 
+window.onload = function (){
+    var textarea =  document.getElementById("textarea_form");
+
+    textarea.style.height = "1px";
+    textarea.style.height = (12+textarea.scrollHeight)+"px";
+}
+
 function rp_comment_insert(idx, game_no, s_author, s_user_id){
     var author = s_author;  //글 작성자 아이디
     var user_id = s_user_id;          //세션 아이디
