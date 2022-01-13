@@ -68,8 +68,8 @@
 						<textarea rows="10" cols="60" name="mercenary_intro" placeholder="자기소개와 한마디를 적어주세요"></textarea>
 					</div>
 					<div class="content-submit" align="right">
-						<input id="pointer" type="button" value="이전" onclick="location.href='index.jsp'">
-						<input id="pointer" type="submit" value="작성하기">
+						<button id="pointer" onclick="location.href='index.jsp'" style="margin-right: 110px; margin-top: 15px;">이전</button>
+						<button id="pointer" type="submit" style="margin-right: 2px;">작성하기</button>
 					</div>
 					<div class="blank-space" style="height: 150px;">
 					</div>

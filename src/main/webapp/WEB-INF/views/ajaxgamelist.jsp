@@ -79,7 +79,7 @@ window.onload = function() {
 					<fmt:parseDate value="${gamelist.game_time}" var="starttime" pattern="HH:mm"/>
                             <fmt:formatDate value="${starttime}" pattern="HH:mm"/>
                            	&nbsp;~&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<c:choose>
                     	<c:when test="${gamelist.game_people eq 3}">3 vs 3</c:when>
                       	<c:when test="${gamelist.game_people eq 4}">4 vs 4</c:when>

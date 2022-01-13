@@ -20,20 +20,20 @@
 					<div class="title-text">	
 						<h2>Welcome ${teamDto.team_name }</h2>
 					</div>
-					<hr>
+					
 					<div class="content-select-teamname">
 						<h5 class="head-text">1. 팀명</h5>
 						<input type="hidden" name="team_no" value="${teamDto.team_no }">
 						<label class="chk-team-name"><input type="text" name="team_name" placeholder="${teamDto.team_name }"
 						 value="${teamDto.team_name }" required></label>
 					</div>
-					<hr>
+					
 					<div class="content-select-position">
 						<h5 class="head-text">2. 모집 여부</h5>
 						<input type="radio" name="team_addchk" value="Y">Y
 						<input type="radio" name="team_addchk" value="N">N
 					</div>
-					<hr>
+					
 					<div class="content-teamlogo">
 						<h5 class="head-text">3. 팀 로고</h5>
 						<input class="upload-name" name="pic_path" value="${teamDto.pic_path }" placeholder="첨부파일" readonly>
@@ -47,11 +47,10 @@
 						<h5 class="head-text">4. 팀 소개 및 한마디</h5>
 						<textarea rows="10" cols="60" name="team_intro">${teamDto.team_intro }</textarea>
 					</div>
-					<hr>
 					
 					<div class="content-submit" align="right">
-						<input id="pointer" type="button" value="목록" onclick="location.href='teamlist.do'">
-						<input id="pointer" type="submit" value="수정완료">
+						<button id="pointer" style="margin-right: 110px;" onclick="location.href='teamlist.do'">목록</button>
+						<button id="pointer" style="margin-right: 5px; margin-top: 15px;" type="submit">수정완료</button>
 					</div>
 					
 				</div>
