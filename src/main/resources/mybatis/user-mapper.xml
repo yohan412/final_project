@@ -20,7 +20,7 @@
 	</resultMap>
 	
 	<select id="login" parameterType="userDto" resultType="userDto">
-		SELECT USER_NO, USER_ID, USER_PW, USER_NAME, USER_PHONE
+		SELECT USER_NO, USER_ID, USER_PW, USER_NAME, USER_PHONE, USER_ROLE
 		FROM USER_INFO
 		WHERE USER_ID = #{user_id}
 	</select>
@@ -87,6 +87,12 @@
 	
 	<select id="kakaologin" resultType="userDto" parameterType="Map">
 		SELECT * FROM USER_INFO WHERE USER_EMAIL = #{email} AND USER_ID = #{id}
+	</select>
+	
+	<select id="selectList" resultType="userDto">
+		SELECT USER_NO, USER_ID, USER_NAME, USER_EMAIL, USER_PHONE
+		FROM USER_INFO
+		ORDER BY USER_NO DESC
 	</select>
 		
 </mapper>

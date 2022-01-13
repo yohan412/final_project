@@ -121,8 +121,8 @@
 			
 		}
 	$(function(){ // 작성자가 아니면 숨기기
-		var login_id = ${login.user_id};
-		var user_id = ${teamDto.user_id};
+		var login_id = '${login.user_id};'
+		var user_id = '${teamDto.user_id};'
 			console.log(user_id);
 			console.log(login_id);
 		

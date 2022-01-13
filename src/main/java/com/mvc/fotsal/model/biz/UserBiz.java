@@ -1,5 +1,6 @@
 package com.mvc.fotsal.model.biz;
 
+import java.util.List;
 import java.util.Map;
 
 import com.mvc.fotsal.model.dto.UserDto;
@@ -20,4 +21,6 @@ public interface UserBiz {
 	public Map<String, Object> kakaoConnectionCheck(Map<String, Object> loginApi);
 	public int setKakaoConnection(Map<String, Object> loginApi);
 	public UserDto userKakaoLoginPro(Map<String, Object> loginApin);
+	public List<UserDto> selectList();
+
 }

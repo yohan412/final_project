@@ -1,6 +1,7 @@
 package com.mvc.fotsal.model.biz;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,6 +90,11 @@ public class UserBizImpl implements UserBiz {
 	@Override
 	public UserDto userKakaoLoginPro(Map<String, Object> loginApin) {
 		return dao.userKakaoLoginPro(loginApin);
+	}
+
+	@Override
+	public List<UserDto> selectList() {
+		return dao.selectList();
 	}
 	
 	

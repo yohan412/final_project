@@ -1,5 +1,6 @@
 package com.mvc.fotsal.model.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import com.mvc.fotsal.model.dto.UserDto;
@@ -23,4 +24,5 @@ public interface UserDao {
 	public Map<String, Object> kakaoConnectionCheck(Map<String, Object> loginApi);
 	public int setKakaoConnection(Map<String, Object> loginApi);
 	public UserDto userKakaoLoginPro(Map<String, Object> loginApin);
+	public List<UserDto> selectList();
 }

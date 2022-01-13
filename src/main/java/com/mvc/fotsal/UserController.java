@@ -409,7 +409,13 @@ public class UserController {
         return "redirect:loginform.do";
     }
 
-    
+    //관리자 페이지
+    @RequestMapping("/admin.do")
+	public String memberList(Model model) {
+		logger.info("MEMBER LIST");
+		model.addAttribute("list", biz.selectList());
+		return "adminmain";
+	}
     
     
     
