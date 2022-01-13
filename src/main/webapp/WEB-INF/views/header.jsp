@@ -65,13 +65,13 @@
 </head>
 <body>
 <header>
-	<div class="headr-all">
+	<div class="headr-all"  align="center">
 		<div class="name">
 			<%@ include file="/WEB-INF/views/co_name.jsp" %>
 		</div>
 		<nav class="menu">
 		  	<ul id="menu_bar">
-		  		  <li style="padding-left: 170px;">
+		  		  <li>
 		  	 		   <a href="index.jsp">Home</a>
 		  	 	 </li>
 		 	 	 <li>
@@ -116,7 +116,7 @@
 			 	 	  	<a href="user_info.do?user_id=${login.user_id }">My page</a>
 			 	 	  </c:if>
 			 	 </li>
-			 	 <li style="float: right; padding-right: 120px;">
+			 	 <li style="padding-right: 30px;">
 					  <c:if test="${login != null }">
 					  	<a>${login.user_name } 님</a>
 					  </c:if>
