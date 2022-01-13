@@ -57,19 +57,16 @@ window.onload = function() {
 
 	            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 				
+	            var iwcontent ='<div style="width:150px;text-align:center;padding:6px 0;">'+stadium+'</div>'
+	            
 	            // 결과값으로 받은 위치를 마커로 표시합니다
-	            var marker = new kakao.maps.Marker({
+	            var marker = new kakao.maps.InfoWindow({
 	                map: map,
-	                position: coords
+	                content: iwcontent,
+	                position: coords,
+	                removable : false
 	            });
 	            
-	       	  // 인포윈도우로 장소에 대한 설명을 표시합니다
-                var infowindow = new kakao.maps.InfoWindow({
-                    content: '<div style="width:150px;text-align:center;padding:6px 0;">'+stadium+'</div>'
-                });
-                infowindow.open(map, marker);
-
-	            map.setCenter(coords);
 	        }
 	        else {
 	            alert("도로 찾기 실패");
@@ -99,6 +96,7 @@ window.onload = function() {
             <div id="listform">
                 <c:forEach items="${gamelist}" var="gamelist" varStatus="status">
                 	<input type="hidden" class="addr" value="${gamelist.game_addr }">
+             		<input type="hidden" class="stadium" value="${gamelist.game_stadium }">
                     <div class="list" onclick="location.href='gamedetail.do?game_no=${gamelist.game_no}'">
                         <div id="region">${gamelist.game_region}</div>
                         <div id="date">
@@ -117,7 +115,7 @@ window.onload = function() {
                             ~&nbsp;
                                 ${endtime[status.index]}
                         </div>
-                        <div id="stadium" class="stadium" value="${gamelist.game_stadium}">${gamelist.game_stadium}</div>
+                        <div id="stadium">${gamelist.game_stadium}</div>
                         <div id="person">
                             <c:choose>
                                 <c:when test="${gamelist.game_people eq 3}">3 vs 3</c:when>
