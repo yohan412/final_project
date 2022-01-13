@@ -98,7 +98,7 @@
 		<div class="content-submit-list" align="right">
 			<input id="pointer" type="button" value="작성하기" style="margin-top:15px;" onclick="loginChk(${login.user_no})">
 		</div>
-		<div class="a-blank-space" style="height: 150px;">
+		<div class="a-blank-space" style="height: 50px;">
 			
 		</div>
 	</div>
