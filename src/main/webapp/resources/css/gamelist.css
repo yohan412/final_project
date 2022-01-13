@@ -93,39 +93,78 @@ a{
 #prevbutton{
     margin-right:3px;
     cursor: pointer;
-    border: 0;
     outline: 0;
-    background-color: #bfb5d7;
-    color: #ffffff;
+    background-color: #ffffff;
+    border: 1px solid #eee;
     width: 30px;
     height: 30px;
     font-size: 16px;
     font-weight: bold;
 }
+#prevbutton:hover{
+    color: #CDDEFF;
+    background-color: #676FA3;
+    -webkit-transform:scale(1);
+    -moz-transform:scale(1);
+    -ms-transform:scale(1);
+    -o-transform:scale(1);
+    transform:scale(1);
+    -webkit-transition:.3s;
+    -moz-transition:.3s;
+    -ms-transition:.3s;
+    -o-transition:.3s;
+    transition:.3s;
+}
 #nextbutton{
     margin-left:3px;
     cursor: pointer;
-    border: 0;
     outline: 0;
-    background-color: #bfb5d7;
-    color: #ffffff;
+    background-color: #ffffff;
+    border: 1px solid #eee;
     width: 30px;
     height: 30px;
     font-size: 16px;
     font-weight: bold;
+}
+#nextbutton:hover{
+    color: #CDDEFF;
+    background-color: #676FA3;
+    -webkit-transform:scale(1);
+    -moz-transform:scale(1);
+    -ms-transform:scale(1);
+    -o-transform:scale(1);
+    transform:scale(1);
+    -webkit-transition:.3s;
+    -moz-transition:.3s;
+    -ms-transition:.3s;
+    -o-transition:.3s;
+    transition:.3s;
 }
 #pagingnum{
     margin-left:5px;
     margin-right:5px;
     cursor: pointer;
-    border: 0;
     outline: 0;
-    background-color: #bfb5d7;
-    color: #ffffff;
+    background-color: #ffffff;
+    border: 1px solid #eee;
     width: 30px;
     height: 30px;
     font-size: 16px;
     font-weight: bold;
+}
+#pagingnum:hover{
+    color: #CDDEFF;
+    background-color: #676FA3;
+    -webkit-transform:scale(1);
+    -moz-transform:scale(1);
+    -ms-transform:scale(1);
+    -o-transform:scale(1);
+    transform:scale(1);
+    -webkit-transition:.3s;
+    -moz-transition:.3s;
+    -ms-transition:.3s;
+    -o-transition:.3s;
+    transition:.3s;
 }
 #serchform{
     width: 900px;
@@ -137,27 +176,29 @@ a{
 }
 #serchform div{
 	width: 400px;
-    height: 40px;
-    border: 1px solid lightgray;
+    height: 50px;
 }
 #serchform div #search{
     font-size: 16px;
-    width: 330px;
+    width: 320px;
     height: 20px;
     padding: 10px;
     border: 0px;
     outline: none;
     float:left;
+    border-bottom: 1px solid lightgray;
+    box-sizing: border-box;
 }
 #serchform div #button{
-    width: 50px;
-    height: 100%;
+    width: 32px;
+    height: 32px;
     border: 0px;
     outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     float: right;
     cursor:pointer;
-    background-color: #bfb5d7;
-    color: #ffffff;
 }
 
 #sta_but{
@@ -166,9 +207,74 @@ a{
     width: 150px;
     height: 50px;
     border-radius: 3px;
-    background-color: #bfb5d7;
+    background-color: #00bafa;
     color: #ffffff;
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
+}
+
+#keywordInput{
+    font-size: 16px;
+    height: 40px;
+    width: 360px;
+    margin-left: 30px;
+    padding-left: 20px;
+    padding-right: 46px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+input[type="text"] {
+    margin: 0 0 1em;
+    background: #fff;
+    border-radius: 1.5em;
+    resize: none;
+    outline: none;
+}
+input[type="text"]#keywordInput:focus{
+    border-color: #00bafa;
+}
+input[type="image"]#searchBtn:focus{
+    border-color: #00bafa;
+}
+input[type="text"][required]:focus + label[placeholder]:before {
+    color: #00bafa;
+}
+input[type="text"][required]:focus + label[placeholder]:before,
+input[type="text"][required]:valid + label[placeholder]:before {
+    transition-duration: 0.2s;
+    transform: translate(0, -2em) scale(0.9, 0.9);
+}
+input[type="text"][required]:invalid + label[placeholder][alt]:before {
+    content: attr(alt);
+}
+input[type="text"][required] + label[placeholder] {
+    display: block;
+    pointer-events: none;
+    margin-left: 25px;
+    margin-top: calc(-3em - -2px);
+    margin-bottom: calc((3em - 1em) + 2px);
+}
+input[type="text"][required] + label[placeholder]:before {
+    content: attr(placeholder);
+    display: inline-block;
+    margin: 0 calc(1em + 2px);
+    padding: 0 5px;
+    color: #898989;
+    white-space: nowrap;
+    transition: 0.3s ease-in-out;
+    background-image: linear-gradient(to bottom, #fff, #fff);
+    background-size: 100% 5px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#searchBtn{
+    padding: 10px;
+    margin-left: 340px;
+    margin-top: -65px;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
 }

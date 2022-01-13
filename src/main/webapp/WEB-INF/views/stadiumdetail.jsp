@@ -44,7 +44,7 @@
     </style>
 </head>
 <body>
-<header style="height: 220px">
+<header style="height: 184px">
     <%@ include file="/WEB-INF/views/header.jsp" %>
 </header>
 <section>
@@ -121,22 +121,21 @@
         </div>
         <div id="mid_form">
             <div id="info_form">
-                <div class="info">
+                <div class="info" style="border-bottom: 1px solid lightgrey; box-sizing: border-box;">
                     <div class="mid_title">
                         <div style="height: 100%; width: 109px;"></div>
-                        <div style="height: 100%; width: 120px; display: flex; align-items: center; border-right: 1px solid lightgray;">
+                        <div style="height: 100%; width: 120px; display: flex; align-items: center; border-right: 1px solid lightgray; box-sizing: border-box">
                             경기장 주소
                         </div>
                     </div>
                     <div class="mid_info">
                         ${detail.stadium_addr}
                     </div>
-                    <div style="height: 100%; width: 345px;"></div>
                 </div>
-                <div class="info">
+                <div class="info" style="border-bottom: 1px solid lightgrey; box-sizing: border-box;">
                     <div class="mid_title">
                         <div style="height: 100%; width: 109px;"></div>
-                        <div style="height: 100%; width: 120px; display: flex; align-items: center; border-right: 1px solid lightgray;">
+                        <div style="height: 100%; width: 120px; display: flex; align-items: center; border-right: 1px solid lightgray; box-sizing: border-box">
                             홈페이지 주소
                         </div>
                     </div>
@@ -146,12 +145,11 @@
                             <c:otherwise>${detail.stadium_webaddr}</c:otherwise>
                         </c:choose>
                     </div>
-                    <div style="height: 100%; width: 345px;"></div>
                 </div>
-                <div class="info">
+                <div class="info" style="margin-bottom: 0px;">
                     <div class="mid_title">
                         <div style="height: 100%; width: 109px;"></div>
-                        <div style="height: 100%; width: 120px; display: flex; align-items: center; border-right: 1px solid lightgray;">
+                        <div style="height: 100%; width: 120px; display: flex; align-items: center; border-right: 1px solid lightgray; box-sizing: border-box">
                             전화번호
                         </div>
                     </div>
@@ -161,7 +159,6 @@
                             <c:otherwise>${detail.stadium_phonenum}</c:otherwise>
                         </c:choose>
                     </div>
-                    <div style="height: 100%; width: 345px;"></div>
                 </div>
             </div>
         </div>
@@ -310,8 +307,6 @@
     </div>
     <div id="overlay" style="position: fixed; width: 100vw; height: 100vh; display: none; z-index: 998"></div>
 </section>
-<footer>
-
-</footer>
+<footer><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
 </body>
 </html>
