@@ -1,6 +1,8 @@
 package com.mvc.fotsal.model.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -217,6 +219,20 @@ import com.mvc.fotsal.model.dto.UserDto;
 			}
 			return res;
 		}
+
+		@Override
+		public List<UserDto> selectList() {
+			List<UserDto> list = new ArrayList<UserDto>();
+			
+			try {
+				list = sqlSession.selectList(NAMESPACE+"selectList");
+			} catch (Exception e) {
+				System.out.println("[error]: select list" );
+				e.printStackTrace();
+			}
+			return list;
+		}
+		
 
 		
 }

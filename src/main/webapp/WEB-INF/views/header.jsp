@@ -102,21 +102,19 @@
 					  </c:if>
 				 </li>
 				 <li>
-					  <!-- 로그인한 상태 -->
-			 	 	  <c:if test="${login != null }">
-					  	<a href="logout.do">로그아웃</a>
-					  </c:if>
-			 	 </li>
-			 	 <li>
-			 	 	  <c:if test="${login != null }">
-			 	 	  	<a href="user_info.do?user_id=${login.user_id }">마이페이지</a>
-			 	 	  </c:if>
-			 	 </li>
-			 	 <li>
-					  <c:if test="${login != null }">
-					  	<span>${login.user_name }님</span>
-					  </c:if>
-			 	 </li>
+				 	<!-- 로그인한 상태 -->
+				 		<c:if test="${login != null && login.user_role == 'USER'}">
+					 			<li><a href="logout.do">로그아웃</a></li>
+					 			<li><a href="user_info.do?user_id=${login.user_id }">마이페이지</a></li>
+					 			<span>${login.user_name }님</span>
+				 		</c:if>
+				 		<c:if test="${login != null && login.user_role == 'ADMIN'}">
+					 			<li><a href="logout.do">로그아웃</a></li>
+					 			<li><a href="admin.do">관리자 페이지</a></li>
+					 			<li><a href="user_info.do?user_id=${login.user_id }">마이페이지</a></li>
+					 			<span>${login.user_name }님</span>
+				 		</c:if>
+				 </li>
 			 	 <li>
 			 	 	  <span sec:authentication="user_id"></span>
 			 	 </li>

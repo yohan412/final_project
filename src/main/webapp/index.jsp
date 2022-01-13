@@ -435,7 +435,7 @@ function nextSlide() {
 	
 	//===============================================================================
 
-	//client rolling banner
+	//client rolling banner\
 	window.onload = function() {
 		var bannerLeft=0;
 		var first=1;
