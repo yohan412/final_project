@@ -9,20 +9,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+	
 	html {
 	  height:100%;
 	}
 	
 	header{
 		top:0;
-		height: 220px;
+		height: 130px;
 	}
 	
 	.menu {
 	  width: 100%;
 	  mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
 	  margin: 0 auto;
-	  padding: 30px 0;
+	  padding: 10px 0;
 	}
 	
 	#menu_bar {
@@ -50,7 +51,12 @@
 	  background: rgba(255, 255, 255, 0.1);
 	  color: rgba(0, 35, 122, 0.7);
 	}
-		
+	.name{
+		text-align: center;
+	    justify-content: center;
+	    display: grid;
+	    margin: 25px;
+	}	
 </style>
 <script type="text/javascript"	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -59,12 +65,10 @@
 </head>
 <body>
 <header>
-	<div class="headr-all">
-		<section>
-			<div class="site-name" align="center">
-				<h1 style="font-size: 40px;">Street Futsal Manager</h1>
-			</div>
-		</section>
+	<div class="headr-all"  align="center">
+		<div class="name">
+			<%@ include file="/WEB-INF/views/co_name.jsp" %>
+		</div>
 		<nav class="menu">
 		  	<ul id="menu_bar">
 		  		  <li>
@@ -93,30 +97,28 @@
 			 	 <li>
 					  <!-- 로그인 하지 않은 상태 -->
 					  <c:if test="${login == null }">
-					  	<a href="loginform.do">로그인</a>
+					  	<a href="loginform.do">Login</a>
 					  </c:if>
 				 </li>
 				 <li>
 				 	  <c:if test="${login == null }">
-					  	<a href="registerform.do">회원가입</a>
+					  	<a href="registerform.do">Sign up</a>
 					  </c:if>
 				 </li>
 				 <li>
-					  <!-- 로그인한 상태 -->
-			 	 	  <c:if test="${login != null }">
-					  	<a href="logout.do">로그아웃</a>
-					  </c:if>
-			 	 </li>
-			 	 <li>
-			 	 	  <c:if test="${login != null }">
-			 	 	  	<a href="user_info.do?user_id=${login.user_id }">마이페이지</a>
-			 	 	  </c:if>
-			 	 </li>
-			 	 <li>
-					  <c:if test="${login != null }">
-					  	<span>${login.user_name }님</span>
-					  </c:if>
-			 	 </li>
+				 	<!-- 로그인한 상태 -->
+				 		<c:if test="${login != null && login.user_role == 'USER'}">
+					 			<li><a href="logout.do">로그아웃</a></li>
+					 			<li><a href="user_info.do?user_id=${login.user_id }">마이페이지</a></li>
+					 			<span>${login.user_name }님</span>
+				 		</c:if>
+				 		<c:if test="${login != null && login.user_role == 'ADMIN'}">
+					 			<li><a href="logout.do">로그아웃</a></li>
+					 			<li><a href="admin.do">관리자 페이지</a></li>
+					 			<li><a href="user_info.do?user_id=${login.user_id }">마이페이지</a></li>
+					 			<span>${login.user_name }님</span>
+				 		</c:if>
+				 </li>
 			 	 <li>
 			 	 	  <span sec:authentication="user_id"></span>
 			 	 </li>

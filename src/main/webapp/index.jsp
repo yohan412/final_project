@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-
+	
 	footer{
 		width: 100%;
 		text-align:center;
@@ -473,46 +473,7 @@ function nextSlide() {
 	//===============================================================================
 
 	//client rolling banner
-		window.onload = function() {
 		
-			var bannerLeft=0;
-			var first=1;
-			var last;
-			var listCnt=0;
-			var $list = $(".banner_list");
-			var $first;
-			var $last;
-			
-			$list.each(function(){   // 5px 간격으로 배너 처음 위치 시킴
-			    $(this).css("left",bannerLeft);
-			    bannerLeft += $(this).width()+5;
-			    $(this).attr("id", "banner"+(++listCnt));  // img에 id 속성 추가
-			});
-			
-			
-			if( listCnt > 5){                //배너 5개 이상이면 이동시킴
-			
-			    last = listCnt;
-			
-			    setInterval(function() {
-			        $list.each(function(){
-			            $(this).css("left", $(this).position().left-1); // 1px씩 왼쪽으로 이동
-			        });
-			        $first = $("#banner"+first);
-			        $last = $("#banner"+last);
-			        if($first.position().left < -200) {    // 제일 앞에 배너 제일 뒤로 옮김
-			            $first.css("left", $last.position().left + $last.width()+5 );
-			            first++;
-			            last++;
-			            if(last > listCnt) { last=1; }   
-			            if(first > listCnt) { first=1; }
-			        }
-			    }, 50);   //여기 값을 조정하면 속도를 조정할 수 있다.(또는 1px 이동하는 부분도 조정) 
-			
-			
-			}
-		
-		};
 	
 	//======================================================================================
 	
@@ -528,12 +489,24 @@ function nextSlide() {
             container.find('.search-input').val('');
         }
 }
+
+//검색 기능
+function gamesearch(){
+	if($(".search-input").val() === "" || $(".search-input").val() == null){
+		alert('검색 내용을 입력하세요');
+	}else{
+		self.location =
+				"gamelist.do" + '?page=1&perPageNum=5' +
+				"&searchType=t" +
+				"&keyword=" + encodeURIComponent($('.search-input').val());
+	}
+}
 	
 </script>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/header.jsp" %>
-	
+
 	<div class="slideshow-container">
 		<div class="mySlideDiv fade active">
 			<img src="/img/futsalimg03.jpg"> 
@@ -546,14 +519,16 @@ function nextSlide() {
 	    <div class="mySlideDiv fade">
 	        <img src="/img/futsalimg05.jpg"> 
 	    </div>
-		
+
+		<form role="form" method="get" onsubmit="return false">
 		<div class="search-wrapper">
 		    <div class="input-holder">
-		        <input type="text" class="search-input" placeholder="Type to search" />
+		        <input type="text" class="search-input" placeholder="Type to search" onkeypress="if(event.keyCode===13){gamesearch()}"  />
 		        <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
 		    </div>
 		    <span class="close" onclick="searchToggle(this, event);"></span>
 		</div>
+		</form>
 			
 		<a class="prev" onclick="prevSlide()">&#10094;</a>
 		<a class="next" onclick="nextSlide()">&#10095;</a>

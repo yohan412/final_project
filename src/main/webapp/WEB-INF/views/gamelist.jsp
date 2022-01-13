@@ -13,7 +13,7 @@
 <title>경기 일정 목록</title>
 </head>
 <body>
-<header style="height: 220px">
+<header style="height: 184px">
     <%@ include file="/WEB-INF/views/header.jsp" %>
 </header>
 <section>
@@ -86,30 +86,33 @@
             </div>
             <div id="serchform">
                 <div>
-                    <input type="text" name="search" id="search" value="${gameSearch.keyword}" onkeypress="if(event.keyCode===13){gamesearch()}" >
-                    <input type="button" id="button" value="검색">
+<%--                    <input type="text" name="search" id="search" value="${gameSearch.keyword}" onkeypress="if(event.keyCode===13){gamesearch()}" >
+                    <input type="button" id="button" src="/">--%>
+                    <input type="text" id="keywordInput" name="keyword"  value="${gameSearch.keyword}" onkeypress="if(event.keyCode===13){gamesearch()}" required=""/>
+                    <label alt='검색어를 입력하세요' placeholder=''></label>
+                    <input type="image" id="searchBtn" src="img/icon_magnifier.png" onclick="gamesearch();">
                     <script type="text/javascript">
                         $(function (){
                            $('#button').click(function (){
-                               if($("#search").val() === "" || $("#search").val() == null){
+                               if($("#keywordInput").val() === "" || $("#keywordInput").val() == null){
                                     alert('검색 내용을 입력하세요');
                                }else{
                                    self.location =
                                        "gamelist.do" + '${gamepagemaker.makeQuery(1)}' +
                                        "&searchType=t" +
-                                       "&keyword=" + encodeURIComponent($('#search').val());
+                                       "&keyword=" + encodeURIComponent($('#keywordInput').val());
                                }
                            });
                         });
 
                         function gamesearch(){
-                            if($("#search").val() === "" || $("#search").val() == null){
+                            if($("#keywordInput").val() === "" || $("#keywordInput").val() == null){
                                 alert('검색 내용을 입력하세요');
                             }else{
                                 self.location =
                                     "gamelist.do" + '${gamepagemaker.makeQuery(1)}' +
                                     "&searchType=t" +
-                                    "&keyword=" + encodeURIComponent($('#search').val());
+                                    "&keyword=" + encodeURIComponent($('#keywordInput').val());
                             }
                         }
                     </script>
@@ -118,8 +121,6 @@
         </form>
     </div>
 </section>
-<footer>
-    <%@ include file="/WEB-INF/views/footer.jsp" %>
-</footer>
+<footer><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
 </body>
 </html>

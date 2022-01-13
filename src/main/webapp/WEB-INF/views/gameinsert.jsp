@@ -15,7 +15,7 @@
     <script type="text/javascript" src="${path}/resources/js/gameinsert.js"></script>
 </head>
 <body>
-<header style="height: 250px">
+<header style="height: 184px">
     <%@ include file="/WEB-INF/views/header.jsp" %>
 </header>
 <section>

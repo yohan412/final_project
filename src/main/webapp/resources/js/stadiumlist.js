@@ -76,8 +76,8 @@ function stadiumsearch(ss){
     addr2 = $('select[name=stadium_detail]').val();
     addr = addr1 + " " + addr2;
 
-    if($("#search").val() === "" || $("#search").val() == null || addr === "" || addr == null) {
-        if($("#search").val() === "" || $("#search").val() == null ){
+    if($("#keywordInput").val() === "" || $("#keywordInput").val() == null || addr === "" || addr == null) {
+        if($("#keywordInput").val() === "" || $("#keywordInput").val() == null ){
             alert('검색 내용을 입력하세요');
         }
         if( addr === "" || addr == null){
@@ -87,7 +87,7 @@ function stadiumsearch(ss){
         self.location =
             "stadiumlist.do" + ss +
             "&searchType=t" +
-            "&keyword=" +   encodeURIComponent($('#search').val()) +
+            "&keyword=" +   encodeURIComponent($('#keywordInput').val()) +
             "&addr=" +      addr;
     }
 }
