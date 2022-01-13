@@ -37,7 +37,7 @@
 
 					<div class="content-introduce">
 						<h5 class="head-text">4. 팀 소개 및 한마디</h5>
-						<textarea rows="10" cols="60" name="team_intro" readonly>${teamDto.team_intro }</textarea>
+						<textarea rows="10" cols="60" name="team_intro" style="border: none; outline: none; border-bottom: 1px solid #ccc" readonly>${teamDto.team_intro }</textarea>
 						<input type="hidden" id="team_wirter" name="user_phone" value="${teamDto.user_phone }" readonly>
 					</div>
 					
