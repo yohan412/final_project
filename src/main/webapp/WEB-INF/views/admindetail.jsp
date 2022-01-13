@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>마이페이지</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <style type="text/css">
 th, td{
 	dispaly: inline-block;
@@ -60,41 +61,35 @@ table.type04 td {
 			<table class="type04" align="center" method="post" cellpadding="5">
 				<tr>
 					<th>아이디</th>
-					<td>${login.user_id }</td>
+					<td>${aDto.user_id }</td>
 				</tr>
 				<tr>
 					<th>이름</th>
-					<td>${login.user_name }</td>
+					<td>${aDto.user_name }</td>
 				</tr>
 				<tr>
 					<th>성별</th>
-					<td>${login.user_gender }</td>
+					<td>${aDto.user_gender }</td>
 				</tr>
 				<tr>
 					<th>생년월일</th>
-					<td>${login.user_birthdate }</td>
+					<td>${aDto.user_birthdate }</td>
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td>${login.user_email }</td>
+					<td>${aDto.user_email }</td>
 				</tr>
 				<tr>
 					<th>핸드폰</th>
-					<td>${login.user_phone }</td>
+					<td>${aDto.user_phone }</td>
 				</tr>
 				<tr>
 					<th>우편번호</th> 
-					<td>${login.user_zip }</td>
+					<td>${aDto.user_zip }</td>
 				</tr>
 				<tr>
 					<th>주소</th>
-					<td>${login.user_addr }</td>
-				</tr>
-				<tr>
-					<td colspan="10" style="text-align: right;">
-						<input type="button" value="수정" onclick="location.href='updateform.do?user_id=${login.user_id}'">
-						<input type="button" value="회원탈퇴" onclick="location.href='user_delete.do?user_id=${login.user_id}'">
-					</td>
+					<td>${aDto.user_addr }</td>
 				</tr>
 			</table>
 	</div>

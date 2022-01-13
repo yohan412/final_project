@@ -96,6 +96,11 @@ public class UserBizImpl implements UserBiz {
 	public List<UserDto> selectList() {
 		return dao.selectList();
 	}
+
+	@Override
+	public UserDto aselectOne(String user_id) {
+		return dao.aselectOne(user_id);
+	}
 	
 	
 	
