@@ -31,7 +31,7 @@
 	  top: 0;
 	  line-height: 1;
 	  display: block;
-	  color: rgba(0, 35, 122, 0.5);
+	  color: #00838d;
 	  width: 0;
 	  overflow: hidden;
 	  white-space: nowrap;
