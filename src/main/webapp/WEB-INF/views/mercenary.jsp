@@ -8,9 +8,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 
-	function mainPage(){
-		return "redirect:index.do"; // 메인페이지로 이동
-	}
 	
 	function imgSrc_position(value) { // 클릭 시 포지션 이미지 변경 및 공격수~골키퍼 문자열 리턴
 		if(value == '공격수'){
@@ -71,7 +68,7 @@
 						<textarea rows="10" cols="60" name="mercenary_intro" placeholder="자기소개와 한마디를 적어주세요"></textarea>
 					</div>
 					<div class="content-submit" align="right">
-						<input id="pointer" type="button" value="이전" onclick="mainPage()">
+						<input id="pointer" type="button" value="이전" onclick="location.href='index.jsp'">
 						<input id="pointer" type="submit" value="작성하기">
 					</div>
 					<div class="blank-space" style="height: 150px;">
@@ -81,7 +78,9 @@
 		</div>
 	</div>
 </section>
-						<%@ include file="footer.jsp" %>
+<footer>
+	<%@ include file="footer.jsp" %>
+</footer>
 </body>
 <script type="text/javascript">
 	

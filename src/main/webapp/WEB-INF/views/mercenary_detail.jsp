@@ -108,12 +108,19 @@
 	$(function(){ // 용병지원서 작성자가 아니면 삭제 및 수정버튼 숨기기
 		var writer = '${mDto.user_id}'; // 작성자
 		var user_id = '${login.user_id}';  // 세션에 저장된 로그인 아이디
+		var adminChk = '${login.user_role}'; // 어드민 여부
 		
 		$("input[name=update-hidden]").hide();
 		$("input[name=delete-hidden]").hide();
 		if(writer === user_id){
 			$("input[name=update-hidden]").show();
 			$("input[name=delete-hidden]").show();
+		}else if(adminChk === 'ADMIN'){
+			$("input[name=update-hidden]").show();
+			$("input[name=delete-hidden]").show();
+		}else{
+			$("input[name=update-hidden]").hide();
+			$("input[name=delete-hidden]").hide();
 		}
 	});
 	
