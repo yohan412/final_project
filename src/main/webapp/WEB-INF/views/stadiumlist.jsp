@@ -14,7 +14,7 @@
 <script type="text/javascript" src="/resources/js/stadiumlist.js"></script>
 </head>
 <body>
-<header style="height: 220px">
+<header style="height: 184px">
     <%@ include file="/WEB-INF/views/header.jsp" %>
 </header>
 <section>
@@ -22,11 +22,6 @@
         <div id="titleform">경기장 목록</div>
         <form role="form" method="get" onsubmit="return false">
             <div id="searchform">
-                <div id="search_box_form">
-                    <div id="search_box">
-                        <input type="text" name="search" id="search" style="border-bottom: 1px solid lightgrey;" placeholder="경기장 검색" value="${stadiumSearch.keyword}" onkeypress="if(event.keyCode===13){stadiumsearch('${pageMaker.makeQuery(1)}')}" >
-                    </div>
-                </div>
                 <div id="select_box_form">
                     <div id="select_region_form">
                         <select name="stadium_region" id="stadium_region"></select>
@@ -35,9 +30,18 @@
                         <select name="stadium_detail" id="stadium_detail"></select>
                     </div>
                 </div>
+<%--                <div id="search_box_form">
+                    <div id="search_box">
+                        <input type="text" name="search" id="search" style="border-bottom: 1px solid lightgrey;" placeholder="경기장 검색" value="${stadiumSearch.keyword}" onkeypress="if(event.keyCode===13){stadiumsearch('${pageMaker.makeQuery(1)}')}" >
+                    </div>
+                </div>
                 <div id="search_button_form">
                     <input type="button" id="search_button" value="검색" onclick="stadiumsearch('${pageMaker.makeQuery(1)}')">
-                </div>
+                </div>--%>
+                <input type="text" id="keywordInput" name="keyword"  value="${stadiumSearch.keyword}" onkeypress="if(event.keyCode===13){stadiumsearch('${pageMaker.makeQuery(1)}')}" required=""/>
+                <label alt='검색어를 입력하세요' placeholder=''></label>
+                <input type="image" id="searchBtn" src="img/icon_magnifier.png" onclick="stadiumsearch('${pageMaker.makeQuery(1)}')">
+
             </div>
             <div id="listform">
                 <c:forEach items="${list}" var="stadiumlist" varStatus="status">
@@ -81,8 +85,6 @@
         </form>
     </div>
 </section>
-<footer>
-
-</footer>
+<footer><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
 </body>
 </html>

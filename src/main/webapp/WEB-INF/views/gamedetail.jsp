@@ -14,7 +14,7 @@
     <script type="text/javascript" src="${path}/resources/js/gamedetail.js"></script>
 </head>
 <body>
-<header>
+<header style="height: 184px">
     <%@ include file="/WEB-INF/views/header.jsp" %>
 </header>
 <section>
@@ -230,6 +230,7 @@
                         if (author === user_id){
                             $("#hidden_form").show();
                         }
+
                     });
                 </script>
                 <div style="width: 700px; height: 40px">
@@ -238,8 +239,6 @@
         </div>
     </div>
 </section>
-<footer>
-    <%@ include file="/WEB-INF/views/footer.jsp" %>
-</footer>
+<footer><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
 </body>
 </html>
