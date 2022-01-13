@@ -47,7 +47,6 @@
 		UPDATE MERCENARY_INFO
 		SET MERCENARY_INTRO=#{mercenary_intro}, MERCENARY_FOOT=#{mercenary_foot}, 
 		MERCENARY_RATE=#{mercenary_rate}, MERCENARY_POSITION=#{mercenary_position}
-		LEFT JOIN USER_INFO
 		WHERE USER_NO = #{user_no}
 	</update>
 	
