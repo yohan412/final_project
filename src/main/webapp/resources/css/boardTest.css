@@ -6,7 +6,21 @@ h1{
 	flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+}
+section.body{
+	display: flex;
+	justify-content: center;
+}
+td, th{
+	border: 1px solid #eeeeee;
+}
+.team-logo-pic, .pic_path{
+	width: 150px;
+	height: 100px;
+	object-fit: cover;
+}
+.main-all-box{
+	width: 1140px;
 }
 #boardselect_form{
     display: flex;
@@ -31,6 +45,7 @@ h1{
 .list-all-box{
 	margin-top: 20px;
 	display: flex;
+	flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
@@ -64,4 +79,85 @@ div.search{
 	justify-content: center;
 	align-items: center;
 	align-content: center;
+}
+#keywordInput{
+	font-size: 16px;
+	height: 40px;
+	margin-top: 40px;
+	width: 370px;
+	padding-left: 20px;
+	padding-right: 46px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+input[type="text"] {
+  margin: 0 0 1em;
+  background: #fff;
+  border-radius: 1.5em;
+  resize: none;
+  outline: none;
+}
+input[type="text"]#keywordInput:focus{
+	border-color: #00bafa;
+}
+input[type="image"]#searchBtn:focus{
+	border-color: #00bafa;
+}
+input[type="text"][required]:focus + label[placeholder]:before {
+  color: #00bafa;
+}
+input[type="text"][required]:focus + label[placeholder]:before,
+input[type="text"][required]:valid + label[placeholder]:before {
+  transition-duration: 0.2s;
+  transform: translate(0, -1.5em) scale(0.9, 0.9);
+}
+input[type="text"][required]:invalid + label[placeholder][alt]:before {
+  content: attr(alt);
+}
+input[type="text"][required] + label[placeholder] {
+  display: block;
+  pointer-events: none;
+  line-height: 1.25em;
+  margin-left: -187px;
+  margin-top: calc(-3em - -2px);
+  margin-bottom: calc((3em - 1em) + 2px);
+}
+input[type="text"][required] + label[placeholder]:before {
+  content: attr(placeholder);
+  display: inline-block;
+  margin: 0 calc(1em + 2px);
+  padding: 0 2px;
+  color: #898989;
+  white-space: nowrap;
+  transition: 0.3s ease-in-out;
+  background-image: linear-gradient(to bottom, #fff, #fff);
+  background-size: 100% 5px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#searchOption{
+	padding: 0px 5px;
+	position: absolute;
+	margin-left: -100px;
+	margin-top: 40px;
+	font-size: 16px;
+	height: 40px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	border-radius: 1.5em;
+}
+#searchBtn{
+	padding: 10px;
+	margin: -50px;
+	margin-top: 40px;
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	box-sizing: border-box;
+}
+.page-list{
+	margin-top: 15px;
+	background-color: #fff;
+    outline: none;
+    border: 1px solid;
 }
