@@ -38,7 +38,6 @@
 						<h5 class="head-text">3. 팀 로고</h5>
 						<input class="upload-name" name="pic_name" value="" placeholder="첨부파일" readonly>
 						<input class="upload-path" type="hidden" name="pic_path" value="">
-						<p style="color:red; font-weight:blod;"><form:errors path="pic_path" /></p>
 						
 						<label for="team-logo">팀 로고 선택</label>
 						<input type="file" multiple="multiple" id="team-logo" name="upload_file">

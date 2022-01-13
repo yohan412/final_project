@@ -12,8 +12,8 @@
 
 </head>
 <body>
-<header>
-	<%-- <%@ include file="header.jsp" %> --%>
+<header style="height: 250px">
+<%@ include file="header.jsp" %>
 </header>
 <section>
 	<div class="main-all-box">
@@ -37,12 +37,7 @@
 						<textarea row="10" cols="60" name="qna_content" placeholder="문의 내용을 입력해주세요."></textarea>
 					</div>
 					<hr>
-					<div class="content-teamlogo">
-						<input class="upload-name" name="" value="" placeholder="첨부파일" readonly>
-						<input class="upload-path" type="hidden" name="" value="">
-						<label for="team-logo">첨부파일</label>
-						<input type="file" id="team-logo">
-					</div>
+
 					<div class="content-submit" align="right">
 						<input id="pointer" type="button" value="이전" onclick="location.href='qnalist.do'">
 						<input id="pointer" type="submit" value="작성완료">
