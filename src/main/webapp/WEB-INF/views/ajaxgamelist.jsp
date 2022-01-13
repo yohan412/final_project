@@ -74,6 +74,7 @@ window.onload = function() {
 		<div class="container">
 			<a class="card1" href="gamedetail.do?game_no=${gamelist.game_no}">
 				<h3><fmt:formatDate value="${gamelist.game_date}" pattern="yyyy-MM-dd"/></h3>
+				<p class="small"> ${gamelist.game_region} ${gamelist.game_stadium}</p>
 				<p>
 					<fmt:parseDate value="${gamelist.game_time}" var="starttime" pattern="HH:mm"/>
                             <fmt:formatDate value="${starttime}" pattern="HH:mm"/>
@@ -87,7 +88,6 @@ window.onload = function() {
                  	  	<c:when test="${gamelist.game_people eq 7}">7 vs 7</c:when>
                     </c:choose>
 				</p>
-				<p class="small"> ${gamelist.game_region} ${gamelist.game_stadium}</p>
 				<div class="go-corner" href="#">
 					<div class="go-arrow">
 						→

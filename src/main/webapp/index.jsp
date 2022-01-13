@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-
+	
 	footer{
 		width: 100%;
 		text-align:center;
@@ -473,46 +473,7 @@ function nextSlide() {
 	//===============================================================================
 
 	//client rolling banner
-		window.onload = function() {
 		
-			var bannerLeft=0;
-			var first=1;
-			var last;
-			var listCnt=0;
-			var $list = $(".banner_list");
-			var $first;
-			var $last;
-			
-			$list.each(function(){   // 5px 간격으로 배너 처음 위치 시킴
-			    $(this).css("left",bannerLeft);
-			    bannerLeft += $(this).width()+5;
-			    $(this).attr("id", "banner"+(++listCnt));  // img에 id 속성 추가
-			});
-			
-			
-			if( listCnt > 5){                //배너 5개 이상이면 이동시킴
-			
-			    last = listCnt;
-			
-			    setInterval(function() {
-			        $list.each(function(){
-			            $(this).css("left", $(this).position().left-1); // 1px씩 왼쪽으로 이동
-			        });
-			        $first = $("#banner"+first);
-			        $last = $("#banner"+last);
-			        if($first.position().left < -200) {    // 제일 앞에 배너 제일 뒤로 옮김
-			            $first.css("left", $last.position().left + $last.width()+5 );
-			            first++;
-			            last++;
-			            if(last > listCnt) { last=1; }   
-			            if(first > listCnt) { first=1; }
-			        }
-			    }, 50);   //여기 값을 조정하면 속도를 조정할 수 있다.(또는 1px 이동하는 부분도 조정) 
-			
-			
-			}
-		
-		};
 	
 	//======================================================================================
 	
