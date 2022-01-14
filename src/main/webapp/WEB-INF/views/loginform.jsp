@@ -7,7 +7,7 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <style type="text/css">
-@import url('https://webfontworld.github.io/nexen/NexenTire.css');
+@import url('https://webfontworld.github.io/pretendard/Pretendard.css');
 	*{
     margin: 0; padding: 0; box-sizing: border-box;
 }
@@ -108,10 +108,10 @@ img{
   cursor: pointer;
       width: 270px;
     height: 60px;
-    font-family: 'NexenTire';
-    color: navy;
-    font-size: 20px;
-    font-weight: bold;
+    font-family: 'Pretendard';
+        color: navy;
+    font-size: 22px;
+    font-weight: 800;
 }
 .outline-button::before, .outline-button::after {
   content: "";

@@ -190,7 +190,7 @@
 		<section id="content">
 		<form action="register.do" method="post" onsubmit="return pwchk()">
 			<table align="center" method="post" cellpadding="3">
-				<img src="/img/bg1.jpg" style="width: 200px; height: 200px;" onclick="location.href='index.jsp'">
+				<img src="/img/bg1.jpg" style="width: 200px; height: 200px; margin-left: 15px;" onclick="location.href='index.jsp'">
 				<tr>
 					<th>I D</th>
 					<td width="100%">
