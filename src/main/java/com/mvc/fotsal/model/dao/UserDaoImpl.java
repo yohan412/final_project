@@ -264,7 +264,7 @@ import com.mvc.fotsal.model.dto.UserDto;
 			int res = 0;
 			
 			try {
-				res = sqlSession.update(NAMESPACE+"update", dto);
+				res = sqlSession.update(NAMESPACE+"Bupdate", dto);
 			} catch (Exception e) {
 				System.out.println("[error]: Bupdate");
 				e.printStackTrace();
