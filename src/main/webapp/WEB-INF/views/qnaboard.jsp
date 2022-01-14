@@ -16,32 +16,28 @@
 <header>
 	<%@ include file="/WEB-INF/views/header.jsp"%>
 </header>
-<div class="a-blank-space" style="height: 100px;"></div>
+<div class="a-blank-space" style="height: 50px;"></div>
 	<div>
-		<h1>Q&A 게시판</h1>
+		<h1 style="display: flex; justify-content: center;">Q&A 게시판</h1>
 	</div>
 	<br>
 	<section>	
-	<div id="mainform">
-		<div id="board_list">
+	<div class="main-all-box">
+		<div class="list-all-box">
 			<div id="boardselect_form">
 				<div id="board_list">
 					<div id="boardselect_form">
 						<div class="boardselect" id="faq">
-							<p id="faqboard" class="faqboard"
-								onclick="location.href='faqlist.do'">FAQ</p>
+						<button id="pointer" onclick="location.href='faqlist.do'">FAQ</button>
 						</div>
 						<div class="boardselect" id="qna">
-							<p id="qnaboard" class="qnaboard"
-								onclick="location.href='qnalist.do'">Q&A</p>
+							<button id="pointer" onclick="location.href='qnalist.do'">Q&A</button>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	<div class="main-all-box">
-		<div class="list-all-box">
+
+
 		<!-- list start -->
 			<div class="board_list">
 					<table class="qna-table"style="text-align: center; inline-block; border: 1px solid #dddddd; width: 900px;" align="center">
@@ -109,30 +105,24 @@
 			<!-- 서치 폼 -->
 			<div class="serch" align="center">
 				<select name="searchType" id="searchOption">
-					<option value="n"><c:out value="${scri.searchType == null ? '검색' : ''}" /></option>
-					<option value="t"><c:out value="${scri.searchType eq 't' ? 'selected' : ''}" />>제목</option>
-					<option value="c"><c:out value="${scri.searchType eq 'c' ? 'selected' : ''}" />>내용</option>
-					<option value="w"><c:out value="${scri.searchType eq 'w' ? 'selected' : ''}" />>작성자</option>
+					<option value="n"><c:out value="${STLP.searchType == null ? 'selected' : ''}"/>분류없음</option>
+					<option value="t"><c:out value="${STLP.searchType eq 't' ? 'selected' : ''}"/>제목</option>
+					<option value="c"><c:out value="${STLP.searchType eq 'c' ? 'selected' : ''}"/>내용</option>
+					<option value="w"><c:out value="${STLP.searchType eq 'w' ? 'selected' : ''}"/>작성자</option>
 				</select> 
 				<input type="text" name="keyword" id="keywordInput" value="${STLP.keyword}" required=""/>
 				<input type="image" id="searchBtn" src="img/icon_magnifier.png">
 			</div>
 			<!-- 글작성 -->
 			<div class="content-submit-list">
-				<input id="pointer" type="button" value="작성하기" style="margin-top: 15px;" onclick="loginChk(${login.user_no})">
+				<button id="pointer" onclick="loginChk(${login.user_no})">작성하기</button>
 			</div>
 
-			<div class="a-blank-space" style="height: 150px;"></div>
+		
 
 		</div>
 	</div>
 </section>
-
-
-	<!-- footer -->
-
-	<footer> footer </footer>
-	
 
 </body>
 <footer style="align-content: center;">
