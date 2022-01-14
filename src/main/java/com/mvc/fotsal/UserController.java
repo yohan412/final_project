@@ -447,6 +447,7 @@ public class UserController {
     public String aupdateRes(UserDto dto, @RequestParam("myaddr3") String addr3, @RequestParam("myaddr4") String addr4) {
     	logger.info("AUPDATE RES");
     	dto.setUser_addr(addr3+","+addr4);
+    	System.out.println("등급: " + dto.getUser_role());
     	
     	int res = biz.Bupdate(dto);
     	if(res>0) {

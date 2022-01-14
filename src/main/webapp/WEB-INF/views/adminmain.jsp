@@ -21,6 +21,7 @@
 				<th>이름</th>
 				<th>이메일</th>
 				<th>연락처</th>
+				<th>등급</th>
 			</tr>
 			<c:choose>
 				<c:when test="${empty list }">
@@ -36,6 +37,7 @@
 							<td>${aDto.user_name }</td>
 							<td>${aDto.user_email }</td>
 							<td>${aDto.user_phone }</td>
+							<td>${aDto.user_role }</td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>
