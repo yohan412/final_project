@@ -110,7 +110,10 @@
 					<input type="button" id="next-btn" onclick="location.href='qnalist.do${pageMaker.makeSearch(pageMaker.endPage + 1)}'" value=">>">
 				</c:if>
 			</div>
-
+			<!-- 글작성 -->
+			<div class="content-submit-list" align="center">
+				<button id="pointer" onclick="loginChk(${login.user_no})">작성하기</button>
+			</div>
 			<!-- 서치 폼 -->
 			<div class="serch" align="center">
 				<select name="searchType" id="searchOption">
@@ -123,10 +126,7 @@
 				<input type="image" id="searchBtn" src="img/icon_magnifier.png">
 			</div>
 			
-			<!-- 글작성 -->
-			<div class="content-submit-list" align="center">
-				<button id="pointer" onclick="loginChk(${login.user_no})">작성하기</button>
-			</div>
+
 
 		
 		

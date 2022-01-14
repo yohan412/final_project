@@ -51,18 +51,13 @@
 							<textarea style="font-weight:bold; font-size: 15px; margin-left: 20px;" readonly>${faq_dto.faq_content }</textarea>
 	
 						</div>
-						<div class="content-form">
-							<h4>내용</h4>
-							<textarea style="margin-left: 10px;">${faq_dto.faq_content }</textarea>
-						</div>
 					</div>
 					
 					<div class="button-form">
 						<div class="content-submit" align="right">
-							<button id="pointer" type="button" onclick="location.href='qnalist.do'">목록</button> 
-							<button id="pointer" type="button" onclick="location.href='qnaupdateForm.do?qna_gpno=${qna_dto.qna_gpno}'">수정</button>
-							<button id="pointer" type="button" onclick="qna_deleteChk(${login.user_no},${qna_dto.user_no },${qna_dto.qna_no })">삭제</button>
-							<button id="pointer" name="comment-hidden" type="button" onclick= "location.href='qnaCommentForm.do?qna_gpno=${qna_dto.qna_gpno}'">답글</button>
+							<button id="pointer" type="button" onclick="location.href='faqlist.do'">목록</button> 
+							<button id="pointer" type="button" onclick="location.href='faqupdateForm.do?faq_no=${faq_dto.faq_no}'">수정</button>
+							<button id="pointer" type="button" onclick="faq_deleteChk(${login.user_no},${faq_dto.user_no },${faq_dto.faq_no })">삭제</button>
 						</div>
 					</div>
 					<br>

@@ -182,7 +182,14 @@ footer{
 
 .content-submit-list{
 	margin-left: 750px;
+	margin-bottom:-35px;
+    margin-top: -45px;
 
+}
+.faq-content-submit-list{
+	margin-left: 890px;
+	margin-bottom: -35px;
+    margin-top: -45px;
 }
 div.search{
 	margin-left: 32px;
@@ -262,7 +269,7 @@ input[type="text"][required] + label[placeholder]:before {
 	border: 1px solid #ccc;
 	box-sizing: border-box;
 	border-radius: 1.5em;
-	font-family: 'NexonFootballGothic';
+	
 }
 
 #searchBtn{
@@ -274,6 +281,10 @@ input[type="text"][required] + label[placeholder]:before {
 	height: 40px;
 	box-sizing: border-box;
 }
+a:link { color: black; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: blue; text-decoration: underline;}
+
 .caksdlfa{
 	
 }
