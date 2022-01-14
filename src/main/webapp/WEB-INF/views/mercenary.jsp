@@ -5,6 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="resources/css/mercenary.css">
+<link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
+    <style>
+        section{
+            font-family: 'NexonFootballGothic';
+        }
+    </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 
@@ -25,7 +31,16 @@
 		  $('input[id=position-text]').attr('value', value);
 		  $('input[name=mercenary_position]').attr('value', value);
 	}
-
+	
+	function submitChk(){ // submit할때 포지션, 자기소개 작성여부 확인
+		if($('input[id=position-text]').val()==null || $('input[id=position-text]').val()==""){
+			alert('포지션을 선택해주세요(이미지 클릭)');
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
 </script>
 <title>용병지원서</title>
 </head>
@@ -34,7 +49,7 @@
 <section class="body">
 	<div class="main-all-box">
 		<div class="main-top-box">
-			<form action="mercenaryInsert.do" method="post"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
+			<form action="mercenaryInsert.do" method="post" onsubmit="return submitChk()"> <!-- 용병지원서만 보이는 jsp 페이지로 보낼예정 -->
 				<input type="hidden" name="user_no" value="${login.getUser_no()}" readonly>
 				<div class="top-box-content">
 					<div class="title-text">	
@@ -50,7 +65,8 @@
 						<h5 class="head-text">2. *포지션</h5>
 					</div>
 					<div id="position-text" align="center">
-						<input style="outline: none; text-align:center; border: 0px solid black" readonly id="position-text" type="text" value="${mDto.getMercenary_position() }">
+						<input style="outline: none; text-align:center; border: 0px solid black" readonly id="position-text" type="text" value="${mDto.getMercenary_position() }"
+						required oninvalid="this.setCustomValidity('필수 선택입니다.')" oninput="this.setCustomValidity('')">
 					</div>
 					<div class="select-position-detail">
 						<img src="img/footsalFieldBasic.png" id="position" usemap="#image-map">
@@ -65,7 +81,7 @@
 					</div>
 					<div class="content-introduce" style="border-bottom: none;">
 						<h5 class="head-text">3. 자기소개 및 한마디</h5>
-						<textarea rows="10" cols="60" name="mercenary_intro" placeholder="자기소개와 한마디를 적어주세요"></textarea>
+						<textarea rows="10" cols="60" name="mercenary_intro" placeholder="자기소개와 한마디를 적어주세요."></textarea>
 					</div>
 					<div class="content-submit" align="right">
 						<button id="pointer" onclick="location.href='index.jsp'" style="margin-right: 110px; margin-top: 15px;">이전</button>

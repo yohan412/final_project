@@ -246,6 +246,45 @@ import com.mvc.fotsal.model.dto.UserDto;
 			return dto;
 		}
 		
-
+		@Override
+		public UserDto BselectOne(String user_id) {
+			UserDto dto = null;
+			
+			try {
+				dto = sqlSession.selectOne(NAMESPACE+"selectOne", user_id);
+			} catch (Exception e) {
+				System.out.println("[error]: Bselect one");
+				e.printStackTrace();
+			}
+			return dto;
+		}
+		
+		@Override
+		public int Bupdate(UserDto dto) {
+			int res = 0;
+			
+			try {
+				res = sqlSession.update(NAMESPACE+"Bupdate", dto);
+			} catch (Exception e) {
+				System.out.println("[error]: Bupdate");
+				e.printStackTrace();
+			}
+			
+			return res;
+		}
+		
+		@Override
+		public int Bdelete(String user_id) {
+			int res = 0;
+			
+			try {
+				res = sqlSession.delete(NAMESPACE+"delete", user_id);
+			} catch (Exception e) {
+				System.out.println("[error]: Bdelete");
+				e.printStackTrace();
+			}
+			
+			return res;
+		}
 		
 }

@@ -426,6 +426,52 @@ public class UserController {
     	return "admindetail";
     }
     
+    //관리자 회원정보 수정
+    @RequestMapping("/aupdateform.do")
+    public String update(Model model, String user_id) {
+    	logger.info("AUPDATE FORM");
+    	
+    	UserDto dto = biz.BselectOne(user_id);
+    	System.out.println(dto.getUser_addr());
+    	String[] addr = dto.getUser_addr().split(",");
+    	model.addAttribute("myaddr3", addr[0]);
+    	model.addAttribute("myaddr4", addr[1]);
+    	
+    	model.addAttribute("aDto", dto);
+    	
+    	return "adminupdate";
+    }
+    
+    //관리자 회원정보 업데이트
+    @RequestMapping("/aupdateres.do")
+    public String aupdateRes(UserDto dto, @RequestParam("myaddr3") String addr3, @RequestParam("myaddr4") String addr4) {
+    	logger.info("AUPDATE RES");
+    	dto.setUser_addr(addr3+","+addr4);
+    	System.out.println("등급: " + dto.getUser_role());
+    	
+    	int res = biz.Bupdate(dto);
+    	if(res>0) {
+    		return "redirect:admindetail.do?user_id="+dto.getUser_id();
+    	} else {
+    		return "redirect:aupdateform.do?user_id="+dto.getUser_id();
+    	}
+
+    }
+    
+    //관리자 회원 탈퇴
+    @RequestMapping("/adelete.do")
+    public String adelete(String user_id) {
+    	logger.info("ADELETE");
+    	
+    	int res = biz.Bdelete(user_id);
+    	if(res>0) {
+    		logger.info("회원정보 삭제 완료");
+    		return "redirect:admin.do";
+    	} else {
+    		logger.info("회원정보 삭제 실패");
+    		return "redirect:user_info.do?user_id="+user_id;
+    	}
+    }
     
     
 }

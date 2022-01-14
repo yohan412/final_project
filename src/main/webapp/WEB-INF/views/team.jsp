@@ -8,6 +8,12 @@
 <title>팀 등록서</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="resources/css/team.css">
+<link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
+    <style>
+        section{
+            font-family: 'NexonFootballGothic';
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -22,12 +28,10 @@
 					<div class="title-text">	
 						<h2>팀 등록서</h2>
 					</div>
-					<hr>
 					<div class="content-select-teamname">
 						<h5 class="head-text">1. *팀명</h5>
 						<label class="chk-team-name"><input type="text" name="team_name" placeholder="팀명을 입력해주세요" required></label>
 					</div>
-					<hr>
 					<div class="content-addchk">
 						<h5 class="head-text">2. 모집 여부</h5>
 						<input type="radio" name="team_addchk" value="Y" required>Y
@@ -42,15 +46,16 @@
 						<label for="team-logo">팀 로고 선택</label>
 						<input type="file" multiple="multiple" id="team-logo" name="upload_file">
 					</div>
+					<hr>
 					<div class="content-introduce">
 						<h5 class="head-text">4. 팀 소개 및 한마디</h5>
 						<textarea rows="10" cols="60" name="team_intro" placeholder="팀 소개와 한마디를 적어주세요" required></textarea>
 					</div>
-					<hr>
 					
 					<div class="content-submit" align="right">
-						<button id="pointer" type="button" value="목록" onclick="location.href='teamlist.do'">목록</button>
-						<button id="pointer" type="submit">작성완료</button>
+						<button id="pointer" type="button" style="margin-right: 110px;"
+						value="목록" onclick="location.href='teamlist.do'">목록</button>
+						<button id="pointer" type="submit" style="margin-right: 5px; margin-top:15px;">작성완료</button>
 					</div>
 					
 				</div>

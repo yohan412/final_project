@@ -12,6 +12,24 @@
     <link href='<c:url value="${path}/resources/css/gamedetail.css"/>' rel="stylesheet">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="${path}/resources/js/gamedetail.js"></script>
+    <link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
+    <link href="https://webfontworld.github.io/mapo/MapoDPP.css" rel="stylesheet">
+    <style>
+        section{
+            font-family: 'NexonFootballGothic';
+        }
+        #pointer{
+            font-size: 16px;
+            font-family: 'NexonFootballGothic';
+        }
+        select{
+            border-radius: 1.5em;
+            font-family: 'MapoDPP';
+        }
+        input{
+            font-family: 'NexonFootballGothic';
+        }
+    </style>
 </head>
 <body>
 <header style="height: 184px">
@@ -143,13 +161,23 @@
                     </div>
                 </div>
                 <%--기타 내용 구역--%>
-               	<textarea id="textarea_form" readonly style="min-height: 200px">${gamedto.game_content}</textarea>
+               	<textarea id="textarea_form" readonly style="min-height: 200px; font-family: NexonFootballGothic">${gamedto.game_content}</textarea>
             </div>
             <%--버튼 구역--%>
             <div id="button_form">
-                <input type="button" value="수정하기" class="button" onclick="move_to_update_form('${gamedto.user_id}','${userDto.user_id}', ${gamedto.game_no})">
-                <input type="button" value="삭제하기" class="button" onclick="delete_game('${gamedto.user_id}','${userDto.user_id}', ${gamedto.game_no})">
-                <input type="button" value="목록" class="button" onclick="location.href='gamelist.do'">
+                <div style="width: 435px; height: 100%"></div>
+                <%--<input type="button" value="수정하기" class="button" onclick="move_to_update_form('${gamedto.user_id}','${userDto.user_id}', ${gamedto.game_no})">--%>
+                <div style="width: 155px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <button id="pointer" type="button" onclick="move_to_update_form('${gamedto.user_id}','${userDto.user_id}', ${gamedto.game_no})" style="padding: 1.2rem 3rem;">수정하기</button>
+                </div>
+                <%--<input type="button" value="삭제하기" class="button" onclick="delete_game('${gamedto.user_id}','${userDto.user_id}', ${gamedto.game_no})">--%>
+                <div style="width: 155px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <button id="pointer" type="button" onclick="delete_game('${gamedto.user_id}','${userDto.user_id}', ${gamedto.game_no})" style="padding: 1.2rem 3rem;">삭제하기</button>
+                </div>
+                <%--<input type="button" value="목록" class="button" onclick="location.href='gamelist.do'">--%>
+                <div style="width: 155px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <button id="pointer" type="button" onclick="location.href='gamelist.do'" style="padding: 1.2rem 3.7rem;">목록</button>
+                </div>
             </div>
         </div>
         <%--하단 내용 구역--%>
@@ -168,7 +196,7 @@
                     </div>
                     <div class="reply_comment_form">
                         <div id="rp_comment_insert">
-                            <textarea class="rp_search"></textarea>
+                            <textarea class="rp_search"  style="font-family: NexonFootballGothic"></textarea>
                             <input type="button" id="button" value="작성" onclick="rp_comment_insert(${status.index},${gamedto.game_no} ,'${gamedto.user_id}', '${userDto.user_id}')">
                             <input type="hidden" class="user_id" value="${user_id[status.index]}">
                             <input type="hidden" class="ask_status" value="${ask_status[status.index]}">
@@ -181,20 +209,20 @@
                 <%--댓글 페이징--%>
                 <div id="comment_paging">
                     <c:if test="${gameaskpagemaker.prev}">
-                        <button id="prevbutton" onclick="location.href='gamedetail.do${gameaskpagemaker.makeQuery(gameaskpagemaker.startPage - 1)}&game_no=${gamedto.game_no}'"><</button>
+                        <button class="buttons" id="prevbutton" onclick="location.href='gamedetail.do${gameaskpagemaker.makeQuery(gameaskpagemaker.startPage - 1)}&game_no=${gamedto.game_no}'"><</button>
                     </c:if>
                     <c:forEach begin="${gameaskpagemaker.startPage}" end="${gameaskpagemaker.endPage}" var="idx">
-		               <button id="pagingnum" onclick="location.href='gamedetail.do${gameaskpagemaker.makeQuery(idx)}&game_no=${gamedto.game_no}'">${idx}</button>
+		               <button class="buttons" id="pagingnum" onclick="location.href='gamedetail.do${gameaskpagemaker.makeQuery(idx)}&game_no=${gamedto.game_no}'">${idx}</button>
 		            </c:forEach>
                     <c:if test="${gameaskpagemaker.next && gameaskpagemaker.endPage > 0}">
-                        <button id="nextbutton" onclick="location.href='gamedetail.do${gameaskpagemaker.makeQuery(gameaskpagemaker.endPage + 1)}&game_no=${gamedto.game_no}'">></button>
+                        <button class="buttons" id="nextbutton" onclick="location.href='gamedetail.do${gameaskpagemaker.makeQuery(gameaskpagemaker.endPage + 1)}&game_no=${gamedto.game_no}'">></button>
                     </c:if>
 
                 </div>
                 <%--댓글 입력 폼--%>
                 <div id="comment_insert_form">
                     <div id="comment_insert">
-                        <textarea id="search"></textarea>
+                        <textarea id="search"  style="font-family: NexonFootballGothic"></textarea>
                         <input type="button" id="button" value="등록" onclick="comment_insert('${userDto.user_id}', ${gamedto.game_no})">
                     </div>
                 </div>
@@ -217,7 +245,10 @@
 		                        <div id="mergency_foot">${mDto.mercenary_foot==null?"일반회원":mDto.mercenary_foot }</div>
 		                        <div id="mergency_position">${mDto.mercenary_position }</div>
 		                        <div id="mergency_rate">${mDto.mercenary_foot==null?"":mDto.mercenary_rate }</div>
-		                        <div id="mergency_button_form"><input type="button" value="초대하기" id="mergency_button" onclick="send_to_mer('${mDto.user_id}','${gamedto.user_id}')"></div>
+		                        <div id="mergency_button_form">
+                                    <%--<input type="button" value="초대하기" id="mergency_button" onclick="send_to_mer('${mDto.user_id}','${gamedto.user_id}')">--%>
+                                    <button id="pointer" type="button" onclick="send_to_mer('${mDto.user_id}','${gamedto.user_id}')" style="padding: 0.5rem 1.5rem;">초대하기</button>
+                                </div>
 		                    </div>
 		                </c:forEach>
 	                </c:otherwise>

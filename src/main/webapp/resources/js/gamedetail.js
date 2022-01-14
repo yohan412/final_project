@@ -148,7 +148,6 @@ function rp_comment_insert(idx, game_no, s_author, s_user_id){
                                     dataType:"json",
                                     success: function (msg){
                                         if(msg.check === true){
-                                            alert("수정 성공");
                                             location.href='/gamedetail.do?game_no=' + game_no;
                                         }else{
                                             alert('수정 실패');

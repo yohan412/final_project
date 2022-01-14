@@ -90,15 +90,32 @@
 	</select>
 	
 	<select id="selectList" resultType="userDto">
-		SELECT USER_NO, USER_ID, USER_NAME, USER_EMAIL, USER_PHONE
+		SELECT USER_NO, USER_ID, USER_NAME, USER_EMAIL, USER_PHONE, USER_ROLE
 		FROM USER_INFO
 		ORDER BY USER_NO DESC
 	</select>
 	
 	<select id="aselectOne" resultType="userDto">
-		SELECT USER_ID, USER_NAME, USER_GENDER, USER_BIRTHDATE, USER_EMAIL, USER_PHONE, USER_ZIP, USER_ADDR
+		SELECT USER_ID, USER_NAME, USER_GENDER, USER_BIRTHDATE, USER_ROLE, USER_EMAIL, USER_PHONE, USER_ZIP, USER_ADDR
 		FROM USER_INFO
 		WHERE USER_ID = #{user_id}	
 	</select>
+	
+	<select id="BselectOne" resultType="userDto">
+		SELECT USER_ID, USER_NAME, USER_GENDER, USER_BIRTHDATE, USER_ROLE, USER_EMAIL, USER_PHONE, USER_ZIP, USER_ADDR
+		FROM USER_INFO
+		WHERE USER_ID = #{user_id}	
+	</select>
+	
+	<update id="Bupdate" parameterType="userDto">
+		UPDATE USER_INFO
+		SET USER_ROLE = #{user_role}, USER_EMAIL = #{user_email}, USER_PHONE = #{user_phone}, USER_ZIP = #{user_zip}, USER_ADDR = #{user_addr}
+		WHERE USER_ID = #{user_id}
+	</update>
+	
+	<delete id="Bdelete">
+		DELETE FROM USER_INFO
+		WHERE USER_ID=#{user_id}
+	</delete>
 		
 </mapper>

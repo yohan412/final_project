@@ -20,6 +20,27 @@
     </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
+    <link href="https://webfontworld.github.io/mapo/MapoDPP.css" rel="stylesheet">
+    <style>
+        section{
+            font-family: 'NexonFootballGothic';
+        }
+        #pointer{
+            font-size: 16px;
+            font-family: 'NexonFootballGothic';
+        }
+        select{
+            border-radius: 1.5em;
+            font-family: 'MapoDPP';
+        }
+        input{
+            font-family: 'NexonFootballGothic';
+        }
+        textarea{
+            font-family: 'NexonFootballGothic';
+        }
+    </style>
 
     <script type="text/javascript">
         $(function (){
@@ -67,7 +88,7 @@
                     </c:choose>
                 </div>
                 <div id="content_form">
-                    <textarea id="content" readonly>${detail.stadium_content}</textarea>
+                    <textarea id="content" readonly  style="font-family: NexonFootballGothic">${detail.stadium_content}</textarea>
                 </div>
             </div>
             <div id="top_right_form">
@@ -178,27 +199,37 @@
                     </div>
                     <div id="review_paging_form">
                         <c:if test="${reviewpagemaker.prev}">
-                            <input type="button" id="prevbutton" onclick="location.href='stadiumdetail.do${reviewpagemaker.makeQuery(reviewpagemaker.startPage - 1)}&stadium_no=${detail.stadium_no}'" value="<">
+                            <input type="button" class="buttonsd" id="prevbutton" onclick="location.href='stadiumdetail.do${reviewpagemaker.makeQuery(reviewpagemaker.startPage - 1)}&stadium_no=${detail.stadium_no}'" value="<">
                         </c:if>
                         <c:forEach begin="${reviewpagemaker.startPage}" end="${reviewpagemaker.endPage}" var="idx">
-                            <input type="button" id="pagingnum" onclick="location.href='stadiumdetail.do${reviewpagemaker.makeQuery(idx)}&stadium_no=${detail.stadium_no}'" value="${idx}">
+                            <input type="button" class="buttonsd" id="pagingnum" onclick="location.href='stadiumdetail.do${reviewpagemaker.makeQuery(idx)}&stadium_no=${detail.stadium_no}'" value="${idx}">
                         </c:forEach>
                         <c:if test="${reviewpagemaker.next && reviewpagemaker.endPage > 0}">
-                            <input type="button" id="nextbutton" onclick="location.href='stadiumdetail.do${reviewpagemaker.makeQuery(reviewpagemaker.endPage + 1)}&stadium_no=${detail.stadium_no}'" value=">">
+                            <input type="button" class="buttonsd" id="nextbutton" onclick="location.href='stadiumdetail.do${reviewpagemaker.makeQuery(reviewpagemaker.endPage + 1)}&stadium_no=${detail.stadium_no}'" value=">">
                         </c:if>
                     </div>
                 </div>
                 <div id="review_button_form">
-                    <input type="button" value="리뷰 작성" id="review_insert" class="buttons" onclick="view_review_insert_form()">
+                    <%--<input type="button" value="리뷰 작성" id="review_insert" class="buttons" onclick="view_review_insert_form()">--%>
+                    <button id="pointer" type="button" onclick="view_review_insert_form();" style="padding: 0.5rem 1.5rem; margin-right: 20px; margin-bottom: 5px;">리뷰 작성</button>
                 </div>
             </div>
             <div id="bot_right_form">
                 <div style="width: 100%; height: 350px"></div>
                 <div id="button_form">
                     <div style="width: 25px; height: 100%"></div>
-                    <div id="update_button_form"><input type="button" value="수정" class="buttons" id="updatebtn" onclick="location.href='stadiumupdateform.do?stadium_no=${detail.stadium_no}'"></div>
-                    <div id="delete_button_form"><input type="button" value="삭제" class="buttons" id="deletebtn" onclick="location.href='stadiumdelete.do?stadium_no=${detail.stadium_no}'"></div>
-                    <div id="list_button_form"><input type="button" value="목록" class="buttons" onclick="location.href='stadiumlist.do'"></div>
+                    <div id="update_button_form">
+                        <%--<input type="button" value="수정" class="buttons" id="updatebtn" onclick="location.href='stadiumupdateform.do?stadium_no=${detail.stadium_no}'">--%>
+                            <button id="pointer" type="button" onclick="location.href='stadiumupdateform.do?stadium_no=${detail.stadium_no}'" style="padding: 0.5rem 1.2rem;">수정</button>
+                    </div>
+                    <div id="delete_button_form">
+                        <%--<input type="button" value="삭제" class="buttons" id="deletebtn" onclick="location.href='stadiumdelete.do?stadium_no=${detail.stadium_no}'">--%>
+                            <button id="pointer" type="button" onclick="location.href='stadiumdelete.do?stadium_no=${detail.stadium_no}'" style="padding: 0.5rem 1.2rem;">삭제</button>
+                    </div>
+                    <div id="list_button_form">
+                        <%--<input type="button" value="목록" class="buttons" onclick="location.href='stadiumlist.do'">--%>
+                            <button id="pointer" type="button" onclick="location.href='stadiumlist.do'" style="padding: 0.5rem 1.2rem;">목록</button>
+                    </div>
                     <div style="width: 25px; height: 100%"></div>
                     <script type="text/javascript">
                         $(function (){
@@ -224,22 +255,26 @@
                 </div>
                 <div id="review_content">
                     <div class="rv_title">내용</div>
-                    <div class="rv_input_form" id="review_v_content_input"><textarea name="review_content" id="review_v_content" readonly></textarea></div>
+                    <div class="rv_input_form" id="review_v_content_input"><textarea style="font-family: NexonFootballGothic" name="review_content" id="review_v_content" readonly></textarea></div>
                 </div>
                 <div id="review_view_button_form">
                     <div style="width: 600px; height: 100%"></div>
                     <div class="rv_buttons_form">
-                        <input type="button" class="buttons" id="review_update" value="수정" onclick="review_update();" style="margin-right: 10px">
-                        <input type="button" class="buttons" id="review_delete" value="삭제" onclick="review_delete('${userDto.user_id}');" style="margin-left: 10px">
-                        <input type="submit" class="buttons" id="review_update_ac" value="수정" style="margin-left: 10px" onclick="review_update_ac()">
-                        <input type="button" class="buttons" id="review_update_cancel" value="취소" onclick="review_update_cancel();" style="margin-left: 10px">
+                        <%--<input type="button" class="buttons" id="review_update" value="수정" onclick="review_update();" style="margin-right: 10px">--%>
+                        <button id="pointer" class="review_update" type="button" onclick="review_update();" style="padding: 0.5rem 1.2rem; margin-right: 10px">수정</button>
+                        <%--<input type="button" class="buttons" id="review_delete" value="삭제" onclick="review_delete('${userDto.user_id}');" style="margin-left: 10px">--%>
+                        <button id="pointer" class="review_delete" type="button" onclick="review_delete('${userDto.user_id}');" style="padding: 0.5rem 1.2rem; margin-left: 10px">삭제</button>
+                        <%--<input type="submit" class="buttons" id="review_update_ac" value="수정" style="margin-left: 10px" onclick="review_update_ac()">--%>
+                        <button id="pointer" class="review_update_ac" type="submit" onclick="review_update_ac()" style="padding: 0.5rem 1.2rem; margin-right: 30px">수정</button>
+                        <%--<input type="button" class="buttons" id="review_update_cancel" value="취소" onclick="review_update_cancel();" style="margin-left: 10px">--%>
+                        <button id="pointer" class="review_update_cancel" type="button" onclick="review_update_cancel()" style="padding: 0.5rem 1.2rem; margin-left: 10px">취소</button>
                     </div>
                 </div>
             </div>
             <script type="text/javascript">
                 $(function (){
-                    $("#review_update_ac").hide();
-                    $("#review_update_cancel").hide();
+                    $(".review_update_ac").hide();
+                    $(".review_update_cancel").hide();
                 });
             </script>
         </div>
@@ -263,16 +298,16 @@
                         $("#review_v_title").empty();
                         $("#review_v_content").empty();
 
-                        $("#review_update_ac").hide();
-                        $("#review_update_cancel").hide();
-                        $("#review_update").show();
-                        $("#review_delete").show();
+                        $(".review_update_ac").hide();
+                        $(".review_update_cancel").hide();
+                        $(".review_update").show();
+                        $(".review_delete").show();
 
                         $("input[type=button]").prop('disabled', false);
-                        $("#review_update").prop('disabled', true);
-                        $("#review_delete").prop('disabled', true);
-                        $("#review_update_ac").prop('disabled', true);
-                        $("#review_update_cancel").prop('disabled', true);
+                        $(".review_update").prop('disabled', true);
+                        $(".review_delete").prop('disabled', true);
+                        $(".review_update_ac").prop('disabled', true);
+                        $(".review_update_cancel").prop('disabled', true);
 
                         $("#review_v_title").attr("readonly", true);
                         $("#review_v_content").attr("readonly", true);
@@ -293,12 +328,13 @@
                 </div>
                 <div id="insert_review_content">
                     <div class="rv_title">내용</div>
-                    <div class="rv_input_form"><textarea name="review_content" id="rv_text"></textarea></div>
+                    <div class="rv_input_form"><textarea name="review_content" id="rv_text"  style="font-family: NexonFootballGothic"></textarea></div>
                 </div>
                 <div id="review_insert_button_form">
                     <div style="width: 755px; height: 100%"></div>
                     <div class="rv_button_form">
-                        <input type="submit" class="buttons" value="입력">
+                        <%--<input type="submit" class="buttons" value="입력">--%>
+                            <button id="pointer" type="submit" style="padding: 0.5rem 1.2rem; margin-left: 10px">입력</button>
                     </div>
                 </div>
                 </form:form>

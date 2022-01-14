@@ -83,7 +83,7 @@
                 FROM GAME_ASK where GAME_NO = #{game_no} ORDER BY ASK_GPNO DESC, ASK_GPSQ
             )
         WHERE RNUM BETWEEN #{gameAskDto.rowStart} AND #{gameAskDto.rowEnd}
-          AND GAME_NO = ${game_no}
+          AND GAME_NO = #{game_no}
         ORDER BY ASK_GPNO DESC, ASK_GPSQ
     </select>
 

@@ -13,6 +13,24 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="${path}/resources/js/gameinsert.js"></script>
+    <link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
+    <link href="https://webfontworld.github.io/mapo/MapoDPP.css" rel="stylesheet">
+    <style>
+        section{
+            font-family: 'NexonFootballGothic';
+        }
+        #pointer{
+            font-size: 16px;
+            font-family: 'NexonFootballGothic';
+        }
+        select{
+            border-radius: 1.5em;
+            font-family: 'MapoDPP';
+        }
+        input{
+            font-family: 'NexonFootballGothic';
+        }
+    </style>
 </head>
 <body>
 <header style="height: 184px">
@@ -65,7 +83,8 @@
                     </div>
                     <div class="button_form">
                         <div style="width: 100%; height: 100%; display: flex; align-items: center">
-                            <input type="button" value="주소 찾기" id="addr_button" onclick="Addr_api();">
+                            <%--<input type="button" value="주소 찾기" id="addr_button" onclick="Addr_api();">--%>
+                                <button id="pointer" type="button" onclick="Addr_api();" style="padding: 0.5rem 2rem; margin-left: 10px">주소 찾기</button>
                         </div>
                     </div>
                     <div style="width: 100px; height: 100%"></div>
@@ -181,11 +200,12 @@
                         <div style="width: 180px; height: 70%"></div>
                     </div>
                     <div class="info" style="width: 520px">
-                        <textarea id="textarea" name="game_content"></textarea>
+                        <textarea id="textarea" name="game_content"  style="font-family: NexonFootballGothic"></textarea>
                 	</div>
             </div>
             <div id="button_form">
-                <input type="submit" value="경기 등록" id="button">
+                <%--<input type="submit" value="경기 등록" id="button">--%>
+                    <button id="pointer" type="submit" style="padding: 1.5rem 5rem">경기 등록</button>
             </div>
             </form:form>
     </div>

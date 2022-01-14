@@ -9,6 +9,12 @@
 <meta charset="UTF-8">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="resources/css/mercenary.css">
+<link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
+    <style>
+        section{
+            font-family: 'NexonFootballGothic';
+        }
+    </style>
 
 <title>용병지원서</title>
 </head>
