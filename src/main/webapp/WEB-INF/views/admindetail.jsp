@@ -76,6 +76,10 @@ table.type04 td {
 					<td>${aDto.user_birthdate }</td>
 				</tr>
 				<tr>
+					<th>등급</th>
+					<td>${aDto.user_role }</td>
+				</tr>
+				<tr>
 					<th>이메일</th>
 					<td>${aDto.user_email }</td>
 				</tr>

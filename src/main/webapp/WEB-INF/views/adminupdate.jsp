@@ -109,7 +109,7 @@ table.type04 td {
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header.jsp" %>
-	<div style="text-align: center;">	
+	<div style="text-align: center; margin-top: 30px;">	
 		<h2>회원 정보 수정</h2>
 	</div>
 	<div class="user_update" align="center">
@@ -131,6 +131,15 @@ table.type04 td {
 				<tr>
 					<th>생년월일</th>
 					<td>${aDto.user_birthdate }</td>
+				</tr>
+				<tr>
+					<th>등급</th>
+					<td>
+						<select id="role" name="user_role">
+							<option value="USER">사용자</option>
+							<option value="ADMIN">관리자</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<th>이메일</th>
