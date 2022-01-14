@@ -6,14 +6,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="resources/css/qna.css">
+<link rel="stylesheet" href="resources/css/boarddetail.css">
+<link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
+    <style>
+        section{
+            font-family: 'NexonFootballGothic';
+        }
+    </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <title>FAQ 작성</title>
 
 </head>
 <body>
 <header>
-	<%-- <%@ include file="header.jsp" %> --%>
+	<%@ include file="header.jsp" %>
 </header>
 <section>
 	<div class="main-all-box">

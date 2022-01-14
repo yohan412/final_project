@@ -455,6 +455,7 @@ public class UserController {
     	} else {
     		return "redirect:aupdateform.do?user_id="+dto.getUser_id();
     	}
+
     }
     
     //관리자 회원 탈퇴

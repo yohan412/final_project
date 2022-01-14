@@ -45,10 +45,10 @@ public class QnaBoardController {
 	}
 
 	@RequestMapping("/qnadetail.do")
-	public String detail(Model model, int qna_gpno) {
+	public String detail(Model model, int qna_gpno, int qna_no) {
 		logger.info("SELECT ONE");
 		
-		model.addAttribute("qna_dto", biz.selectOne(qna_gpno));
+		model.addAttribute("qna_dto", biz.selectOne(qna_no));
 		
 		model.addAttribute("qna_dto2", biz.selectOne2(qna_gpno));
 		
