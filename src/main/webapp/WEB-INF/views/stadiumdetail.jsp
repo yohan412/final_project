@@ -265,7 +265,7 @@
                         <%--<input type="button" class="buttons" id="review_delete" value="삭제" onclick="review_delete('${userDto.user_id}');" style="margin-left: 10px">--%>
                         <button id="pointer" class="review_delete" type="button" onclick="review_delete('${userDto.user_id}');" style="padding: 0.5rem 1.2rem; margin-left: 10px">삭제</button>
                         <%--<input type="submit" class="buttons" id="review_update_ac" value="수정" style="margin-left: 10px" onclick="review_update_ac()">--%>
-                        <button id="pointer" class="review_update_ac" type="submit" onclick="review_update_ac()" style="padding: 0.5rem 1.2rem; margin-right: 30px">삭제</button>
+                        <button id="pointer" class="review_update_ac" type="submit" onclick="review_update_ac()" style="padding: 0.5rem 1.2rem; margin-right: 30px">수정</button>
                         <%--<input type="button" class="buttons" id="review_update_cancel" value="취소" onclick="review_update_cancel();" style="margin-left: 10px">--%>
                         <button id="pointer" class="review_update_cancel" type="button" onclick="review_update_cancel()" style="padding: 0.5rem 1.2rem; margin-left: 10px">취소</button>
                     </div>
@@ -333,7 +333,8 @@
                 <div id="review_insert_button_form">
                     <div style="width: 755px; height: 100%"></div>
                     <div class="rv_button_form">
-                        <input type="submit" class="buttons" value="입력">
+                        <%--<input type="submit" class="buttons" value="입력">--%>
+                            <button id="pointer" type="submit" style="padding: 0.5rem 1.2rem; margin-left: 10px">입력</button>
                     </div>
                 </div>
                 </form:form>
