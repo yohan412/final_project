@@ -29,7 +29,8 @@ footer{
     height: 60px;
     display: flex;
     flex-wrap: wrap;
-    margin-right : 50px;
+    margin-right : 60px;
+    margin-left: 60px;
     align-items: center;
     justify-content: center;
 
