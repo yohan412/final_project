@@ -75,10 +75,10 @@
 		  	 		   <a href="index.jsp">Home</a>
 		  	 	 </li>
 		 	 	 <li>
-		    	 	  <a href="gamelist.do">Game</a>
+		    	 	  <a href="gamelist.do?page=1&perPageNum=5&searchType=&keyword=">Game</a>
 		   	  	 </li>
 		 	 	 <li>
-			    	  <a href="stadiumlist.do">Stadium</a>
+			    	  <a href="stadiumlist.do?page=1&perPageNum=5&searchType=&keyword="">Stadium</a>
 			  	 </li>
 			 	 <li>
 		    	  		<a href="teamlist.do?page=1&perPageNum=10&searchType=&keyword=">Team</a>
