@@ -45,15 +45,15 @@ public class QnaBoardController {
 	}
 
 	@RequestMapping("/qnadetail.do")
-	public String detail(Model model, int qna_gpno, int qna_no) {
+	public String detail(Model model, int qna_gpno) {
 		logger.info("SELECT ONE");
-		
-		model.addAttribute("qna_dto", biz.selectOne(qna_no));
-		
+		model.addAttribute("qna_dto", biz.selectOne(qna_gpno));
 		model.addAttribute("qna_dto2", biz.selectOne2(qna_gpno));
+		
 		
 		return "qnadetail";
 	}
+	
 	
 	@RequestMapping("/qna.do")
 	public String qna() {
@@ -89,25 +89,26 @@ public class QnaBoardController {
 	@RequestMapping("/qnaCommentres.do")
 	public String qnaCommentRes(Model model, QnaBoardDto dto) {
 		logger.info("COMMENT RES");
-		
+		System.out.println(dto.getQna_no());
+		System.out.println(dto.getQna_gpno());
 		
 		int res = biz.comment_insert(dto);
 		if(res>0) {
 			logger.info("COMMENT INSERT 성공" );
-			return "redirect:qnadetail.do?qna_gpno="+dto.getQna_gpno();
+			return "redirect:qnadetail.do?qna_no="+dto.getQna_no();
 		}else {
 			logger.info("COMMENT INSERT 실패");
-			return "redirect:qnaCommentForm.do?qna_gpno="+dto.getQna_gpno();
+			return "redirect:qnaCommentForm.do?qna_no="+dto.getQna_no();
 		}
 	}
 	
 	
 	@RequestMapping("/qnaupdateForm.do")
-	public String updateForm(Model model, int qna_no) {
+	public String updateForm(Model model, int qna_gpno) {
 		logger.info("UPDATE FORM");
 
 		
-		model.addAttribute("dto", biz.selectOne(qna_no));
+		model.addAttribute("dto", biz.selectOne(qna_gpno));
 		
 		return "qnaupdateForm";
 	}

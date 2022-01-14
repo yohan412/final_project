@@ -70,13 +70,17 @@
 								</c:when>
 								<c:otherwise>
 									<c:forEach items="${list }" var="dto">
-										<tr>
-											<td>${dto.qna_no }</td>
-											<td>${dto.user_id}</td>
-											<td><a href="qnadetail.do?qna_no=${dto.qna_no }">${dto.qna_title }</a></td>
-											<td>${dto.qna_content }</td>
-											<td>${dto.qna_reg }</td>
-										</tr>
+										<c:choose>	
+											<c:when test="${dto.qna_gpsq eq 1 }">
+												<tr>
+													<td>${dto.qna_no }</td>
+													<td>${dto.user_id}</td>
+														<td><a href="qnadetail.do?qna_gpno=${dto.qna_gpno }">${dto.qna_title }</a></td>
+													<td>${dto.qna_content }</td>
+													<td>${dto.qna_reg }</td>
+												</tr>
+											</c:when>
+										</c:choose>
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>

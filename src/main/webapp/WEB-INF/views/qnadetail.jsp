@@ -57,7 +57,7 @@
 				<div class="button-form">
 					<div class="content-submit" align="right">
 						<button id="pointer" type="button" onclick="location.href='qnalist.do'">목록</button> 
-						<button id="pointer" type="button" onclick="location.href='qnaupdateForm.do?qna_no=${qna_dto.qna_no}'">수정</button>
+						<button id="pointer" type="button" onclick="location.href='qnaupdateForm.do?qna_gpno=${qna_dto.qna_gpno}'">수정</button>
 						<button id="pointer" type="button" onclick="qna_deleteChk(${login.user_no},${qna_dto.user_no },${qna_dto.qna_no })">삭제</button>
 						<button id="pointer" name="comment-hidden" type="button" onclick= "location.href='qnaCommentForm.do?qna_gpno=${qna_dto.qna_gpno}'">답글</button>
 					</div>

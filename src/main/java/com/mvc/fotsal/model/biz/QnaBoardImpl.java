@@ -27,8 +27,8 @@ public class QnaBoardImpl implements QnaBoardBiz{
 	}
 
 	@Override
-	public QnaBoardDto selectOne(int qna_no) {
-		return dao.selectOne(qna_no);
+	public QnaBoardDto selectOne2(int qna_gpno) {
+		return dao.selectOne2(qna_gpno);
 	}
 
 	@Override
@@ -52,8 +52,8 @@ public class QnaBoardImpl implements QnaBoardBiz{
 	}
 
 	@Override
-	public QnaBoardDto selectOne2(int qna_gpno) {
-		return dao.selectOne2(qna_gpno);
+	public QnaBoardDto selectOne(int qna_gpno) {
+		return dao.selectOne(qna_gpno);
 	}
 
 

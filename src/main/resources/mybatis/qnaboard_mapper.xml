@@ -32,20 +32,20 @@
 		</if>
 	</sql>
 
-	<select id="selectOne" resultType="QnaBoardDto"
-		parameterType="_int">
-		SELECT q.QNA_GPNO, q.QNA_GPSQ, u.USER_NO, q.QNA_NO, q.QNA_TYPE, q.USER_ID,
-		q.QNA_TITLE, q.QNA_CONTENT FROM QNA q
-		LEFT JOIN USER_INFO u ON q.USER_ID = u.USER_ID
-		WHERE q.QNA_NO = #{qna_no} AND q.QNA_GPSQ = 1
-	</select>
-	
 	<select id="selectOne2" resultType="QnaBoardDto"
 		parameterType="_int">
 		SELECT q.QNA_GPNO, q.QNA_GPSQ, u.USER_NO, q.QNA_NO, q.QNA_TYPE, q.USER_ID,
 		q.QNA_TITLE, q.QNA_CONTENT FROM QNA q
 		LEFT JOIN USER_INFO u ON q.USER_ID = u.USER_ID
 		WHERE q.QNA_GPNO = #{qna_gpno} AND q.QNA_GPSQ = 2
+	</select>
+	
+	<select id="selectOne" resultType="QnaBoardDto"
+		parameterType="_int">
+		SELECT q.QNA_GPNO, q.QNA_GPSQ, u.USER_NO, q.QNA_NO, q.QNA_TYPE, q.USER_ID,
+		q.QNA_TITLE, q.QNA_CONTENT FROM QNA q
+		LEFT JOIN USER_INFO u ON q.USER_ID = u.USER_ID
+		WHERE q.QNA_GPNO = #{qna_gpno} AND q.QNA_GPSQ = 1
 	</select>
 
 	<insert id="insert" parameterType="QnaBoardDto">
