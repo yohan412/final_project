@@ -2,6 +2,7 @@ section.body{
 	display: flex;
 	justify-content: center;
 	margin-top: 40px;
+	flex-direction: column;
 }
 td, th, tr{
 	border: 1px solid #eeeeee;
@@ -28,7 +29,8 @@ footer{
     height: 60px;
     display: flex;
     flex-wrap: wrap;
-    margin-right : 50px;
+    margin-right : 60px;
+    margin-left: 60px;
     align-items: center;
     justify-content: center;
 
@@ -112,7 +114,7 @@ footer{
 #pagingnumClick{
 	color: #CDDEFF;
 	background-color: #676FA3;
-	padding: 5px;
+	padding: 1px;
 	margin-right: 7px;
 	width: 30px;
 	height: 30px;
@@ -172,35 +174,20 @@ footer{
     transition:.3s;
 }
 
-.qna-no{
-	width: 10%;
-	text-align: center;
 
-}
-.qna-writer{
-	width: 10%;
-	text-align: center;
+/* .content-submit-list{
+	margin-right: 400px;
+	float: right;
+	margin-bottom:-35px;
+    margin-top: -45px;
 
-}
-.qna-title{
-	width: 15%;
-	text-align: center;
+} */
+/* .faq-content-submit-list{
+	margin-left: 890px;
+	margin-bottom: -35px;
+    margin-top: -45px;
+} */
 
-}
-.qna_content{
-	width: 40%;
-	text-align: center;
-
-}
-.qna-date{
-	width: 20%;
-	text-align: center;
-
-}
-.content-submit-list{
-	float:right;
-	margin-right: 165px;
-}
 div.search{
 	margin-left: 32px;
 	display: flex;
@@ -268,6 +255,8 @@ input[type="text"][required] + label[placeholder]:before {
   background-position: center;
 }
 #searchOption{
+	font-size: 13px;
+	font-family: 'MapoDPP';
 	padding: 0px 5px;
 	position: absolute;
 	margin-left: -120px;
@@ -277,7 +266,7 @@ input[type="text"][required] + label[placeholder]:before {
 	border: 1px solid #ccc;
 	box-sizing: border-box;
 	border-radius: 1.5em;
-	font-family: 'NexonFootballGothic';
+	
 }
 
 #searchBtn{
@@ -289,8 +278,13 @@ input[type="text"][required] + label[placeholder]:before {
 	height: 40px;
 	box-sizing: border-box;
 }
+a:link { color: black; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: blue; text-decoration: underline;}
 
-
+.caksdlfa{
+	
+}
 
 
 

@@ -57,6 +57,7 @@ public class StadiumController {
         stadiumPageMaker.setStadiumPaging(stadiumSearch);
         stadiumPageMaker.setTotalCount(stadiumBiz.listCount(stadiumSearch));
         model.addAttribute("pageMaker", stadiumPageMaker);
+        model.addAttribute("page", request.getParameter("page")); // page 이름으로 넘어온 현재페이지값
 
         return "stadiumlist";
     }

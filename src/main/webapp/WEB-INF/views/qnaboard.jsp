@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -10,6 +12,7 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="resources/css/board.css">
+<link href="https://webfontworld.github.io/mapo/MapoDPP.css" rel="stylesheet">
 <link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
     <style>
         section{
@@ -109,7 +112,10 @@
 					<input type="button" id="next-btn" onclick="location.href='qnalist.do${pageMaker.makeSearch(pageMaker.endPage + 1)}'" value=">>">
 				</c:if>
 			</div>
-
+			<!-- 글작성 -->
+			<div class="content-submit-list" align="center">
+				<button id="pointer" onclick="loginChk(${login.user_no})">작성하기</button>
+			</div>
 			<!-- 서치 폼 -->
 			<div class="serch" align="center">
 				<select name="searchType" id="searchOption">
@@ -121,13 +127,7 @@
 				<input type="text" name="keyword" id="keywordInput" value="${STLP.keyword}" required=""/>
 				<input type="image" id="searchBtn" src="img/icon_magnifier.png">
 			</div>
-			<!-- 글작성 -->
-			<div class="content-submit-list">
-				<button id="pointer" onclick="loginChk(${login.user_no})">작성하기</button>
-			</div>
-
-		
-
+			
 		</div>
 	</div>
 </section>
@@ -157,5 +157,4 @@ $(function() {
 });
 
 </script>
-
 </html>

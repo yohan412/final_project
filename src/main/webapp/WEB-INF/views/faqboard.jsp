@@ -14,6 +14,7 @@
 	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="resources/css/board.css">
 <link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
+<link href="https://webfontworld.github.io/mapo/MapoDPP.css" rel="stylesheet">
     <style>
         section{
             font-family: 'NexonFootballGothic';
@@ -25,7 +26,7 @@
 	<header>
 		<%@ include file="/WEB-INF/views/header.jsp"%>
 	</header>
-	<section>
+	<section class="body">
 	<div>
 		<h1 style="display: flex; justify-content: center;">FAQ 게시판</h1>
 	</div>
@@ -44,7 +45,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			
 				<!-- list start -->
 				<div class="board_list">
 					<table class="qna-table" style="text-align: center; inline-block; border: 1px solid #dddddd; width: 700px;" align="center">
@@ -80,10 +81,9 @@
 											</c:forEach>
 										</c:otherwise>
 									</c:choose>
-							</tbody>
-
+								</tbody>
 							</table>
-							
+						</div>
 							
 					<!-- 페이지 리스트 -->
 					<div class="page-list" align="center">
@@ -106,6 +106,11 @@
 						<input type="button" id="next-btn" onclick="location.href='faqlist.do${pageMaker.makeSearch(pageMaker.endPage + 1)}'" value=">>">
 						</c:if>
 					</div>
+					<!-- faq글작성 -->
+					<div class="content-submit-list" align="center">
+						<button id="pointer" name="write-hidden" onclick="location.href='faq.do'">작성하기</button>
+					</div>
+					
 				<!-- 서치 폼 -->
 				<div class="serch" align="center">
 					<select name="searchType" id="searchOption">
@@ -116,18 +121,16 @@
 					<input type="text" name="keyword" id="keywordInput" value="${STLP.keyword}" required=""/>
 					<input type="image" id="searchBtn" src="img/icon_magnifier.png">
 				</div>
-			<!-- faq글작성 -->
-			<div class="content-submit-list">
-				<button id="pointer" name="write-hidden" onclick="location.href='faq.do'">작성하기</button>
-			</div>
+			
+		
 		</div>
-		</div>
-	</section>
+	</div>
+</section>
+
+</body>
 <footer style="align-content: center;">
 	<%@ include file="footer.jsp"%>
 </footer>
-</body>
-
 <script type="text/javascript">
 
 	$(function(){

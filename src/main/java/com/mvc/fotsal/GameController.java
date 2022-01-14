@@ -51,7 +51,8 @@ public class GameController {
         gamePageMaker.setTotalCount(gameBiz.listCount(gameSearch));
 
         model.addAttribute("gamepagemaker", gamePageMaker);             //페이징 지정
-
+        model.addAttribute("page", request.getParameter("page")); // page 이름으로 넘어온 현재페이지값
+        
         model.addAttribute("ddaychk", gameBiz.DdayChk(gamePaging));
 
         //경기 종료 시간 구간
