@@ -12,6 +12,9 @@ footer{
 	height: 40px;
 	width: 100%;
 }
+ a:link { color: black; text-decoration: none;}
+ a:visited { color: black; text-decoration: none;}
+ a:hover { color: blue; text-decoration: underline;}
 .team-logo-pic, .pic_path{
 	width: 150px;
 	height: 100px;
@@ -21,6 +24,8 @@ footer{
 	width: 1140px;
 }
 #pointer{
+	font-size: 16px;
+    font-family: 'NexonFootballGothic';
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -29,7 +34,7 @@ footer{
   border-radius: 0.5em;
   box-shadow: 0 0 0 2px rgba(211, 211, 211, 0.5) inset;
   margin: auto;
-  padding: 1.5rem 3.5rem;
+  padding: 1.2rem 3.5rem;
   position: relative;
   cursor: pointer;
   margin: -100px;
@@ -68,7 +73,7 @@ footer{
 	margin-top: 20px;
 }
 #pagingnum{
-	padding: 5px;
+	padding: 1px;
 	margin-right: 7px;
 	width: 30px;
 	height: 30px;
@@ -95,7 +100,7 @@ footer{
 #pagingnumClick{
 	color: #CDDEFF;
 	background-color: #676FA3;
-	padding: 5px;
+	padding: 1px;
 	margin-right: 7px;
 	width: 30px;
 	height: 30px;
@@ -105,7 +110,7 @@ footer{
 	cursor: pointer;
 }
 #prev-btn{
-	padding: 5px;
+	padding: 1px;
 	margin-right: 7px;
 	width: 30px;
 	height: 30px;
@@ -116,7 +121,7 @@ footer{
 	cursor: pointer;
 }
 #next-btn{
-	padding: 5px;
+	padding: 1px;
 	margin-right: 7px;
 	width: 30px;
 	height: 30px;
@@ -187,6 +192,7 @@ div.search{
 
 #keywordInput{
 	font-size: 16px;
+    font-family: 'NexonFootballGothic';
 	height: 40px;
 	margin-top: 40px;
 	width: 370px;
@@ -214,7 +220,7 @@ input[type="text"][required]:focus + label[placeholder]:before {
 input[type="text"][required]:focus + label[placeholder]:before,
 input[type="text"][required]:valid + label[placeholder]:before {
   transition-duration: 0.2s;
-  transform: translate(0, -1.5em) scale(0.9, 0.9);
+  transform: translate(0, -2em) scale(0.9, 0.9);
 }
 input[type="text"][required]:invalid + label[placeholder][alt]:before {
   content: attr(alt);
@@ -224,7 +230,7 @@ input[type="text"][required] + label[placeholder] {
   pointer-events: none;
   line-height: 1.25em;
   margin-left: -187px;
-  margin-top: calc(-3em - -2px);
+  margin-top: calc(-3em - -5px);
   margin-bottom: calc((3em - 1em) + 2px);
 }
 input[type="text"][required] + label[placeholder]:before {
@@ -241,6 +247,8 @@ input[type="text"][required] + label[placeholder]:before {
   background-position: center;
 }
 #searchOption{
+	font-size: 16px;
+	font-family: 'MapoDPP';
 	padding: 0px 5px;
 	position: absolute;
 	margin-left: -500px;
@@ -252,10 +260,9 @@ input[type="text"][required] + label[placeholder]:before {
 	border-radius: 1.5em;
 }
 #searchBtn{
-	padding: 0px;
-	margin: -10px;
-	margin-right: -310px;
-	margin-top: 9px;
+	padding: 10px;
+	margin: 160px;
+	margin-top: 8px;
 	position: absolute;
 	width: 40px;
 	height: 40px;
