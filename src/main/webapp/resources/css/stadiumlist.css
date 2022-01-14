@@ -204,6 +204,7 @@
     outline: 0;
     border: 1px solid #f0f0f0;
     box-sizing: border-box;
+    padding: 8px;
 }
 
 #prevbutton{
@@ -282,7 +283,18 @@
     -o-transition:.3s;
     transition:.3s;
 }
-
+#pagingnumClick{
+	color: #CDDEFF;
+	background-color: #676FA3;
+	padding: 1px;
+	margin-right: 7px;
+	width: 30px;
+	height: 30px;
+	font-size: 16px;
+	font-weight: bold;
+	border: 1px solid #eee;
+	cursor: pointer;
+}
 #keywordInput{
     font-size: 16px;
     height: 40px;
