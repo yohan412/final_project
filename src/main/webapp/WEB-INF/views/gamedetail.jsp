@@ -12,6 +12,24 @@
     <link href='<c:url value="${path}/resources/css/gamedetail.css"/>' rel="stylesheet">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="${path}/resources/js/gamedetail.js"></script>
+    <link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
+    <link href="https://webfontworld.github.io/mapo/MapoDPP.css" rel="stylesheet">
+    <style>
+        section{
+            font-family: 'NexonFootballGothic';
+        }
+        #pointer{
+            font-size: 16px;
+            font-family: 'NexonFootballGothic';
+        }
+        select{
+            border-radius: 1.5em;
+            font-family: 'MapoDPP';
+        }
+        input{
+            font-family: 'NexonFootballGothic';
+        }
+    </style>
 </head>
 <body>
 <header style="height: 184px">
@@ -143,7 +161,7 @@
                     </div>
                 </div>
                 <%--기타 내용 구역--%>
-               	<textarea id="textarea_form" readonly style="min-height: 200px">${gamedto.game_content}</textarea>
+               	<textarea id="textarea_form" readonly style="min-height: 200px; font-family: NexonFootballGothic">${gamedto.game_content}</textarea>
             </div>
             <%--버튼 구역--%>
             <div id="button_form">
@@ -178,7 +196,7 @@
                     </div>
                     <div class="reply_comment_form">
                         <div id="rp_comment_insert">
-                            <textarea class="rp_search"></textarea>
+                            <textarea class="rp_search"  style="font-family: NexonFootballGothic"></textarea>
                             <input type="button" id="button" value="작성" onclick="rp_comment_insert(${status.index},${gamedto.game_no} ,'${gamedto.user_id}', '${userDto.user_id}')">
                             <input type="hidden" class="user_id" value="${user_id[status.index]}">
                             <input type="hidden" class="ask_status" value="${ask_status[status.index]}">
@@ -204,7 +222,7 @@
                 <%--댓글 입력 폼--%>
                 <div id="comment_insert_form">
                     <div id="comment_insert">
-                        <textarea id="search"></textarea>
+                        <textarea id="search"  style="font-family: NexonFootballGothic"></textarea>
                         <input type="button" id="button" value="등록" onclick="comment_insert('${userDto.user_id}', ${gamedto.game_no})">
                     </div>
                 </div>

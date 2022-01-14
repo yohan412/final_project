@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <link href='<c:url value="/resources/css/body.css"/>' rel="stylesheet">
     <link href='<c:url value="/resources/css/gamelist.css"/>' rel="stylesheet">
+    <link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
     <style type="text/css">
         #map {
             width: 900px;
@@ -16,6 +17,12 @@
             display: inline-block;
             border: 1px solid black;
             border-radius: 20px;
+        }
+        section{
+            font-family: 'NexonFootballGothic';
+        }
+        input{
+            font-family: 'NexonFootballGothic';
         }
     </style>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

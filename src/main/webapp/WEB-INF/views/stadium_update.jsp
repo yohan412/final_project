@@ -13,6 +13,27 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="${path}/resources/js/stadiuminsert.js"></script>
+    <link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
+    <link href="https://webfontworld.github.io/mapo/MapoDPP.css" rel="stylesheet">
+    <style>
+        section{
+            font-family: 'NexonFootballGothic';
+        }
+        #pointer{
+            font-size: 16px;
+            font-family: 'NexonFootballGothic';
+        }
+        select{
+            border-radius: 1.5em;
+            font-family: 'MapoDPP';
+        }
+        input{
+            font-family: 'NexonFootballGothic';
+        }
+        textarea{
+            font-family: 'NexonFootballGothic';
+        }
+    </style>
 </head>
 <body>
 <header style="height: 184px">
@@ -77,7 +98,7 @@
                     <div id="content_textarea_form">
                         <div style="width: 100px; height: 100%"></div>
                         <div id="textarae_form">
-                            <textarea id="textarea" name="stadium_content">${detail.stadium_content}</textarea>
+                            <textarea id="textarea" name="stadium_content"  style="font-family: NexonFootballGothic">${detail.stadium_content}</textarea>
                         </div>
                         <div style="width: 100px; height: 100%"></div>
                     </div>

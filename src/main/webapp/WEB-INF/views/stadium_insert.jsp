@@ -13,6 +13,27 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${path}/resources/js/stadiuminsert.js"></script>
+    <link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
+    <link href="https://webfontworld.github.io/mapo/MapoDPP.css" rel="stylesheet">
+    <style>
+        section{
+            font-family: 'NexonFootballGothic';
+        }
+        #pointer{
+            font-size: 16px;
+            font-family: 'NexonFootballGothic';
+        }
+        select{
+            border-radius: 1.5em;
+            font-family: 'MapoDPP';
+        }
+        input{
+            font-family: 'NexonFootballGothic';
+        }
+        textarea{
+            font-family: 'NexonFootballGothic';
+        }
+    </style>
 </head>
 <body>
 <header style="height: 184px">
@@ -76,7 +97,7 @@
                     <div id="content_textarea_form">
                         <div style="width: 100px; height: 100%"></div>
                         <div id="textarae_form">
-                            <textarea id="textarea" name="stadium_content"></textarea>
+                            <textarea id="textarea" name="stadium_content" style="font-family: NexonFootballGothic"></textarea>
                         </div>
                         <div style="width: 100px; height: 100%"></div>
                     </div>
@@ -91,7 +112,7 @@
 <%--                        <input id="upload_file_name" name="pic_name" value="" placeholder="첨부파일" readonly>--%>
                         <input id="upload_file_path" name="pic_path" type="hidden" value="">
                         <div style="width: 100%; height: 150px; display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start">
-                            <textarea name="pic_name" placeholder="첨부파일" readonly style="width: 340px; height: 120px; resize: none; border: 1px solid rgba(140,140,140,0.71); outline: 0;"></textarea>
+                            <textarea name="pic_name" placeholder="첨부파일" readonly style="width: 340px; height: 120px; resize: none; border: 1px solid rgba(140,140,140,0.71); outline: 0; font-family: NexonFootballGothic"></textarea>
                         </div>
                         <div style="width: 100%; height: 100px; display: flex; align-items: flex-start; justify-content: flex-start">
                             <label class="input-file-button" for="upload_file">
