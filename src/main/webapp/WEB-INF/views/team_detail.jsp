@@ -37,15 +37,17 @@
 
 					<div class="content-introduce">
 						<h5 class="head-text">4. 팀 소개 및 한마디</h5>
-						<textarea rows="10" cols="60" name="team_intro" readonly>${teamDto.team_intro }</textarea>
+						<textarea rows="10" cols="60" name="team_intro" style="border: none; outline: none; border-bottom: 1px solid #ccc" readonly>${teamDto.team_intro }</textarea>
 						<input type="hidden" id="team_wirter" name="user_phone" value="${teamDto.user_phone }" readonly>
 					</div>
 					
 					
 					<div class="content-submit" align="right">
-						<input id="pointer" type="button" value="목록" onclick="location.href='teamlist.do'">
-						<input id="pointer" name="update-hidden" type="button" value="수정" onclick="team_updateChk(${login.user_no},${teamDto.user_no },${teamDto.team_no })'">
-						<input id="pointer" name="delete-hidden" type="button" value="삭제" onclick="team_deleteChk(${login.user_no},${teamDto.user_no},${teamDto.team_no})">
+						<button id="pointer" type="button" style="margin-right: 110px;"
+						onclick="location.href='teamlist.do'">목록</button>
+						<button id="pointer" type="button" style="margin-right: 110px;" name="update-hidden" onclick="team_updateChk(${login.user_no},${teamDto.user_no },${teamDto.team_no })">수정</button>
+						<button id="pointer" type="button" style="margin-right: 4px; margin-top: 15px;"
+						name="delete-hidden" onclick="team_deleteChk(${login.user_no},${teamDto.user_no},${teamDto.team_no})">삭제</button>
 					</div>
 					
 					
@@ -93,7 +95,7 @@
 				var chk = confirm('수정하시겠습니까?')
 				
 				if(chk){
-					location.href='team_update.do?team_no='+team_no;
+					location.href='team_updateForm.do?team_no='+team_no;
 				}else{
 					alert('취소되었습니다.');
 				}

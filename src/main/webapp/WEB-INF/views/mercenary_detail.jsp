@@ -57,14 +57,17 @@
 						</c:when>
 					</c:choose>
 					</div>
-					<div class="content-introduce">
+					<div class="content-introduce" style="border-bottom: 3px solid #ccc">
 						<h5 class="head-text">3. 자기소개 및 한마디</h5>
 						<textarea rows="10" cols="60" style="border: 0; outline: none;" readonly>${mDto.getMercenary_intro() }</textarea>
 					</div>
 					<div class="content-submit" align="right">
-						<input id="pointer" type="button" value="이전" onclick="location.href='referer.do'">
-						<input id="pointer" name="update-hidden" type="button" value="수정" onclick="location.href='mercenary_updateForm.do?user_no=${mDto.getUser_no()}'">
-						<input id="pointer" name="delete-hidden" type="button" value="삭제" onclick="location.href='mercenary_delete.do?user_no=${mDto.getUser_no()}'">
+						<button id="pointer" style="margin-right: 110px;"
+						onclick="location.href='referer.do'">이전</button>
+						<button id="pointer" style="margin-right: 110px;"
+						name="update-hidden" onclick="updateChk()">수정</button>
+						<button id="pointer" style="margin-right: 5px; margin-top: 15px;"
+						name="delete-hidden" onclick="deleteChk()">삭제</button>
 						
 					</div>
 					<div class="blank-space" style="height: 150px;">
@@ -124,6 +127,52 @@
 		}
 	});
 	
+	function updateChk(){
+		var user_role = '${login.user_role}'; // 로그인 유저의 role
+		var user_id = '${login.user_id}'; // 로그인 유저
+		var writer = '${mDto.user_id}'; // 작성자
+		
+		if(user_role === 'ADMIN'){
+			var chk = confirm('수정 하시겠습니까?');
+			if(chk){
+				location.href='mercenary_updateForm.do?user_no=${mDto.getUser_no()}';
+			}else{
+				alert('취소되었습니다.');
+			}
+		}else if(user_role === 'USER' || writer === user_id){
+			var chk = confirm('수정 하시겠습니까?');
+			if(chk){
+				location.href='mercenary_updateForm.do?user_no=${mDto.getUser_no()}'
+			}else{
+				alert('취소되었습니다.');
+			}
+		}else{
+			alert('작성자만 수정할 수 있습니다.');
+		}
+	}
+	function deleteChk(){
+		var user_role = '${login.user_role}'; // 로그인 유저의 role
+		var user_id = '${login.user_id}'; // 로그인 유저
+		var writer = '${mDto.user_id}'; // 작성자
+		
+		if(user_role === 'ADMIN'){
+			var chk = confirm('삭제 하시겠습니까?');
+			if(chk){
+				location.href='mercenary_delete.do?user_no=${mDto.getUser_no()}'
+			}else{
+				alert('취소되었습니다.');
+			}
+		}else if(user_role === 'USER' || writer === user_id){
+			var chk = confirm('삭제 하시겠습니까?');
+			if(chk){
+				location.href='mercenary_delete.do?user_no=${mDto.getUser_no()}'
+			}else{
+				alert('취소되었습니다.');
+			}
+		}else{
+			alert('작성자만 삭제할 수 있습니다.');
+		}
+	}
 	
 </script>
 </html>

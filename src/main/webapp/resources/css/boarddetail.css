@@ -1,28 +1,50 @@
-header{
+section.body{
 	display: flex;
-	justify-content: center
+	justify-content: center;
+	margin-top: 40px;
 }
-section{
-	display: flex;
-	justify-content: center
+textarea{
+	width: 300px;
+	height: 100px;
 }
 
-.main-all-box{
+.title-text{
+	justify-content: center;
+	display: flex;
+}
+
+.box-body{
+	justify-content: center;
+	width: 400px;
+	height: 400px;
+	margin: 0 auto;
+}
+.content-box-body{
+	justify-content: center;
 	width: 900px;
+	height: 500px;
+	margin-top: 100px;
 }
-.top-box-content{
-	width: 500px;
-	flex-wrap: wrap;
+.box-top{
+	justify-content: center;
 }
-.catagory{
-	display: flex;
-} 
-.writer{
-	display: flex;	
+.box-top > div{
+	border-bottom: 1px solid #ccc;
 }
-.title{
-	display: flex;
+.button-form{
+	margin-top: 20px;
 }
-.content{
-	display: flex;
+
+
+
+
+
+
+
+
+footer{
+	text-align: center;
+	margin: -25px;
+	height: 40px;
+	width: 100%;
 }

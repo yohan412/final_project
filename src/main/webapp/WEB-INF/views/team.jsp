@@ -49,8 +49,8 @@
 					<hr>
 					
 					<div class="content-submit" align="right">
-						<input id="pointer" type="button" value="목록" onclick="location.href='teamlist.do'">
-						<input id="pointer" type="submit" value="작성완료">
+						<button id="pointer" type="button" value="목록" onclick="location.href='teamlist.do'">목록</button>
+						<button id="pointer" type="submit">작성완료</button>
 					</div>
 					
 				</div>
