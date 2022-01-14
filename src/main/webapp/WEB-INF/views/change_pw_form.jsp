@@ -75,17 +75,17 @@ h3 {
 
 #bir_yy {
 	display: table-cell;
-	width: 147px;
+	width: 153px;
 }
 
 #bir_mm {
 	display: table-cell;
-	width: 147px;
+	width: 153px;
 }
 
 #bir_dd {
 	display: table-cell;
-	width: 147px;
+	width: 153px;
 }
 
 #bir_mm, #bir_dd {
@@ -122,12 +122,12 @@ select {
 	margin: 30px 0 91px;
 }
 .button1 {
-	background-color: gray;
+	background-color: midnightblue;
 	color: white;
 	border: 3px solid white;
 	padding: 18px 0 15px;
 	font-size:13px;
-	width: 100%;	
+	width: 100%;		
 }
 #button2 {
 	width: 100%;
@@ -135,7 +135,7 @@ select {
 	border: 0;
 	cursor: pointer;
 	color: white;
-	background-color:rgb(75, 161, 231);
+	background-color: midnightblue;
 	font-size: 20px;
 	font-weight: 200;
 	border-radius: 10px;
@@ -377,7 +377,7 @@ select {
 					<span>확인</span>
 				</button>
 				<br><br>
-				<button type="button" onclick="index.do'" id="button2" style="background-color: gray;">
+				<button type="button" onclick="location.href='index.jsp'" id="button2" style="background-color: gray;">
 					<span>취소</span>
 				</button>
 			</div>

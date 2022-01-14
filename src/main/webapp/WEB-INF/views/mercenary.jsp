@@ -5,6 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="resources/css/mercenary.css">
+<link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
+    <style>
+        section{
+            font-family: 'NexonFootballGothic';
+        }
+    </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 

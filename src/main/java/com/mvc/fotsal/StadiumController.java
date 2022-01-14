@@ -131,8 +131,9 @@ public class StadiumController {
         Map<String, Object> reviewmap = new HashMap<String, Object>();
         reviewmap.put("reviewPaging", reviewPaging);
         reviewmap.put("stadium_no", stadium_no);
+        List<ReviewDto> reviewlist = reviewBiz.reviewlist(reviewmap);
         //리뷰 리스트
-        model.addAttribute("review", reviewBiz.reviewlist(reviewmap));
+        model.addAttribute("review", reviewlist);
 
         //리뷰 페이징 구현
         ReviewPageMaker reviewPageMaker = new ReviewPageMaker();

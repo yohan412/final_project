@@ -56,10 +56,10 @@ function view_review_detail_form(idx, user_id, stadium_no, title, content, date,
     $("#review_v_content").val(rv_update_contents);
 
     $("input[type=button]").prop('disabled', true);
-    $("#review_update").prop('disabled', false);
-    $("#review_delete").prop('disabled', false);
-    $("#review_update_cancel").prop('disabled', true);
-    $("#review_update_ac").prop('disabled', true);
+    $(".review_update").prop('disabled', false);
+    $(".review_delete").prop('disabled', false);
+    $(".review_update_cancel").prop('disabled', true);
+    $(".review_update_ac").prop('disabled', true);
 
     $("#overlay").fadeIn();
 }
@@ -71,15 +71,15 @@ function review_update(){
         $("#review_v_title").attr("readonly", false);
         $("#review_v_content").attr("readonly", false);
 
-        $("#review_update_ac").show();
-        $("#review_update_cancel").show();
-        $("#review_update").hide();
-        $("#review_delete").hide();
+        $(".review_update_ac").show();
+        $(".review_update_cancel").show();
+        $(".review_update").hide();
+        $(".review_delete").hide();
 
-        $("#review_update").prop('disabled', false);
-        $("#review_delete").prop('disabled', false);
-        $("#review_update_ac").prop('disabled', false);
-        $("#review_update_cancel").prop('disabled', false);
+        $(".review_update").prop('disabled', false);
+        $(".review_delete").prop('disabled', false);
+        $(".review_update_ac").prop('disabled', false);
+        $(".review_update_cancel").prop('disabled', false);
     }
 }
 
@@ -131,10 +131,10 @@ function review_update_ac(){
 }
 
 function review_update_cancel(){
-    $("#review_update_ac").hide();
-    $("#review_update_cancel").hide();
-    $("#review_update").show();
-    $("#review_delete").show();
+    $(".review_update_ac").hide();
+    $(".review_update_cancel").hide();
+    $(".review_update").show();
+    $(".review_delete").show();
 
     $("#review_v_title").attr("readonly", true);
     $("#review_v_content").attr("readonly", true);

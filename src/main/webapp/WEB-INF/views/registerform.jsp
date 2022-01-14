@@ -28,12 +28,14 @@
 		width : 260px;
 	}
 	#id_chk,#zip_chk,#join{
-	 	width : 80px;
-	 	height : 30px;
-		background-color:rgb(75, 161, 231);
-		border: 1px solid gray;
-		border-radius: 5px;
-		cursor:pointer;
+	 	width: 80px;
+	    height: 30px;
+	    background-color: midnightblue;
+	    border: 1px solid gray;
+	    border-radius: 5px;
+	    cursor: pointer;
+	    margin: 7px;
+	    color: white;
 	}
 	#reset{
 		cursor:pointer;
@@ -53,9 +55,10 @@
   		height: 18px; 
 	}
 	select{
-		width: 50px;
-		margin-left: 20px;
-		margin-right: 20px;
+		width: 80px;
+    height: 35px;
+    margin-left: 10px;
+    margin-right: 10px;
 	}
 	
 	body {
@@ -187,7 +190,7 @@
 		<section id="content">
 		<form action="register.do" method="post" onsubmit="return pwchk()">
 			<table align="center" method="post" cellpadding="3">
-				<img src="/img/bg1.jpg" style="width: 200px; height: 200px;" onclick="location.href='index.jsp'">
+				<img src="/img/bg1.jpg" style="width: 200px; height: 200px; margin-left: 15px;" onclick="location.href='index.jsp'">
 				<tr>
 					<th>I D</th>
 					<td width="100%">

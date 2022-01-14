@@ -110,13 +110,13 @@
 				 		<c:if test="${login != null && login.user_role == 'USER'}">
 					 			<li><a href="logout.do">로그아웃</a></li>
 					 			<li><a href="user_info.do?user_id=${login.user_id }">마이페이지</a></li>
-					 			<span>${login.user_name }님</span>
+					 			<li><a>${login.user_name }님</a></li>
 				 		</c:if>
 				 		<c:if test="${login != null && login.user_role == 'ADMIN'}">
 					 			<li><a href="logout.do">로그아웃</a></li>
 					 			<li><a href="admin.do">관리자 페이지</a></li>
 					 			<li><a href="user_info.do?user_id=${login.user_id }">마이페이지</a></li>
-					 			<span>${login.user_name }님</span>
+					 			<li><a>${login.user_name }님</a></li>
 				 		</c:if>
 				 </li>
 			 	 <li>
