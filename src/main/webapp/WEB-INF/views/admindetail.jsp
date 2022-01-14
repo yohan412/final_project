@@ -91,6 +91,12 @@ table.type04 td {
 					<th>주소</th>
 					<td>${aDto.user_addr }</td>
 				</tr>
+				<tr>
+					<td colspan="10" style="text-align: right;">
+						<input type="button" value="수정" onclick="location.href='aupdateform.do?user_id=${aDto.user_id}'">
+						<input type="button" value="회원탈퇴" onclick="location.href='adelete.do?user_id=${aDto.user_id}'">
+					</td>
+				</tr>
 			</table>
 	</div>
 	<footer>

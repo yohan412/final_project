@@ -102,7 +102,18 @@ public class UserBizImpl implements UserBiz {
 		return dao.aselectOne(user_id);
 	}
 	
+	@Override
+	public UserDto BselectOne(String user_id) {
+		return dao.BselectOne(user_id);
+	}
 	
+	@Override
+	public int Bupdate(UserDto dto) {
+		return dao.Bupdate(dto);
+	}
 	
-	
+	@Override
+	public int Bdelete(String user_id) {
+		return dao.Bdelete(user_id);
+	}
 }

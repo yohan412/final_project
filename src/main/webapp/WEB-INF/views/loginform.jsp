@@ -124,7 +124,7 @@ function login(){
 </head>
 <body>
 	<section class="Login-form">
-            <img src="img/bg1.jpg">
+            <a href="index.jsp"><img src="img/bg1.jpg"></a>
             <div class="int-area">
                 <input type="text" name="id" id="user_id" required>
                 <label for="id">USER NAME</label>

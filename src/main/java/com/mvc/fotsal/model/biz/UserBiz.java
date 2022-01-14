@@ -23,4 +23,7 @@ public interface UserBiz {
 	public UserDto userKakaoLoginPro(Map<String, Object> loginApin);
 	public List<UserDto> selectList();
 	public UserDto aselectOne(String user_id);
+	public UserDto BselectOne(String user_id);
+	public int Bupdate(UserDto dto);
+	public int Bdelete(String user_id);
 }
