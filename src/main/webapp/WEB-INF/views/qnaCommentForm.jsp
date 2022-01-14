@@ -6,14 +6,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="resources/css/qna.css">
+<link rel="stylesheet" href="resources/css/boarddetail.css">
+<link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
+    <style>
+        section{
+            font-family: 'NexonFootballGothic';
+        }
+    </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <title>QNA COMMENT 작성</title>
 
 </head>
 <body>
 	<header>
-		<%-- <%@ include file="header.jsp" %> --%>
+		<%@ include file="header.jsp" %>
 	</header>
 	<section>
 		<div class="main-all-box">
@@ -23,52 +29,53 @@
 					<input type="hidden" name="qna_gpno" value="${qna_dto.qna_gpno }">
 					<input type="hidden" name="qna_type" value="${qna_dto.qna_type }">
 					<input type="hidden" name="qna_gpsq" value="${qna_dto.qna_gpsq }">
+					<input type="hidden" name="qna_content" value="${qna_dto.qna_content }">
 					<input type="hidden" name="user_id" value="${login.getUser_id()}" readonly>
-
-					<div class="top-box-content">
-						<div class="title-text">
-							<h2>QNA 문의 답글</h2>
+					<div class="title-text">
+						<h2>QNA 문의 답글 작성</h2>
+					</div>
+				<div class="box-body">
+				<div class="box-top-comment">
+						<h4>문의 내용</h4>
+						<div class="type-form">
+							<h4>카테고리</h4> 
+							<label style="font-weight:bold; font-size: 15px; margin-left: 20px;">${qna_dto.qna_type }</label>
 						</div>
-						<hr>
-						<div>
-							<h2>문의 내용</h2>
-							<div class="box-body"></div>
-							<div class="form-group">
-								<label>카테고리</label> <label class="detail-qna-cartagory" style="font-weight: bold;">${qna_dto.qna_type }</label>
-							</div>
-							<div class="form-group">
-								<label>작성자</label> <label class="detail-qna-writer" style="font-weight: bold;">${qna_dto.user_id }</label>
-							</div>
-							<div class="form-group">
-								<label>제목</label> <label class="detail-qna-title" style="font-weight: bold;">${qna_dto.qna_title }</label>
-
-							</div>
-							<div class="form-group">
-								<label>내용</label>
-								<textarea class="detail-qna-content" style="font-weight: bold;">${qna_dto.qna_content }</textarea>
-
-							</div>
+						<div class="writer-form">
+							<h4>작성자</h4> 
+							<label style="font-weight:bold; font-size: 15px; margin-left: 20px;">${qna_dto.user_id }</label>
 						</div>
-						<br>
-						<br>
-						<br>
-						<div class="content-select-type">
-							<label>답글</label>
+						<div class="title-form">
+							<h4>제목</h4> 
+							<label style="font-weight:bold; font-size: 15px; margin-left: 20px;">${qna_dto.qna_title }</label>
+
 						</div>
-						<hr>
+						<div class="content-form">
+							<h4>내용</h4>
+							<textarea style="margin-left: 20px;">${qna_dto.qna_content }</textarea>
+						</div>
+					</div>	
+					<br>
+					<div class="box-bottom">
+						<div class="comment-form">
+							<h2>문의 답변</h2>
+						</div>
+
 						<div class="comment-title">
-						<input type="text" name="qna_title" placeholder="제목을 입력해주세요.">
+						<h4>제목</h4>
+						<input style="margin-bottom: 10px; "type="text" name="qna_title" placeholder="제목을 입력해주세요.">
 						</div>
-						<hr>
+
 						<div class="content-select-position">
-							<textarea row="10" cols="60" name="qna_content" placeholder="답변 내용을 입력해주세요.."></textarea>
+						<h4>답변 내용</h4>
+							<textarea style="border:1px solid" placeholder="답변 내용을 입력해주세요.."></textarea>
 						</div>
-						<hr>
-						<div class="content-submit" align="right">
-							<input id="pointer" type="button" value="이전"
-								onclick="location.href='qnadetail.do'"> <input
-								id="pointer" type="submit" value="작성완료">
+	
+						<div class="content-submit" align="right" style="border-bottom: none;">
+							<button id="pointer" type="button" onclick="movedetail()">이전</button> 
+							<button id="pointer" type="submit">작성완료</button>
 						</div>
+					</div>
 					</div>
 				</form>
 			</div>
@@ -78,5 +85,9 @@
 		<%-- <%@ include file="footer.jsp" %> --%>
 	</footer>
 </body>
-
+<script type="text/javascript">
+	function movedetail(){
+		location.href='qnadetail.do?qna_gpno='+${qna_dto.qna_gpno};
+	}
+</script>
 </html>

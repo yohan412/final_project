@@ -9,19 +9,23 @@
 <title>Q&A BOARD</title>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="resources/css/boardTest.css">
+<link rel="stylesheet" href="resources/css/board.css">
+<link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
+    <style>
+        section{
+            font-family: 'NexonFootballGothic';
+        }
+    </style>
 </head>
 
 <body>
 <header>
 	<%@ include file="/WEB-INF/views/header.jsp"%>
 </header>
-<div class="a-blank-space" style="height: 50px;"></div>
+	<section class="body">
 	<div>
 		<h1 style="display: flex; justify-content: center;">Q&A 게시판</h1>
 	</div>
-	<br>
-	<section>	
 	<div class="main-all-box">
 		<div class="list-all-box">
 			<div id="boardselect_form">
@@ -50,12 +54,12 @@
 						</colgroup>
 						<thead>
 							<tr>
-								<th style="background-color: #eeeeee; text-align: center width: 10%;">번호</th>
-								<th style="background-color: #eeeeee; text-align: center width: 10%;">작성자</th>
-								<th style="background-color: #eeeeee; text-align: center width: 20%;">제목</th>
-								<th style="background-color: #eeeeee; text-align: center width: 40%;">내용</th>
-								<th style="background-color: #eeeeee; text-align: center width: 10%;">작성일</th>
-							<tr>
+								<th style="background-color: #eeeeee; text-align: center; width: 10%;">번호</th>
+								<th style="background-color: #eeeeee; text-align: center; width: 10%;">작성자</th>
+								<th style="background-color: #eeeeee; text-align: center; width: 20%;">제목</th>
+								<th style="background-color: #eeeeee; text-align: center; width: 40%;">내용</th>
+								<th style="background-color: #eeeeee; text-align: center; width: 10%;">작성일</th>
+							</tr>
 						</thead>
 						<tbody>
 							<c:choose>
@@ -69,7 +73,7 @@
 										<tr>
 											<td>${dto.qna_no }</td>
 											<td>${dto.user_id}</td>
-											<td><a href="qnadetail.do?qna_gpno=${dto.qna_gpno }">${dto.qna_title }</a></td>
+											<td><a href="qnadetail.do?qna_no=${dto.qna_no }">${dto.qna_title }</a></td>
 											<td>${dto.qna_content }</td>
 											<td>${dto.qna_reg }</td>
 										</tr>
@@ -123,7 +127,6 @@
 		</div>
 	</div>
 </section>
-
 </body>
 <footer style="align-content: center;">
 	<%@ include file="footer.jsp"%>
