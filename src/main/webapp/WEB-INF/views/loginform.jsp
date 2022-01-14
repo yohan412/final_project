@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <style type="text/css">
+@import url('https://webfontworld.github.io/nexen/NexenTire.css');
 	*{
     margin: 0; padding: 0; box-sizing: border-box;
 }
@@ -31,14 +31,15 @@ body{
     	text-align: center;
     }
 img{
-    text-align: center;
+	
 }
 .login-form{
     position: relative; z-index: 2;
 }
 .int-area{
-   width: 400px; position: relative;
-   margin-top: 20px;
+   width: 350px; 
+   position: relative;
+   margin: 7px;
    display: inline-block;
 }
 .int-area input{
@@ -75,8 +76,8 @@ img{
     cursor: pointer;
 }
 .caption{
-    margin-top: 20px;
     text-align: center ;
+    margin: 10px;
 }
 .caption{
     font-size: 15px;
@@ -92,7 +93,48 @@ img{
     cursor: pointer;
     position: relative;
 }
-
+/*===================================================*/
+	.outline-button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  border: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3) inset;
+  color: black;
+  margin: auto;
+  padding: 0rem 6rem;
+  position: relative;
+  cursor: pointer;
+      width: 270px;
+    height: 60px;
+    font-family: 'NexenTire';
+    color: navy;
+    font-size: 20px;
+    font-weight: bold;
+}
+.outline-button::before, .outline-button::after {
+  content: "";
+  position: absolute;
+  height: 0;
+  width: 2px;
+  transition: height 0.4s 0.4s cubic-bezier(0.86, 0, 0.07, 1), width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+.outline-button::before {
+  box-shadow: 2px 2px 0 navy inset;
+  bottom: 0;
+  left: 0;
+}
+.outline-button::after {
+  box-shadow: -2px -2px 0 navy inset;
+  top: 0;
+  right: 0;
+}
+.outline-button:hover::before, .outline-button:hover::after {
+  height: 100%;
+  width: 100%;
+  transition: height 0.4s cubic-bezier(0.86, 0, 0.07, 1), width 0.4s 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js" charset="utf-8"></script>
 <script type="text/javascript">
@@ -147,10 +189,10 @@ function login(){
 	                <label for="pw">PASSWORD</label>
 	            </div>
 	            <div class="btn-area">
-	                <input type="button" value="LOGIN" onclick="login();">
+	                <button class="outline-button" onclick="login();">로그인</button>
 	            </div>
 	            <div class="btn-area">
-	                <input type="button" value="SIGNUP" onclick="location.href='registerform.do'">
+	                <button class="outline-button" onclick="location.href='registerform.do'">회원가입</button>
 	            </div>
 	            <div id="loginChk"></div>
 	        	<div class="kakao-login">
@@ -163,7 +205,8 @@ function login(){
 		        	</div>
 		        </div>
 	        	<div class="caption">
-	            	<a href="">Forgot Password?</a>
+	            	<a href="find_id_form.do">아이디 찾기</a><br>
+	            	<a href="change_pw_form.do">비밀번호 찾기</a><br>
 	        	</div>
     </section>
 </body>
