@@ -10,6 +10,7 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="resources/css/board.css">
+<link href="https://webfontworld.github.io/mapo/MapoDPP.css" rel="stylesheet">
 <link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
     <style>
         section{
@@ -121,13 +122,14 @@
 				<input type="text" name="keyword" id="keywordInput" value="${STLP.keyword}" required=""/>
 				<input type="image" id="searchBtn" src="img/icon_magnifier.png">
 			</div>
+			
 			<!-- 글작성 -->
-			<div class="content-submit-list">
+			<div class="content-submit-list" align="center">
 				<button id="pointer" onclick="loginChk(${login.user_no})">작성하기</button>
 			</div>
 
 		
-
+		
 		</div>
 	</div>
 </section>

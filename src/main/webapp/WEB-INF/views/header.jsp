@@ -92,7 +92,7 @@
 		    	  	</c:if>
 			 	 </li>
 			 	 <li>
-			    	  <a href="qnalist.do">QnA</a>
+			    	  <a href="http://localhost:3232/qnalist.do?page=1&perPageNum=5&searchType=&keyword=">QnA</a>
 			 	 </li>
 			 	 <li>
 					  <!-- 로그인 하지 않은 상태 -->

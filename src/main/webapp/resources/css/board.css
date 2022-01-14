@@ -2,6 +2,7 @@ section.body{
 	display: flex;
 	justify-content: center;
 	margin-top: 40px;
+	flex-direction: column;
 }
 td, th, tr{
 	border: 1px solid #eeeeee;
@@ -112,7 +113,7 @@ footer{
 #pagingnumClick{
 	color: #CDDEFF;
 	background-color: #676FA3;
-	padding: 5px;
+	padding: 1px;
 	margin-right: 7px;
 	width: 30px;
 	height: 30px;
@@ -177,29 +178,9 @@ footer{
 	text-align: center;
 
 }
-.qna-writer{
-	width: 10%;
-	text-align: center;
 
-}
-.qna-title{
-	width: 15%;
-	text-align: center;
-
-}
-.qna_content{
-	width: 40%;
-	text-align: center;
-
-}
-.qna-date{
-	width: 20%;
-	text-align: center;
-
-}
 .content-submit-list{
-	float:right;
-	margin-right: 165px;
+	margin-left: 750px;
 }
 div.search{
 	margin-left: 32px;
@@ -268,6 +249,8 @@ input[type="text"][required] + label[placeholder]:before {
   background-position: center;
 }
 #searchOption{
+	font-size: 13px;
+	font-family: 'MapoDPP';
 	padding: 0px 5px;
 	position: absolute;
 	margin-left: -120px;
