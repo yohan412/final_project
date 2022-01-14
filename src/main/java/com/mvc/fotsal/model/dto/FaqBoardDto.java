@@ -9,14 +9,16 @@ public class FaqBoardDto {
 	private String faq_title;
 	private String faq_content;
 	private String user_id;
+	private int user_no;
 	private Date faq_reg;
 	private String faq_type;
 	public FaqBoardDto() {
 		super();
 	}
-	public FaqBoardDto(int faq_no, int faq_gpno, int faq_gpsq, String faq_title, String faq_content, String user_id,
+	public FaqBoardDto(int user_no, int faq_no, int faq_gpno, int faq_gpsq, String faq_title, String faq_content, String user_id,
 			Date faq_reg, String faq_type) {
 		super();
+		this.user_no = user_no;
 		this.faq_no = faq_no;
 		this.faq_gpno = faq_gpno;
 		this.faq_gpsq = faq_gpsq;
@@ -25,6 +27,12 @@ public class FaqBoardDto {
 		this.user_id = user_id;
 		this.faq_reg = faq_reg;
 		this.faq_type = faq_type;
+	}
+	public int getUser_no() {
+		return user_no;
+	}
+	public void setUser_no(int user_no) {
+		this.user_no = user_no;
 	}
 	public int getFaq_no() {
 		return faq_no;
