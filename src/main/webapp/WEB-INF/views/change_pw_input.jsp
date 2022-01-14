@@ -122,12 +122,12 @@ select {
 	margin: 30px 0 91px;
 }
 .button1 {
-	background-color: gray;
+	background-color: midnightblue;
 	color: white;
 	border: 3px solid white;
 	padding: 18px 0 15px;
 	font-size:13px;
-	width: 100%;	
+	width: 100%;		
 }
 #button2 {
 	width: 100%;
@@ -135,7 +135,7 @@ select {
 	border: 0;
 	cursor: pointer;
 	color: white;
-	background-color:rgb(75, 161, 231);
+	background-color: midnightblue;
 	font-size: 20px;
 	font-weight: 200;
 	border-radius: 10px;
