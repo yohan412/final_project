@@ -249,13 +249,14 @@
     align-items: center;
     justify-content: center;
 }
-#comment_paging button{
-    width: 25px;
-    height: 25px;
-    font-size: 10px;
+#comment_paging .buttons{
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
     font-weight: bold;
-    border: 0;
     outline: 0;
+    border: 1px solid #f0f0f0;
+    box-sizing: border-box;
 }
 a{
 	color: black;
@@ -491,4 +492,45 @@ a{
     font-weight: bold;
     cursor: pointer;
     background-color: darkcyan;
+}
+
+#pointer{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    border-radius: 0.5em;
+    box-shadow: 0 0 0 2px rgba(211, 211, 211, 0.5) inset;
+    margin: auto;
+    padding: 1rem 3rem;
+    position: relative;
+    cursor: pointer;
+}
+#pointer::before, #pointer::after {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 2px;
+    transition: height 0.4s 0.4s cubic-bezier(0.86, 0, 0.07, 1), width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+    box-sizing: inherit;
+}
+#pointer::before {
+    box-shadow: 2px 2px 0 #00bafa inset;
+    bottom: 0;
+    left: 0;
+}
+#pointer::after {
+    box-shadow: -2px -2px 0 #00bafa inset;
+    top: 0;
+    right: 0;
+}
+#pointer:hover::before, #pointer:hover::after {
+    height: 100%;
+    width: 100%;
+    border-radius: 0.5em;
+    transition: height 0.4s cubic-bezier(0.86, 0, 0.07, 1), width 0.4s 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+*, ::before, ::after{
+
 }

@@ -44,7 +44,8 @@
                     </div>
                     <div class="button_form">
                         <div style="width: 100%; height: 100%; display: flex; align-items: center">
-                            <input type="button" value="주소 찾기" id="addr_button" onclick="Addr_api();">
+                            <%--<input type="button" value="주소 찾기" id="addr_button" onclick="Addr_api();">--%>
+                                <button id="pointer" type="button" onclick="Addr_api();" style="padding: 0.5rem 2rem; margin-left: 10px">주소 찾기</button>
                         </div>
                     </div>
                     <div style="width: 100px; height: 100%"></div>
@@ -81,21 +82,24 @@
                         <div style="width: 100px; height: 100%"></div>
                     </div>
                 </div>
-                <div id="stadium_upload_form">
+ <%--               <div id="stadium_upload_form">
                     <div style="width: 100px; height: 100%"></div>
                     <div>
                         <div class="font">경기장 사진 업로드</div>
                     </div>
                     <div class="info">업로드 기능 공간</div>
                     <div style="width: 100px; height: 100%"></div>
+                </div>--%>
+                <div id="button_form" style="margin-top: 50px">
+                    <%--<input type="submit" value="경기장 수정" id="button">--%>
+                    <button id="pointer" type="submit" style="margin-right: 5px; margin-left: 5px; padding: 1.5rem 5rem;">경기장 수정</button>
                 </div>
-                <div id="button_form"><input type="submit" value="경기장 수정" id="button"></div>
             </div>
         </form:form>
     </div>
 </section>
 <footer>
-
+    <%@ include file="/WEB-INF/views/footer.jsp" %>
 </footer>
 </body>
 </html>

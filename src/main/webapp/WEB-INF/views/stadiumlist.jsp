@@ -62,17 +62,18 @@
                 <div style="width: 200px; height: 100%"></div>
                 <div style="width: 500px; height: 100%; display: flex; align-items: center; justify-content: center;">
                     <c:if test="${pageMaker.prev}">
-                        <input type="button" id="prevbutton" onclick="location.href='stadiumlist.do${pageMaker.makeSearch(pageMaker.startPage - 1)}'" value="<">
+                        <input type="button" class="buttons" id="prevbutton" onclick="location.href='stadiumlist.do${pageMaker.makeSearch(pageMaker.startPage - 1)}'" value="<">
                     </c:if>
                     <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-                        <input type="button" id="pagingnum" onclick="location.href='stadiumlist.do${pageMaker.makeSearch(idx)}'" value="${idx}">
+                        <input type="button" class="buttons" id="pagingnum" onclick="location.href='stadiumlist.do${pageMaker.makeSearch(idx)}'" value="${idx}">
                     </c:forEach>
                     <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-                        <input type="button" id="nextbutton" onclick="location.href='stadiumlist.do${pageMaker.makeSearch(pageMaker.endPage + 1)}'" value=">">
+                        <input type="button" class="buttons" id="nextbutton" onclick="location.href='stadiumlist.do${pageMaker.makeSearch(pageMaker.endPage + 1)}'" value=">">
                     </c:if>
                 </div>
                 <div style="width: 200px; height: 100%; display: flex; align-items: center; justify-content: center">
-                    <input type="button" value="경기장 등록" id="stadium_insert_button" onclick="stadium_insert('${userDto.user_id}')">
+                    <%--<input type="button" value="경기장 등록" id="stadium_insert_button" onclick="stadium_insert('${userDto.user_id}')">--%>
+                        <button id="pointer" type="button" onclick="stadium_insert('${userDto.user_id}')">경기장 등록</button>
                     <script type="text/javascript">
                         if(${userDto.user_role eq 'ADMIN'}){
                             $("#stadium_insert_button").show();
