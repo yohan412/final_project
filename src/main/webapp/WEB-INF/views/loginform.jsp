@@ -80,10 +80,9 @@ img{
     margin: 10px;
 }
 .caption{
-    font-size: 15px;
+    font-size: 23px;
     text-decoration: none;
-    font-family: 'Paybooc';
-    color: black;
+	font-family: 'GangwonEduSaeeum';
 }
 .kakao-login{
     margin-top: 10px;
@@ -138,7 +137,7 @@ img{
   transition: height 0.4s cubic-bezier(0.86, 0, 0.07, 1), width 0.4s 0.4s cubic-bezier(0.86, 0, 0.07, 1);
 }
 </style>
-<link href="https://webfontworld.github.io/bccard/Paybooc.css" rel="stylesheet">
+<link href="https://webfontworld.github.io/gangwon/GangwonEduSaeeum.css" rel="stylesheet">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js" charset="utf-8"></script>
 <script type="text/javascript">
 $(function(){
@@ -208,8 +207,8 @@ function login(){
 		        	</div>
 		        </div>
 	        	<div class="caption">
-	            	<a href="find_id_form.do">아이디 찾기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	            	<a href="change_pw_form.do">비밀번호 찾기</a><br>
+	            	<a href="find_id_form.do" style="color: black">아이디 찾기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	            	<a href="change_pw_form.do" style="color: black">비밀번호 찾기</a><br>
 	        	</div>
     </section>
 </body>
