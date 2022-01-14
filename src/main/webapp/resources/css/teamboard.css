@@ -35,9 +35,9 @@ footer{
   box-shadow: 0 0 0 2px rgba(211, 211, 211, 0.5) inset;
   margin: auto;
   padding: 1.2rem 3.5rem;
-  position: relative;
+  position: absolute;
   cursor: pointer;
-  margin: -100px;
+  margin: -110px;
 }
 #pointer::before, #pointer::after {
   content: "";
@@ -70,7 +70,7 @@ footer{
 	width: auto;
 }
 .page-list{
-	margin-top: 20px;
+	margin-top: 35px;
 }
 #pagingnum{
 	padding: 1px;
@@ -247,13 +247,13 @@ input[type="text"][required] + label[placeholder]:before {
   background-position: center;
 }
 #searchOption{
-	font-size: 16px;
+	font-size: 13px;
 	font-family: 'MapoDPP';
+	text-align: center;
 	padding: 0px 5px;
 	position: absolute;
 	margin-left: -500px;
 	margin-top: 15px;
-	font-size: 16px;
 	height: 40px;
 	border: 1px solid #ccc;
 	box-sizing: border-box;
