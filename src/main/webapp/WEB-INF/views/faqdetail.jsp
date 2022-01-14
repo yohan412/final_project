@@ -53,7 +53,7 @@
 						</div>
 						<div class="content-form">
 							<h4>내용</h4>
-							<textarea style="margin-left: 10px;">${faq_dto.qna_content }</textarea>
+							<textarea style="margin-left: 10px;">${faq_dto.faq_content }</textarea>
 						</div>
 					</div>
 					
