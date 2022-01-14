@@ -49,11 +49,10 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 
 
 	@Override
-	public QnaBoardDto selectOne(int qna_no) {
+	public QnaBoardDto selectOne2(int qna_gpno) {
 		QnaBoardDto dto = null;
-		
 		try {
-			dto = sqlSession.selectOne(NAMESPACE+"selectOne", qna_no);
+			dto = sqlSession.selectOne(NAMESPACE+"selectOne2", qna_gpno );
 		} catch (Exception e) {
 			System.out.println("[error] : select one");
 			e.printStackTrace();
@@ -121,13 +120,13 @@ public class QnaBoardDaoImpl implements QnaBoardDao{
 	}
 
 	@Override
-	public QnaBoardDto selectOne2(int qna_gpno) {
+	public QnaBoardDto selectOne(int qna_gpno) {
 		QnaBoardDto dto = null;
 		
 		try {
-			dto = sqlSession.selectOne(NAMESPACE+"selectOne2", qna_gpno);
+			dto = sqlSession.selectOne(NAMESPACE+"selectOne", qna_gpno);
 		} catch (Exception e) {
-			System.out.println("[error] : select one2");
+			System.out.println("[error] : select one");
 			e.printStackTrace();
 		}
 		
