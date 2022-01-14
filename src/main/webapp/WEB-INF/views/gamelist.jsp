@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <link href='<c:url value="/resources/css/body.css"/>' rel="stylesheet">
     <link href='<c:url value="/resources/css/gamelist.css"/>' rel="stylesheet">
+    <link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
     <style type="text/css">
         #map {
             width: 900px;
@@ -16,6 +17,12 @@
             display: inline-block;
             border: 1px solid black;
             border-radius: 20px;
+        }
+        section{
+            font-family: 'NexonFootballGothic';
+        }
+        input{
+            font-family: 'NexonFootballGothic';
         }
     </style>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -138,7 +145,7 @@
                 </div>
                 <div style="width: 200px; height: 100%; display: flex; align-items: center; justify-content: center">
                     <%--<input type="button" value="경기 등록" onclick="game_insert('${userDto.user_id}')" id="sta_but">--%>
-                        <button id="pointer" type="button" onclick="game_insert('${userDto.user_id}')">경기장 등록</button>
+                        <button id="pointer" type="button" onclick="game_insert('${userDto.user_id}')">경기 등록</button>
                     <script type="text/javascript">
                         function game_insert(user_id){
                             if(user_id === "" || user_id == null){

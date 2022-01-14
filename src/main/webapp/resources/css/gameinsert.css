@@ -301,6 +301,8 @@ input{
     position: relative;
     cursor: pointer;
     margin: -100px;
+    font-size: 16px;
+    font-family: 'NexonFootballGothic';
 }
 #pointer::before, #pointer::after {
     content: "";

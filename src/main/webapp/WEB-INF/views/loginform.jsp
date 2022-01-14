@@ -12,14 +12,26 @@
     margin: 0; padding: 0; box-sizing: border-box;
 }
 body{
+	background-image: url("/img/soccerwallpaper.jpg");
+  	background-attachment: fixed;
+	background-repeat: no-repeat
     font-family: 'Noto Sans KR', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;}
+    height: 100vh;
+    }
+    section{
+    	background-color: white;
+    	border: solid black 1px;
+    	border-radius: 1em;
+    	width: 500px;
+    	height: 700px;
+    	align-items: center;
+    	text-align: center;
+    }
 img{
     text-align: center;
-    margin-left: 120px;
 }
 .login-form{
     position: relative; z-index: 2;
@@ -27,6 +39,7 @@ img{
 .int-area{
    width: 400px; position: relative;
    margin-top: 20px;
+   display: inline-block;
 }
 .int-area input{
     width: 100%; 
@@ -49,6 +62,8 @@ img{
 }
 .btn-area{
     margin-top: 20px;
+    width: 400px;
+    display: inline-block;
 }
 .btn-area input{
     width: 100%; height: 50px; 
@@ -71,13 +86,11 @@ img{
     margin-top: 15px;
     cursor: pointer;
     position: relative;
-    right: 60px;
 }
 .naver-login{
     margin-top: 15px;
     cursor: pointer;
     position: relative;
-    right: 60px;
 }
 
 </style>
@@ -124,34 +137,34 @@ function login(){
 </head>
 <body>
 	<section class="Login-form">
-            <a href="index.jsp"><img src="img/bg1.jpg"></a>
-            <div class="int-area">
-                <input type="text" name="id" id="user_id" required>
-                <label for="id">USER NAME</label>
-            </div>
-            <div class="int-area">
-                <input type="password" name="pw" id="user_pw" required>
-                <label for="pw">PASSWORD</label>
-            </div>
-            <div class="btn-area">
-                <input type="button" value="LOGIN" onclick="login();">
-            </div>
-            <div class="btn-area">
-                <input type="button" value="SIGNUP" onclick="location.href='registerform.do'">
-            </div>
-            <div id="loginChk"></div>
-        	<div class="kakao-login">
-            	<a href="https://kauth.kakao.com/oauth/authorize?client_id=f4d035894dc919ed84747c27124adccc&redirect_uri=http://localhost:8787/kakaoLogin.do&response_type=code">
-            	<img src="img/Kakao.png"></a>
-        	</div>
-        	<div class="naver-login">
-	        	<div id="naver_id_login">
-	            	<a id="naverIdLogin_loginButton" href="${naverUrl }"><img src="img/Naver.png" onclick=""></a>
+	            <a href="index.jsp"><img src="img/bg1.jpg" ></a>
+	            <div class="int-area">
+	                <input type="text" name="id" id="user_id" required>
+	                <label for="id">USER NAME</label>
+	            </div>
+	            <div class="int-area">
+	                <input type="password" name="pw" id="user_pw" required>
+	                <label for="pw">PASSWORD</label>
+	            </div>
+	            <div class="btn-area">
+	                <input type="button" value="LOGIN" onclick="login();">
+	            </div>
+	            <div class="btn-area">
+	                <input type="button" value="SIGNUP" onclick="location.href='registerform.do'">
+	            </div>
+	            <div id="loginChk"></div>
+	        	<div class="kakao-login">
+	            	<a href="https://kauth.kakao.com/oauth/authorize?client_id=f4d035894dc919ed84747c27124adccc&redirect_uri=http://localhost:8787/kakaoLogin.do&response_type=code">
+	            	<img src="img/Kakao.png"></a>
 	        	</div>
-	        </div>
-        	<div class="caption">
-            	<a href="">Forgot Password?</a>
-        	</div>
+	        	<div class="naver-login">
+		        	<div id="naver_id_login">
+		            	<a id="naverIdLogin_loginButton" href="${naverUrl }"><img src="img/Naver.png" onclick=""></a>
+		        	</div>
+		        </div>
+	        	<div class="caption">
+	            	<a href="">Forgot Password?</a>
+	        	</div>
     </section>
 </body>
 </html>
