@@ -97,9 +97,9 @@
                         <button id="pointer" type="button" onclick="stadium_insert('${userDto.user_id}')">경기장 등록</button>
                     <script type="text/javascript">
                         if(${userDto.user_role eq 'ADMIN'}){
-                            $("#stadium_insert_button").show();
+                            $("#pointer").show();
                         }else{
-                            $("#stadium_insert_button").hide();
+                            $("#pointer").hide();
                         }
                     </script>
                 </div>

@@ -145,7 +145,7 @@
                 </div>
                 <div style="width: 200px; height: 100%; display: flex; align-items: center; justify-content: center">
                     <%--<input type="button" value="경기 등록" onclick="game_insert('${userDto.user_id}')" id="sta_but">--%>
-                        <button id="pointer" type="button" onclick="game_insert('${userDto.user_id}')">경기장 등록</button>
+                        <button id="pointer" type="button" onclick="game_insert('${userDto.user_id}')">경기 등록</button>
                     <script type="text/javascript">
                         function game_insert(user_id){
                             if(user_id === "" || user_id == null){
