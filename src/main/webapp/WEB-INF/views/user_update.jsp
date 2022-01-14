@@ -20,11 +20,77 @@ th{
    	font-weight: 400;
     text-align: left;
 }	
-td input[type="button"],[type="submit"]{ 
-   	background-color:rgb(75, 161, 231);
-   	border: 1px solid gray;
-    cursor: pointer;
-    width: 80px; height: 30px;
+#pointer{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  border-radius: 0.5em;
+  box-shadow: 0 0 0 2px rgba(211, 211, 211, 0.5) inset;
+  margin: auto;
+  padding: 1.2rem 3rem;
+  position: relative;
+  cursor: pointer;
+}
+#pointer::before, #pointer::after {
+  content: "";
+  position: absolute;
+  height: 0;
+  width: 2px;
+  transition: height 0.4s 0.4s cubic-bezier(0.86, 0, 0.07, 1), width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+#pointer::before {
+  box-shadow: 2px 2px 0 #00bafa inset;
+  bottom: 0;
+  left: 0;
+}
+#pointer::after {
+  box-shadow: -2px -2px 0 #00bafa inset;
+  top: 0;
+  right: 0;
+}
+#pointer:hover::before, #pointer:hover::after {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.5em;
+  transition: height 0.4s cubic-bezier(0.86, 0, 0.07, 1), width 0.4s 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+#zip_chk{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  border-radius: 0.5em;
+  box-shadow: 0 0 0 2px rgba(211, 211, 211, 0.5) inset;
+  margin: auto;
+  padding: 0.8rem 2rem;
+  position: relative;
+  cursor: pointer;
+}
+#zip_chk::before, #zip_chk::after {
+  content: "";
+  position: absolute;
+  height: 0;
+  width: 2px;
+  transition: height 0.4s 0.4s cubic-bezier(0.86, 0, 0.07, 1), width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+#zip_chk::before {
+  box-shadow: 2px 2px 0 #00bafa inset;
+  bottom: 0;
+  left: 0;
+}
+#zip_chk::after {
+  box-shadow: -2px -2px 0 #00bafa inset;
+  top: 0;
+  right: 0;
+}
+#zip_chk:hover::before, #zip_chk:hover::after {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.5em;
+  transition: height 0.4s cubic-bezier(0.86, 0, 0.07, 1), width 0.4s 0.4s cubic-bezier(0.86, 0, 0.07, 1);
 }
 table.type04 {
   border-collapse: separate;
@@ -109,7 +175,7 @@ table.type04 td {
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header.jsp" %>
-	<div style="text-align: center;">	
+	<div style="text-align: center; margin-top: 30px;">	
 		<h2>회원 정보 수정</h2>
 	</div>
 	<div class="user_update" align="center">
@@ -156,17 +222,13 @@ table.type04 td {
 						<input type="hidden" id="sample4_extraAddress" placeholder="참고항목">
 					</td>
 				</tr>
-				<tr>
-					<td colspan="10" style="text-align: right;">
-						<input type="submit" value="완료">
-						<input type="button" value="취소" onclick="location.href='index.jsp'">
-					</td>
-				</tr>
 			</table>
+			<div class="content-submit-list" style="margin-left: 290px;">
+				<button id="pointer" type="submit">완료</button>
+				<button id="pointer" type="button" onclick="location.href='index.jsp'">취소</button>
+			</div>			
 		</form>
 	</div>
-	<footer>
-	<%@ include file="/WEB-INF/views/footer.jsp" %>
-	</footer>
 </body>
+<footer style="text-align: center;"><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
 </html>

@@ -8,6 +8,12 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="resources/css/boarddetail.css">
+<link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
+    <style>
+        section{
+            font-family: 'NexonFootballGothic';
+        }
+    </style>
 <meta charset="UTF-8">
 <title>FAQ BOARD DETAIL</title>
 </head>
@@ -17,53 +23,56 @@
 	</header>
 	<section>
 		<div class="main-all-box">
-			<div class="top-box-content">
 				<form action="faqupdateForm.do" method="post">
-					<%-- <input type="hidden" name="user_id" value="${login.getUser_id()}" readonly> --%>
+					<input type="hidden" name="user_id" value="${login.getUser_id()}" > 
 					<div class="top-box-content">
 						<div class="title-text">
 							<h2>상세보기</h2>
 						</div>
 					</div>
-					<div class="box-body"></div>
-					<div class="form-group">
-						<label>카테고리</label> <label class="detail-faq-cartagory"
-							style="font-weight: bold;">${faq_dto.faq_type }</label>
+					<div class="box-body">
+					<div class="box-top">
+						<div class="type-form">
+							<h4>카테고리</h4> 
+							<label style="font-weight:bold; font-size: 15px; margin-left: 20px;">${faq_dto.faq_type }</label>
+						</div>
+						
+						<div class="writer-form">
+							<h4>작성자</h4> 
+							<label  style="font-weight:bold; font-size: 15px; margin-left: 20px;">${faq_dto.user_id }</label>
+						</div>
+						<div class="title-form">
+							<h4>제목</h4> 
+							<label style="font-weight:bold; font-size: 15px; margin-left: 20px;">${faq_dto.faq_title }</label>
+	
+						</div>
+						<div class="content-form">
+							<h4>내용</h4>
+							<textarea style="font-weight:bold; font-size: 15px; margin-left: 20px;" readonly>${faq_dto.faq_content }</textarea>
+	
+						</div>
+						<div class="content-form">
+							<h4>내용</h4>
+							<textarea style="margin-left: 10px;">${faq_dto.qna_content }</textarea>
+						</div>
 					</div>
-					<div class="form-group">
-						<label>작성자</label> <label class="detail-faq-writer"
-							style="font-weight: bold;">${faq_dto.user_id }</label>
+					
+					<div class="button-form">
+						<div class="content-submit" align="right">
+							<button id="pointer" type="button" onclick="location.href='qnalist.do'">목록</button> 
+							<button id="pointer" type="button" onclick="location.href='qnaupdateForm.do?qna_gpno=${qna_dto.qna_gpno}'">수정</button>
+							<button id="pointer" type="button" onclick="qna_deleteChk(${login.user_no},${qna_dto.user_no },${qna_dto.qna_no })">삭제</button>
+							<button id="pointer" name="comment-hidden" type="button" onclick= "location.href='qnaCommentForm.do?qna_gpno=${qna_dto.qna_gpno}'">답글</button>
+						</div>
 					</div>
-					<div class="form-group">
-						<label>제목</label> <label class="detail-faq-title"
-							style="font-weight: bold;">${faq_dto.faq_title }</label>
-
-					</div>
-					<div class="form-group">
-						<label>내용</label>
-						<textarea class="detail-faq-content" style="font-weight: bold;">${faq_dto.faq_content }</textarea>
-
-					</div>
-					<div class="content-submit" align="right">
-						<input id="pointer" type="button" value="목록"
-							onclick="location.href='faqlist.do'"> <input id="pointer"
-							type="button" value="수정"
-							onclick="location.href='faqupdateForm.do?faq_no=${faq_dto.faq_no}'">
-						<input id="pointer" type="button" value="삭제"
-							onclick="location.href='faqdelete.do?faq_no=${faq_dto.faq_no}'">
-						<%-- /*adminChk(${login.login_id}, ${qna_dto.user_id }, ${qna_dto.qna_no })*/ 관리자 확인 주석 수정중--%>
+					<br>
+					<br>
 					</div>
 				</form>
 			</div>
 			
-			
-			
-		</div>
 	</section>
 
-	<%-- <input id="pointer" type="button" value="수정" onclick="location.href='commentupdateForm.do?qna_no=${qna_dto.qna_no}'">
-					<input id="pointer" type="button" value="삭제"
-								onclick="comment_deleteChk(${login.user_no},${qna_dto.user_no },${qna_dto.qna_gpsq })"> --%>
 </body>
 <script type="text/javascript">
 function adminChk(login_id, user_id, qna_no) {
