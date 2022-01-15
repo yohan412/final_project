@@ -80,7 +80,7 @@
 													<td>${dto.user_id}</td>
 														<td><a href="qnadetail.do?qna_gpno=${dto.qna_gpno }">${dto.qna_title }</a></td>
 													<td>${dto.qna_content }</td>
-													<td>${dto.qna_reg }</td>
+													<td><fmt:formatDate value="${dto.qna_reg }" pattern="yyyy-MM-dd"/></td>
 												</tr>
 											</c:when>
 										</c:choose>
@@ -116,6 +116,7 @@
 			<div class="content-submit-list" align="center">
 				<button id="pointer" onclick="loginChk(${login.user_no})">작성하기</button>
 			</div>
+			<br>
 			<!-- 서치 폼 -->
 			<div class="serch" align="center">
 				<select name="searchType" id="searchOption">
