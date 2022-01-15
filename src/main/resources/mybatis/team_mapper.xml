@@ -85,5 +85,29 @@
 		FROM TEAM_INFO
 		WHERE TEAM_NAME=#{team_name}
 	</select>
+	
+	<insert id="applyInsert" parameterType="TeamApplyDto">
+		INSERT INTO TEAM_APPLY
+		VALUES(#{user_no}, #{team_no})
+	</insert>
+	
+	<resultMap type="userDto" id="userListMap">
+		<result property="team_no" column="TEAM_NO" />
+		<result property="user_no" column="USER_NO" />
+		<result property="user_name" column="USER_NAME" />
+		<result property="user_id" column="USER_ID" />
+	</resultMap>
+	
+	<select id="applyList" resultMap="userListMap">
+		SELECT ap.TEAM_NO, u.USER_NO, u.USER_ID, u.USER_NAME
+		FROM TEAM_APPLY ap
+		LEFT JOIN USER_INFO u ON ap.USER_NO = u.USER_NO
+		LEFT JOIN TEAM_INFO t ON ap.TEAM_NO = t.TEAM_NO
+		WHERE ap.TEAM_NO = #{team_no}
+	</select>
+	
+	<select id="selectInfo" parameterType="String" resultType="userDto">
+		 SELECT USER_PHONE, USER_NAME FROM USER_INFO WHERE USER_ID = #{user_id}
+	</select>
 
 </mapper>

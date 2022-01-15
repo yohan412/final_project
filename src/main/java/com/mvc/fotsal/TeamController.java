@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -23,9 +22,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.mvc.fotsal.message.messageApp;
 import com.mvc.fotsal.model.biz.MercenaryBiz;
 import com.mvc.fotsal.model.biz.TeamBiz;
-import com.mvc.fotsal.model.dto.MercenaryDto;
 import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
+import com.mvc.fotsal.model.dto.UserDto;
 import com.mvc.fotsal.paging.TeamPageMaker;
 import com.mvc.fotsal.paging.TeamSearch;
 
@@ -48,11 +47,25 @@ public class TeamController {
 	
 	@RequestMapping(value="/team_inviteMsg.do")
 	@ResponseBody
-	public void team_inviteMsg(@RequestParam("user_phone")String user_phone) {
-		logger.info("user phone number: "+user_phone);
+	public void team_inviteMsg(Model model,@RequestParam("user_phone")String user_phone, @RequestParam("user_no")int user_no, @RequestParam("team_no")int team_no, @RequestParam("user_name")String user_name) {
+		logger.info("문자 user phone : "+user_phone);
+		logger.info("문자 user_no : "+ user_no);
+		logger.info("문자 team_no : "+ team_no);
+		logger.info("문자 user_name : "+ user_name);
 		
-		messageApp.team_inviteMsg(user_phone);
+		model.addAttribute("inviteMsg", biz.applyInsert(user_no, team_no));
 		
+		messageApp.team_inviteMsg(user_name, user_phone);
+		
+	}
+	
+	@RequestMapping(value="/send_invite.do")
+	@ResponseBody
+	public void send_invite(Model model, @RequestParam("user_id")String user_id, @RequestParam("writer_id")String writer_id) {
+		UserDto applyer = biz.selectInfo(user_id); // 지원자
+		UserDto writer = biz.selectInfo(writer_id); // 팀장
+		
+		messageApp.send_invite(applyer.getUser_phone(), writer.getUser_phone());
 	}
 	
 	@RequestMapping(value="/teamInsert.do")
@@ -129,7 +142,8 @@ public class TeamController {
 	public String detail(Model model, int team_no) { // 팀 자세히보기
 		logger.info("move page team_detail.jsp");
 		model.addAttribute("teamDto", biz.selectOne(team_no));
-				
+		
+		model.addAttribute("uDto", biz.uDto(team_no));
 
 		return "team_detail";
 	}

@@ -13,12 +13,13 @@ public class UserDto {
 	private String user_addr;
 	private String user_role;
 	private String user_conchk;
+	private int team_no;
 	public UserDto() {
 		super();
 	}
 	public UserDto(int user_no, String user_id, String user_pw, String user_name, String user_gender,
 			String user_birthdate, String user_email, String user_phone, String user_zip, String user_addr,
-			String user_role, String user_conchk) {
+			String user_role, String user_conchk, int team_no) {
 		super();
 		this.user_no = user_no;
 		this.user_id = user_id;
@@ -32,6 +33,13 @@ public class UserDto {
 		this.user_addr = user_addr;
 		this.user_role = user_role;
 		this.user_conchk = user_conchk;
+		this.team_no = team_no;
+	}
+	public int getTeam_no() {
+		return team_no;
+	}
+	public void setTeam_no(int team_no) {
+		this.team_no = team_no;
 	}
 	public int getUser_no() {
 		return user_no;
