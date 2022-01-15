@@ -80,7 +80,7 @@
 													<td>${dto.user_id}</td>
 														<td><a href="qnadetail.do?qna_gpno=${dto.qna_gpno }">${dto.qna_title }</a></td>
 													<td>${dto.qna_content }</td>
-													<td>${dto.qna_reg }</td>
+													<td><fmt:formatDate value="${dto.qna_reg }" pattern="yyyy-MM-dd"/></td>
 												</tr>
 											</c:when>
 										</c:choose>
