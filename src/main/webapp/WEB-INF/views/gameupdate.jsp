@@ -40,6 +40,7 @@
     <div id="mainform">
         <div id="titleform"><div style="font-size: 30px; font-weight: bold">경기 수정</div></div>
         <form:form action="/gameupdate.do" method="post" onsubmit="return sd('${userDto.user_id}')">
+            <input type="hidden" name="game_type" value="N">
             <input type="hidden" name="game_no" value="${gameDto.game_no}">
             <div id="top_form">
                 <div id="region_form">
@@ -173,7 +174,7 @@
                     </div>
 
                 </div>
-                <div id="game_type_form">
+                <%--<div id="game_type_form">
                     <div class="font">경기 타입</div>
                     <div class="info">
                         <div class="radio_form">
@@ -189,7 +190,7 @@
                             <div class="radio_comment">N</div>
                         </div>
                     </div>
-                </div>
+                </div>--%>
                 <div id="game_content_form">
                     <div class="content_title_form">
                         <div id="content_title">
