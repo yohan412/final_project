@@ -45,7 +45,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			
 				<!-- list start -->
 				<div class="board_list">
 					<table class="qna-table" style="text-align: center; inline-block; border: 1px solid #dddddd; width: 700px;" align="center">
@@ -81,10 +81,9 @@
 											</c:forEach>
 										</c:otherwise>
 									</c:choose>
-							</tbody>
-
+								</tbody>
 							</table>
-
+						</div>
 							
 					<!-- 페이지 리스트 -->
 					<div class="page-list" align="center">
@@ -108,7 +107,7 @@
 						</c:if>
 					</div>
 					<!-- faq글작성 -->
-					<div class="faq-content-submit-list">
+					<div class="content-submit-list" align="center">
 						<button id="pointer" name="write-hidden" onclick="location.href='faq.do'">작성하기</button>
 					</div>
 					
@@ -122,15 +121,16 @@
 					<input type="text" name="keyword" id="keywordInput" value="${STLP.keyword}" required=""/>
 					<input type="image" id="searchBtn" src="img/icon_magnifier.png">
 				</div>
+			
+		
+		</div>
+	</div>
+</section>
 
-		</div>
-		</div>
-	</section>
+</body>
 <footer style="align-content: center;">
 	<%@ include file="footer.jsp"%>
 </footer>
-</body>
-
 <script type="text/javascript">
 
 	$(function(){

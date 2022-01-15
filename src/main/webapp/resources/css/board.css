@@ -25,7 +25,7 @@ footer{
 }
 
 .boardselect{
-    width: 200px;      /*해당 width 설정해 둘 사이 간격 설정*/
+    width: 290px;     /*해당 width 설정해 둘 사이 간격 설정*/
     height: 60px;
     display: flex;
     flex-wrap: wrap;
@@ -174,23 +174,20 @@ footer{
     transition:.3s;
 }
 
-.qna-no{
-	width: 10%;
-	text-align: center;
 
-}
-
-.content-submit-list{
-	margin-left: 750px;
+/* .content-submit-list{
+	margin-right: 400px;
+	float: right;
 	margin-bottom:-35px;
     margin-top: -45px;
 
-}
-.faq-content-submit-list{
+} */
+/* .faq-content-submit-list{
 	margin-left: 890px;
 	margin-bottom: -35px;
     margin-top: -45px;
-}
+} */
+
 div.search{
 	margin-left: 32px;
 	display: flex;

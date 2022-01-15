@@ -40,6 +40,7 @@
     <div id="mainform">
         <div id="titleform"><div style="font-size: 30px; font-weight: bold">경기 등록</div></div>
         <form:form action="/gameinsert.do" method="post" onsubmit="return sd('${user_id}')">
+            <input type="hidden" name="game_type" value="N">
             <input type="hidden" name="user_id" value="${userDto.user_id}">
             <div id="top_form">
                 <div id="region_form">
@@ -143,7 +144,7 @@
                             <div id="mergency">
                                 <div id="mergency_player_title">필요 용병 수</div>
                                 <div id="mergency_player_input_form">
-                                    <input type="number" placeholder="숫자만 입력, 7까지만" id="player_input" max="7" name="game_mercenary">
+                                    <input type="number" placeholder="숫자만 입력, 7까지만" id="player_input" min="1" max="7" name="game_mercenary">
                                 </div>
                             </div>
                         </div>
@@ -174,7 +175,7 @@
                     </div>
 
                 </div>
-                <div id="game_type_form">
+                <%--<div id="game_type_form">
                     <div class="font">경기 타입</div>
                     <div class="info">
                         <div class="radio_form">
@@ -190,7 +191,7 @@
                             <div class="radio_comment">N</div>
                         </div>
                     </div>
-                </div>
+                </div>--%>
                 <div id="game_content_form">
                     <div style="width: 100px; height: 100%"></div>
                     <div class="content_title_form">

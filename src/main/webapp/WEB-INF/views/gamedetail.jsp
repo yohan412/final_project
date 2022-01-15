@@ -106,8 +106,8 @@
                         if(status === '종료' || status === '모집안함'){
                             $("#mergency_state").css("background-color", 'lightgray');
                         }else{
-                            $("#mergency_state").css("background-color", '#ff8b8b');
-                            $("#mergency_state").css("color", '#f9f8e6');
+                            $("#mergency_state").css("background-color", '#00bafa');
+                            $("#mergency_state").css("color", '#ffffff');
                         }
                     }
                 </script>
