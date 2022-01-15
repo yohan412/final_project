@@ -82,11 +82,20 @@
     justify-content: center;
 }
 
-.button_form{
-    width: 140px;
-    height: 100%;
+#button_form{
+    width: 100%;
+    height: 80px;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button_form{
+    width: 140px;
+    display: flex;
+    justify-content: center;
 }
 
 #addr_button{
@@ -179,7 +188,7 @@
 
 #stadium_upload_form{
     width: 100%;
-    height: 250px;
+    height: 200px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -229,7 +238,7 @@ input{
     border-radius: 0.5em;
     box-shadow: 0 0 0 2px rgba(211, 211, 211, 0.5) inset;
     margin: auto;
-    padding: 1rem 3rem;
+    padding: 1rem 1.5rem;
     position: relative;
     cursor: pointer;
     margin: -100px;

@@ -9,4 +9,7 @@ section{
     display: flex;
     justify-content: center;
 }
-
+footer{
+    text-align:center;
+    height: 50px;
+}
