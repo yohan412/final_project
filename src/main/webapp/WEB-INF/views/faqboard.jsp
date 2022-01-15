@@ -59,8 +59,8 @@
 						<tr>
 							<th style="background-color: #eeeeee; text-align: center; width: 5%;">번호</th>
 							<th style="background-color: #eeeeee; text-align: center; width: 20%;">문의 내용</th>
-							<th style="background-color: #eeeeee; text-align: center; width: 50%;">답변 내용</th>
-							<th style="background-color: #eeeeee; text-align: center; width: 10%;">작성일</th>
+							<th style="background-color: #eeeeee; text-align: center; width: 45%;">답변 내용</th>
+							<th style="background-color: #eeeeee; text-align: center; width: 15%;">작성일</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -76,7 +76,7 @@
 													<td>${faq_dto.faq_no }</td>
 													<td><a href="faqdetail.do?faq_no=${faq_dto.faq_no }">${faq_dto.faq_title }</a></td>
 													<td>${faq_dto.faq_content }</td>
-													<td>${faq_dto.faq_reg }</td>
+													<td><fmt:formatDate value="${faq_dto.faq_reg }" pattern="yyyy-MM-dd"/></td>
 												</tr>
 											</c:forEach>
 										</c:otherwise>
