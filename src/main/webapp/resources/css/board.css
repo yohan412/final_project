@@ -25,7 +25,7 @@ footer{
 }
 
 .boardselect{
-    width: 200px;      /*해당 width 설정해 둘 사이 간격 설정*/
+    width: 290px;     /*해당 width 설정해 둘 사이 간격 설정*/
     height: 60px;
     display: flex;
     flex-wrap: wrap;

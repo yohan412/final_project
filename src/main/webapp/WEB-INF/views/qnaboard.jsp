@@ -35,10 +35,10 @@
 				<div id="board_list">
 					<div id="boardselect_form">
 						<div class="boardselect" id="faq">
-						<button id="pointer" onclick="location.href='faqlist.do'">FAQ</button>
+						<button id="pointer" style="width: 200px; height: 13px;" onclick="location.href='faqlist.do'">FAQ</button>
 						</div>
 						<div class="boardselect" id="qna">
-							<button id="pointer" onclick="location.href='qnalist.do'">Q&A</button>
+							<button id="pointer" style="width: 200px; height: 13px;" onclick="location.href='qnalist.do'">Q&A</button>
 						</div>
 					</div>
 				</div>
