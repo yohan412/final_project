@@ -188,19 +188,17 @@
 }
 
 .input-file-button{
-    width: 80px;
-    height: 40px;
-    border: 0;
-    outline: 0;
-    font-weight: bold;
-    font-size: 15px;
-    cursor: pointer;
-    background-color: #bfb5d7;
-    color: #ffffff;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	display: inline-block; 
+	padding: .5em 1.6em; 
+	color: #fff; 
+	font-size: inherit; 
+	height: 25px;
+	text-align: center;
+	vertical-align: middle; 
+	background-color: #999999;
+	cursor: pointer; 
+	border: 1px solid; 
+	border-radius: .25em;
 }
 
 #button{
@@ -245,12 +243,12 @@ input{
     box-sizing: inherit;
 }
 #pointer::before {
-    box-shadow: 2px 2px 0 #00bafa inset;
+    box-shadow: 2px 2px 0 #000080  inset;
     bottom: 0;
     left: 0;
 }
 #pointer::after {
-    box-shadow: -2px -2px 0 #00bafa inset;
+    box-shadow: -2px -2px 0 #000080  inset;
     top: 0;
     right: 0;
 }
