@@ -87,7 +87,7 @@
                     </div>
                     <div style="width: 100px; height: 100%"></div>
                 </div>
-                <div id="stadium_content_form">
+                <div id="stadium_content_form" style="height: 310px;">
                     <div class="content_title_form">
                         <div style="width: 100px; height: 100%"></div>
                         <div id="content_title">
@@ -111,7 +111,7 @@
                     <div class="info">업로드 기능 공간</div>
                     <div style="width: 100px; height: 100%"></div>
                 </div>--%>
-                <div id="button_form" style="margin-top: 50px">
+                <div id="button_form" style="height: 72px">
                     <%--<input type="submit" value="경기장 수정" id="button">--%>
                     <button id="pointer" type="submit" style="margin-right: 5px; margin-left: 5px; padding: 1.5rem 5rem;">경기장 수정</button>
                 </div>

@@ -210,8 +210,6 @@
         </form:form>
     </div>
 </section>
-<footer>
-    푸터
-</footer>
+<footer><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
 </body>
 </html>
