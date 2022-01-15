@@ -519,7 +519,6 @@ function gamesearch(){
 	    <div class="mySlideDiv fade">
 	        <img src="/img/futsalimg05.jpg"> 
 	    </div>
-e
 		<form role="form" method="get" onsubmit="return false">
 		<div class="search-wrapper">
 		    <div class="input-holder">
