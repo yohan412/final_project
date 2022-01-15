@@ -75,10 +75,10 @@
 		  	 		   <a href="index.jsp">Home</a>
 		  	 	 </li>
 		 	 	 <li>
-		    	 	  <a href="gamelist.do">Game</a>
+		    	 	  <a href="gamelist.do?page=1&perPageNum=5&searchType=&keyword=">Game</a>
 		   	  	 </li>
 		 	 	 <li>
-			    	  <a href="stadiumlist.do">Stadium</a>
+			    	  <a href="stadiumlist.do?page=1&perPageNum=5&searchType=&keyword="">Stadium</a>
 			  	 </li>
 			 	 <li>
 		    	  		<a href="teamlist.do?page=1&perPageNum=10&searchType=&keyword=">Team</a>
@@ -92,7 +92,7 @@
 		    	  	</c:if>
 			 	 </li>
 			 	 <li>
-			    	  <a href="qnalist.do">QnA</a>
+			    	  <a href="qnalist.do?page=1&perPageNum=5&searchType=&keyword=">QnA</a>
 			 	 </li>
 			 	 <li>
 					  <!-- 로그인 하지 않은 상태 -->
@@ -108,14 +108,14 @@
 				 <li>
 				 	<!-- 로그인한 상태 -->
 				 		<c:if test="${login != null && login.user_role == 'USER'}">
-					 			<li><a href="logout.do">로그아웃</a></li>
-					 			<li><a href="user_info.do?user_id=${login.user_id }">마이페이지</a></li>
+					 			<li><a href="logout.do">Logout</a></li>
+					 			<li><a href="user_info.do?user_id=${login.user_id }">My page</a></li>
 					 			<li><a>${login.user_name }님</a></li>
 				 		</c:if>
 				 		<c:if test="${login != null && login.user_role == 'ADMIN'}">
-					 			<li><a href="logout.do">로그아웃</a></li>
-					 			<li><a href="admin.do">관리자 페이지</a></li>
-					 			<li><a href="user_info.do?user_id=${login.user_id }">마이페이지</a></li>
+					 			<li><a href="logout.do">Logout</a></li>
+					 			<li><a href="admin.do">Admin page</a></li>
+					 			<li><a href="user_info.do?user_id=${login.user_id }">My page</a></li>
 					 			<li><a>${login.user_name }님</a></li>
 				 		</c:if>
 				 </li>

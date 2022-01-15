@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Street Futsal Manager</title>
 <style type="text/css">
 	
 	footer{
@@ -519,7 +519,7 @@ function gamesearch(){
 	    <div class="mySlideDiv fade">
 	        <img src="/img/futsalimg05.jpg"> 
 	    </div>
-
+e
 		<form role="form" method="get" onsubmit="return false">
 		<div class="search-wrapper">
 		    <div class="input-holder">

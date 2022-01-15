@@ -20,11 +20,41 @@ th{
    	font-weight: 400;
     text-align: left;
 }	
-td input[type="button"]{ 
-   	background-color:rgb(75, 161, 231);
-   	border: 1px solid gray;
-    cursor: pointer;
-    width: 100px; height: 30px;
+#pointer{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  border-radius: 0.5em;
+  box-shadow: 0 0 0 2px rgba(211, 211, 211, 0.5) inset;
+  margin: auto;
+  padding: 1.2rem 3rem;
+  position: relative;
+  cursor: pointer;
+}
+#pointer::before, #pointer::after {
+  content: "";
+  position: absolute;
+  height: 0;
+  width: 2px;
+  transition: height 0.4s 0.4s cubic-bezier(0.86, 0, 0.07, 1), width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+#pointer::before {
+  box-shadow: 2px 2px 0 #00bafa inset;
+  bottom: 0;
+  left: 0;
+}
+#pointer::after {
+  box-shadow: -2px -2px 0 #00bafa inset;
+  top: 0;
+  right: 0;
+}
+#pointer:hover::before, #pointer:hover::after {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.5em;
+  transition: height 0.4s cubic-bezier(0.86, 0, 0.07, 1), width 0.4s 0.4s cubic-bezier(0.86, 0, 0.07, 1);
 }
 table.type04 {
   border-collapse: separate;
@@ -75,6 +105,10 @@ table.type04 td {
 					<td>${login.user_birthdate }</td>
 				</tr>
 				<tr>
+					<th>등급</th>
+					<td>${login.user_role }</td>
+				</tr>
+				<tr>
 					<th>이메일</th>
 					<td>${login.user_email }</td>
 				</tr>
@@ -90,17 +124,13 @@ table.type04 td {
 					<th>주소</th>
 					<td>${login.user_addr }</td>
 				</tr>
-				<tr>
-					<td colspan="10" style="text-align: right;">
-						<input type="button" value="수정" onclick="location.href='updateform.do?user_id=${login.user_id}'">
-						<input type="button" value="회원탈퇴" onclick="location.href='user_delete.do?user_id=${login.user_id}'">
-					</td>
-				</tr>
 			</table>
+			<div class="content-submit-list" style="margin-left: 270px;">
+						<button id="pointer" type="button" onclick="location.href='updateform.do?user_id=${login.user_id}'">수정</button>
+						<button id="pointer" type="button" onclick="location.href='user_delete.do?user_id=${login.user_id}'">회원탈퇴</button>
+			</div>			
 	</div>
-	<footer>
-	<%@ include file="/WEB-INF/views/footer.jsp" %>
-	</footer>
 </section>
 </body>
+<footer style="text-align: center;"><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
 </html>

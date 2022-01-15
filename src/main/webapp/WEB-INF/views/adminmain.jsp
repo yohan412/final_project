@@ -6,6 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.bluetop {
+  border-collapse: collapse;
+}  
+.bluetop th {
+  color: #168;
+  background: #f0f6f9;
+}
+.bluetop th, .bluetop td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+.bluetop th:first-child, .bluetop td:first-child {
+  border-left: 0;
+}
+.bluetop th:last-child, .bluetop td:last-child {
+  border-right: 0;
+}
+</style>
 </head>
 <body>
 <section>
@@ -13,7 +32,7 @@
 	<div style="text-align: center; margin-top: 30px;">	
 		<h1>회원 목록</h1>
 	</div>
-	<div class="memberlist" align="center">
+	<div class="bluetop" align="center">
 		<table border="1" width="800px;">
 			<tr>
 				<th>번호</th>
@@ -21,6 +40,7 @@
 				<th>이름</th>
 				<th>이메일</th>
 				<th>연락처</th>
+				<th>등급</th>
 			</tr>
 			<c:choose>
 				<c:when test="${empty list }">
@@ -36,33 +56,14 @@
 							<td>${aDto.user_name }</td>
 							<td>${aDto.user_email }</td>
 							<td>${aDto.user_phone }</td>
+							<td>${aDto.user_role }</td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
 		</table>
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </section>
+<footer style="text-align: center;"><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
 </body>
 </html>

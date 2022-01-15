@@ -12,19 +12,24 @@
 <title>FAQ BOARD</title>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="resources/css/boardTest.css">
+<link rel="stylesheet" href="resources/css/board.css">
+<link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
+<link href="https://webfontworld.github.io/mapo/MapoDPP.css" rel="stylesheet">
+    <style>
+        section{
+            font-family: 'NexonFootballGothic';
+        }
+    </style>
 </head>
 
 <body>
 	<header>
 		<%@ include file="/WEB-INF/views/header.jsp"%>
 	</header>
-	<div class="a-blank-space" style="height: 50px;"></div>
+	<section class="body">
 	<div>
 		<h1 style="display: flex; justify-content: center;">FAQ 게시판</h1>
 	</div>
-	<br>
-	<section>
 	<input type="hidden" name="user_id" value="${login.getUser_id()}">
 		<div class="main-all-box">
 			<div class="list-all-box">
@@ -40,26 +45,23 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			
 				<!-- list start -->
 				<div class="board_list">
-					<table class="qna-table"
-						style="text-align: center; inline-block; border: 1px solid #dddddd; width: 900px;"
-						align="center">
+					<table class="qna-table" style="text-align: center; inline-block; border: 1px solid #dddddd; width: 700px;" align="center">
 						<colgroup>
 							<col class="faq_no">
-							<col class="faq_writer">
 							<col class="faq_title">
 							<col class="faq_content">
 							<col class="faq_date">
 						</colgroup>
 					<thead>
 						<tr>
-							<th style="background-color: #eeeeee; text-align: center width: 10%;">번호</th>
-							<th style="background-color: #eeeeee; text-align: center width: 30%;">문의 내용</th>
-							<th style="background-color: #eeeeee; text-align: center width: 50%;">답변 내용</th>
-							<th style="background-color: #eeeeee; text-align: center width: 10%;">작성일</th>
-						<tr>
+							<th style="background-color: #eeeeee; text-align: center; width: 5%;">번호</th>
+							<th style="background-color: #eeeeee; text-align: center; width: 20%;">문의 내용</th>
+							<th style="background-color: #eeeeee; text-align: center; width: 50%;">답변 내용</th>
+							<th style="background-color: #eeeeee; text-align: center; width: 10%;">작성일</th>
+						</tr>
 					</thead>
 					<tbody>
 						<c:choose>
@@ -72,7 +74,6 @@
 											<c:forEach items="${list }" var="faq_dto">
 												<tr>
 													<td>${faq_dto.faq_no }</td>
-													<td>${faq_dto.user_id}</td>
 													<td><a href="faqdetail.do?faq_no=${faq_dto.faq_no }">${faq_dto.faq_title }</a></td>
 													<td>${faq_dto.faq_content }</td>
 													<td>${faq_dto.faq_reg }</td>
@@ -80,10 +81,9 @@
 											</c:forEach>
 										</c:otherwise>
 									</c:choose>
-							</tbody>
-
+								</tbody>
 							</table>
-							
+						</div>
 							
 					<!-- 페이지 리스트 -->
 					<div class="page-list" align="center">
@@ -106,9 +106,14 @@
 						<input type="button" id="next-btn" onclick="location.href='faqlist.do${pageMaker.makeSearch(pageMaker.endPage + 1)}'" value=">>">
 						</c:if>
 					</div>
+					<!-- faq글작성 -->
+					<div class="content-submit-list" align="center">
+						<button id="pointer" name="write-hidden" onclick="location.href='faq.do'">작성하기</button>
+					</div>
+					
 				<!-- 서치 폼 -->
-				<div class="serch">
-					<select name="searchType">
+				<div class="serch" align="center">
+					<select name="searchType" id="searchOption">
 						<option value="n"><c:out value="${STLP.searchType == null ? 'selected' : ''}" />분류없음</option>
 						<option value="t"><c:out value="${STLP.searchType eq 't' ? 'selected' : ''}" />>문의내용</option>
 						<option value="c"><c:out value="${STLP.searchType eq 'c' ? 'selected' : ''}" />>답변내용</option>
@@ -116,18 +121,16 @@
 					<input type="text" name="keyword" id="keywordInput" value="${STLP.keyword}" required=""/>
 					<input type="image" id="searchBtn" src="img/icon_magnifier.png">
 				</div>
-			<!-- faq글작성 -->
-			<div class="content-submit-list">
-				<button id="pointer" name="write-hidden" onclick="location.href='faq.do'">작성하기</button>
-			</div>
+			
+		
 		</div>
-		</div>
-	</section>
+	</div>
+</section>
+
+</body>
 <footer style="align-content: center;">
 	<%@ include file="footer.jsp"%>
 </footer>
-</body>
-
 <script type="text/javascript">
 
 	$(function(){
@@ -135,7 +138,7 @@
 	var adminChk = '${login.user_role}'; // 어드민 여부
 	
 		$("button[name=write-hidden]").hide();
-	}if(adminChk === 'ADMIN'){
+	if(adminChk === 'ADMIN'){
 		$("button[name=write-hidden]").show();
 	}else{
 		$("button[name=write-hidden]").hide();

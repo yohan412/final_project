@@ -86,7 +86,14 @@
                         <input type="button" class="buttons" id="prevbutton" onclick="location.href='stadiumlist.do${pageMaker.makeSearch(pageMaker.startPage - 1)}'" value="<">
                     </c:if>
                     <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-                        <input type="button" class="buttons" id="pagingnum" onclick="location.href='stadiumlist.do${pageMaker.makeSearch(idx)}'" value="${idx}">
+                    	<c:choose>
+                    		<c:when test="${idx eq page }">
+                        		<input type="button" class="buttons" id="pagingnumClick" onclick="location.href='stadiumlist.do${pageMaker.makeSearch(idx)}'" value="${idx}">
+                        	</c:when>
+                        	<c:otherwise>
+                        		<input type="button" class="buttons" id="pagingnum" onclick="location.href='stadiumlist.do${pageMaker.makeSearch(idx)}'" value="${idx}">
+                        	</c:otherwise>
+                        </c:choose>		
                     </c:forEach>
                     <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
                         <input type="button" class="buttons" id="nextbutton" onclick="location.href='stadiumlist.do${pageMaker.makeSearch(pageMaker.endPage + 1)}'" value=">">

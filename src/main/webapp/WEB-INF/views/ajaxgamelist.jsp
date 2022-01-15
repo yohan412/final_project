@@ -73,7 +73,7 @@ window.onload = function() {
 	<div class="banner_list">
 		<div class="container">
 			<a class="card1" href="gamedetail.do?game_no=${gamelist.game_no}">
-				<h3><fmt:formatDate value="${gamelist.game_date}" pattern="yyyy-MM-dd"/></h3>
+				<h3><fmt:formatDate value="${gamelist.game_date}" pattern="yyyy-MM-dd"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${gamelist.game_mercenary>0?"모집중":"모집완료"}</h3>
 				<p class="small"> ${gamelist.game_region} ${gamelist.game_stadium}</p>
 				<p>
 					<fmt:parseDate value="${gamelist.game_time}" var="starttime" pattern="HH:mm"/>

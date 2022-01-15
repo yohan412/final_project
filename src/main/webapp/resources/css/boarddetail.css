@@ -1,11 +1,18 @@
-section.body{
+section{
 	display: flex;
 	justify-content: center;
-	margin-top: 40px;
+	flex-direction: column;
+	margin-top: 80px;
+}
+input{
+	font-family: 'NexonFootballGothic';
 }
 textarea{
-	width: 300px;
-	height: 100px;
+	width: 96%;
+	height: 6.25em;
+	resize: none;
+	font-family: 'NexonFootballGothic';
+	border: none;
 }
 
 .title-text{
@@ -15,36 +22,98 @@ textarea{
 
 .box-body{
 	justify-content: center;
-	width: 400px;
-	height: 400px;
+	width: 600px;
+	height: auto;
 	margin: 0 auto;
 }
+
 .content-box-body{
 	justify-content: center;
-	width: 900px;
-	height: 500px;
-	margin-top: 100px;
+	width: 600px;
+	margin: 0 auto;
+	height: auto;
+	border:1px solid #ccc;
+	
+}
+.content-box-body > div{
+	margin-left: 10px;
 }
 .box-top{
 	justify-content: center;
+	margin-bottom: 10px;
 }
 .box-top > div{
 	border-bottom: 1px solid #ccc;
+	margin-bottom: 20px;
 }
 .button-form{
 	margin-top: 20px;
 }
 
 
+.contenet-box-body > div{
+	border-bottom: 1px solid #ccc;
+}
+.box-bottom > div{
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 20px;
+}
 
+/* 포인터 */
+#pointer{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  border-radius: 0.5em;
+  box-shadow: 0 0 0 2px rgba(211, 211, 211, 0.5) inset;
+  margin: auto;
+  padding: 1.2rem 3rem;
+  position: relative;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'NexonFootballGothic';
 
+}
+#pointer::before, #pointer::after {
+  content: "";
+  position: absolute;
+  height: 0;
+  width: 2px;
+  transition: height 0.4s 0.4s cubic-bezier(0.86, 0, 0.07, 1), width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+#pointer::before {
+  box-shadow: 2px 2px 0 #00bafa inset;
+  bottom: 0;
+  left: 0;
+}
+#pointer::after {
+  box-shadow: -2px -2px 0 #00bafa inset;
+  top: 0;
+  right: 0;
+}
+#pointer:hover::before, #pointer:hover::after {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.5em;
+  transition: height 0.4s cubic-bezier(0.86, 0, 0.07, 1), width 0.4s 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+*, ::before, ::after{
+	box-sizing: inherit;
+}
 
-
-
+.box-top-comment{
+	border-bottom: 1px solid;
+}
 
 footer{
 	text-align: center;
 	margin: -25px;
 	height: 40px;
 	width: 100%;
+}
+
+.clasdkasd{
+	
 }

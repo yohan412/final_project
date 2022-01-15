@@ -80,24 +80,25 @@ img{
     margin: 10px;
 }
 .caption{
-    font-size: 15px;
+    font-size: 23px;
     text-decoration: none;
+	font-family: 'GangwonEduSaeeum';
 }
 .kakao-login{
-    margin-top: 15px;
+    margin-top: 10px;
     cursor: pointer;
     position: relative;
 }
 .naver-login{
-    margin-top: 15px;
+    margin-top: 10px;
     cursor: pointer;
     position: relative;
 }
 /*===================================================*/
-	.outline-button {
+.outline-button {
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background-color: transparent;
   border: none;
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3) inset;
@@ -106,12 +107,12 @@ img{
   padding: 0rem 6rem;
   position: relative;
   cursor: pointer;
-      width: 270px;
-    height: 60px;
-    font-family: 'Pretendard';
-        color: navy;
-    font-size: 22px;
-    font-weight: 800;
+  width: 270px;
+  height: 60px;
+  font-family: 'Pretendard';
+  color: navy;
+  font-size: 22px;
+  font-weight: 800;
 }
 .outline-button::before, .outline-button::after {
   content: "";
@@ -136,6 +137,7 @@ img{
   transition: height 0.4s cubic-bezier(0.86, 0, 0.07, 1), width 0.4s 0.4s cubic-bezier(0.86, 0, 0.07, 1);
 }
 </style>
+<link href="https://webfontworld.github.io/gangwon/GangwonEduSaeeum.css" rel="stylesheet">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js" charset="utf-8"></script>
 <script type="text/javascript">
 $(function(){
@@ -179,7 +181,7 @@ function login(){
 </head>
 <body>
 	<section class="Login-form">
-	            <a href="index.jsp"><img src="img/bg1.jpg" ></a>
+	            <a href="index.jsp"><img style="margin-left: 25px;" src="img/bg1.jpg" ></a>
 	            <div class="int-area">
 	                <input type="text" name="id" id="user_id" required>
 	                <label for="id">USER NAME</label>
@@ -205,8 +207,8 @@ function login(){
 		        	</div>
 		        </div>
 	        	<div class="caption">
-	            	<a href="find_id_form.do">아이디 찾기</a><br>
-	            	<a href="change_pw_form.do">비밀번호 찾기</a><br>
+	            	<a href="find_id_form.do" style="color: black">아이디 찾기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	            	<a href="change_pw_form.do" style="color: black">비밀번호 찾기</a><br>
 	        	</div>
     </section>
 </body>
