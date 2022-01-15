@@ -116,6 +116,7 @@
 			<div class="content-submit-list" align="center">
 				<button id="pointer" onclick="loginChk(${login.user_no})">작성하기</button>
 			</div>
+			<br>
 			<!-- 서치 폼 -->
 			<div class="serch" align="center">
 				<select name="searchType" id="searchOption">

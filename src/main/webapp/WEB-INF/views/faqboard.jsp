@@ -12,7 +12,7 @@
 <title>FAQ BOARD</title>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="resources/css/board.css">
+<link rel="stylesheet" href="resources/css/faqboard.css">
 <link href="https://webfontworld.github.io/NexonFootballGothic/NexonFootballGothic.css" rel="stylesheet">
 <link href="https://webfontworld.github.io/mapo/MapoDPP.css" rel="stylesheet">
     <style>
@@ -110,7 +110,7 @@
 					<div class="content-submit-list" align="center">
 						<button id="pointer" name="write-hidden" onclick="location.href='faq.do'">작성하기</button>
 					</div>
-					
+					<br>
 				<!-- 서치 폼 -->
 				<div class="serch" align="center">
 					<select name="searchType" id="searchOption">
