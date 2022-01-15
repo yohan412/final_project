@@ -138,7 +138,7 @@
                             <div id="mergency">
                                 <div id="mergency_player_title">필요 용병 수</div>
                                 <div id="mergency_player_input_form">
-                                    <input type="number" placeholder="숫자만 입력, 7까지만" id="player_input" max="7" name="game_mercenary"
+                                    <input type="number" placeholder="숫자만 입력, 7까지만" id="player_input" min="1" max="7" name="game_mercenary"
                                     <c:choose>
                                     <c:when test="${gameDto.game_mercenary eq 0}"> </c:when>
                                            <c:when test="${gameDto.game_mercenary >= 1}">value="${gameDto.game_mercenary}"</c:when>
