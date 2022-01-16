@@ -461,14 +461,12 @@ public class UserController {
     
     //관리자 회원 탈퇴
     @RequestMapping("/adelete.do")
-    public String adelete(String user_id, HttpSession session) {
+    public String adelete(String user_id) {
     	logger.info("ADELETE");
     	
     	int res = biz.Bdelete(user_id);
     	if(res>0) {
     		logger.info("회원정보 삭제 완료");
-    		session.removeAttribute(user_id);
-    		session.invalidate();
     		return "redirect:admin.do";
     	} else {
     		logger.info("회원정보 삭제 실패");
