@@ -57,7 +57,7 @@
 						<div class="content-submit" align="right">
 							<button id="pointer"  type="button" onclick="location.href='faqlist.do'">목록</button> 
 							<button id="pointer" name="update-hidden" type="button" onclick="location.href='faqupdateForm.do?faq_no=${faq_dto.faq_no}'">수정</button>
-							<button id="pointer" name="delete-hidden" type="button" onclick="faq_deleteChk(${login.user_no},${faq_dto.user_no },${faq_dto.faq_no })">삭제</button>
+							<button id="pointer" name="delete-hidden" type="button" onclick="location.href='faqdelete.do?faq_no=${faq_dto.faq_no}'">삭제</button>
 						</div>
 					</div>
 					<br>
@@ -73,22 +73,6 @@
 	<%@ include file="footer.jsp"%>
 </footer>
 <script type="text/javascript">
-
-function faq_deleteChk(login_no, user_no, qna_no){
-	if(login_no != user_no){
-		alert('관리자만 삭제할 수 있습니다.');
-	}else{
-		if(user_no === login_no){
-			var chk = confirm('정말 삭제하시겠습니까?')
-			
-			if(chk){
-				location.href='faqdelete.do?faq_no='+faq_no;
-			}else{
-				alert('취소되었습니다.');
-			}
-		}
-	}
-}
 
 $(function(){
 	var user_id = '${login.user_id}';  // 세션에 저장된 로그인 아이디
