@@ -230,5 +230,5 @@ table.type04 td {
 		</form>
 	</div>
 </body>
-<footer style="text-align: center;"><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
+<footer style="text-align: center; margin-top: 100px;"><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
 </html>
