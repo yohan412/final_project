@@ -23,7 +23,6 @@ th{
 a{
 	font-family: 'GangwonEduSaeeum';
 	font-size: 20px;
-	
 }	
 #pointer{
   -webkit-appearance: none;
