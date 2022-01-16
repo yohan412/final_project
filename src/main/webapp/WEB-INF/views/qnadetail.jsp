@@ -99,8 +99,8 @@
 </footer>
 </body>
 <script type="text/javascript">
-function qna_deleteChk(login_no, user_no, qna_no, user_role){
-	if(login_no != user_no || user_role != 'ADMIN'){
+function qna_deleteChk(login_no, user_no, qna_no){
+	if(login_no != user_no){
 		alert('작성자만 삭제할 수 있습니다.');
 	}else{
 		if(user_no === login_no || user_role === 'ADMIN'){

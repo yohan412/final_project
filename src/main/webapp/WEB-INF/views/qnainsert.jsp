@@ -58,7 +58,7 @@
 
 </section>
 <footer>
-	<%-- <%@ include file="footer.jsp" %> --%>
+	<%@ include file="footer.jsp" %> 
 </footer>
 </body>
 

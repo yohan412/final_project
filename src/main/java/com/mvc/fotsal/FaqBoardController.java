@@ -27,7 +27,7 @@ public class FaqBoardController {
 	private FaqBoardBiz biz;
 	
 	@RequestMapping(value="/faqlist.do", method = RequestMethod.GET)
-	public String list(Model model, @ModelAttribute("STLP") FaqSearch STLP) {	
+	public String list(Model model, @ModelAttribute("STLP") FaqSearch STLP, HttpServletRequest request) {	
 		logger.info("Select FaqBoard List, move page faqboard.jsp");
 		model.addAttribute("list",biz.selectList(STLP));
 		
@@ -36,6 +36,7 @@ public class FaqBoardController {
 		pageMaker.setTotalCount(biz.listCount(STLP));
 		
 		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("page", request.getParameter("page"));
 		
 		System.out.println(STLP.toString());
 		
