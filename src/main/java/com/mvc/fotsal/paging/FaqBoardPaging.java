@@ -8,7 +8,7 @@ public class FaqBoardPaging {
 	
 	public FaqBoardPaging() {
 		this.page = 1;
-		this.perPageNum = 5;
+		this.perPageNum = 3;
 	}
 	
 	public void setPage(int page) {
