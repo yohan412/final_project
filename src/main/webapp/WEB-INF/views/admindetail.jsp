@@ -89,7 +89,7 @@ a{
 <body>
 <section>
 	<%@ include file="/WEB-INF/views/header.jsp" %>
-	<div style="text-align: center; margin-top: 30px;">	
+	<div style="text-align: center; margin-top: 50px;">	
 		<h1>회원 정보</h1>
 	</div>
 	<div class="user_info" align="center">
