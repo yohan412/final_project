@@ -19,6 +19,10 @@ th{
    	font-size: 1.0rem;
    	font-weight: 400;
     text-align: left;
+}
+a{
+	font-family: 'GangwonEduSaeeum';
+	font-size: 20px;
 }	
 #pointer{
   -webkit-appearance: none;
@@ -79,6 +83,7 @@ table.type04 td {
   font-size: 15px;
 }
 </style>
+<link href="https://webfontworld.github.io/gangwon/GangwonEduSaeeum.css" rel="stylesheet">
 </head>
 <body>
 <section>
@@ -123,6 +128,10 @@ table.type04 td {
 				<tr>
 					<th>주소</th>
 					<td>${login.user_addr }</td>
+				</tr>
+				<tr>
+					<th>용병 지원서</th>
+					<td><a href="mercenary_detail.do?user_no=${login.user_no}" style="color: black;">상세보기</a></td>
 				</tr>
 			</table>
 			<div class="content-submit-list" style="margin-left: 270px;">
