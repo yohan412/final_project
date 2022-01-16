@@ -42,12 +42,12 @@
 							<label  style="font-weight:bold; font-size: 15px; margin-left: 20px;">${faq_dto.user_id }</label>
 						</div>
 						<div class="title-form">
-							<h4>제목</h4> 
+							<h4>문의 내용</h4> 
 							<label style="font-weight:bold; font-size: 15px; margin-left: 20px;">${faq_dto.faq_title }</label>
 	
 						</div>
 						<div class="content-form">
-							<h4>내용</h4>
+							<h4>답변 내용</h4>
 							<textarea style="font-weight:bold; font-size: 15px; margin-left: 20px;" readonly>${faq_dto.faq_content }</textarea>
 	
 						</div>
@@ -55,9 +55,9 @@
 					
 					<div class="button-form">
 						<div class="content-submit" align="right">
-							<button id="pointer" type="button" onclick="location.href='faqlist.do'">목록</button> 
-							<button id="pointer" type="button" onclick="location.href='faqupdateForm.do?faq_no=${faq_dto.faq_no}'">수정</button>
-							<button id="pointer" type="button" onclick="faq_deleteChk(${login.user_no},${faq_dto.user_no },${faq_dto.faq_no })">삭제</button>
+							<button id="pointer"  type="button" onclick="location.href='faqlist.do'">목록</button> 
+							<button id="pointer" name="update-hidden" type="button" onclick="location.href='faqupdateForm.do?faq_no=${faq_dto.faq_no}'">수정</button>
+							<button id="pointer" name="delete-hidden" type="button" onclick="location.href='faqdelete.do?faq_no=${faq_dto.faq_no}'">삭제</button>
 						</div>
 					</div>
 					<br>
@@ -69,52 +69,25 @@
 	</section>
 
 </body>
+<footer style="align-content: center;">
+	<%@ include file="footer.jsp"%>
+</footer>
 <script type="text/javascript">
-function adminChk(login_id, user_id, qna_no) {
-	if(login_id != "admin"){
-		alert('관리자만 작성할 수 있습니다.');
-	} else{
-		if(login_id === user_id){
-		var chk = confirm('답글을 작성하시겠습니까?')
-			if(chk){
-				location.href='qnaanswer.do?qna_no='+qna_no;
-			}else{
-				alert('취소되었습니다.');
-			}
-		}
-	}
-}
-function faq_deleteChk(login_no, user_no, qna_no){
-	if(login_no != user_no){
-		alert('작성자만 삭제할 수 있습니다.');
-	}else{
-		if(user_no === login_no){
-			var chk = confirm('정말 삭제하시겠습니까?')
-			
-			if(chk){
-				location.href='faqdelete.do?faq_no='+faq_no;
-			}else{
-				alert('취소되었습니다.');
-			}
-		}
-	}
-}
 
-function comment_deleteChk(login_no, user_no, qna_gpsq){
-	if(login_no != user_no){
-		alert('운영자만 삭제할 수 있습니다.');
+$(function(){
+	var user_id = '${login.user_id}';  // 세션에 저장된 로그인 아이디
+	var adminChk = '${login.user_role}'; // 어드민 여부
+	
+		$("button[name=update-hidden]").hide();
+		$("button[name=delete-hidden]").hide();
+	if(adminChk === 'ADMIN'){
+		$("button[name=update-hidden]").show();
+		$("button[name=delete-hidden]").show();
 	}else{
-		if(user_id === login_no){
-			var chk = confirm('정말 삭제하시겠습니까?')
-			
-			if(chk){
-				location.href='comment_delete.do?qna_gpsq'+qna_gqsq;
-			}else{
-				alert('취소되었습니다.');
-			}
-		}
+		$("button[name=update-hidden]").hide();
+		$("button[name=delete-hidden]").hide();
 	}
-}
+});
 
 
 

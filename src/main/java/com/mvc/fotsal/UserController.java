@@ -287,7 +287,7 @@ public class UserController {
     	int res = biz.update(dto);
     	if(res>0) {
 			logger.info("사용자정보 수정완료");
-    		return "redirect:index.jsp?user_id="+dto.getUser_id();
+    		return "redirect:user_info.do?user_id="+dto.getUser_id();
     	} else {
 			logger.info("사용자정보 수정실패");
     		return "redirect:updateform.do?user_id="+dto.getUser_id();
@@ -297,13 +297,14 @@ public class UserController {
 
     //사용자 정보 삭제
     @RequestMapping("user_delete.do")
-    public String delete(String user_id) {
+    public String delete(String user_id, HttpSession session) {
     	logger.info("DELETE");
-    	
     	int res = biz.delete(user_id);
     	if(res>0) {
     		logger.info("회원정보 삭제 완료");
-    		return "redirect:loginform.do";
+    		session.removeAttribute(user_id);
+    		session.invalidate();
+    		return "redirect:index.jsp";
     	} else {
     		logger.info("회원정보 삭제 실패");
     		return "redirect:user_info.do?user_id="+user_id;

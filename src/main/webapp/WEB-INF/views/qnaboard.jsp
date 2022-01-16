@@ -120,10 +120,10 @@
 			<!-- 서치 폼 -->
 			<div class="serch" align="center">
 				<select name="searchType" id="searchOption">
-					<option value="n"><c:out value="${STLP.searchType == null ? 'selected' : ''}"/>분류없음</option>
-					<option value="t"><c:out value="${STLP.searchType eq 't' ? 'selected' : ''}"/>제목</option>
-					<option value="c"><c:out value="${STLP.searchType eq 'c' ? 'selected' : ''}"/>내용</option>
-					<option value="w"><c:out value="${STLP.searchType eq 'w' ? 'selected' : ''}"/>작성자</option>
+					<option value="n"<c:out value="${STLP.searchType == null ? 'selected' : ''}"/>>분류없음</option>
+					<option value="t"<c:out value="${STLP.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
+					<option value="c"<c:out value="${STLP.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
+					<option value="w"<c:out value="${STLP.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
 				</select> 
 				<input type="text" name="keyword" id="keywordInput" value="${STLP.keyword}" required=""/>
 				<label alt='검색어를 입력하세요' placeholder=''></label>
@@ -133,10 +133,10 @@
 		</div>
 	</div>
 </section>
-</body>
 <footer style="align-content: center;">
 	<%@ include file="footer.jsp"%>
 </footer>
+</body>
 <script type="text/javascript">
 function loginChk(user_no){
 	if(user_no == null){
@@ -169,6 +169,7 @@ $(function(){
 		$("button[name=write-hidden]").hide();
 	}
 });
+
 
 
 </script>

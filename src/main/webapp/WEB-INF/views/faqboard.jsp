@@ -114,9 +114,9 @@
 				<!-- 서치 폼 -->
 				<div class="serch" align="center">
 					<select name="searchType" id="searchOption">
-						<option value="n"><c:out value="${STLP.searchType == null ? 'selected' : ''}" />분류없음</option>
-						<option value="t"><c:out value="${STLP.searchType eq 't' ? 'selected' : ''}" />>문의내용</option>
-						<option value="c"><c:out value="${STLP.searchType eq 'c' ? 'selected' : ''}" />>답변내용</option>
+						<option value="n"<c:out value="${STLP.searchType == null ? 'selected' : ''}" />>분류없음</option>
+						<option value="t"<c:out value="${STLP.searchType eq 't' ? 'selected' : ''}" />>문의내용</option>
+						<option value="c"<c:out value="${STLP.searchType eq 'c' ? 'selected' : ''}" />>답변내용</option>
 					</select>
 					<input type="text" name="keyword" id="keywordInput" value="${STLP.keyword}" required=""/>
 					<label alt='검색어를 입력하세요' placeholder=''></label>
@@ -145,6 +145,12 @@
 		$("button[name=write-hidden]").hide();
 	}
 });
-
+	
+    $(function(){
+      $('#searchBtn').click(function() {
+        self.location = "faqlist.do" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+      });
+    });   
+    
 </script>
 </html>

@@ -41,14 +41,14 @@
 							</label>
 						</div>
 						<div class="title-form">
-							<h4>제목</h4>
+							<h4>문의 내용</h4>
 							<label class="detail-faq-title" style="font-weight:bold;">
 							<input type="text" id="faq_title" name="faq_title" value="${dto.faq_title }">
 							</label>
 					
 						</div>
 						<div class="content-form">
-							<h4>내용</h4>
+							<h4>답변 내용</h4>
 							<textarea name="faq_content" id="faq_content" class="detail-faq-content" style="border: 1px solid;">${dto.faq_content }</textarea>
 
 						</div>
@@ -62,4 +62,7 @@
 
 	</section>
 </body>
+	<footer style="align-content: center;">
+	<%@ include file="footer.jsp"%>
+</footer>
 </html>

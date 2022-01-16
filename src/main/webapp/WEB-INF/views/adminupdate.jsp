@@ -176,7 +176,7 @@ table.type04 td {
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header.jsp" %>
-	<div style="text-align: center; margin-top: 30px;">	
+	<div style="text-align: center; margin-top: 50px;">	
 		<h2>회원 정보 수정</h2>
 	</div>
 	<div class="user_update" align="center">

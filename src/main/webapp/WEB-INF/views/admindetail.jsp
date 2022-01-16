@@ -141,6 +141,6 @@ a{
 			</div>	
 	</div>
 </section>
-<footer style="text-align: center;"><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
+<footer style="text-align: center; margin-top: 100px;"><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
 </body>
 </html>
