@@ -158,5 +158,18 @@ $(function() {
 			});
 });
 
+$(function(){
+	var user_id = '${login.user_id}';  // 세션에 저장된 로그인 아이디
+	var adminChk = '${login.user_role}'; // 어드민 여부
+	
+		$("button[name=write-hidden]").hide();
+	if(adminChk === 'ADMIN'){
+		$("button[name=write-hidden]").show();
+	}else{
+		$("button[name=write-hidden]").hide();
+	}
+});
+
+
 </script>
 </html>
