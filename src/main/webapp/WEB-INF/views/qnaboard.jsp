@@ -126,6 +126,7 @@
 					<option value="w"><c:out value="${STLP.searchType eq 'w' ? 'selected' : ''}"/>작성자</option>
 				</select> 
 				<input type="text" name="keyword" id="keywordInput" value="${STLP.keyword}" required=""/>
+				<label alt='검색어를 입력하세요' placeholder=''></label>
 				<input type="image" id="searchBtn" src="img/icon_magnifier.png">
 			</div>
 			
