@@ -35,10 +35,10 @@
 				<div id="board_list">
 					<div id="boardselect_form">
 						<div class="boardselect" id="faq">
-						<button id="pointer" style="width: 200px; height: 13px;" onclick="location.href='faqlist.do'">FAQ</button>
+						<button id="pointer" style="width: 200px; height: 13px;" onclick="location.href='faqlist.do?page=1&perPageNum=5&searchType=&keyword='">FAQ</button>
 						</div>
 						<div class="boardselect" id="qna">
-							<button id="pointer" style="width: 200px; height: 13px;" onclick="location.href='qnalist.do'">Q&A</button>
+							<button id="pointer" style="width: 200px; height: 13px;" onclick="location.href='qnalist.do?page=1&perPageNum=5&searchType=&keyword='">Q&A</button>
 						</div>
 					</div>
 				</div>
@@ -47,7 +47,8 @@
 
 		<!-- list start -->
 			<div class="board_list">
-					<table class="qna-table"style="text-align: center; inline-block; border: 1px solid #dddddd; width: 900px;" align="center">
+					<table class="qna-table"style="text-align: center; inline-block; border: 1px solid #dddddd; width: 1000px;
+					table-layout: fixed;" align="center">
 						<colgroup>
 							<col class="qna_no">
 							<col class="qna_writer">
@@ -57,11 +58,11 @@
 						</colgroup>
 						<thead>
 							<tr>
-								<th style="background-color: #eeeeee; text-align: center; width: 10%;">번호</th>
+								<th style="background-color: #eeeeee; text-align: center; width: 7%;">번호</th>
 								<th style="background-color: #eeeeee; text-align: center; width: 10%;">작성자</th>
-								<th style="background-color: #eeeeee; text-align: center; width: 20%;">제목</th>
-								<th style="background-color: #eeeeee; text-align: center; width: 40%;">내용</th>
-								<th style="background-color: #eeeeee; text-align: center; width: 10%;">작성일</th>
+								<th style="background-color: #eeeeee; text-align: center; width: 40%;">제목</th>
+								<th style="background-color: #eeeeee; text-align: center; width: 45%;">내용</th>
+								<th style="background-color: #eeeeee; text-align: center; width: 13%;">작성일</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -79,7 +80,7 @@
 													<td>${dto.qna_no }</td>
 													<td>${dto.user_id}</td>
 														<td><a href="qnadetail.do?qna_gpno=${dto.qna_gpno }">${dto.qna_title }</a></td>
-													<td>${dto.qna_content }</td>
+													<td style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${dto.qna_content }</td>
 													<td><fmt:formatDate value="${dto.qna_reg }" pattern="yyyy-MM-dd"/></td>
 												</tr>
 											</c:when>

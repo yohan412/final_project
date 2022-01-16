@@ -4,7 +4,11 @@ section.body{
 	margin-top: 40px;
 	flex-direction: column;
 }
-td, th, tr{
+th, tr{
+	border: 1px solid #eeeeee;
+	height: 50px;
+}
+td{
 	border: 1px solid #eeeeee;
 	height: 50px;
 }

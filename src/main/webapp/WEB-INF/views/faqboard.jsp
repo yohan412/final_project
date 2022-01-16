@@ -37,10 +37,10 @@
 					<div id="board_list">
 						<div id="boardselect_form">
 							<div class="boardselect" id="faq">
-								<button id="pointer" style="width: 200px; height: 13px;" onclick="location.href='faqlist.do'">FAQ</button>
+								<button id="pointer" style="width: 200px; height: 13px;" onclick="location.href='faqlist.do?page=1&perPageNum=5&searchType=&keyword=">FAQ</button>
 							</div>
 							<div class="boardselect" id="qna">
-								<button id="pointer" style="width: 200px; height: 13px;" onclick="location.href='qnalist.do'">Q&A</button>
+								<button id="pointer" style="width: 200px; height: 13px;" onclick="location.href='qnalist.do?page=1&perPageNum=5&searchType=&keyword='">Q&A</button>
 							</div>
 						</div>
 					</div>
@@ -48,7 +48,8 @@
 			
 				<!-- list start -->
 				<div class="board_list">
-					<table class="qna-table" style="text-align: center; inline-block; border: 1px solid #dddddd; width: 700px;" align="center">
+					<table class="qna-table" style="text-align: center; inline-block; border: 1px solid #dddddd; width: 900px;
+					table-layout: fixed;" align="center">
 						<colgroup>
 							<col class="faq_no">
 							<col class="faq_title">
@@ -57,10 +58,10 @@
 						</colgroup>
 					<thead>
 						<tr>
-							<th style="background-color: #eeeeee; text-align: center; width: 5%;">번호</th>
-							<th style="background-color: #eeeeee; text-align: center; width: 20%;">문의 내용</th>
-							<th style="background-color: #eeeeee; text-align: center; width: 45%;">답변 내용</th>
-							<th style="background-color: #eeeeee; text-align: center; width: 15%;">작성일</th>
+							<th style="background-color: #eeeeee; text-align: center; width: 7%;">번호</th>
+							<th style="background-color: #eeeeee; text-align: center; width: 40%;">문의 내용</th>
+							<th style="background-color: #eeeeee; text-align: center; width: 40%;">답변 내용</th>
+							<th style="background-color: #eeeeee; text-align: center; width: 13%;">작성일</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -75,7 +76,7 @@
 												<tr>
 													<td>${faq_dto.faq_no }</td>
 													<td><a href="faqdetail.do?faq_no=${faq_dto.faq_no }">${faq_dto.faq_title }</a></td>
-													<td>${faq_dto.faq_content }</td>
+													<td style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${faq_dto.faq_content }</td>
 													<td><fmt:formatDate value="${faq_dto.faq_reg }" pattern="yyyy-MM-dd"/></td>
 												</tr>
 											</c:forEach>
