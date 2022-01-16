@@ -297,13 +297,14 @@ public class UserController {
 
     //사용자 정보 삭제
     @RequestMapping("user_delete.do")
-    public String delete(String user_id) {
+    public String delete(String user_id, HttpSession session) {
     	logger.info("DELETE");
-    	
     	int res = biz.delete(user_id);
     	if(res>0) {
     		logger.info("회원정보 삭제 완료");
-    		return "redirect:loginform.do";
+    		session.removeAttribute(user_id);
+    		session.invalidate();
+    		return "redirect:index.jsp";
     	} else {
     		logger.info("회원정보 삭제 실패");
     		return "redirect:user_info.do?user_id="+user_id;
@@ -460,12 +461,14 @@ public class UserController {
     
     //관리자 회원 탈퇴
     @RequestMapping("/adelete.do")
-    public String adelete(String user_id) {
+    public String adelete(String user_id, HttpSession session) {
     	logger.info("ADELETE");
     	
     	int res = biz.Bdelete(user_id);
     	if(res>0) {
     		logger.info("회원정보 삭제 완료");
+    		session.removeAttribute(user_id);
+    		session.invalidate();
     		return "redirect:admin.do";
     	} else {
     		logger.info("회원정보 삭제 실패");
