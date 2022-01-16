@@ -287,7 +287,7 @@ public class UserController {
     	int res = biz.update(dto);
     	if(res>0) {
 			logger.info("사용자정보 수정완료");
-    		return "redirect:index.jsp?user_id="+dto.getUser_id();
+    		return "redirect:user_info.do?user_id="+dto.getUser_id();
     	} else {
 			logger.info("사용자정보 수정실패");
     		return "redirect:updateform.do?user_id="+dto.getUser_id();

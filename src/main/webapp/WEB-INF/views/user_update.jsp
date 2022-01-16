@@ -112,6 +112,8 @@ table.type04 td {
   padding: 10px;
   vertical-align: top;
   border-bottom: 1px solid #ccc;
+  font-size: 15px;
+  
 }
 </style>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
