@@ -29,7 +29,7 @@
 <body>
 <section>
 	<%@ include file="/WEB-INF/views/header.jsp" %>
-	<div style="text-align: center; margin-top: 30px;">	
+	<div style="text-align: center; margin-top: 50px;">	
 		<h1>회원 목록</h1>
 	</div>
 	<div class="bluetop" align="center">
@@ -64,6 +64,6 @@
 		</table>
 	</div>
 </section>
-<footer style="text-align: center;"><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
+<footer style="text-align: center; margin-top: 100px;"><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
 </body>
 </html>
