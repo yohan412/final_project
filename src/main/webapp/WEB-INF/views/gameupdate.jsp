@@ -204,7 +204,7 @@
                 </div>
                 <div id="button_form">
                     <%--<input type="submit" value="경기 수정" id="button">--%>
-                        <button id="pointer" type="submit" style="padding: 1.5rem 5rem">경기 등록</button>
+                        <button id="pointer" type="submit" style="padding: 1.5rem 5rem">경기 수정</button>
                 </div>
             </div>
         </form:form>
