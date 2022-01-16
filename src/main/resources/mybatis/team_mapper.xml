@@ -36,12 +36,16 @@
 
 	<sql id="search">
 		<if test="searchType != null">
-			<if test="searchType == 'w'.toString()">AND USER_ID LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'w'.toString()">AND USER_NO LIKE '%' || #{keyword} || '%'</if>
 			<if test="searchType == 't'.toString()">AND TEAM_NAME LIKE '%' || #{keyword} || '%'</if>
 			<if test="searchType == 'c'.toString()">AND TEAM_ADDCHK LIKE '%' || #{keyword} || '%'</if>
 		</if>
 	</sql>
-
+	
+	<select id="selectno" parameterType="String" resultType="int">
+        SELECT USER_NO FROM USER_INFO WHERE USER_ID = #{user_id}
+    </select>
+	
 	
 	<select id="selectOne" resultType="teamDto" parameterType="int">
 		SELECT t.TEAM_NO, t.USER_NO, p.PIC_PATH, t.TEAM_NAME, t.TEAM_INTRO, t.TEAM_ADDCHK, u.USER_PHONE, u.USER_ID 

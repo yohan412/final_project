@@ -80,6 +80,11 @@ public class TeamBizImpl implements TeamBiz{
 		return dao.selectInfo(user_id);
 	}
 
+	@Override
+	public int selectid(String user_id) {
+		return dao.selectid(user_id);
+	}
+
 
 	
 	

@@ -92,7 +92,7 @@ public class GameController {
             int hh = Integer.parseInt(timearr.get(0));
 
             if(mercesta == 0){
-                statuses.add("모집안함");
+                statuses.add("모집완료");
             }
             else{
                 if(day == 0){

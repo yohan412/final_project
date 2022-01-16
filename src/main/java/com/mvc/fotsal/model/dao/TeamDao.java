@@ -36,4 +36,6 @@ public interface TeamDao {
 
 	public UserDto selectInfo(String user_id); // 팀 지원자 초대발송할때 누군지 판단
 
+	public int selectid(String user_id); // 검색창에 user_id값 안넘어가서 넘기는것
+
 }
