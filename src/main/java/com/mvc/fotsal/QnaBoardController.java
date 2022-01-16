@@ -96,10 +96,10 @@ public class QnaBoardController {
 		int res = biz.comment_insert(dto);
 		if(res>0) {
 			logger.info("COMMENT INSERT 성공" );
-			return "redirect:qnadetail.do?qna_no="+dto.getQna_no();
+			return "redirect:qnadetail.do?qna_gpno="+dto.getQna_gpno();
 		}else {
 			logger.info("COMMENT INSERT 실패");
-			return "redirect:qnaCommentForm.do?qna_no="+dto.getQna_no();
+			return "redirect:qnaCommentForm.do?qna_gpno="+dto.getQna_gpno();
 		}
 	}
 	

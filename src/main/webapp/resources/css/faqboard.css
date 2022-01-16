@@ -272,8 +272,8 @@ input[type="text"][required] + label[placeholder]:before {
 
 #searchBtn{
 	padding: 10px;
-	margin: -50px;
-	margin-top: 40px;
+	margin: 140px;
+	margin-top: -65px;
 	position: absolute;
 	width: 40px;
 	height: 40px;
