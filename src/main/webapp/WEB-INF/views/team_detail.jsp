@@ -83,7 +83,7 @@
 						<button id="pointer" type="button" style="margin-right: 110px;"
 						onclick="location.href='teamlist.do'">목록</button>
 						<button id="pointer" type="button" style="margin-right: 110px;" name="update-hidden" onclick="team_updateChk(${login.user_no},${teamDto.user_no },${teamDto.team_no })">수정</button>
-						<button id="pointer" type="button" style="margin-right: 110px;" name="team-apply" onclick="team_apply('${login.user_name }', '${login.user_phone }', ${teamDto.team_no }, ${login.user_no })">지원하기</button>
+						<button id="pointer" type="button" style="margin-right: 110px;" name="team-apply" onclick="team_apply('${login.user_name }', '${teamDto.user_phone }', ${teamDto.team_no }, ${login.user_no })">지원하기</button>
 						<button id="pointer" type="button" style="margin-right: 4px; margin-top: 15px;"
 						name="delete-hidden" onclick="team_deleteChk(${login.user_no},${teamDto.user_no},${teamDto.team_no})">삭제</button>
 					</div>

@@ -78,7 +78,7 @@ public static String numberGen() {
 	    params.put("to", user_phone); //수신번호
 	    params.put("from", "01094271829"); //발신번호
 	    params.put("type", "SMS");
-	    params.put("text", "팀에" + user_name + " 님이 지원했습니다. 팀 페이지에서 확인해주세요."); //문자내용
+	    params.put("text", "팀에 " + user_name + " 님이 지원했습니다. 팀 페이지에서 확인해주세요."); //문자내용
 	    params.put("app_version", "test app 1.2"); // application name and version
 	    
 	    

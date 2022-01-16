@@ -64,6 +64,8 @@ public class TeamController {
 	public void send_invite(Model model, @RequestParam("user_id")String user_id, @RequestParam("writer_id")String writer_id) {
 		UserDto applyer = biz.selectInfo(user_id); // 지원자
 		UserDto writer = biz.selectInfo(writer_id); // 팀장
+		System.out.println("지원자 phone: "+ applyer.getUser_phone());
+		System.out.println("팀장 phone: "+ writer.getUser_phone());
 		
 		messageApp.send_invite(applyer.getUser_phone(), writer.getUser_phone());
 	}
