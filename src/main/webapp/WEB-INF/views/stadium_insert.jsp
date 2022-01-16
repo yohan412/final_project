@@ -33,6 +33,9 @@
         textarea{
             font-family: 'NexonFootballGothic';
         }
+        section{
+            height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -153,16 +156,14 @@
                     </script>
                     <div style="width: 100px; height: 100%"></div>
                 </div>
-                <div id="button_form">
+            </div>
+            <div id="button_form">
                     <%--<input type="submit" value="경기장 등록" id="button">--%>
-                    <button id="pointer" type="submit" style="margin-right: 5px; margin-left: 5px; padding: 1.5rem 5rem;">경기장 등록</button>
-                </div>
+                <button id="pointer" type="submit" style="margin-right: 5px; margin-left: 5px; padding: 1.5rem 5rem;">경기장 등록</button>
             </div>
         </form:form>
     </div>
 </section>
-<footer>
-    <%@ include file="/WEB-INF/views/footer.jsp" %>
-</footer>
+<footer><%@ include file="/WEB-INF/views/footer.jsp" %></footer>
 </body>
 </html>

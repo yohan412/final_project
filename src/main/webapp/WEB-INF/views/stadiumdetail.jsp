@@ -220,11 +220,11 @@
                     <div style="width: 25px; height: 100%"></div>
                     <div id="update_button_form">
                         <%--<input type="button" value="수정" class="buttons" id="updatebtn" onclick="location.href='stadiumupdateform.do?stadium_no=${detail.stadium_no}'">--%>
-                            <button id="pointer" type="button" onclick="location.href='stadiumupdateform.do?stadium_no=${detail.stadium_no}'" style="padding: 0.5rem 1.2rem;">수정</button>
+                            <button id="pointer" class="updatebtn" type="button" onclick="location.href='stadiumupdateform.do?stadium_no=${detail.stadium_no}'" style="padding: 0.5rem 1.2rem;">수정</button>
                     </div>
                     <div id="delete_button_form">
                         <%--<input type="button" value="삭제" class="buttons" id="deletebtn" onclick="location.href='stadiumdelete.do?stadium_no=${detail.stadium_no}'">--%>
-                            <button id="pointer" type="button" onclick="location.href='stadiumdelete.do?stadium_no=${detail.stadium_no}'" style="padding: 0.5rem 1.2rem;">삭제</button>
+                            <button id="pointer" class="deletebtn" type="button" onclick="location.href='stadiumdelete.do?stadium_no=${detail.stadium_no}'" style="padding: 0.5rem 1.2rem;">삭제</button>
                     </div>
                     <div id="list_button_form">
                         <%--<input type="button" value="목록" class="buttons" onclick="location.href='stadiumlist.do'">--%>
@@ -234,11 +234,11 @@
                     <script type="text/javascript">
                         $(function (){
                             if(${userDto.user_role eq 'ADMIN'}){
-                                $("#updatebtn").show();
-                                $("#deletebtn").show();
+                                $(".updatebtn").show();
+                                $(".deletebtn").show();
                             }else{
-                                $("#updatebtn").hide();
-                                $("#deletebtn").hide();
+                                $(".updatebtn").hide();
+                                $(".deletebtn").hide();
                             }
                         })
                     </script>

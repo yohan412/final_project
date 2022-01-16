@@ -2,9 +2,9 @@ package com.mvc.fotsal.model.biz;
 
 import java.util.List;
 
-import com.mvc.fotsal.model.dto.MercenaryDto;
 import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
+import com.mvc.fotsal.model.dto.UserDto;
 import com.mvc.fotsal.paging.TeamSearch;
 
 public interface TeamBiz {
@@ -26,4 +26,9 @@ public interface TeamBiz {
 	
 	public int findno(TeamDto dto); // 팀 등록 시 team_no 번호 판단여부
 	
+	public int applyInsert(int user_no, int team_no); // 팀 지원자
+	
+	public List<UserDto> uDto(int team_no); // 팀 지원자 리스트
+	
+	public UserDto selectInfo(String user_id); // 팀 지원자 초대발송할때 누군지 판단
 }

@@ -67,7 +67,7 @@ public static String numberGen() {
         }
         return numStr;	
 	}
-	public static void team_inviteMsg(String args) {
+	public static void team_inviteMsg(String user_name, String user_phone) {
 		String api_key = "NCSXPUDVOBBGI5RU"; //개인용키
 	    String api_secret = "8T30Q43ZRA38PXCSK1EKSRY8NQGQYDWY"; //개인용 시크릿 키
 	    Message coolsms = new Message(api_key, api_secret);
@@ -75,10 +75,34 @@ public static String numberGen() {
 	    
 	    // 4 params(to, from, type, text) are mandatory. must be filled
 	    HashMap<String, String> params = new HashMap<String, String>();
-	    params.put("to", args); //수신번호
+	    params.put("to", user_phone); //수신번호
 	    params.put("from", "01094271829"); //발신번호
 	    params.put("type", "SMS");
-	    params.put("text", "팀에 지원자가 있습니다. 웹 페이지에서 확인해주세요."); //문자내용
+	    params.put("text", "팀에" + user_name + " 님이 지원했습니다. 팀 페이지에서 확인해주세요."); //문자내용
+	    params.put("app_version", "test app 1.2"); // application name and version
+	    
+	    
+	    try {
+	      JSONObject obj = (JSONObject) coolsms.send(params);
+	      System.out.println(obj.toString());
+	    } catch (CoolsmsException e) {
+	      System.out.println(e.getMessage());
+	      System.out.println(e.getCode());
+	    }
+	    
+	}
+	public static void send_invite(String applyer_phone, String writer_phone) {
+		String api_key = "NCSXPUDVOBBGI5RU"; //개인용키
+	    String api_secret = "8T30Q43ZRA38PXCSK1EKSRY8NQGQYDWY"; //개인용 시크릿 키
+	    Message coolsms = new Message(api_key, api_secret);
+	
+	    
+	    // 4 params(to, from, type, text) are mandatory. must be filled
+	    HashMap<String, String> params = new HashMap<String, String>();
+	    params.put("to", applyer_phone); //수신번호
+	    params.put("from", "01094271829"); //발신번호
+	    params.put("type", "SMS");
+	    params.put("text", "지원하신 팀에 초대 받으셨습니다. 팀장 연락처: "+writer_phone); //문자내용
 	    params.put("app_version", "test app 1.2"); // application name and version
 	    
 	    

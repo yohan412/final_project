@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mvc.fotsal.model.dto.MercenaryDto;
 import com.mvc.fotsal.model.dto.PicDto;
+import com.mvc.fotsal.model.dto.TeamApplyDto;
 import com.mvc.fotsal.model.dto.TeamDto;
-import com.mvc.fotsal.paging.TeamListPaging;
+import com.mvc.fotsal.model.dto.UserDto;
 import com.mvc.fotsal.paging.TeamSearch;
 
 @Repository
@@ -152,6 +153,46 @@ public class TeamDaoImpl implements TeamDao{
 			res = sqlSession.update(NAMESPACE+"updatePic", dto);
 		} catch (Exception e) {
 			System.out.println("error: updatePic failed");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+	@Override
+	public int applyInsert(int user_no, int team_no) {
+		TeamApplyDto dto = new TeamApplyDto(user_no, team_no);
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE + "applyInsert", dto);
+		} catch (Exception e) {
+			System.out.println("error: applyInsert failed");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+	@Override
+	public List<UserDto> applyList(int team_no) {
+		System.out.println("애플라이리스트에서 team_no: "+team_no);
+		List<UserDto> res = new ArrayList<UserDto>();
+		
+		res = sqlSession.selectList(NAMESPACE+"applyList", team_no);
+		
+		return res;
+	}
+
+	@Override
+	public UserDto selectInfo(String user_id) {
+		UserDto res = null;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE + "selectInfo", user_id);
+		} catch (Exception e) {
+			System.out.println("error: selectInfo failed");
 			e.printStackTrace();
 		}
 		

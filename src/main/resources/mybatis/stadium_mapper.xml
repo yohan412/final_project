@@ -61,7 +61,7 @@
     </delete>
 
     <select id="FindNo" parameterType="stadiumDto" resultType="int">
-        SELECT STADIUM_NO FROM STADIUM WHERE STADIUM_ADDR = #{stadium_addr}
+        SELECT STADIUM_NO FROM STADIUM WHERE STADIUM_NAME = #{stadium_name}
     </select>
 
     <insert id="Insert_IMG" parameterType="picDto">

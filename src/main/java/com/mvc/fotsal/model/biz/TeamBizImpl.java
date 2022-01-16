@@ -9,6 +9,7 @@ import com.mvc.fotsal.model.dao.TeamDao;
 import com.mvc.fotsal.model.dto.MercenaryDto;
 import com.mvc.fotsal.model.dto.PicDto;
 import com.mvc.fotsal.model.dto.TeamDto;
+import com.mvc.fotsal.model.dto.UserDto;
 import com.mvc.fotsal.paging.TeamSearch;
 
 @Service
@@ -61,6 +62,22 @@ public class TeamBizImpl implements TeamBiz{
 	@Override
 	public int updatePic(PicDto dto) {
 		return dao.updatePic(dto);
+	}
+
+	@Override
+	public int applyInsert(int user_no, int team_no) {
+		return dao.applyInsert(user_no, team_no);
+	}
+
+	@Override
+	public List<UserDto> uDto(int team_no) {
+		return dao.applyList(team_no);
+	}
+
+	@Override
+	public UserDto selectInfo(String user_id) {
+		
+		return dao.selectInfo(user_id);
 	}
 
 

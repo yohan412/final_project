@@ -63,7 +63,7 @@
 		</div>
 	</div>
 </section>
-<footer>
+<footer style="margin-top: 150px;">
 	<%@ include file="footer.jsp" %>
 </footer>
 </body>

@@ -137,3 +137,52 @@ footer{
     align-items: center;
     margin-top: 40px;
 }
+#apply-list-form{
+    width: 800px;
+    min-height: 500px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid lightgray;
+}
+#apply-list{
+    width: 700px;
+    height: 80px;
+    margin-top:40px;
+    margin-left: 50px;
+    padding-bottom: 25px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    font-size: 15px;
+    font-weight: bold;
+    user-select: none;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    box-sizing: border-box;
+}
+#apply-id{
+    width: 230px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid lightgray;
+    box-sizing: border-box;
+}
+#apply-name{
+    width: 230px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid lightgray;
+    box-sizing: border-box;
+}
+#send-invtie{
+    width: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}

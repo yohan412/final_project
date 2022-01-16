@@ -105,13 +105,11 @@
 		<div class="content-submit-list" align="right">
 			<button id="pointer" onclick="loginChk(${login.user_no})">작성하기</button>
 		</div>
-		<div class="a-blank-space" style="height: 50px;">
 			
-		</div>
 	</div>
 </section>
 </body>
-<footer>
+<footer style="margin-top: 150px;">
 	<%@ include file="footer.jsp" %>
 </footer>
 <script type="text/javascript">

@@ -91,14 +91,38 @@
                 </script>
                 <%--모집 여부--%>
                 <div id="mergency_state" onclick="support_game('${status}', '${userDto.user_id}', '${userDto.user_name}' ,'${userDto.user_phone}',${login.user_no },${gamedto.game_no });">
-                    <h2 style="width: 150px; display: flex; justify-content: center">${status}</h2>
+                    <%--<h2 style="width: 150px; display: flex; justify-content: center">${status}</h2>
+                    <h2 style="width: 150px; display: flex; justify-content: center; font-size: 10px;">
+                        <c:choose>
+                            <c:when test="${status eq '종료'}"> </c:when>
+                            <c:when test="${status eq '모집안함'}"> </c:when>
+                            <c:otherwise>용병 신청하러면 클릭</c:otherwise>
+                        </c:choose>
+                    </h2>
                     <h2 style="width: 150px; display: flex; justify-content: center">
                         <c:choose>
                             <c:when test="${status eq '종료'}"> </c:when>
                             <c:when test="${status eq '모집안함'}"> </c:when>
                             <c:otherwise>${gamedto.game_mercenary}명</c:otherwise>
                         </c:choose>
-                    </h2>
+                    </h2>--%>
+                    <c:choose>
+                        <c:when test="${status eq '종료'}">
+                            <div style="width: 150px; height: 100px; display: flex; align-items: center; justify-content: center; font-size: 30px;">${status}</div>
+                        </c:when>
+                        <c:when test="${status eq '모집안함'}">
+                            <div style="width: 150px; height: 100px; display: flex; align-items: center; justify-content: center; font-size: 30px;">${status}</div>
+                        </c:when>
+                        <c:otherwise>
+                            <div style="width: 150px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 40px; margin-top: 20px;">${status}</div>
+                            <div style="width: 150px; height: 50px; display: flex; align-items: center; justify-content: center">클릭하여 용병 신청</div>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose>
+                        <c:when test="${status eq '종료'}"> </c:when>
+                        <c:when test="${status eq '모집안함'}"> </c:when>
+                        <c:otherwise><div style="width: 150px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-top: -10px;">${gamedto.game_mercenary}명</div></c:otherwise>
+                    </c:choose>
                 </div>
                 <script type="text/javascript">
                     window.onload = function (){

@@ -74,6 +74,7 @@
                             </c:choose>
                         </div>
                         <div class="stadium_introduce_form">
+                            <div style="width: 500px; height: 50px; display: flex; align-items: center; justify-content: flex-start; font-weight: bold">${stadiumlist.stadium_name}</div>
                             <textarea id="stadium_introduce" style="font-family: NexonFootballGothic">${stadiumlist.stadium_content}</textarea>
                         </div>
                     </div>
