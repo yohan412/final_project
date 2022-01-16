@@ -27,8 +27,6 @@
 			<if test="searchType == 't'.toString()">AND QNA_TITLE LIKE '%' || #{keyword} || '%'</if>
 			<if test="searchType == 'c'.toString()">AND QNA_CONTENT LIKE '%' || #{keyword} || '%'</if>
 			<if test="searchType == 'w'.toString()">AND USER_ID LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'tc'.toString()">AND (QNA_TITLE LIKE '%' || #{keyword} || '%') or (QNA_CONTENT
-				LIKE '%' || #{keyword} || '%')</if>
 		</if>
 	</sql>
 

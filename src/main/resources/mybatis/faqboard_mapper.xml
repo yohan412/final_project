@@ -26,9 +26,6 @@
 		<if test="searchType != null">
 			<if test="searchType == 't'.toString()">AND FAQ_TITLE LIKE '%' || #{keyword} || '%'</if>
 			<if test="searchType == 'c'.toString()">AND FAQ_CONTENT LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'w'.toString()">AND USER_ID LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'tc'.toString()">AND (FAQ_TITLE LIKE '%' || #{keyword} || '%') or
-				(FAQ_CONTENT LIKE '%' || #{keyword} || '%')</if>
 		</if>
 	</sql>
 
