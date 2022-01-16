@@ -31,4 +31,6 @@ public interface TeamBiz {
 	public List<UserDto> uDto(int team_no); // 팀 지원자 리스트
 	
 	public UserDto selectInfo(String user_id); // 팀 지원자 초대발송할때 누군지 판단
+	
+	public int selectid(String user_id); // 유저 아이디값 안넘어가서 넘기는것
 }

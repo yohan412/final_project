@@ -38,7 +38,7 @@ public class TeamDaoImpl implements TeamDao{
 	public int listCount(TeamSearch STLP) {
 		
 		int res = 0;
-		
+		System.out.println("서치타입: "+STLP.getSearchType());
 		try {
 			res = sqlSession.selectOne(NAMESPACE+"listCount", STLP);
 		} catch (Exception e) {
@@ -198,6 +198,19 @@ public class TeamDaoImpl implements TeamDao{
 		
 		return res;
 	}
+
+	@Override
+    public int selectid(String user_id) {
+        int no = 0;
+
+        try{
+            no = sqlSession.selectOne(NAMESPACE + "selectno", user_id);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return no;
+    }
 
 
 

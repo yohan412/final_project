@@ -97,7 +97,7 @@
 				<option value="c"<c:out value="${STLP.searchType == 'c' ? 'selected' : '' }"/>>모집여부</option>
 			</select>
 			
-			<input type="text" id="keywordInput" name="keyword"  value="${STLP.keyword }" required=""/>
+			<input type="text" id="keywordInput" name="keyword"  value="" required=""/>
 			<label alt='검색어를 입력하세요' placeholder=''></label>
 			<input type="image" id="searchBtn" src="img/icon_magnifier.png">
 			
@@ -123,17 +123,35 @@
 	}
 	
 	$(function(){
-		$('#searchBtn').click(function(){
-			if($('#keywordInput').val() == ""){
-				alert('검색 내용을 입력해주세요');
-			}else{
-				self.location = "teamlist.do" + '${pageMaker.makeQuery(1)}' + 
-				"&searchType=" + $("select option:selected").val() + 
-				"&keyword=" + encodeURIComponent($('#keywordInput').val());
-			}
+        $('#searchBtn').click(function(){
+            if($('#keywordInput').val() == ""){
+                alert('검색 내용을 입력해주세요');
+            }else{
+                if($("select option:selected").val() == 'w'){
+                    var user_id = $('#keywordInput').val();
+                    $.ajax({
+                        url:"/team_serch_id.do",
+                        data:{
+                            "user_id" : user_id
+                        },
+                        success:function (msg){
+                            self.location = "teamlist.do" + '${pageMaker.makeQuery(1)}' +
+                                    "&searchType=" + $("select option:selected").val() +
+                                    "&keyword=" + encodeURIComponent(msg);
+                        },
+                        error:function (){
+                            alert('통신 오류');
+                        }
+                    })
+                }else{
+                    self.location = "teamlist.do" + '${pageMaker.makeQuery(1)}' +
+                            "&searchType=" + $("select option:selected").val() +
+                            "&keyword=" + encodeURIComponent($('#keywordInput').val());
+                }
+            }
 
-		})
-	});
+        })
+    });
 	
 
 </script>

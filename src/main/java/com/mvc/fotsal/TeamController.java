@@ -131,12 +131,24 @@ public class TeamController {
 		
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("page", request.getParameter("page"));
+		model.addAttribute("STLP", STLP);
 		
 		System.out.println(STLP.toString());
 		
 		
 		return "teamboard";
 	}
+	
+	@RequestMapping("/team_serch_id.do")
+    @ResponseBody
+    public int team_id_search(@RequestParam("user_id")String user_id){
+        int user_no = biz.selectid(user_id);
+
+        System.out.println(user_no);
+
+        return user_no;
+
+    }
 	
 	@RequestMapping(value="/team_detail.do")
 	public String detail(Model model, int team_no) { // 팀 자세히보기
