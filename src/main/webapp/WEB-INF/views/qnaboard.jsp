@@ -133,10 +133,10 @@
 		</div>
 	</div>
 </section>
-</body>
 <footer style="align-content: center;">
 	<%@ include file="footer.jsp"%>
 </footer>
+</body>
 <script type="text/javascript">
 function loginChk(user_no){
 	if(user_no == null){

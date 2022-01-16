@@ -69,6 +69,9 @@
 	</section>
 
 </body>
+<footer style="align-content: center;">
+	<%@ include file="footer.jsp"%>
+</footer>
 <script type="text/javascript">
 function adminChk(login_id, user_id, qna_no) {
 	if(login_id != "admin"){

@@ -62,4 +62,7 @@
 
 	</section>
 </body>
+	<footer style="align-content: center;">
+	<%@ include file="footer.jsp"%>
+</footer>
 </html>
