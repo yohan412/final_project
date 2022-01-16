@@ -38,11 +38,11 @@
 						<input type="radio" name="faq_type" value="일반문의">일반문의
 					</div>
 					<div>
-						<h4>제목</h4>
+						<h4>문의 내용</h4>
 						<input type="text" name="faq_title" placeholder="제목을 입력해주세요">
 					</div>
 					<div class="content-select-position">
-						<h4>내용</h4>
+						<h4>답변 내용</h4>
 						<textarea name="faq_content" placeholder="문의 내용을 입력해주세요."></textarea>
 					</div>
 		<div class="button-form" style="border-bottom: none;">
