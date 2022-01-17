@@ -339,13 +339,14 @@ public class UserController {
 			model.addAttribute("user_name",apiJson.get("name"));
 			model.addAttribute("user_birthdate",apiJson.get("birthyear")+"-"+apiJson.get("birthday"));
 			return "setNaverRegister";
-		}else if(naverConnectionCheck.get("USER_CONCHK") == null && naverConnectionCheck.get("USER_EMAIL") != null) { //이메일 가입 되어있고 네이버 연동 안되어 있을시
+		}else if(naverConnectionCheck.get("USER_CONCHK") == "NAVER" && naverConnectionCheck.get("USER_EMAIL") != null) { //이메일 가입 되어있고 네이버 연동 안되어 있을시
 			biz.setNaverConnection(apiJson);
 			UserDto dto = biz.userNaverLoginPro(apiJson);
 			session.setAttribute("login", dto);
-		}else if(naverConnectionCheck.get("USER_CONCHK")=="KAKAO" && naverConnectionCheck.get("USER_EMAIL") != null) {
-			JOptionPane.showMessageDialog(null, "이미 카카오 아이디로 가입되어있습니다");
-			return "redirect:loginform.do";
+		}else if(naverConnectionCheck.get("USER_CONCHK")!="NAVER" && naverConnectionCheck.get("USER_EMAIL") != null) {
+			model.addAttribute("msg", "이미 카카오 아이디로 가입되어있습니다");
+			model.addAttribute("url", "loginform.do");
+			return "alert";
 		}else { //모두 연동 되어있을시
 			UserDto dto = biz.userNaverLoginPro(apiJson);
 			session.setAttribute("login", dto);
@@ -385,13 +386,14 @@ public class UserController {
         	model.addAttribute("user_nickname",loginApi.get("nickname"));
         	model.addAttribute("user_gender",loginApi.get("gender"));
         	return "setKakaoRegister";
-        } else if(kakaoConnectionCheck.get("USER_CONCHK") == null && kakaoConnectionCheck.get("USER_EMAIL") != null) { //이메일 가입 되어있고 카카오 연동 안되어 있을시
+        } else if(kakaoConnectionCheck.get("USER_CONCHK") == "KAKAO" && kakaoConnectionCheck.get("USER_EMAIL") != null) { //이메일 가입 되어있고 카카오 연동 안되어 있을시
         	biz.setKakaoConnection(loginApi);
         	UserDto dto = biz.userKakaoLoginPro(loginApi);
         	session.setAttribute("login", dto);
-        }else if(kakaoConnectionCheck.get("USER_CONCHK") == "NAVER" && kakaoConnectionCheck.get("USER_EMAIL") != null) {
-			JOptionPane.showMessageDialog(null, "이미 카카오 아이디로 가입되어있습니다");
-			return "redirect:loginform.do";
+        }else if(kakaoConnectionCheck.get("USER_CONCHK") != "KAKAO" && kakaoConnectionCheck.get("USER_EMAIL") != null) {
+        	model.addAttribute("msg", "이미 네이버 아이디로 가입되어있습니다");
+			model.addAttribute("url", "loginform.do");
+			return "alert";
 		} else { //모두 연동 되어있을시
         	UserDto dto = biz.userKakaoLoginPro(loginApi);
         	session.setAttribute("login", dto);
