@@ -62,7 +62,7 @@
 						</div>
 
 						<div class="comment-title">
-						<h4>제목</h4>
+						<h4>문의 답변</h4>
 						<input style="margin-bottom: 10px; "type="text" name="qna_title" placeholder="제목을 입력해주세요.">
 						</div>
 
