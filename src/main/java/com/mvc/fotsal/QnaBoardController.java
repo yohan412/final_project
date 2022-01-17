@@ -82,6 +82,7 @@ public class QnaBoardController {
 	public String qnaCommentForm(Model model, int qna_gpno) {
 		logger.info("COMMENT FORM");
 		model.addAttribute("qna_dto", biz.selectOne(qna_gpno));
+		model.addAttribute("qna_dto2", biz.selectOne2(qna_gpno));
 		
 		
 		return "qnaCommentForm";
@@ -90,8 +91,6 @@ public class QnaBoardController {
 	@RequestMapping("/qnaCommentres.do")
 	public String qnaCommentRes(Model model, QnaBoardDto dto) {
 		logger.info("COMMENT RES");
-		System.out.println(dto.getQna_no());
-		System.out.println(dto.getQna_gpno());
 		
 		int res = biz.comment_insert(dto);
 		if(res>0) {
@@ -117,7 +116,6 @@ public class QnaBoardController {
 	@RequestMapping(value="/qnaupdateResult.do")
 	public String updateRes(QnaBoardDto dto) { // 팀 수정하기
 		int res = biz.update(dto);
-		System.out.println("gpno값: "+dto.getQna_gpno());
 		if(res>0) {
 			logger.info("qna 수정완료");
 			return "redirect:qnadetail.do?qna_gpno="+dto.getQna_gpno();

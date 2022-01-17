@@ -33,14 +33,12 @@
 					<div class="box-body">
 						<div class="type-form">
 							<h4>카테고리</h4>
-							<input type="radio" name="qna_type" id="qna_type" value="${dto.qna_type }">신고
-							<input type="radio" name="qna_type" id="qna_type" value="${dto.qna_type }">일반문의
+							<label type=text id="qna_type">${dto.qna_type }</label>
 						</div>
 						<div class="writer-form">
 							<h4>작성자</h4>
-							<label  class="detail-qna-writer" style="font-weight:bold;">
-							<input type="text" name="user_id" placeholder="${dto.user_id }" value="${dto.user_id }" readonly="readonly" required>
-							</label>
+							<label  class="detail-qna-writer" style="font-weight:bold;"></label>
+							<label id="user_id">${dto.user_id }</label>
 						</div>
 						<div class="title-form">
 							<h4>제목</h4>
