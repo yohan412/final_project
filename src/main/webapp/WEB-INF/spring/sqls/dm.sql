@@ -465,6 +465,32 @@ VALUES(QNA_NOSQ.NEXTVAL, QNA_GPNOSQ.NEXTVAL, 1, '비밀번호를 까먹었습니
 
 
 
+INSERT INTO FAQ
+VALUES(QNA_NOSQ.NEXTVAL, QNA_GPNOSQ.NEXTVAL, 1, '아이디를 까먹었습니다 어디서 찾을 수 있나요?','로그인 페이지에서 아래에 있는 아이디 찾기를 이용해서
+휴대폰번호로 인증번호를 받은 후 찾으실 수 있습니다.
+
+감사합니다.', 'admin', SYSDATE, '일반문의');
+INSERT INTO FAQ
+VALUES(QNA_NOSQ.NEXTVAL, QNA_GPNOSQ.NEXTVAL, 1, '비밀번호를 까먹었습니다 어디서 찾을 수 있나요?','로그인 페이지에서 아래에 있는 비밀번호 찾기를 이용해서 찾을 수 있으며
+휴대폰 번호로 인증 번호를 받은 후 찾으실 수 있습니다.
+
+감사합니다.', 'admin', SYSDATE, '일반문의');
+
+INSERT INTO FAQ
+VALUES(QNA_NOSQ.NEXTVAL, QNA_GPNOSQ.NEXTVAL, 1, '스트리트 풋살 매니저 사이트는 뭔하는 사이트 인가요?','풋살하고 싶은데 팀이 없고 어디에서 경기 하는지 모를 때, 풋살하고 싶지만 사람이 없을 때 지도를 통해 
+한 눈에 경기 예정지를 보여주고 용병모집여부까지 확인 가능한 사이트 입니다
+
+감사합니다.', 'admin', SYSDATE, '일반문의');
+
+INSERT INTO FAQ
+VALUES(QNA_NOSQ.NEXTVAL, QNA_GPNOSQ.NEXTVAL, 1, '회원 탈퇴를 하고 싶어요','이용자 및 법정대리인은 언제든지 자신의 개인정보를 조회하거나 수정할 수 있으며, 
+수집 및 이용에 대한 동의 철회(가입 해지)를 요청할 수 있습니다.
+마이페이지 > 회원 탈퇴 기능을 사용하세요.
+
+감사합니다.', 'admin', SYSDATE, '일반문의');
+
+
+
 SELECT * FROM QNA;
 
 
