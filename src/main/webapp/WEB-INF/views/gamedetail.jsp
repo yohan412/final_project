@@ -110,7 +110,7 @@
                         <c:when test="${status eq '종료'}">
                             <div style="width: 150px; height: 100px; display: flex; align-items: center; justify-content: center; font-size: 30px;">${status}</div>
                         </c:when>
-                        <c:when test="${status eq '모집안함'}">
+                        <c:when test="${status eq '모집완료'}">
                             <div style="width: 150px; height: 100px; display: flex; align-items: center; justify-content: center; font-size: 30px;">${status}</div>
                         </c:when>
                         <c:otherwise>
@@ -120,14 +120,14 @@
                     </c:choose>
                     <c:choose>
                         <c:when test="${status eq '종료'}"> </c:when>
-                        <c:when test="${status eq '모집안함'}"> </c:when>
+                        <c:when test="${status eq '모집완료'}"> </c:when>
                         <c:otherwise><div style="width: 150px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-top: -10px;">${gamedto.game_mercenary}명</div></c:otherwise>
                     </c:choose>
                 </div>
                 <script type="text/javascript">
                     window.onload = function (){
                         var status = '${status}';
-                        if(status === '종료' || status === '모집안함'){
+                        if(status === '종료' || status === '모집완료'){
                             $("#mergency_state").css("background-color", 'lightgray');
                         }else{
                             $("#mergency_state").css("background-color", '#00bafa');

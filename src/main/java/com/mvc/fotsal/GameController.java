@@ -174,7 +174,7 @@ public class GameController {
         int thh = time.getHour();
 
         if(merce == 0){
-            status = "모집안함";
+            status = "모집완료";
         }
         else{
             if (Dday == 0){

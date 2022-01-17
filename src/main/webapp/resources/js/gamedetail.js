@@ -45,7 +45,7 @@ function delete_game(author, user_id, game_no){
 }
 
 function support_game(status, userid, username, userphone, userno, gameno){
-    if(status === '종료' || status === '모집안함'){
+    if(status === '종료' || status === '모집완료'){
         alert('용병 지원을 할 수 없습니다');
     }else{
         if(userid === "" || userid == null){
