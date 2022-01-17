@@ -29,7 +29,6 @@
 					<input type="hidden" name="qna_gpno" value="${qna_dto.qna_gpno }">
 					<input type="hidden" name="qna_type" value="${qna_dto.qna_type }">
 					<input type="hidden" name="qna_gpsq" value="${qna_dto.qna_gpsq }">
-					<input type="hidden" name="qna_content" value="${qna_dto.qna_content }">
 					<input type="hidden" name="user_id" value="${login.getUser_id()}" readonly>
 					<div class="title-text">
 						<h2>QNA 문의 답글 작성</h2>
@@ -68,7 +67,7 @@
 
 						<div class="content-select-position">
 						<h4>답변 내용</h4>
-							<textarea style="border:1px solid" placeholder="답변 내용을 입력해주세요.."></textarea>
+							<textarea name="qna_content" style="border:1px solid" placeholder="답변 내용을 입력해주세요.."></textarea>
 						</div>
 	
 						<div class="content-submit" align="right" style="border-bottom: none;">
