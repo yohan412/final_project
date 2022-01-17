@@ -157,9 +157,11 @@
 	});
 	$(function(){ //로그인하지 않았으면 숨기기
 		var login_id = '${login.user_id};'
+		var addchk = '${teamDto.team_addchk}'
+		
 		$("button[name='team-apply']").hide();
 		
-		if(login_id != ";" ){
+		if(login_id != ";" && addchk == 'Y' ){
 			$("button[name='team-apply']").show();
 		}
 	});

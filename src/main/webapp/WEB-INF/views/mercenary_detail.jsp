@@ -115,13 +115,13 @@
 	});
 	
 	$(function(){ // 용병지원서 작성자가 아니면 삭제 및 수정버튼 숨기기
-		var writer = '${mDto.user_id}'; // 작성자
-		var user_id = '${login.user_id}';  // 세션에 저장된 로그인 아이디
+		var writer = '${mDto.user_no}'; // 작성자
+		var user_id = '${login.user_no}';  // 세션에 저장된 로그인 아이디
 		var adminChk = '${login.user_role}'; // 어드민 여부
 		
 		$("input[name=update-hidden]").hide();
 		$("input[name=delete-hidden]").hide();
-		if(writer === user_id){
+		if(writer == user_id){
 			$("input[name=update-hidden]").show();
 			$("input[name=delete-hidden]").show();
 		}else if(adminChk === 'ADMIN'){
@@ -160,18 +160,19 @@
 		var user_role = '${login.user_role}'; // 로그인 유저의 role
 		var user_id = '${login.user_id}'; // 로그인 유저
 		var writer = '${mDto.user_id}'; // 작성자
+		var user_no = '${login.user_no}'; // 로그인 유저의 번호
 		
 		if(user_role === 'ADMIN'){
 			var chk = confirm('삭제 하시겠습니까?');
 			if(chk){
-				location.href='mercenary_delete.do?user_no=${mDto.getUser_no()}'
+				location.href='mercenaryDelete.do?user_no='+user_no;
 			}else{
 				alert('취소되었습니다.');
 			}
 		}else if(user_role === 'USER' || writer === user_id){
 			var chk = confirm('삭제 하시겠습니까?');
 			if(chk){
-				location.href='mercenary_delete.do?user_no=${mDto.getUser_no()}'
+				location.href='mercenaryDelete.do?user_no='+user_no;
 			}else{
 				alert('취소되었습니다.');
 			}

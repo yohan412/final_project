@@ -85,13 +85,14 @@ public class MercenaryController {
 	}
 	
 	@RequestMapping(value="/mercenaryDelete.do")
-	public String delete(int user_no, HttpServletRequest request) {
-		String referer = request.getHeader("Referer");
+	public String delete(int user_no) {
 		int res = biz.delete(user_no);
 		
 		if(res>0) {
-		return "redirect:"+referer;
+			logger.info("용병지원서 삭제 완료");
+		return "redirect:index.jsp";
 		}else {
+			logger.info("용병지원서 삭제 실패");
 			return "redirect:mercenaryDetail.do?user_no"+user_no;
 		}
 	}
