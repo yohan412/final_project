@@ -121,7 +121,7 @@ public class QnaBoardController {
 			return "redirect:qnadetail.do?qna_gpno="+dto.getQna_gpno();
 		}else {
 			logger.info("qna 수정실패");
-			return "redirect:qnaupdateForm.do?qna_no="+dto.getQna_no();
+			return "redirect:qnaupdateForm.do?qna_gpno="+dto.getQna_gpno();
 		}
 		
 	}
